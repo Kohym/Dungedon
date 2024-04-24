@@ -5,7 +5,7 @@
 skupina Navrátil + Kohout = ♥️
 
 role:
-  Navrátil: Návrhář, Vývojář
+  Navrátil: Návrhář, Vývojář;
   Kohout: Vývojář, Návrhář
 
 návrh hry: 
