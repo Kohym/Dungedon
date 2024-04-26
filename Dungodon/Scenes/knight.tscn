@@ -1,106 +1,37 @@
-[gd_scene load_steps=16 format=3 uid="uid://ducgrspg4c2fe"]
+[gd_scene load_steps=6 format=3 uid="uid://ducgrspg4c2fe"]
 
-[ext_resource type="Texture2D" uid="uid://scpera2k8plv" path="res://Assets/Pixel Crawler - FREE - 1.8/Heroes/Knight/Idle/Idle-Sheet.png" id="1_eqplm"]
 [ext_resource type="Script" path="res://Scripts/knight.cs" id="1_nqg6e"]
-[ext_resource type="Texture2D" uid="uid://b8om6paylf32d" path="res://Assets/Pixel Crawler - FREE - 1.8/Heroes/Knight/Run/Run-Sheet.png" id="2_biwld"]
+[ext_resource type="Texture2D" uid="uid://cj0xoa4ux30ai" path="res://Assets/sword.svg" id="2_y37yd"]
+[ext_resource type="Texture2D" uid="uid://w64nh5ho00em" path="res://Assets/circle.svg" id="4_rlyem"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iyhum"]
-atlas = ExtResource("1_eqplm")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
+radius = 52.0096
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vj5bm"]
-atlas = ExtResource("1_eqplm")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eciky"]
-atlas = ExtResource("1_eqplm")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rho0u"]
-atlas = ExtResource("1_eqplm")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_srgm8"]
-atlas = ExtResource("2_biwld")
-region = Rect2(0, 33, 64, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_48lrg"]
-atlas = ExtResource("2_biwld")
-region = Rect2(64, 33, 64, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l05me"]
-atlas = ExtResource("2_biwld")
-region = Rect2(128, 33, 64, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbohf"]
-atlas = ExtResource("2_biwld")
-region = Rect2(192, 33, 64, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_usp2f"]
-atlas = ExtResource("2_biwld")
-region = Rect2(256, 33, 64, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hyirp"]
-atlas = ExtResource("2_biwld")
-region = Rect2(320, 33, 64, 31)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_snscv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iyhum")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vj5bm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eciky")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rho0u")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_srgm8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_48lrg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l05me")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kbohf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_usp2f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hyirp")
-}],
-"loop": true,
-"name": &"run",
-"speed": 6.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc2o8"]
-size = Vector2(76, 96)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfh3"]
+size = Vector2(85, 27)
 
 [node name="knight" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_nqg6e")
 
-[node name="knight-anim" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(3.081, 3)
-sprite_frames = SubResource("SpriteFrames_snscv")
-animation = &"idle"
-frame_progress = 0.00511313
-
-[node name="knight-hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mc2o8")
+[node name="knighthitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_51do8")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="weponhitbox" type="CollisionShape2D" parent="."]
+position = Vector2(99.5, 0.5)
+shape = SubResource("RectangleShape2D_qvfh3")
+debug_color = Color(0.533387, 0.0412865, 0.695029, 0.42)
+
+[node name="weponsprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(100.183, 0)
+scale = Vector2(0.364401, 0.258035)
+texture = ExtResource("2_y37yd")
+
+[node name="knightsprite" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("4_rlyem")

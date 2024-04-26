@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bctw8ppvoydha"]
+
+[ext_resource type="Texture2D" uid="uid://ccq8s7pma16bk" path="res://Assets/circleR.svg" id="3_o2ixa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8xju"]
+radius = 52.0096
+
+[node name="enem" type="Area2D"]
+
+[node name="enemhitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_n8xju")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="enemsprite" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_o2ixa")
