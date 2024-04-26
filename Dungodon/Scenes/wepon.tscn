@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8vf0dk5kaod7"]
+
+[ext_resource type="Texture2D" uid="uid://cj0xoa4ux30ai" path="res://Assets/sword.svg" id="1_l2cy1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgr5g"]
+size = Vector2(69, 30)
+
+[node name="wepon" type="Area2D"]
+
+[node name="weponsprite" type="Sprite2D" parent="."]
+scale = Vector2(0.292857, 0.292857)
+texture = ExtResource("1_l2cy1")
+
+[node name="weponhitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_kgr5g")
