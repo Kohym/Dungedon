@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3bfx57bqgb3r"
-path="res://.godot/imported/progres gren.png-296e3bd50adf04c7be73a0435ce06708.ctex"
+uid="uid://mw5dx4gsg43f"
+path="res://.godot/imported/circR.png-cd556ee251880f73296426d7f8613dd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Progresbars/progres gren.png"
-dest_files=["res://.godot/imported/progres gren.png-296e3bd50adf04c7be73a0435ce06708.ctex"]
+source_file="res://Assets/Chars/circR.png"
+dest_files=["res://.godot/imported/circR.png-cd556ee251880f73296426d7f8613dd7.ctex"]
 
 [params]
 

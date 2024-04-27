@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://ducgrspg4c2fe"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_5g4u3"]
+[ext_resource type="Texture2D" uid="uid://tlj8wqwtg7s8" path="res://Assets/Chars/circleB.png" id="2_456ti"]
+[ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/playerwepon.tscn" id="2_ymyrw"]
+[ext_resource type="Texture2D" uid="uid://t487h41pit1w" path="res://Assets/Progresbars/progres-back-gray.png" id="3_5b7p1"]
+[ext_resource type="Texture2D" uid="uid://dda32dykvb2dp" path="res://Assets/Progresbars/progres-green.png" id="4_3axwn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
+radius = 52.0096
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7ndk"]
+size = Vector2(69, 30)
+
+[node name="player" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_5g4u3")
+
+[node name="playerdmgdetect" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, 0)
+collision_layer = 2
+collision_mask = 192
+
+[node name="playerdmgdetecthitbox" type="CollisionShape2D" parent="playerdmgdetect"]
+position = Vector2(1, 0)
+rotation = 1.5708
+scale = Vector2(1.025, 1.025)
+shape = SubResource("CircleShape2D_51do8")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="playerwepon" parent="." instance=ExtResource("2_ymyrw")]
+position = Vector2(90, 0)
+
+[node name="playerweponhitbox2" type="CollisionShape2D" parent="playerwepon"]
+shape = SubResource("RectangleShape2D_t7ndk")
+
+[node name="playerhitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_51do8")
+
+[node name="playersprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.438, 0.438)
+texture = ExtResource("2_456ti")
+
+[node name="playerbar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -52.0
+offset_top = -52.0
+offset_right = 185.0
+offset_bottom = 185.0
+scale = Vector2(0.439, 0.439)
+value = 100.0
+fill_mode = 8
+texture_under = ExtResource("3_5b7p1")
+texture_progress = ExtResource("4_3axwn")
+
+[node name="playerhp" type="Label" parent="."]
+texture_filter = 1
+offset_left = -51.0
+offset_top = -76.0
+offset_right = 50.0
+offset_bottom = -48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.316753, 0.466553, 0.34478, 1)
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_shape_entered" from="playerdmgdetect" to="." method="_on_playerdmgdetect_area_shape_entered"]
+[connection signal="body_entered" from="playerdmgdetect" to="." method="_on_playerdmgdetect_body_entered"]

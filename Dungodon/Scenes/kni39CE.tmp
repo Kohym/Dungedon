@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://ducgrspg4c2fe"]
+
+[ext_resource type="Script" path="res://Scenes/knight.gd" id="1_px3gd"]
+[ext_resource type="Texture2D" uid="uid://tlj8wqwtg7s8" path="res://Assets/Chars/circleB.png" id="2_456ti"]
+[ext_resource type="Texture2D" uid="uid://t487h41pit1w" path="res://Assets/Progresbars/progres-back-gray.png" id="3_5b7p1"]
+[ext_resource type="Texture2D" uid="uid://dda32dykvb2dp" path="res://Assets/Progresbars/progres-green.png" id="4_3axwn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
+radius = 52.0096
+
+[node name="knight" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_px3gd")
+
+[node name="dmgdetect" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="dmgdetecthitbox" type="CollisionShape2D" parent="dmgdetect"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_51do8")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="knighthitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_51do8")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="knightsprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.438, 0.438)
+texture = ExtResource("2_456ti")
+
+[node name="knightbar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -52.0
+offset_top = -52.0
+offset_right = 185.0
+offset_bottom = 185.0
+scale = Vector2(0.439, 0.439)
+value = 100.0
+fill_mode = 8
+texture_under = ExtResource("3_5b7p1")
+texture_progress = ExtResource("4_3axwn")
+
+[node name="knighthp" type="Label" parent="."]
+texture_filter = 1
+offset_left = -51.0
+offset_top = -76.0
+offset_right = 50.0
+offset_bottom = -48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.316753, 0.466553, 0.34478, 1)
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_shape_entered" from="dmgdetect" to="." method="_on_dmgdetect_area_shape_entered"]
+[connection signal="body_entered" from="dmgdetect" to="." method="_on_dmgdetect_body_entered"]

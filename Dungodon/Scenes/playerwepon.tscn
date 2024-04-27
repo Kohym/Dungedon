@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8vf0dk5kaod7"]
+
+[ext_resource type="Texture2D" uid="uid://cj0xoa4ux30ai" path="res://Assets/sword.svg" id="1_l2cy1"]
+
+[node name="playerwepon" type="Area2D"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="playerweponsprite" type="Sprite2D" parent="."]
+scale = Vector2(0.292857, 0.292857)
+texture = ExtResource("1_l2cy1")

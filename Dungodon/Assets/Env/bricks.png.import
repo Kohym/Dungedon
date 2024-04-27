@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dawgo8dgya7if"
-path="res://.godot/imported/progres red.png-56e417e01d72b022d74d08327e7f8ef3.ctex"
+uid="uid://cq4vfgqvc5hu5"
+path="res://.godot/imported/bricks.png-83a13beb0181615ccc594a02b8adeb8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Progresbars/progres red.png"
-dest_files=["res://.godot/imported/progres red.png-56e417e01d72b022d74d08327e7f8ef3.ctex"]
+source_file="res://Assets/Env/bricks.png"
+dest_files=["res://.godot/imported/bricks.png-83a13beb0181615ccc594a02b8adeb8b.ctex"]
 
 [params]
 

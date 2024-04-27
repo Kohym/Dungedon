@@ -54,6 +54,16 @@ click={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Ground"
+2d_physics/layer_2="player body"
+2d_physics/layer_3="enemy body"
+2d_physics/layer_4="envP"
+2d_physics/layer_6="player wepon"
+2d_physics/layer_7="enemy wepon"
+2d_physics/layer_8="envN"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

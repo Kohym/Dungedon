@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu5qngjcsq4xv"]
+
+[ext_resource type="Texture2D" uid="uid://biq1x6tjmt1cp" path="res://Assets/Chars/circleR.png" id="1_63mpm"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ncjho"]
+[ext_resource type="Texture2D" uid="uid://scx4yi7beout" path="res://Assets/Progresbars/progres-back-black.png" id="2_075es"]
+[ext_resource type="Texture2D" uid="uid://bf70vmseq6om1" path="res://Assets/Progresbars/progres-darkred.png" id="3_joutu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg478"]
+radius = 52.0096
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6r7w"]
+radius = 52.0096
+
+[node name="enem" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_ncjho")
+
+[node name="enemdmgdetect" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 32
+
+[node name="enemdmgdetecthitbox" type="CollisionShape2D" parent="enemdmgdetect"]
+rotation = 1.5708
+scale = Vector2(1.025, 1.025)
+shape = SubResource("CircleShape2D_cg478")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="enemwepon" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="enemdmgdealhitbox" type="CollisionShape2D" parent="enemwepon"]
+position = Vector2(109, 0)
+rotation = 1.5708
+scale = Vector2(1.025, 1.025)
+shape = SubResource("CircleShape2D_cg478")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="enemsprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.438, 0.438)
+texture = ExtResource("1_63mpm")
+
+[node name="enemhitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_i6r7w")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="enembar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -52.0
+offset_top = -52.0
+offset_right = 185.0
+offset_bottom = 185.0
+scale = Vector2(0.439, 0.439)
+value = 100.0
+fill_mode = 8
+texture_under = ExtResource("2_075es")
+texture_progress = ExtResource("3_joutu")
+
+[node name="enemhp" type="Label" parent="."]
+texture_filter = 1
+offset_left = -50.0
+offset_top = -80.0
+offset_right = 51.0
+offset_bottom = -52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.316753, 0.466553, 0.34478, 1)
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_shape_entered" from="enemdmgdetect" to="." method="_on_enemdmgdetect_area_shape_entered"]
+[connection signal="body_entered" from="enemwepon" to="." method="_on_enemwepon_body_entered"]
