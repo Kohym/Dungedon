@@ -5,15 +5,14 @@ const ACCEL = 20.0
 
 var input: Vector2
 
-var takeDdmg = 5
-var takeAdmg = 20
-var takeEdmg = 15
+var take_A_dmg = 20
+var take_E_spike_dmg = 15
 
-var basehp = 100
-var oldhp
-var medhp
-var newhp
-var debughp = basehp
+var base_hp = 100
+var old_hp
+var med_hp
+var new_hp
+var debug_hp = base_hp
 
 func get_input():
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -29,23 +28,33 @@ func _process(delta):
 	move_and_slide()
 
 func _ready():
-	$playerbar.value = basehp
+	$playerbar.value = base_hp
 
 
-func _on_playerdmgdetect_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	newhp = debughp - takeAdmg
-	oldhp = newhp + takeAdmg
-	for n in takeAdmg:
-		debughp = debughp - 1
-		$playerbar.value = debughp
-		$playerhp.text = str(debughp)
-		await get_tree().create_timer(0.02).timeout
-		if  (debughp <= 0):
-			debughp = 0
-			$playerhp.text = str(debughp)
-			queue_free()
+func _on_playerhurtbox_area_entered(area):
+	if area.is_in_group("enemy_wepon_sword"):
+		new_hp = debug_hp - take_A_dmg
+		old_hp = new_hp + take_A_dmg
+		for n in take_A_dmg:
+			debug_hp = debug_hp - 1
+			$playerbar.value = debug_hp
+			$playerhp.text = str(debug_hp)
+			await get_tree().create_timer(0.02).timeout
+			if  (debug_hp <= 0):
+				debug_hp = 0
+				$playerhp.text = str(debug_hp)
+				queue_free()
 
-
-func _on_playerdmgdetect_body_entered(body):
-	if body.is_in_group("test"):
-		print("facha")
+func _on_playerhurtbox_body_entered(body):
+	if body.is_in_group("spikes"):
+		new_hp = debug_hp - take_E_spike_dmg
+		old_hp = new_hp + take_E_spike_dmg
+		for n in take_E_spike_dmg:
+			debug_hp = debug_hp - 1
+			$playerbar.value = debug_hp
+			$playerhp.text = str(debug_hp)
+			await get_tree().create_timer(0.02).timeout
+			if  (debug_hp <= 0):
+				debug_hp = 0
+				$playerhp.text = str(debug_hp)
+				queue_free()

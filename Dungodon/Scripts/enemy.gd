@@ -1,41 +1,43 @@
 extends CharacterBody2D
 
 
-var takeDdmg = 5
-var takeAdmg = 20
+@export var take_D_dmg = 5
+@export var take_A_sword_dmg = 20
+@export var take_E_spike_dmg = 10
 
-var basehp = 100
-var oldhp
-var medhp
-var newhp
-var debughp = basehp
+@export var base_hp = 100
+var old_hp
+var med_hp
+var new_hp
+var debug_hp = base_hp
 
 func _ready():
-	$enembar.value = basehp
+	$enembar.value = base_hp
 
-func _on_enemdmgdetect_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	newhp = debughp - takeAdmg
-	oldhp = newhp + takeDdmg
-	for n in takeAdmg:
-		debughp = debughp - 1
-		$enembar.value = debughp
-		$enemhp.text = str(debughp)
-		await get_tree().create_timer(0.02).timeout
-		if  (debughp <= 0):
-			debughp = 0
-			$enemhp.text = str(debughp)
-			queue_free()
+func _on_enemhurtbox_area_entered(area):
+	if area.is_in_group("playerweponsword"):
+		new_hp = debug_hp - take_A_sword_dmg
+		old_hp = new_hp + take_A_sword_dmg
+		for n in take_A_sword_dmg:
+			debug_hp = debug_hp - 1
+			$enembar.value = debug_hp
+			$enemhp.text = str(debug_hp)
+			await get_tree().create_timer(0.02).timeout
+			if  (debug_hp <= 0):
+				debug_hp = 0
+				$enemhp.text = str(debug_hp)
+				queue_free()
 
-
-func _on_enemwepon_body_entered(body):
-	newhp = debughp - takeDdmg
-	oldhp = newhp + takeDdmg
-	for n in takeDdmg:
-		debughp = debughp - 1
-		$enembar.value = debughp
-		$enemhp.text = str(debughp)
-		await get_tree().create_timer(0.1).timeout
-		if  (debughp <= 0):
-			debughp = 0
-			$enemhp.text = str(debughp)
-			queue_free()
+func _on_enemhurtbox_body_entered(body):
+	if body.is_in_group("player_body"):
+		new_hp = debug_hp - take_D_dmg
+		old_hp = new_hp + take_D_dmg
+		for n in take_D_dmg:
+			debug_hp = debug_hp - 1
+			$enembar.value = debug_hp
+			$enemhp.text = str(debug_hp)
+			await get_tree().create_timer(0.1).timeout
+			if  (debug_hp <= 0):
+				debug_hp = 0
+				$enemhp.text = str(debug_hp)
+				queue_free()

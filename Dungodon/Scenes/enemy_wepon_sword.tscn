@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://xkt84r0s56au"]
+
+[ext_resource type="Texture2D" uid="uid://dfcee0c730p1m" path="res://Assets/Wpns/swordR.png" id="1_oy1sy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpj16"]
+size = Vector2(17, 6)
+
+[node name="enemy_wepon_sword" type="Area2D" groups=["enemy_wepon_sword"]]
+collision_layer = 64
+collision_mask = 0
+
+[node name="enemy_wepon_sword_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_oy1sy")
+
+[node name="enemy_wepon_sword_collbox" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_dpj16")
