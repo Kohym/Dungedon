@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-const SPEED = 400.0
-const ACCEL = 20.0
+@export var SPEED = 400.0
+@export var ACCEL = 20.0
 
 var input: Vector2
 
-var take_A_dmg = 20
-var take_E_spike_dmg = 15
+@export var take_A_dmg = 20
+@export var take_E_spike_dmg = 10
+@export var take_E_poison_dmg = 50
 
-var base_hp = 100
+@export var base_hp = 100
 var old_hp
 var med_hp
 var new_hp
@@ -54,6 +55,18 @@ func _on_playerhurtbox_body_entered(body):
 			$playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
 			await get_tree().create_timer(0.02).timeout
+			if  (debug_hp <= 0):
+				debug_hp = 0
+				$playerhp.text = str(debug_hp)
+				queue_free()
+	if body.is_in_group("poison"):
+		new_hp = debug_hp - take_E_poison_dmg
+		old_hp = new_hp + take_E_poison_dmg
+		for n in take_E_poison_dmg:
+			debug_hp = debug_hp - 1
+			$playerbar.value = debug_hp
+			$playerhp.text = str(debug_hp)
+			await get_tree().create_timer(0.5).timeout
 			if  (debug_hp <= 0):
 				debug_hp = 0
 				$playerhp.text = str(debug_hp)

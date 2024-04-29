@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ducgrspg4c2fe"]
+[gd_scene load_steps=7 format=3 uid="uid://ducgrspg4c2fe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_5g4u3"]
 [ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/player_wepon_sword.tscn" id="2_am8ds"]
 [ext_resource type="Texture2D" uid="uid://dqb1h7uhgtuu2" path="res://Assets/Chars/circB.png" id="3_lr3l1"]
 [ext_resource type="Texture2D" uid="uid://c837lj0ac6n64" path="res://Assets/Progresbars/progress_back_black.png" id="3_n1t1b"]
 [ext_resource type="Texture2D" uid="uid://dda32dykvb2dp" path="res://Assets/Progresbars/progres_green.png" id="4_3axwn"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_vhnxf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
 radius = 49.0102
@@ -33,17 +31,15 @@ scale = Vector2(3, 3)
 value = 100.0
 fill_mode = 8
 texture_under = ExtResource("3_n1t1b")
-texture_over = ExtResource("4_3axwn")
-texture_progress = SubResource("ImageTexture_vhnxf")
+texture_progress = ExtResource("4_3axwn")
 
 [node name="playerhp" type="Label" parent="."]
 texture_filter = 1
-offset_left = -51.0
-offset_top = -76.0
-offset_right = 50.0
-offset_bottom = -48.0
+offset_left = -50.5263
+offset_top = -71.5789
+offset_right = 50.4737
+offset_bottom = -43.5789
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.316753, 0.466553, 0.34478, 1)
 theme_override_font_sizes/font_size = 20
 text = "100"
 horizontal_alignment = 1
@@ -53,17 +49,17 @@ vertical_alignment = 1
 position = Vector2(90.5263, 0)
 
 [node name="playercollbox" type="CollisionShape2D" parent="." groups=["player_body"]]
-position = Vector2(0, -1)
+position = Vector2(7.62939e-06, 9.53674e-07)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_51do8")
 
 [node name="playerhurtbox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 2
-collision_mask = 320
+collision_mask = 832
 
 [node name="playerhurtboxcollbox" type="CollisionShape2D" parent="playerhurtbox"]
-position = Vector2(0, -1)
+position = Vector2(-1.52588e-05, 0)
 rotation = 1.5708
 scale = Vector2(1.07, 1.07)
 shape = SubResource("CircleShape2D_51do8")
