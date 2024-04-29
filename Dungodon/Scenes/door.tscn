@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://cijal7twssdcc"]
+
+[ext_resource type="Texture2D" uid="uid://cev8i6e4hpaf5" path="res://Assets/Env/doorC.png" id="1_aptdh"]
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_nxbts"]
+[ext_resource type="Texture2D" uid="uid://ie1ximy03f2n" path="res://Assets/Env/doorO.png" id="2_ymatp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1mvs8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aptdh")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ymatp")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40m2n"]
+size = Vector2(48, 48)
+
+[node name="door" type="CharacterBody2D" groups=["door"]]
+scale = Vector2(3, 3)
+collision_mask = 0
+script = ExtResource("1_nxbts")
+
+[node name="door_sprite" type="AnimatedSprite2D" parent="." groups=["door"]]
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_1mvs8")
+animation = &"open"
+autoplay = "closed"
+
+[node name="door_open_detect" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 6
+
+[node name="door_open_detect_collbox" type="CollisionPolygon2D" parent="door_open_detect" groups=["door"]]
+scale = Vector2(1, 1)
+build_mode = 1
+polygon = PackedVector2Array(-24, -24, -24, -25, 24, -25, 24, -24, 25, -24, 25, 24, 24, 24, 24, 25, -24, 25, -24, 24, -25, 24, -25, -24)
+
+[node name="door_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_40m2n")
+
+[node name="door_label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -23.6667
+offset_top = -8.33333
+offset_right = 936.333
+offset_bottom = 331.667
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="door_open_detect" to="." method="_on_area_2d_body_entered"]

@@ -29,7 +29,7 @@ scale = Vector2(1.025, 1.025)
 shape = SubResource("CircleShape2D_51do8")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="playercollbox" type="CollisionShape2D" parent="."]
+[node name="playercollbox" type="CollisionShape2D" parent="." groups=["player_body"]]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_51do8")
 
