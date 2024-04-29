@@ -1,55 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://ducgrspg4c2fe"]
+[gd_scene load_steps=8 format=3 uid="uid://ducgrspg4c2fe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_5g4u3"]
-[ext_resource type="Texture2D" uid="uid://tlj8wqwtg7s8" path="res://Assets/Chars/circleB.png" id="2_456ti"]
-[ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Assets/Wpns/player_wepon_sword.tscn" id="2_am8ds"]
-[ext_resource type="Texture2D" uid="uid://t487h41pit1w" path="res://Assets/Progresbars/progres-back-gray.png" id="3_5b7p1"]
-[ext_resource type="Texture2D" uid="uid://dda32dykvb2dp" path="res://Assets/Progresbars/progres-green.png" id="4_3axwn"]
+[ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/player_wepon_sword.tscn" id="2_am8ds"]
+[ext_resource type="Texture2D" uid="uid://dqb1h7uhgtuu2" path="res://Assets/Chars/circB.png" id="3_lr3l1"]
+[ext_resource type="Texture2D" uid="uid://c837lj0ac6n64" path="res://Assets/Progresbars/progress_back_black.png" id="3_n1t1b"]
+[ext_resource type="Texture2D" uid="uid://dda32dykvb2dp" path="res://Assets/Progresbars/progres_green.png" id="4_3axwn"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_vhnxf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
-radius = 52.0096
+radius = 49.0102
 
 [node name="player" type="CharacterBody2D" groups=["player_body"]]
+scale = Vector2(0.95, 0.95)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_5g4u3")
 
-[node name="player_wepon_sword" parent="." instance=ExtResource("2_am8ds")]
-position = Vector2(90, 0)
-
-[node name="playerhurtbox" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_layer = 2
-collision_mask = 320
-
-[node name="playerhurtboxcollbox" type="CollisionShape2D" parent="playerhurtbox"]
-position = Vector2(-7.62939e-06, 0)
-rotation = 1.5708
-scale = Vector2(1.025, 1.025)
-shape = SubResource("CircleShape2D_51do8")
-debug_color = Color(1, 0, 0, 0.419608)
-
-[node name="playercollbox" type="CollisionShape2D" parent="." groups=["player_body"]]
-rotation = 1.5708
-shape = SubResource("CircleShape2D_51do8")
-
 [node name="playersprite" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.438, 0.438)
-texture = ExtResource("2_456ti")
+scale = Vector2(3, 3)
+texture = ExtResource("3_lr3l1")
 
 [node name="playerbar" type="TextureProgressBar" parent="."]
 texture_filter = 1
 texture_repeat = 1
-offset_left = -52.0
-offset_top = -52.0
-offset_right = 185.0
-offset_bottom = 185.0
-scale = Vector2(0.439, 0.439)
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 189.0
+offset_bottom = 189.0
+scale = Vector2(3, 3)
 value = 100.0
 fill_mode = 8
-texture_under = ExtResource("3_5b7p1")
-texture_progress = ExtResource("4_3axwn")
+texture_under = ExtResource("3_n1t1b")
+texture_over = ExtResource("4_3axwn")
+texture_progress = SubResource("ImageTexture_vhnxf")
 
 [node name="playerhp" type="Label" parent="."]
 texture_filter = 1
@@ -63,6 +48,26 @@ theme_override_font_sizes/font_size = 20
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="player_wepon_sword" parent="." instance=ExtResource("2_am8ds")]
+position = Vector2(90.5263, 0)
+
+[node name="playercollbox" type="CollisionShape2D" parent="." groups=["player_body"]]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_51do8")
+
+[node name="playerhurtbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 320
+
+[node name="playerhurtboxcollbox" type="CollisionShape2D" parent="playerhurtbox"]
+position = Vector2(0, -1)
+rotation = 1.5708
+scale = Vector2(1.07, 1.07)
+shape = SubResource("CircleShape2D_51do8")
+debug_color = Color(1, 0, 0, 0.419608)
 
 [connection signal="area_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_area_entered"]
 [connection signal="body_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_body_entered"]

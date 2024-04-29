@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tlj8wqwtg7s8"
-path="res://.godot/imported/circleB.png-45a10171b475751826a1312b1cb2b8e9.ctex"
+uid="uid://bfodb4hmai0xd"
+path="res://.godot/imported/door_top.png-0502e3148c3373ce10e5d7c34fdfac6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Chars/circleB.png"
-dest_files=["res://.godot/imported/circleB.png-45a10171b475751826a1312b1cb2b8e9.ctex"]
+source_file="res://Assets/Env/door_top.png"
+dest_files=["res://.godot/imported/door_top.png-0502e3148c3373ce10e5d7c34fdfac6a.ctex"]
 
 [params]
 

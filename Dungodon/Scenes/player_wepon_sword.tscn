@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8vf0dk5kaod7"]
 
-[ext_resource type="Texture2D" uid="uid://dd2f883gw80q" path="res://Assets/Wpns/sword_N.png" id="1_cjunm"]
+[ext_resource type="Texture2D" uid="uid://dd2f883gw80q" path="res://Assets/Wpns/sword_N.png" id="1_k7pw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g5x7"]
-size = Vector2(42.625, 14)
+size = Vector2(51.3125, 16)
 
 [node name="player_wepon_sword" type="Area2D" groups=["playerweponsword"]]
 collision_layer = 32
 collision_mask = 4
 
 [node name="player_wepon_sword_sprite" type="Sprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("1_cjunm")
+scale = Vector2(3, 3)
+texture = ExtResource("1_k7pw7")
 
 [node name="player_wepon_sword_collbox" type="CollisionShape2D" parent="."]
-position = Vector2(11.3125, 0)
+position = Vector2(13.3438, 0)
 shape = SubResource("RectangleShape2D_1g5x7")

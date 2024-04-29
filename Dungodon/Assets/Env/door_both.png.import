@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf70vmseq6om1"
-path="res://.godot/imported/progres-darkred.png-694a1d3a7769ae77d45ebfb69461dbf2.ctex"
+uid="uid://c536sfcnwfh7n"
+path="res://.godot/imported/door_both.png-94d9cece0a7795b417207ac7bee0d683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Progresbars/progres-darkred.png"
-dest_files=["res://.godot/imported/progres-darkred.png-694a1d3a7769ae77d45ebfb69461dbf2.ctex"]
+source_file="res://Assets/Env/door_both.png"
+dest_files=["res://.godot/imported/door_both.png-94d9cece0a7795b417207ac7bee0d683.ctex"]
 
 [params]
 

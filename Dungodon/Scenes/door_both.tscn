@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://bix618qsrb7hq"]
+
+[ext_resource type="Script" path="res://Scripts/door_both.gd" id="1_42lde"]
+[ext_resource type="Texture2D" uid="uid://c536sfcnwfh7n" path="res://Assets/Env/door_both.png" id="2_dem2y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8ujf"]
+atlas = ExtResource("2_dem2y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_simq1"]
+atlas = ExtResource("2_dem2y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ciu2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8ujf")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_simq1")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40m2n"]
+size = Vector2(32, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xowfc"]
+size = Vector2(32, 8)
+
+[node name="door_both" type="CharacterBody2D" groups=["door"]]
+collision_mask = 0
+script = ExtResource("1_42lde")
+
+[node name="door_both_sprite" type="AnimatedSprite2D" parent="." groups=["door"]]
+sprite_frames = SubResource("SpriteFrames_ciu2c")
+animation = &"closed"
+autoplay = "closed"
+
+[node name="door_both_label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -23.6667
+offset_top = -8.33333
+offset_right = 936.333
+offset_bottom = 331.667
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="door_both_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_40m2n")
+
+[node name="door_both_open_detect" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 6
+
+[node name="door_both_open_detect_collbox1" type="CollisionShape2D" parent="door_both_open_detect"]
+shape = SubResource("RectangleShape2D_xowfc")
+
+[connection signal="body_entered" from="door_both_open_detect" to="." method="_on_area_2d_body_entered"]

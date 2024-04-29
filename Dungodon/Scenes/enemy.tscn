@@ -1,57 +1,39 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7guy3xdvjg5y"]
 
-[ext_resource type="Texture2D" uid="uid://biq1x6tjmt1cp" path="res://Assets/Chars/circleR.png" id="1_63mpm"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ncjho"]
-[ext_resource type="Texture2D" uid="uid://scx4yi7beout" path="res://Assets/Progresbars/progres-back-black.png" id="2_075es"]
+[ext_resource type="Texture2D" uid="uid://mw5dx4gsg43f" path="res://Assets/Chars/circR.png" id="2_apn8b"]
 [ext_resource type="PackedScene" uid="uid://xkt84r0s56au" path="res://Scenes/enemy_wepon_sword.tscn" id="2_fihiu"]
-[ext_resource type="Texture2D" uid="uid://bf70vmseq6om1" path="res://Assets/Progresbars/progres-darkred.png" id="3_joutu"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cg478"]
-radius = 52.0096
+[ext_resource type="Texture2D" uid="uid://c837lj0ac6n64" path="res://Assets/Progresbars/progress_back_black.png" id="3_a24ji"]
+[ext_resource type="Texture2D" uid="uid://ivwqwsdlx2uj" path="res://Assets/Progresbars/progres_red.png" id="4_0fke1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6r7w"]
-radius = 52.0096
+radius = 49.0408
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg478"]
+radius = 48.7902
 
 [node name="enemy" type="CharacterBody2D"]
+scale = Vector2(0.95, 0.95)
 collision_layer = 4
 script = ExtResource("1_ncjho")
 
-[node name="enemy_wepon_sword" parent="." instance=ExtResource("2_fihiu")]
-position = Vector2(95, 0)
-scale = Vector2(3, 3)
-
-[node name="enemhurtbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 34
-
-[node name="enemhurtboxcollbox" type="CollisionShape2D" parent="enemhurtbox"]
-rotation = 1.5708
-scale = Vector2(1.025, 1.025)
-shape = SubResource("CircleShape2D_cg478")
-debug_color = Color(1, 0, 0, 0.419608)
-
 [node name="enemsprite" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.438, 0.438)
-texture = ExtResource("1_63mpm")
-
-[node name="enemcollbox" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CircleShape2D_i6r7w")
-debug_color = Color(1, 0, 0, 0.419608)
+scale = Vector2(3, 3)
+texture = ExtResource("2_apn8b")
 
 [node name="enembar" type="TextureProgressBar" parent="."]
 texture_filter = 1
 texture_repeat = 1
-offset_left = -52.0
-offset_top = -52.0
-offset_right = 185.0
-offset_bottom = 185.0
-scale = Vector2(0.439, 0.439)
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 189.0
+offset_bottom = 189.0
+scale = Vector2(3, 3)
 value = 100.0
 fill_mode = 8
-texture_under = ExtResource("2_075es")
-texture_progress = ExtResource("3_joutu")
+texture_under = ExtResource("3_a24ji")
+texture_progress = ExtResource("4_0fke1")
 
 [node name="enemhp" type="Label" parent="."]
 texture_filter = 1
@@ -65,6 +47,25 @@ theme_override_font_sizes/font_size = 20
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="enemy_wepon_sword" parent="." instance=ExtResource("2_fihiu")]
+position = Vector2(90.5263, 0)
+scale = Vector2(3, 3)
+
+[node name="enemcollbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_i6r7w")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="enemhurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 34
+
+[node name="enemhurtboxcollbox" type="CollisionShape2D" parent="enemhurtbox"]
+rotation = 1.5708
+scale = Vector2(1.025, 1.025)
+shape = SubResource("CircleShape2D_cg478")
+debug_color = Color(1, 0, 0, 0.419608)
 
 [connection signal="area_entered" from="enemhurtbox" to="." method="_on_enemhurtbox_area_entered"]
 [connection signal="body_entered" from="enemhurtbox" to="." method="_on_enemhurtbox_body_entered"]

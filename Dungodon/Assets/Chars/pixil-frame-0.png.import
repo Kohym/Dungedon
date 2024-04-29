@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dda32dykvb2dp"
-path="res://.godot/imported/progres-green.png-ee0202d22d8fac29ad58d97f2ba1a4e1.ctex"
+uid="uid://dc0sqv4j4r8l1"
+path="res://.godot/imported/pixil-frame-0.png-a3c10f5005edf300895612f409cc30af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Progresbars/progres-green.png"
-dest_files=["res://.godot/imported/progres-green.png-ee0202d22d8fac29ad58d97f2ba1a4e1.ctex"]
+source_file="res://Assets/Chars/pixil-frame-0.png"
+dest_files=["res://.godot/imported/pixil-frame-0.png-a3c10f5005edf300895612f409cc30af.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biq1x6tjmt1cp"
-path="res://.godot/imported/circleR.png-3c4ae0b83ab6d4158301901607de8bfb.ctex"
+uid="uid://de4xc6y4fu0mq"
+path="res://.godot/imported/door_bottom.png-69a0bb482a106c8fc598e2265809652f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Chars/circleR.png"
-dest_files=["res://.godot/imported/circleR.png-3c4ae0b83ab6d4158301901607de8bfb.ctex"]
+source_file="res://Assets/Env/door_bottom.png"
+dest_files=["res://.godot/imported/door_bottom.png-69a0bb482a106c8fc598e2265809652f.ctex"]
 
 [params]
 

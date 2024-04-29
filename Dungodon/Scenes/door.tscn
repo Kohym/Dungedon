@@ -1,14 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://cijal7twssdcc"]
+[gd_scene load_steps=8 format=3 uid="uid://cijal7twssdcc"]
 
-[ext_resource type="Texture2D" uid="uid://cev8i6e4hpaf5" path="res://Assets/Env/doorC.png" id="1_aptdh"]
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_nxbts"]
-[ext_resource type="Texture2D" uid="uid://ie1ximy03f2n" path="res://Assets/Env/doorO.png" id="2_ymatp"]
+[ext_resource type="Texture2D" uid="uid://de4xc6y4fu0mq" path="res://Assets/Env/door_bottom.png" id="2_ay0t0"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1mvs8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_60u8j"]
+atlas = ExtResource("2_ay0t0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d31jp"]
+atlas = ExtResource("2_ay0t0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ciu2c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_aptdh")
+"texture": SubResource("AtlasTexture_60u8j")
 }],
 "loop": true,
 "name": &"closed",
@@ -16,37 +23,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ymatp")
+"texture": SubResource("AtlasTexture_d31jp")
 }],
 "loop": true,
 "name": &"open",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xowfc"]
-size = Vector2(50, 50)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40m2n"]
-size = Vector2(48, 48)
+size = Vector2(32, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xowfc"]
+size = Vector2(32, 2)
 
 [node name="door" type="CharacterBody2D" groups=["door"]]
 collision_mask = 0
 script = ExtResource("1_nxbts")
 
 [node name="door_sprite" type="AnimatedSprite2D" parent="." groups=["door"]]
-sprite_frames = SubResource("SpriteFrames_1mvs8")
+sprite_frames = SubResource("SpriteFrames_ciu2c")
 animation = &"closed"
 autoplay = "closed"
-
-[node name="door_open_detect" type="Area2D" parent="."]
-collision_layer = 1024
-collision_mask = 6
-
-[node name="$door_open_detect_collbox1" type="CollisionShape2D" parent="door_open_detect"]
-shape = SubResource("RectangleShape2D_xowfc")
-
-[node name="door_collbox" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_40m2n")
 
 [node name="door_label" type="Label" parent="."]
 texture_filter = 1
@@ -59,5 +56,17 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="door_collbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_40m2n")
+
+[node name="door_open_detect" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 6
+
+[node name="door_open_detect_collbox1" type="CollisionShape2D" parent="door_open_detect"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_xowfc")
 
 [connection signal="body_entered" from="door_open_detect" to="." method="_on_area_2d_body_entered"]
