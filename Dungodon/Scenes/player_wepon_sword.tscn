@@ -10,9 +10,10 @@ collision_layer = 32
 collision_mask = 4
 
 [node name="player_wepon_sword_sprite" type="Sprite2D" parent="."]
+position = Vector2(32, -0.5)
 scale = Vector2(3, 3)
 texture = ExtResource("1_k7pw7")
 
 [node name="player_wepon_sword_collbox" type="CollisionShape2D" parent="."]
-position = Vector2(13.3438, 0)
+position = Vector2(45.3438, -0.5)
 shape = SubResource("RectangleShape2D_1g5x7")

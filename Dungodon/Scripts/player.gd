@@ -10,13 +10,15 @@ var input: Vector2
 @export var take_E_poison_dmg = 50
 
 @export var base_hp = 100
+@export var attspeed = 5
 @export var medkit_heal = 70
 var ishealing = false
 var old_hp
 var med_hp
 var new_hp
 var debug_hp = base_hp
-
+var isattac = true
+var isunholster = false
 func get_input():
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -31,8 +33,34 @@ func _process(delta):
 	move_and_slide()
 
 func _ready():
+	$player_wepon_sword.monitorable = false
+	$player_wepon_sword.monitoring = false
 	$playerbar.value = base_hp
 
+func  _input(event):
+	if Input.is_action_just_pressed("left_click") and isattac == true and isunholster == true:
+		$player_wepon_sword.monitorable = true
+		$player_wepon_sword.monitoring = true
+		isattac = false
+		attack()
+		await get_tree().create_timer(0.6).timeout
+		isattac = true
+		$player_wepon_sword.monitorable = false
+		$player_wepon_sword.monitoring = false
+	if Input.is_action_just_pressed("sword_unholster"):
+		holster()
+
+func holster():
+	if isunholster:
+		print ("idk")
+		isunholster = false
+	else:
+		print ("idk2")
+
+func attack():
+	for n in 360/attspeed:
+		await get_tree().create_timer(0.000000001).timeout
+		$player_wepon_sword.rotation_degrees += attspeed
 
 func _on_playerhurtbox_area_entered(area):
 	if area.is_in_group("enemy_wepon_sword"):
@@ -80,6 +108,8 @@ func _on_playerhurtbox_body_entered(body):
 		old_hp = new_hp + take_E_poison_dmg
 		for n in take_E_poison_dmg:
 			if ishealing == false:
+				if ishealing == true:
+					break
 				debug_hp = debug_hp - 1
 				$playerbar.value = debug_hp
 				$playerhp.text = str(debug_hp)
@@ -88,5 +118,3 @@ func _on_playerhurtbox_body_entered(body):
 					debug_hp = 0
 					$playerhp.text = str(debug_hp)
 					queue_free()
-			if ishealing == true:
-				break

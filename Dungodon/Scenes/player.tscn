@@ -15,18 +15,17 @@ collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_5g4u3")
 
-[node name="playersprite" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(3, 3)
-texture = ExtResource("3_lr3l1")
+[node name="player_wepon_sword" parent="." instance=ExtResource("2_am8ds")]
+position = Vector2(58.9474, 0)
+rotation = 3.14159
 
 [node name="playerbar" type="TextureProgressBar" parent="."]
 texture_filter = 1
 texture_repeat = 1
 offset_left = -48.0
 offset_top = -48.0
-offset_right = 189.0
-offset_bottom = 189.0
+offset_right = -16.0
+offset_bottom = -16.0
 scale = Vector2(3, 3)
 value = 100.0
 fill_mode = 8
@@ -45,8 +44,10 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="player_wepon_sword" parent="." instance=ExtResource("2_am8ds")]
-position = Vector2(90.5263, 0)
+[node name="playersprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("3_lr3l1")
 
 [node name="playercollbox" type="CollisionShape2D" parent="." groups=["player_body"]]
 position = Vector2(7.62939e-06, 9.53674e-07)
@@ -59,7 +60,7 @@ collision_layer = 2
 collision_mask = 4928
 
 [node name="playerhurtboxcollbox" type="CollisionShape2D" parent="playerhurtbox"]
-position = Vector2(0, -9.53674e-07)
+position = Vector2(1.05263, 1.13687e-13)
 rotation = 1.5708
 scale = Vector2(1.03, 1.03)
 shape = SubResource("CircleShape2D_51do8")
