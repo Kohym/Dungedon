@@ -11,6 +11,7 @@ var input: Vector2
 
 @export var base_hp = 100
 @export var medkit_heal = 70
+var ishealing = false
 var old_hp
 var med_hp
 var new_hp
@@ -47,17 +48,19 @@ func _on_playerhurtbox_area_entered(area):
 				$playerhp.text = str(debug_hp)
 				queue_free()
 	if area.is_in_group("medkit"):
+		ishealing = true
 		new_hp = debug_hp + medkit_heal
 		old_hp = new_hp - medkit_heal
 		for n in medkit_heal:
-			debug_hp = debug_hp - 1
+			debug_hp = debug_hp + 1
 			$playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
 			await get_tree().create_timer(0.02).timeout
-			if  (debug_hp <= 0):
-				debug_hp = 0
+			if  (debug_hp >= 100):
+				debug_hp = 100
 				$playerhp.text = str(debug_hp)
-				queue_free()
+				ishealing = false
+				break
 
 func _on_playerhurtbox_body_entered(body):
 	if body.is_in_group("spikes"):
@@ -76,11 +79,14 @@ func _on_playerhurtbox_body_entered(body):
 		new_hp = debug_hp - take_E_poison_dmg
 		old_hp = new_hp + take_E_poison_dmg
 		for n in take_E_poison_dmg:
-			debug_hp = debug_hp - 1
-			$playerbar.value = debug_hp
-			$playerhp.text = str(debug_hp)
-			await get_tree().create_timer(0.5).timeout
-			if  (debug_hp <= 0):
-				debug_hp = 0
+			if ishealing == false:
+				debug_hp = debug_hp - 1
+				$playerbar.value = debug_hp
 				$playerhp.text = str(debug_hp)
-				queue_free()
+				await get_tree().create_timer(0.5).timeout
+				if  (debug_hp <= 0):
+					debug_hp = 0
+					$playerhp.text = str(debug_hp)
+					queue_free()
+			if ishealing == true:
+				break

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var isopen = false
 @export var islocked = false
 @export var iflocked = "Door is Locked"
+@export var openforsec = 1.0
 func _ready():
 	if (isopen == true):
 		$door_sprite.play("open")
@@ -13,7 +14,7 @@ func _on_area_2d_body_entered(body):
 		if (islocked == false):
 			$door_sprite.play("open")
 			$door_collbox.set_deferred("disabled", true)
-			await get_tree().create_timer(2.0).timeout
+			await get_tree().create_timer(openforsec).timeout
 			$door_sprite.play("closed")
 			$door_collbox.set_deferred("disabled", false)
 		if (islocked == true):
