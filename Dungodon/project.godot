@@ -66,6 +66,7 @@ click={
 2d_physics/layer_9="spikes"
 2d_physics/layer_10="poison"
 2d_physics/layer_11="Door"
+2d_physics/layer_13="medkit"
 
 [rendering]
 

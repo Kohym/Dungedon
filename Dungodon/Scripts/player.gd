@@ -10,6 +10,7 @@ var input: Vector2
 @export var take_E_poison_dmg = 50
 
 @export var base_hp = 100
+@export var medkit_heal = 70
 var old_hp
 var med_hp
 var new_hp
@@ -37,6 +38,18 @@ func _on_playerhurtbox_area_entered(area):
 		new_hp = debug_hp - take_A_dmg
 		old_hp = new_hp + take_A_dmg
 		for n in take_A_dmg:
+			debug_hp = debug_hp - 1
+			$playerbar.value = debug_hp
+			$playerhp.text = str(debug_hp)
+			await get_tree().create_timer(0.02).timeout
+			if  (debug_hp <= 0):
+				debug_hp = 0
+				$playerhp.text = str(debug_hp)
+				queue_free()
+	if area.is_in_group("medkit"):
+		new_hp = debug_hp + medkit_heal
+		old_hp = new_hp - medkit_heal
+		for n in medkit_heal:
 			debug_hp = debug_hp - 1
 			$playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
