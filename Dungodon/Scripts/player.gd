@@ -10,7 +10,7 @@ var input: Vector2
 @export var take_E_poison_dmg = 50
 
 @export var base_hp = 100
-@export var attspeed = 5
+@export var attspeed = 0.1
 @export var medkit_heal = 70
 var ishealing = false
 var old_hp
@@ -48,7 +48,7 @@ func  _input(_event):
 
 func holster():
 	if isholster== true and isuholsteringmove == false:
-		SPEED = 300.0
+		SPEED = SPEED - 100
 		isuholsteringmove = true
 		for n in 225:
 			$player_wepon_sword_holstered_sprite.rotation_degrees += 0.2
@@ -57,9 +57,9 @@ func holster():
 		$player_wepon_sword.visible = true
 		isholster = false
 		isuholsteringmove = false
-		SPEED = 250.0
+		SPEED = SPEED - 100
 	else:
-		SPEED = 300.0
+		SPEED = SPEED + 100
 		if isholster== false and isuholsteringmove == false:
 			isuholsteringmove = true
 			$player_wepon_sword_holstered_sprite.visible = true
@@ -69,13 +69,13 @@ func holster():
 				await get_tree().create_timer(0.000000001).timeout
 			isholster = true
 			isuholsteringmove = false
-			SPEED = 400.0
+			SPEED = SPEED + 100
 
 func attack():
 	$player_wepon_sword.monitorable = true
-	for n in 360/attspeed:
-		await get_tree().create_timer(0.000000001).timeout
-		$player_wepon_sword.rotation_degrees += attspeed
+	for n in 72:
+		await get_tree().create_timer(attspeed*0.001).timeout
+		$player_wepon_sword.rotation_degrees += 5
 	$player_wepon_sword.monitorable = false
 	isattac = false
 
@@ -106,9 +106,13 @@ func _on_playerhurtbox_area_entered(area):
 				$playerhp.text = str(debug_hp)
 				ishealing = false
 				break
+		attspeed = 0.1
+		SPEED = SPEED+100
 
 func _on_playerhurtbox_body_entered(body):
 	if body.is_in_group("spikes"):
+		attspeed = 10
+		SPEED = SPEED -150
 		new_hp = debug_hp - take_E_spike_dmg
 		old_hp = new_hp + take_E_spike_dmg
 		for n in take_E_spike_dmg:
@@ -120,7 +124,11 @@ func _on_playerhurtbox_body_entered(body):
 				debug_hp = 0
 				$playerhp.text = str(debug_hp)
 				queue_free()
+		attspeed = 0.1
+		SPEED = SPEED +150
 	if body.is_in_group("poison"):
+		SPEED = SPEED-100
+		attspeed = 15
 		new_hp = debug_hp - take_E_poison_dmg
 		old_hp = new_hp + take_E_poison_dmg
 		for n in take_E_poison_dmg:
@@ -135,6 +143,8 @@ func _on_playerhurtbox_body_entered(body):
 					debug_hp = 0
 					$playerhp.text = str(debug_hp)
 					queue_free()
+		SPEED = SPEED +100
+		attspeed = 0.1
 
 func _on_debug_body_entered(body):
 	if body.is_in_group("brick"):
