@@ -11,7 +11,7 @@
 radius = 48.4211
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csofs"]
-size = Vector2(24.2105, 15.7895)
+size = Vector2(24.2105, 35.7895)
 
 [node name="player" type="CharacterBody2D" groups=["player_body"]]
 scale = Vector2(0.95, 0.95)
@@ -27,7 +27,7 @@ texture = ExtResource("2_x266q")
 
 [node name="player_wepon_sword" parent="." instance=ExtResource("2_am8ds")]
 visible = false
-position = Vector2(63.1579, -1.66821e-11)
+position = Vector2(62.1048, -0.8)
 rotation = 3.14159
 
 [node name="playerbar" type="TextureProgressBar" parent="."]
@@ -80,7 +80,7 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="debug" type="Area2D" parent="."]
 
 [node name="debug_collbox" type="CollisionShape2D" parent="debug"]
-position = Vector2(81.5789, 0.526316)
+position = Vector2(81.5789, 6.91414e-06)
 shape = SubResource("RectangleShape2D_csofs")
 
 [connection signal="area_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_area_entered"]
