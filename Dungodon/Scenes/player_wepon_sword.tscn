@@ -6,8 +6,9 @@
 size = Vector2(51.3125, 16)
 
 [node name="player_wepon_sword" type="Area2D" groups=["playerweponsword"]]
-collision_layer = 32
-collision_mask = 4
+collision_layer = 33
+collision_mask = 5
+monitorable = false
 
 [node name="player_wepon_sword_sprite" type="Sprite2D" parent="."]
 position = Vector2(32, -0.5)

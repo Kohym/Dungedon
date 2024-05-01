@@ -17,8 +17,10 @@ var old_hp
 var med_hp
 var new_hp
 var debug_hp = base_hp
-var isattac = true
-var isunholster = false
+var isattac = false
+var isholster = true
+var isuholsteringmove = false
+var willhitwall = false
 func get_input():
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -37,30 +39,45 @@ func _ready():
 	$player_wepon_sword.monitoring = false
 	$playerbar.value = base_hp
 
-func  _input(event):
-	if Input.is_action_just_pressed("left_click") and isattac == true and isunholster == true:
-		$player_wepon_sword.monitorable = true
-		$player_wepon_sword.monitoring = true
-		isattac = false
-		attack()
-		await get_tree().create_timer(0.6).timeout
+func  _input(_event):
+	if Input.is_action_just_pressed("left_click") and isattac == false and isholster == false and willhitwall == false:
 		isattac = true
-		$player_wepon_sword.monitorable = false
-		$player_wepon_sword.monitoring = false
+		attack()
 	if Input.is_action_just_pressed("sword_unholster"):
 		holster()
 
 func holster():
-	if isunholster:
-		print ("idk")
-		isunholster = false
+	if isholster== true and isuholsteringmove == false:
+		SPEED = 300.0
+		isuholsteringmove = true
+		for n in 225:
+			$player_wepon_sword_holstered_sprite.rotation_degrees += 0.2
+			await get_tree().create_timer(0.000000001).timeout
+		$player_wepon_sword_holstered_sprite.visible = false
+		$player_wepon_sword.visible = true
+		isholster = false
+		isuholsteringmove = false
+		SPEED = 250.0
 	else:
-		print ("idk2")
+		SPEED = 300.0
+		if isholster== false and isuholsteringmove == false:
+			isuholsteringmove = true
+			$player_wepon_sword_holstered_sprite.visible = true
+			$player_wepon_sword.visible = false
+			for n in 225:
+				$player_wepon_sword_holstered_sprite.rotation_degrees += -0.2
+				await get_tree().create_timer(0.000000001).timeout
+			isholster = true
+			isuholsteringmove = false
+			SPEED = 400.0
 
 func attack():
+	$player_wepon_sword.monitorable = true
 	for n in 360/attspeed:
 		await get_tree().create_timer(0.000000001).timeout
 		$player_wepon_sword.rotation_degrees += attspeed
+	$player_wepon_sword.monitorable = false
+	isattac = false
 
 func _on_playerhurtbox_area_entered(area):
 	if area.is_in_group("enemy_wepon_sword"):
@@ -118,3 +135,12 @@ func _on_playerhurtbox_body_entered(body):
 					debug_hp = 0
 					$playerhp.text = str(debug_hp)
 					queue_free()
+
+func _on_debug_body_entered(body):
+	if body.is_in_group("brick"):
+		willhitwall = true
+
+
+func _on_debug_body_exited(body):
+	if body.is_in_group("brick"):
+		willhitwall = false

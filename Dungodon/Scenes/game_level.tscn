@@ -218,7 +218,7 @@ stretch_mode = 1
 
 [node name="tilemaps" type="Node2D" parent="."]
 
-[node name="bricks" type="TileMap" parent="tilemaps"]
+[node name="bricks" type="TileMap" parent="tilemaps" groups=["brick"]]
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_oysxu")
 format = 2
@@ -247,7 +247,7 @@ zoom = Vector2(2, 2)
 position = Vector2(1253, 241)
 
 [node name="enemy" parent="." instance=ExtResource("3_0w550")]
-position = Vector2(609, 340)
+position = Vector2(337, 867)
 
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)

@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://ducgrspg4c2fe"]
+[gd_scene load_steps=9 format=3 uid="uid://ducgrspg4c2fe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_5g4u3"]
 [ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/player_wepon_sword.tscn" id="2_am8ds"]
-[ext_resource type="Texture2D" uid="uid://dqb1h7uhgtuu2" path="res://Assets/Chars/circB.png" id="3_lr3l1"]
+[ext_resource type="Texture2D" uid="uid://b86soapwdv1k3" path="res://Assets/Wpns/i.png" id="2_x266q"]
 [ext_resource type="Texture2D" uid="uid://c837lj0ac6n64" path="res://Assets/Progresbars/progress_back_black.png" id="3_n1t1b"]
 [ext_resource type="Texture2D" uid="uid://dda32dykvb2dp" path="res://Assets/Progresbars/progres_green.png" id="4_3axwn"]
+[ext_resource type="Texture2D" uid="uid://cxshx0mirm8y6" path="res://Assets/Chars/circG.png" id="5_qi0f5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
 radius = 48.4211
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csofs"]
+size = Vector2(24.2105, 15.7895)
 
 [node name="player" type="CharacterBody2D" groups=["player_body"]]
 scale = Vector2(0.95, 0.95)
@@ -15,8 +19,15 @@ collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_5g4u3")
 
+[node name="player_wepon_sword_holstered_sprite" type="Sprite2D" parent="."]
+position = Vector2(-8.42105, 2.38419e-07)
+rotation = -3.92699
+scale = Vector2(3, 3)
+texture = ExtResource("2_x266q")
+
 [node name="player_wepon_sword" parent="." instance=ExtResource("2_am8ds")]
-position = Vector2(58.9474, 0)
+visible = false
+position = Vector2(63.1579, -1.66821e-11)
 rotation = 3.14159
 
 [node name="playerbar" type="TextureProgressBar" parent="."]
@@ -34,10 +45,10 @@ texture_progress = ExtResource("4_3axwn")
 
 [node name="playerhp" type="Label" parent="."]
 texture_filter = 1
-offset_left = -50.5263
-offset_top = -71.5789
-offset_right = 50.4737
-offset_bottom = -43.5789
+offset_left = -88.4211
+offset_top = -78.9474
+offset_right = 12.5789
+offset_bottom = -50.9474
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "100"
@@ -47,7 +58,7 @@ vertical_alignment = 1
 [node name="playersprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3, 3)
-texture = ExtResource("3_lr3l1")
+texture = ExtResource("5_qi0f5")
 
 [node name="playercollbox" type="CollisionShape2D" parent="." groups=["player_body"]]
 position = Vector2(7.62939e-06, 9.53674e-07)
@@ -66,5 +77,13 @@ scale = Vector2(1.03, 1.03)
 shape = SubResource("CircleShape2D_51do8")
 debug_color = Color(1, 0, 0, 0.419608)
 
+[node name="debug" type="Area2D" parent="."]
+
+[node name="debug_collbox" type="CollisionShape2D" parent="debug"]
+position = Vector2(81.5789, 0.526316)
+shape = SubResource("RectangleShape2D_csofs")
+
 [connection signal="area_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_area_entered"]
 [connection signal="body_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_body_entered"]
+[connection signal="body_entered" from="debug" to="." method="_on_debug_body_entered"]
+[connection signal="body_exited" from="debug" to="." method="_on_debug_body_exited"]
