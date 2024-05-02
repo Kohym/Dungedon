@@ -262,7 +262,7 @@ rotation = -1.5708
 position = Vector2(4.29044, 9.99999)
 
 [node name="door3" parent="doors" instance=ExtResource("6_wq30g")]
-position = Vector2(-502.64, -72)
+position = Vector2(-502.64, -74)
 rotation = 3.14159
 
 [node name="door_both" parent="doors" instance=ExtResource("7_1dr7b")]

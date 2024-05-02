@@ -50,8 +50,8 @@ func holster():
 	if isholster== true and isuholsteringmove == false:
 		SPEED = SPEED - 100
 		isuholsteringmove = true
-		for n in 225:
-			$player_wepon_sword_holstered_sprite.rotation_degrees += 0.2
+		for n in 150:
+			$player_wepon_sword_holstered_sprite.rotation_degrees += 0.3
 			await get_tree().create_timer(0.000000001).timeout
 		$player_wepon_sword_holstered_sprite.visible = false
 		$player_wepon_sword.visible = true
@@ -72,9 +72,10 @@ func holster():
 			SPEED = SPEED + 100
 
 func attack():
+	var timer = attspeed*0.001
 	$player_wepon_sword.monitorable = true
 	for n in 72:
-		await get_tree().create_timer(attspeed*0.001).timeout
+		await get_tree().create_timer(timer).timeout
 		$player_wepon_sword.rotation_degrees += 5
 	$player_wepon_sword.monitorable = false
 	isattac = false
@@ -128,7 +129,7 @@ func _on_playerhurtbox_body_entered(body):
 		SPEED = SPEED +150
 	if body.is_in_group("poison"):
 		SPEED = SPEED-100
-		attspeed = 15
+		attspeed = 30
 		new_hp = debug_hp - take_E_poison_dmg
 		old_hp = new_hp + take_E_poison_dmg
 		for n in take_E_poison_dmg:
