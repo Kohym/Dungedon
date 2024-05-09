@@ -68,7 +68,7 @@ shape = SubResource("CircleShape2D_51do8")
 [node name="playerhurtbox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 2
-collision_mask = 4928
+collision_mask = 13120
 
 [node name="playerhurtboxcollbox" type="CollisionShape2D" parent="playerhurtbox"]
 position = Vector2(1.05263, 1.13687e-13)

@@ -29,7 +29,6 @@ func get_input():
 func _process(delta):
 	look_at(get_global_mouse_position())
 	var playerInput = get_input()
-	
 	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
 	
 	move_and_slide()
@@ -81,6 +80,7 @@ func attack():
 	isattac = false
 
 func _on_playerhurtbox_area_entered(area):
+	debug_hp = base_hp
 	if area.is_in_group("enemy_wepon_sword"):
 		new_hp = debug_hp - take_A_dmg
 		old_hp = new_hp + take_A_dmg
@@ -102,15 +102,21 @@ func _on_playerhurtbox_area_entered(area):
 			$playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
 			await get_tree().create_timer(0.02).timeout
-			if  (debug_hp >= 100):
-				debug_hp = 100
+			if  (debug_hp >= base_hp):
+				debug_hp = base_hp
 				$playerhp.text = str(debug_hp)
 				ishealing = false
 				break
 		attspeed = 0.1
 		SPEED = SPEED+100
+	if area.is_in_group("potionG"):
+		base_hp = base_hp + 20
+		$playerhp.text = str(base_hp)
+		$playerbar.max_value = base_hp
+		$playerbar.value =base_hp
 
 func _on_playerhurtbox_body_entered(body):
+	debug_hp = base_hp
 	if body.is_in_group("spikes"):
 		attspeed = 10
 		SPEED = SPEED -150

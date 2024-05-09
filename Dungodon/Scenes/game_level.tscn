@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=17 format=3 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_ayw5j"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_eb5bd"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/medkit.tscn" id="6_sdmih"]
 [ext_resource type="PackedScene" uid="uid://cijal7twssdcc" path="res://Scenes/door.tscn" id="6_wq30g"]
 [ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/door_both.tscn" id="7_1dr7b"]
+[ext_resource type="PackedScene" uid="uid://bcosqe1h4omob" path="res://Scenes/potion_g.tscn" id="10_v3y0w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
 texture = ExtResource("2_eb5bd")
@@ -267,3 +268,6 @@ rotation = 3.14159
 
 [node name="door_both" parent="doors" instance=ExtResource("7_1dr7b")]
 position = Vector2(-502.97, 80)
+
+[node name="potionG" parent="." instance=ExtResource("10_v3y0w")]
+position = Vector2(653, 355)
