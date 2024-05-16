@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcosqe1h4omob"]
+[gd_scene load_steps=11 format=3 uid="uid://bcosqe1h4omob"]
 
-[ext_resource type="Texture2D" uid="uid://b4gg3mg8cjmj6" path="res://Assets/Env/potionG.png" id="1_8hb6h"]
+[ext_resource type="Texture2D" path="res://Assets/Env/potionG.png" id="1_8hb6h"]
+[ext_resource type="Script" path="res://Scripts/potion_g.gd" id="1_ymu6f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsray"]
 atlas = ExtResource("1_8hb6h")
@@ -59,6 +60,7 @@ size = Vector2(16, 16)
 scale = Vector2(3, 3)
 collision_layer = 8192
 collision_mask = 0
+script = ExtResource("1_ymu6f")
 
 [node name="potionG_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uq866")
@@ -68,3 +70,5 @@ frame_progress = 0.850156
 
 [node name="potionG_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7rfvk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

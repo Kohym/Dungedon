@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var SPEED = 400.0
+@export var basespeed = 400
+var SPEED = 400.0
 @export var ACCEL = 20.0
 
 var input: Vector2
@@ -12,21 +13,30 @@ var input: Vector2
 @export var base_hp = 100
 @export var attspeed = 0.1
 @export var medkit_heal = 70
-var ishealing = false
+
+
+
 var old_hp
 var med_hp
 var new_hp
 var debug_hp = base_hp
+
 var isattac = false
 var isholster = true
 var isuholsteringmove = false
+var ispoison = false
+var ishealing = false
+
 var willhitwall = false
+
 func get_input():
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	return input.normalized()
 
 func _process(delta):
+	$Label.text = str(SPEED)
+	setspeed()
 	look_at(get_global_mouse_position())
 	var playerInput = get_input()
 	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
@@ -41,14 +51,35 @@ func _ready():
 func  _input(_event):
 	if Input.is_action_just_pressed("left_click") and isattac == false and isholster == false and willhitwall == false:
 		isattac = true
+		setspeed()
 		attack()
 	if Input.is_action_just_pressed("sword_unholster"):
 		holster()
 
+func setspeed():
+	if (isattac == true and isholster == false and isuholsteringmove == false and ispoison == false):
+		SPEED = 50
+	elif (isattac == false and isholster == true and isuholsteringmove == false and ispoison == false):
+		SPEED = 400
+	elif (isattac == false and isholster == true and isuholsteringmove == false and ispoison == true):
+		SPEED = 200
+	elif (isattac == false and isholster == false and isuholsteringmove == false and ispoison == false):
+		SPEED = 250
+	elif (isattac == false and isholster == false and isuholsteringmove == false and ispoison == true):
+		SPEED = 150
+	elif (isattac == false and isholster == true and isuholsteringmove == true and ispoison == false):
+		SPEED = 350
+	elif (isattac == false and isholster == true and isuholsteringmove == true and ispoison == true):
+		SPEED = 170
+	elif (isattac == false and isholster == false and isuholsteringmove == true and ispoison == false):
+		SPEED = 350
+	elif (isattac == false and isholster == false and isuholsteringmove == true and ispoison == true):
+		SPEED = 170
+
 func holster():
 	if isholster== true and isuholsteringmove == false:
-		SPEED = SPEED - 100
 		isuholsteringmove = true
+		setspeed()
 		for n in 150:
 			$player_wepon_sword_holstered_sprite.rotation_degrees += 0.3
 			await get_tree().create_timer(0.000000001).timeout
@@ -56,11 +87,10 @@ func holster():
 		$player_wepon_sword.visible = true
 		isholster = false
 		isuholsteringmove = false
-		SPEED = SPEED - 100
 	else:
-		SPEED = SPEED + 100
 		if isholster== false and isuholsteringmove == false:
 			isuholsteringmove = true
+			setspeed()
 			$player_wepon_sword_holstered_sprite.visible = true
 			$player_wepon_sword.visible = false
 			for n in 225:
@@ -68,7 +98,6 @@ func holster():
 				await get_tree().create_timer(0.000000001).timeout
 			isholster = true
 			isuholsteringmove = false
-			SPEED = SPEED + 100
 
 func attack():
 	var timer = attspeed*0.001
@@ -78,9 +107,16 @@ func attack():
 		$player_wepon_sword.rotation_degrees += 5
 	$player_wepon_sword.monitorable = false
 	isattac = false
+	setspeed()
+
+func addhp():
+	base_hp = base_hp + 20
+	$playerhp.text = str(base_hp)
+	$playerbar.max_value = base_hp
+	$playerbar.value =base_hp
+	debug_hp = base_hp
 
 func _on_playerhurtbox_area_entered(area):
-	debug_hp = base_hp
 	if area.is_in_group("enemy_wepon_sword"):
 		new_hp = debug_hp - take_A_dmg
 		old_hp = new_hp + take_A_dmg
@@ -93,8 +129,9 @@ func _on_playerhurtbox_area_entered(area):
 				debug_hp = 0
 				$playerhp.text = str(debug_hp)
 				queue_free()
-	if area.is_in_group("medkit"):
+	elif area.is_in_group("medkit"):
 		ishealing = true
+		ispoison = false
 		new_hp = debug_hp + medkit_heal
 		old_hp = new_hp - medkit_heal
 		for n in medkit_heal:
@@ -108,18 +145,13 @@ func _on_playerhurtbox_area_entered(area):
 				ishealing = false
 				break
 		attspeed = 0.1
-		SPEED = SPEED+100
-	if area.is_in_group("potionG"):
-		base_hp = base_hp + 20
-		$playerhp.text = str(base_hp)
-		$playerbar.max_value = base_hp
-		$playerbar.value =base_hp
+	elif area.is_in_group("potionG"):
+		ispoison = false
+		addhp()
 
 func _on_playerhurtbox_body_entered(body):
-	debug_hp = base_hp
 	if body.is_in_group("spikes"):
 		attspeed = 10
-		SPEED = SPEED -150
 		new_hp = debug_hp - take_E_spike_dmg
 		old_hp = new_hp + take_E_spike_dmg
 		for n in take_E_spike_dmg:
@@ -132,15 +164,15 @@ func _on_playerhurtbox_body_entered(body):
 				$playerhp.text = str(debug_hp)
 				queue_free()
 		attspeed = 0.1
-		SPEED = SPEED +150
-	if body.is_in_group("poison"):
-		SPEED = SPEED-100
+	elif body.is_in_group("poison"):
+		ispoison = true
 		attspeed = 30
 		new_hp = debug_hp - take_E_poison_dmg
 		old_hp = new_hp + take_E_poison_dmg
 		for n in take_E_poison_dmg:
-			if ishealing == false:
-				if ishealing == true:
+			if ishealing == false and ispoison == true:
+				if ishealing == true and ispoison == false:
+					ispoison = false
 					break
 				debug_hp = debug_hp - 1
 				$playerbar.value = debug_hp
@@ -149,8 +181,9 @@ func _on_playerhurtbox_body_entered(body):
 				if  (debug_hp <= 0):
 					debug_hp = 0
 					$playerhp.text = str(debug_hp)
+					ispoison = false
 					queue_free()
-		SPEED = SPEED +100
+					
 		attspeed = 0.1
 
 func _on_debug_body_entered(body):

@@ -270,4 +270,4 @@ rotation = 3.14159
 position = Vector2(-502.97, 80)
 
 [node name="potionG" parent="." instance=ExtResource("10_v3y0w")]
-position = Vector2(653, 355)
+position = Vector2(398, 202)
