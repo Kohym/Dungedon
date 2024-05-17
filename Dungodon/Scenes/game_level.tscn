@@ -238,15 +238,18 @@ tile_set = SubResource("TileSet_tk8t6")
 format = 2
 layer_0/tile_data = PackedInt32Array(786449, 131072, 0, 786450, 65536, 1, 786451, 131072, 2, 786452, 0, 1, 786453, 131072, 0)
 
+[node name="potionG" parent="." instance=ExtResource("10_v3y0w")]
+position = Vector2(398, 202)
+
+[node name="medkit" parent="." instance=ExtResource("6_sdmih")]
+position = Vector2(1253, 241)
+
 [node name="player" parent="." instance=ExtResource("3_y3l11")]
 position = Vector2(142, 191)
 rotation = 1.5708
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
-
-[node name="medkit" parent="." instance=ExtResource("6_sdmih")]
-position = Vector2(1253, 241)
 
 [node name="enemy" parent="." instance=ExtResource("3_0w550")]
 position = Vector2(337, 867)
@@ -268,6 +271,3 @@ rotation = 3.14159
 
 [node name="door_both" parent="doors" instance=ExtResource("7_1dr7b")]
 position = Vector2(-502.97, 80)
-
-[node name="potionG" parent="." instance=ExtResource("10_v3y0w")]
-position = Vector2(398, 202)

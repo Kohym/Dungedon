@@ -1,56 +1,95 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcosqe1h4omob"]
+[gd_scene load_steps=17 format=3 uid="uid://bcosqe1h4omob"]
 
-[ext_resource type="Texture2D" path="res://Assets/Env/potionG.png" id="1_8hb6h"]
 [ext_resource type="Script" path="res://Scripts/potion_g.gd" id="1_ymu6f"]
+[ext_resource type="Texture2D" uid="uid://b4gg3mg8cjmj6" path="res://Assets/potions/potionG.png" id="2_jwan3"]
+[ext_resource type="Texture2D" uid="uid://dyu41jneb07j2" path="res://Assets/potions/bottle_1_broken1.png" id="2_nnxa5"]
+[ext_resource type="Texture2D" uid="uid://qyvi2yi341l7" path="res://Assets/potions/bottle_1_broken2.png" id="3_3wxaw"]
+[ext_resource type="Texture2D" uid="uid://c8t1rjqqq3ura" path="res://Assets/potions/bottle_1_broken3.png" id="4_q7nyb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lsray"]
-atlas = ExtResource("1_8hb6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4u6y"]
+atlas = ExtResource("2_nnxa5")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlnek"]
-atlas = ExtResource("1_8hb6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4pos"]
+atlas = ExtResource("3_3wxaw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ur8n"]
+atlas = ExtResource("4_q7nyb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12bqd"]
+atlas = ExtResource("2_jwan3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eif3e"]
+atlas = ExtResource("2_jwan3")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8pece"]
-atlas = ExtResource("1_8hb6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k17q8"]
+atlas = ExtResource("2_jwan3")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8lxdx"]
-atlas = ExtResource("1_8hb6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hklwl"]
+atlas = ExtResource("2_jwan3")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_do3x8"]
-atlas = ExtResource("1_8hb6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocadp"]
+atlas = ExtResource("2_jwan3")
 region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_emst4"]
-atlas = ExtResource("1_8hb6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eaqp"]
+atlas = ExtResource("2_jwan3")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uq866"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lsray")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rlnek")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8pece")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8lxdx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_do3x8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_emst4")
+"texture": SubResource("AtlasTexture_a4u6y")
 }],
 "loop": true,
-"name": &"new_animation",
-"speed": 2.0
+"name": &"broken1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4pos")
+}],
+"loop": true,
+"name": &"broken2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ur8n")
+}],
+"loop": true,
+"name": &"broken3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12bqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eif3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k17q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hklwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocadp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eaqp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rfvk"]
@@ -59,14 +98,14 @@ size = Vector2(16, 16)
 [node name="potionG" type="Area2D" groups=["potionG"]]
 scale = Vector2(3, 3)
 collision_layer = 8192
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_ymu6f")
 
 [node name="potionG_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uq866")
-animation = &"new_animation"
-autoplay = "new_animation"
-frame_progress = 0.850156
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.39471
 
 [node name="potionG_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7rfvk")
