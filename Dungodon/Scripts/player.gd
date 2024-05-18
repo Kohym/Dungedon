@@ -44,6 +44,10 @@ func _process(delta):
 	move_and_slide()
 
 func _ready():
+	$keys/key_blue_sprite.visible = false
+	$keys/key_red_sprite.visible = false
+	$keys/key_green_sprite.visible = false
+	$keys/key_universal_sprite.visible = false
 	$player_wepon_sword.monitorable = false
 	$player_wepon_sword.monitoring = false
 	$playerbar.value = base_hp
@@ -187,7 +191,7 @@ func _on_playerhurtbox_body_entered(body):
 		attspeed = 0.1
 
 func _on_debug_body_entered(body):
-	if body.is_in_group("brick"):
+	if body.is_in_group("brick") or body.is_in_group("door"):
 		willhitwall = true
 
 
