@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=21 format=3 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_ayw5j"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_eb5bd"]
@@ -9,7 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="6_sdmih"]
 [ext_resource type="PackedScene" uid="uid://cijal7twssdcc" path="res://Scenes/envm/door.tscn" id="6_wq30g"]
 [ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/envm/door_both.tscn" id="7_1dr7b"]
+[ext_resource type="PackedScene" uid="uid://bml7we7ddedqv" path="res://Scenes/pickups/keys/key_green.tscn" id="8_wn3ws"]
+[ext_resource type="PackedScene" uid="uid://lseo1rg05bf6" path="res://Scenes/pickups/keys/key_blue.tscn" id="9_1dxc4"]
 [ext_resource type="PackedScene" uid="uid://bcosqe1h4omob" path="res://Scenes/pickups/potions/potion_g.tscn" id="10_v3y0w"]
+[ext_resource type="PackedScene" uid="uid://36r0arb2rmmp" path="res://Scenes/pickups/keys/key_red.tscn" id="11_3hi0x"]
+[ext_resource type="PackedScene" uid="uid://dk763s3jgcq1b" path="res://Scenes/pickups/keys/key_universal.tscn" id="11_qq0nc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
 texture = ExtResource("2_eb5bd")
@@ -211,10 +215,10 @@ sources/0 = SubResource("TileSetAtlasSource_sffuo")
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 texture_repeat = 2
-offset_left = 34.0
-offset_top = 65.0
-offset_right = 1837.0
-offset_bottom = 1153.0
+offset_left = 77.0
+offset_top = 59.0
+offset_right = 1880.0
+offset_bottom = 1147.0
 texture = ExtResource("1_ayw5j")
 stretch_mode = 1
 
@@ -245,8 +249,22 @@ position = Vector2(398, 202)
 [node name="medkit" parent="." instance=ExtResource("6_sdmih")]
 position = Vector2(1253, 241)
 
+[node name="keys" type="Node2D" parent="."]
+
+[node name="key_blue" parent="keys" instance=ExtResource("9_1dxc4")]
+position = Vector2(746, 477)
+
+[node name="key_green" parent="keys" instance=ExtResource("8_wn3ws")]
+position = Vector2(698, 302)
+
+[node name="key_red" parent="keys" instance=ExtResource("11_3hi0x")]
+position = Vector2(441, 416)
+
+[node name="key_universal" parent="keys" instance=ExtResource("11_qq0nc")]
+position = Vector2(602, 362)
+
 [node name="player" parent="." instance=ExtResource("3_y3l11")]
-position = Vector2(142, 191)
+position = Vector2(158, 204)
 rotation = 1.5708
 
 [node name="Camera2D" type="Camera2D" parent="player"]

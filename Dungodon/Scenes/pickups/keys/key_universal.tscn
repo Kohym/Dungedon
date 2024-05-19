@@ -3,47 +3,47 @@
 [ext_resource type="Script" path="res://Scripts/key_universal.gd" id="1_ho7pp"]
 [ext_resource type="Texture2D" uid="uid://cydi4yux0tkqo" path="res://Assets/keys/key_universal.png" id="1_klaqh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0drm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bduyo"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(0, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4p8p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tebj8"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(20, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8as2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5jak"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(40, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wo6g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2c7y"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(60, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_33d7c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq6px"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(80, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0nqwf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7niwk"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(100, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_skuwr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_duyq7"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(120, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_77ho1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpakt"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(140, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8efp2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k3od"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(160, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dphnx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r7lg"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(180, 0, 20, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbdqd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_amia4"]
 atlas = ExtResource("1_klaqh")
 region = Rect2(200, 0, 20, 9)
 
@@ -51,57 +51,59 @@ region = Rect2(200, 0, 20, 9)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j0drm")
+"texture": SubResource("AtlasTexture_bduyo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f4p8p")
+"texture": SubResource("AtlasTexture_tebj8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a8as2")
+"texture": SubResource("AtlasTexture_e5jak")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8wo6g")
+"texture": SubResource("AtlasTexture_n2c7y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_33d7c")
+"texture": SubResource("AtlasTexture_bq6px")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0nqwf")
+"texture": SubResource("AtlasTexture_7niwk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_skuwr")
+"texture": SubResource("AtlasTexture_duyq7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_77ho1")
+"texture": SubResource("AtlasTexture_vpakt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8efp2")
+"texture": SubResource("AtlasTexture_8k3od")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dphnx")
+"texture": SubResource("AtlasTexture_4r7lg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mbdqd")
+"texture": SubResource("AtlasTexture_amia4")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36aqm"]
-size = Vector2(60, 28)
+size = Vector2(20, 10)
 
 [node name="key_universal" type="Area2D" groups=["key_universal"]]
+scale = Vector2(1.5, 1.5)
 collision_layer = 16384
 collision_mask = 2
 script = ExtResource("1_ho7pp")
 
 [node name="key_universal_sprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_p1dy4")
-autoplay = "default"
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0790221
 
 [node name="key_universal_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_36aqm")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

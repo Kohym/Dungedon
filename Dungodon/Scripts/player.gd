@@ -29,6 +29,13 @@ var ishealing = false
 
 var willhitwall = false
 
+var has_got_keys = false
+var keys_moving = false
+var has_blue_key = false
+var has_green_key = false
+var has_red_key = false
+var has_universal_key = false
+
 func get_input():
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -44,44 +51,47 @@ func _process(delta):
 	move_and_slide()
 
 func _ready():
-	$keys/key_blue_sprite.visible = false
-	$keys/key_red_sprite.visible = false
-	$keys/key_green_sprite.visible = false
-	$keys/key_universal_sprite.visible = false
 	$player_wepon_sword.monitorable = false
 	$player_wepon_sword.monitoring = false
 	$playerbar.value = base_hp
+	key_check()
 
 func  _input(_event):
 	if Input.is_action_just_pressed("left_click") and isattac == false and isholster == false and willhitwall == false:
 		isattac = true
 		setspeed()
 		attack()
-	if Input.is_action_just_pressed("sword_unholster"):
+	elif Input.is_action_just_pressed("sword_unholster"):
 		holster()
+	elif  Input.is_action_just_pressed("keys"):
+		get_keys()
 
 func setspeed():
-	if (isattac == true and isholster == false and isuholsteringmove == false and ispoison == false):
+	if (isattac == true and isholster == false and isuholsteringmove == false and ispoison == false and has_got_keys == false):
 		SPEED = 50
-	elif (isattac == false and isholster == true and isuholsteringmove == false and ispoison == false):
+	elif (isattac == false and isholster == true and isuholsteringmove == false and ispoison == false and has_got_keys == false):
 		SPEED = 400
-	elif (isattac == false and isholster == true and isuholsteringmove == false and ispoison == true):
+	elif (isattac == false and isholster == true and isuholsteringmove == false and ispoison == true and has_got_keys == false):
 		SPEED = 200
-	elif (isattac == false and isholster == false and isuholsteringmove == false and ispoison == false):
+	elif (isattac == false and isholster == false and isuholsteringmove == false and ispoison == false and has_got_keys == false):
 		SPEED = 250
-	elif (isattac == false and isholster == false and isuholsteringmove == false and ispoison == true):
+	elif (isattac == false and isholster == false and isuholsteringmove == false and ispoison == true and has_got_keys == false):
 		SPEED = 150
-	elif (isattac == false and isholster == true and isuholsteringmove == true and ispoison == false):
+	elif (isattac == false and isholster == true and isuholsteringmove == true and ispoison == false and has_got_keys == false):
 		SPEED = 350
-	elif (isattac == false and isholster == true and isuholsteringmove == true and ispoison == true):
+	elif (isattac == false and isholster == true and isuholsteringmove == true and ispoison == true and has_got_keys == false):
 		SPEED = 170
-	elif (isattac == false and isholster == false and isuholsteringmove == true and ispoison == false):
+	elif (isattac == false and isholster == false and isuholsteringmove == true and ispoison == false and has_got_keys == false):
 		SPEED = 350
-	elif (isattac == false and isholster == false and isuholsteringmove == true and ispoison == true):
+	elif (isattac == false and isholster == false and isuholsteringmove == true and ispoison == true and has_got_keys == false):
 		SPEED = 170
+	elif  (isattac == false and isholster == true and isuholsteringmove == false and ispoison == false and has_got_keys == true):
+		SPEED=350
+	elif  (isattac == false and isholster == true and isuholsteringmove == false and ispoison == true and has_got_keys == true):
+		SPEED=180
 
 func holster():
-	if isholster== true and isuholsteringmove == false:
+	if isholster== true and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
 		isuholsteringmove = true
 		setspeed()
 		for n in 150:
@@ -91,17 +101,16 @@ func holster():
 		$player_wepon_sword.visible = true
 		isholster = false
 		isuholsteringmove = false
-	else:
-		if isholster== false and isuholsteringmove == false:
-			isuholsteringmove = true
-			setspeed()
-			$player_wepon_sword_holstered_sprite.visible = true
-			$player_wepon_sword.visible = false
-			for n in 225:
-				$player_wepon_sword_holstered_sprite.rotation_degrees += -0.2
-				await get_tree().create_timer(0.000000001).timeout
-			isholster = true
-			isuholsteringmove = false
+	elif isholster== false and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
+		isuholsteringmove = true
+		setspeed()
+		$player_wepon_sword_holstered_sprite.visible = true
+		$player_wepon_sword.visible = false
+		for n in 225:
+			$player_wepon_sword_holstered_sprite.rotation_degrees += -0.2
+			await get_tree().create_timer(0.000000001).timeout
+		isholster = true
+		isuholsteringmove = false
 
 func attack():
 	var timer = attspeed*0.001
@@ -119,6 +128,78 @@ func addhp():
 	$playerbar.max_value = base_hp
 	$playerbar.value =base_hp
 	debug_hp = base_hp
+
+func get_keys():
+	key_check()
+	print($keys/key_pickup_detector.get_groups())
+	if (has_got_keys == false and keys_moving == false and isholster == true and isuholsteringmove == false):
+		keys_moving = true
+		for n in 100:
+			$keys.rotation_degrees += -0.4
+			await get_tree().create_timer(0.000000001).timeout
+		has_got_keys = true
+		keys_moving = false
+		$keys/key_pickup_detector.monitorable = true
+		$keys/key_pickup_detector.monitoring = true
+		$keys/key_holder.monitorable = true
+		$keys/key_holder.monitoring = true
+	elif  (has_got_keys == true and keys_moving == false and isholster == true and isuholsteringmove == false):
+		keys_moving = true
+		for n in 100:
+			$keys.rotation_degrees += 0.4
+			await get_tree().create_timer(0.000000001).timeout
+		has_got_keys = false
+		keys_moving = false
+		$keys/key_holder.monitorable = false
+		$keys/key_holder.monitoring = false
+		$keys/key_pickup_detector.monitorable = false
+		$keys/key_pickup_detector.monitoring = false
+
+func key_check():
+		if  has_blue_key == true:
+			$keys/key_pickup_detector.remove_from_group("pickup_blue_key")
+			$keys/key_holder/key_blue_sprite.visible = true
+			$keys/key_holder.add_to_group("has_blue_key")
+		elif has_blue_key == false:
+			$keys/key_pickup_detector.add_to_group("pickup_blue_key")
+			$keys/key_holder/key_blue_sprite.visible = false
+			$keys/key_holder.remove_from_group("has_blue_key")
+		if  has_red_key == true:
+			$keys/key_pickup_detector.remove_from_group("pickup_red_key")
+			$keys/key_holder/key_red_sprite.visible = true
+			$keys/key_holder.add_to_group("has_red_key")
+		elif has_red_key == false:
+			$keys/key_pickup_detector.add_to_group("pickup_red_key")
+			$keys/key_holder/key_red_sprite.visible = false
+			$keys/key_holder.remove_from_group("has_red_key")
+		if  has_green_key == true:
+			$keys/key_pickup_detector.remove_from_group("pickup_green_key")
+			$keys/key_holder/key_green_sprite.visible = true
+			$keys/key_holder.add_to_group("has_green_key")
+		elif has_green_key == false:
+			$keys/key_pickup_detector.add_to_group("pickup_green_key")
+			$keys/key_holder/key_green_sprite.visible = false
+			$keys/key_holder.remove_from_group("has_green_key")
+		if  has_universal_key == true:
+			$keys/key_pickup_detector.remove_from_group("pickup_universal_key")
+			$keys/key_holder/key_universal_sprite.visible = true
+			$keys/key_holder.add_to_group("has_universal_key")
+		elif has_universal_key == false:
+			$keys/key_pickup_detector.add_to_group("pickup_universal_key")
+			$keys/key_holder/key_universal_sprite.visible = false
+			$keys/key_holder.remove_from_group("has_universal_key")
+
+func _on_key_pickup_detector_area_entered(area):
+	if  area.is_in_group("key_blue"):
+		has_blue_key = true
+	elif area.is_in_group("key_red"):
+		has_red_key = true
+	elif area.is_in_group("key_green"):
+		has_green_key = true
+	elif area.is_in_group("key_universal"):
+		has_universal_key = true
+	await get_tree().create_timer(0.02).timeout
+	key_check()
 
 func _on_playerhurtbox_area_entered(area):
 	if area.is_in_group("enemy_wepon_sword"):
@@ -198,3 +279,5 @@ func _on_debug_body_entered(body):
 func _on_debug_body_exited(body):
 	if body.is_in_group("brick"):
 		willhitwall = false
+
+

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://lseo1rg05bf6"]
+
+[ext_resource type="Script" path="res://Scripts/key_blue.gd" id="1_7a4ci"]
+[ext_resource type="Texture2D" uid="uid://dup3j7u8r4alq" path="res://Assets/keys/key_blue.png" id="1_l81nx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36aqm"]
+size = Vector2(22, 10)
+
+[node name="key_blue" type="Area2D" groups=["key_blue"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 16384
+collision_mask = 2
+script = ExtResource("1_7a4ci")
+
+[node name="key_blue_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_l81nx")
+
+[node name="key_blue_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_36aqm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
