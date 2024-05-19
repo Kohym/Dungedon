@@ -240,4 +240,3 @@ shape = SubResource("CircleShape2D_hfc10")
 [connection signal="body_entered" from="debug" to="." method="_on_debug_body_entered"]
 [connection signal="body_exited" from="debug" to="." method="_on_debug_body_exited"]
 [connection signal="area_entered" from="keys/key_pickup_detector" to="." method="_on_key_pickup_detector_area_entered"]
-[connection signal="area_entered" from="keys/key_holder" to="." method="_on_key_holder_area_entered"]

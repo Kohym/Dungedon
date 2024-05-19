@@ -131,7 +131,6 @@ func addhp():
 
 func get_keys():
 	key_check()
-	print($keys/key_pickup_detector.get_groups())
 	if (has_got_keys == false and keys_moving == false and isholster == true and isuholsteringmove == false):
 		keys_moving = true
 		for n in 100:
@@ -275,9 +274,32 @@ func _on_debug_body_entered(body):
 	if body.is_in_group("brick") or body.is_in_group("door"):
 		willhitwall = true
 
-
 func _on_debug_body_exited(body):
 	if body.is_in_group("brick"):
 		willhitwall = false
 
-
+func _on_key_holder_area_entered(area):
+	if area.is_in_group("locked_red"):
+		if has_universal_key == true:
+			has_universal_key = false
+			await get_tree().create_timer(0.02).timeout
+		else:
+			has_red_key = false
+			await get_tree().create_timer(0.02).timeout
+		key_check()
+	elif area.is_in_group("locked_green"):
+		if has_universal_key == true:
+			has_universal_key = false
+			await get_tree().create_timer(0.02).timeout
+		else:
+			has_green_key = false
+			await get_tree().create_timer(0.02).timeout
+		key_check()
+	elif area.is_in_group("locked_blue"):
+		if has_universal_key == true:
+			has_universal_key = false
+			await get_tree().create_timer(0.02).timeout
+		else:
+			has_green_key = false
+			await get_tree().create_timer(0.02).timeout
+		key_check()

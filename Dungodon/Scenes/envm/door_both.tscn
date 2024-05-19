@@ -34,7 +34,7 @@ animations = [{
 size = Vector2(32, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xowfc"]
-size = Vector2(32, 8)
+size = Vector2(32, 2)
 
 [node name="door_both" type="CharacterBody2D" groups=["door"]]
 collision_mask = 0
@@ -48,14 +48,35 @@ autoplay = "closed"
 [node name="door_both_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_40m2n")
 
-[node name="door_both_open_detect" type="Area2D" parent="."]
+[node name="door_both_open_detect1" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 6
 
-[node name="door_both_open_detect_collbox1" type="CollisionShape2D" parent="door_both_open_detect"]
+[node name="door_both_open_detect_collbox1" type="CollisionShape2D" parent="door_both_open_detect1"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_xowfc")
+
+[node name="door_both_open_detect2" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 6
+
+[node name="door_both_open_detect_collbox2" type="CollisionShape2D" parent="door_both_open_detect2"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_xowfc")
 
 [node name="door_both_label1" type="Label" parent="."]
+texture_filter = 1
+offset_left = 16.0
+offset_top = -2.0
+offset_right = 652.0
+offset_bottom = 122.0
+rotation = 3.14159
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 90
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="door_both_label2" type="Label" parent="."]
 texture_filter = 1
 offset_left = -16.0
 offset_top = 2.0
@@ -67,17 +88,7 @@ theme_override_font_sizes/font_size = 90
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="door_both_label2" type="Label" parent="."]
-texture_filter = 1
-offset_left = 16.0
-offset_top = -2.0
-offset_right = 652.0
-offset_bottom = 122.0
-rotation = 3.14159
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 90
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="body_entered" from="door_both_open_detect" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="door_both_open_detect1" to="." method="_on_door_both_open_detect_1_area_entered"]
+[connection signal="body_entered" from="door_both_open_detect1" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="door_both_open_detect2" to="." method="_on_door_both_open_detect_2_area_entered"]
+[connection signal="body_entered" from="door_both_open_detect2" to="." method="_on_door_both_open_detect_2_body_entered"]

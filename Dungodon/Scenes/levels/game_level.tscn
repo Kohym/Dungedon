@@ -251,6 +251,9 @@ position = Vector2(1253, 241)
 
 [node name="keys" type="Node2D" parent="."]
 
+[node name="key_universal2" parent="keys" instance=ExtResource("11_qq0nc")]
+position = Vector2(635, 651)
+
 [node name="key_blue" parent="keys" instance=ExtResource("9_1dxc4")]
 position = Vector2(746, 477)
 
@@ -280,13 +283,17 @@ scale = Vector2(3.03, 3)
 [node name="door" parent="doors" instance=ExtResource("6_wq30g")]
 position = Vector2(-199.677, -120)
 rotation = -1.5708
+islocked = "False"
 
 [node name="door2" parent="doors" instance=ExtResource("6_wq30g")]
 position = Vector2(4.29044, 9.99999)
+islocked = "False"
 
 [node name="door3" parent="doors" instance=ExtResource("6_wq30g")]
 position = Vector2(-502.64, -74)
 rotation = 3.14159
+islocked = "False"
 
 [node name="door_both" parent="doors" instance=ExtResource("7_1dr7b")]
-position = Vector2(-502.97, 80)
+position = Vector2(-502.64, 80.3334)
+islocked = "red"
