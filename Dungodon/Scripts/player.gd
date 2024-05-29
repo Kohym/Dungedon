@@ -257,6 +257,7 @@ func _on_playerhurtbox_body_entered(body):
 			if ishealing == false and ispoison == true:
 				if ishealing == true and ispoison == false:
 					ispoison = false
+					setspeed()
 					break
 				debug_hp = debug_hp - 1
 				$playerbar.value = debug_hp
@@ -269,37 +270,39 @@ func _on_playerhurtbox_body_entered(body):
 					queue_free()
 					
 		attspeed = 0.1
+		ispoison = false
+		setspeed()
 
 func _on_debug_body_entered(body):
 	if body.is_in_group("brick") or body.is_in_group("door"):
 		willhitwall = true
 
 func _on_debug_body_exited(body):
-	if body.is_in_group("brick"):
+	if body.is_in_group("brick") or body.is_in_group("door"):
 		willhitwall = false
 
 func _on_key_holder_area_entered(area):
 	if area.is_in_group("locked_red"):
-		if has_universal_key == true:
-			has_universal_key = false
-			await get_tree().create_timer(0.02).timeout
-		else:
+		if has_red_key == true:
 			has_red_key = false
+			await get_tree().create_timer(0.02).timeout
+		elif has_universal_key == true:
+			has_universal_key = false
 			await get_tree().create_timer(0.02).timeout
 		key_check()
 	elif area.is_in_group("locked_green"):
-		if has_universal_key == true:
-			has_universal_key = false
-			await get_tree().create_timer(0.02).timeout
-		else:
+		if has_green_key == true:
 			has_green_key = false
+			await get_tree().create_timer(0.02).timeout
+		elif has_universal_key == true:
+			has_universal_key = false
 			await get_tree().create_timer(0.02).timeout
 		key_check()
 	elif area.is_in_group("locked_blue"):
-		if has_universal_key == true:
-			has_universal_key = false
+		if has_blue_key == true:
+			has_blue_key = false
 			await get_tree().create_timer(0.02).timeout
-		else:
-			has_green_key = false
+		elif has_universal_key == true:
+			has_universal_key = false
 			await get_tree().create_timer(0.02).timeout
 		key_check()

@@ -37,7 +37,7 @@ func _on_area_2d_body_entered(body):
 			$door_label.text = " "
 
 func _on_door_open_detect_area_entered(area):
-	if  area.is_in_group("has_"+islocked+"_key") or area.is_in_group("has_universal_key"):
+	if  area.is_in_group("has_"+islocked+"_key") or area.is_in_group("has_universal_key") and islocked != "False":
 		islocked = "False"
 		$door_open_detect.remove_from_group("locked_"+islocked)
 		open()

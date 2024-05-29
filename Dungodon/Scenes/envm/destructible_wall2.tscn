@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dst5nnwv2cyyb"]
+
+[ext_resource type="Script" path="res://Scripts/destructible_wall2.gd" id="1_m5tbg"]
+[ext_resource type="Texture2D" uid="uid://beoqckj0dm6k6" path="res://Assets/Env/bricks_broken.png" id="2_brmmj"]
+[ext_resource type="Texture2D" uid="uid://c3q4tfr0d72c7" path="res://Assets/Env/bricks_crack2.png" id="2_d7pk2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdiwn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_brmmj")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d7pk2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cnao"]
+size = Vector2(27, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xku6x"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3s17"]
+size = Vector2(21, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jal2o"]
+size = Vector2(144, 96)
+
+[node name="destructible_wall2" type="CharacterBody2D"]
+collision_mask = 32
+script = ExtResource("1_m5tbg")
+
+[node name="destructible_wall2_sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hdiwn")
+autoplay = "default"
+frame_progress = 0.885244
+
+[node name="destructible_wall2_collbox1" type="CollisionShape2D" parent="."]
+position = Vector2(-58.5, 0)
+shape = SubResource("RectangleShape2D_0cnao")
+
+[node name="destructible_wall2_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xku6x")
+
+[node name="destructible_wall2_collbox2" type="CollisionShape2D" parent="."]
+position = Vector2(61.5, 0)
+shape = SubResource("RectangleShape2D_r3s17")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="destructible_wall2_collbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jal2o")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

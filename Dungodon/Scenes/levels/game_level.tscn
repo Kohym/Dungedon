@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=23 format=3 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_ayw5j"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_eb5bd"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bcosqe1h4omob" path="res://Scenes/pickups/potions/potion_g.tscn" id="10_v3y0w"]
 [ext_resource type="PackedScene" uid="uid://36r0arb2rmmp" path="res://Scenes/pickups/keys/key_red.tscn" id="11_3hi0x"]
 [ext_resource type="PackedScene" uid="uid://dk763s3jgcq1b" path="res://Scenes/pickups/keys/key_universal.tscn" id="11_qq0nc"]
+[ext_resource type="PackedScene" uid="uid://dst5nnwv2cyyb" path="res://Scenes/envm/destructible_wall2.tscn" id="15_oon0t"]
+[ext_resource type="PackedScene" uid="uid://bwns7b0dm5jcl" path="res://Scenes/envm/destructible_wall1.tscn" id="16_0506t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
 texture = ExtResource("2_eb5bd")
@@ -266,6 +268,9 @@ position = Vector2(441, 416)
 [node name="key_universal" parent="keys" instance=ExtResource("11_qq0nc")]
 position = Vector2(602, 362)
 
+[node name="destructible_wall2" parent="." instance=ExtResource("15_oon0t")]
+position = Vector2(319, 551)
+
 [node name="player" parent="." instance=ExtResource("3_y3l11")]
 position = Vector2(158, 204)
 rotation = 1.5708
@@ -296,4 +301,7 @@ islocked = "False"
 
 [node name="door_both" parent="doors" instance=ExtResource("7_1dr7b")]
 position = Vector2(-502.64, 80.3334)
-islocked = "red"
+islocked = "blue"
+
+[node name="destructible_wall1" parent="." instance=ExtResource("16_0506t")]
+position = Vector2(334, 730)

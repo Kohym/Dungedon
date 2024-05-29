@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwns7b0dm5jcl"]
+
+[ext_resource type="Script" path="res://Scripts/destructible_wall1.gd" id="1_3k3op"]
+[ext_resource type="Texture2D" uid="uid://cpbmf6q35ubks" path="res://Assets/Env/bricks_broken1.png" id="2_ej6gp"]
+[ext_resource type="Texture2D" uid="uid://sxv7d0yjk44x" path="res://Assets/Env/bricks_crack1.png" id="3_ii381"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdiwn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ej6gp")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ii381")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnali"]
+size = Vector2(144, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cnao"]
+size = Vector2(27, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3s17"]
+size = Vector2(21, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jal2o"]
+size = Vector2(144, 48)
+
+[node name="destructible_wall1" type="CharacterBody2D"]
+collision_mask = 32
+script = ExtResource("1_3k3op")
+
+[node name="destructible_wall1_sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hdiwn")
+animation = &"broken"
+autoplay = "default"
+
+[node name="destructible_wall1_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nnali")
+
+[node name="destructible_wall1_collbox1" type="CollisionShape2D" parent="."]
+position = Vector2(-58.5, 0)
+shape = SubResource("RectangleShape2D_0cnao")
+
+[node name="destructible_wall1_collbox2" type="CollisionShape2D" parent="."]
+position = Vector2(61.5, 0)
+shape = SubResource("RectangleShape2D_r3s17")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="destructible_wall1_collbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jal2o")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
