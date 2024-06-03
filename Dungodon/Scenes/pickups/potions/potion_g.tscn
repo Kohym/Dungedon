@@ -103,9 +103,8 @@ script = ExtResource("1_ymu6f")
 
 [node name="potionG_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uq866")
-animation = &"idle"
+animation = &"broken2"
 autoplay = "idle"
-frame_progress = 0.39471
 
 [node name="potionG_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7rfvk")
