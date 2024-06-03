@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://dflmpx03sns4k"]
+
+[ext_resource type="Script" path="res://Scripts/potionR.gd" id="1_2unvf"]
+[ext_resource type="Texture2D" uid="uid://dyu41jneb07j2" path="res://Assets/potions/bottle_1_broken1.png" id="2_ues5q"]
+[ext_resource type="Texture2D" uid="uid://qyvi2yi341l7" path="res://Assets/potions/bottle_1_broken2.png" id="3_86mp1"]
+[ext_resource type="Texture2D" uid="uid://c8t1rjqqq3ura" path="res://Assets/potions/bottle_1_broken3.png" id="4_penag"]
+[ext_resource type="Texture2D" uid="uid://ccvvb44e6a8sj" path="res://Assets/potions/potionR.png" id="5_bdvum"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw50r"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r62di"]
+atlas = ExtResource("5_bdvum")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su2q2"]
+atlas = ExtResource("5_bdvum")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hos6j"]
+atlas = ExtResource("5_bdvum")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp0e6"]
+atlas = ExtResource("5_bdvum")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31abh"]
+atlas = ExtResource("5_bdvum")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc427"]
+atlas = ExtResource("5_bdvum")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6f2d8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ues5q")
+}],
+"loop": true,
+"name": &"broken1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_86mp1")
+}],
+"loop": true,
+"name": &"broken2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_penag")
+}],
+"loop": true,
+"name": &"broken3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r62di")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su2q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hos6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp0e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31abh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc427")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[node name="potionR" type="Area2D" groups=["potionR"]]
+scale = Vector2(3, 3)
+collision_layer = 8192
+collision_mask = 2
+script = ExtResource("1_2unvf")
+
+[node name="potionR_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cw50r")
+
+[node name="potionR_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6f2d8")
+animation = &"idle"
+autoplay = "idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

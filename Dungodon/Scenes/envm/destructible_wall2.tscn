@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://dst5nnwv2cyyb"]
 
 [ext_resource type="Script" path="res://Scripts/destructible_wall2.gd" id="1_m5tbg"]
-[ext_resource type="Texture2D" uid="uid://beoqckj0dm6k6" path="res://Assets/Env/bricks_broken.png" id="2_brmmj"]
 [ext_resource type="Texture2D" uid="uid://c3q4tfr0d72c7" path="res://Assets/Env/bricks_crack2.png" id="2_d7pk2"]
+[ext_resource type="Texture2D" uid="uid://bl5afmnc7geso" path="res://Assets/Env/bricks_broken2.png" id="2_r00a3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hdiwn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_brmmj")
+"texture": ExtResource("2_r00a3")
 }],
 "loop": true,
 "name": &"broken",
@@ -42,8 +42,8 @@ script = ExtResource("1_m5tbg")
 [node name="destructible_wall2_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_hdiwn")
+animation = &"broken"
 autoplay = "default"
-frame_progress = 0.885244
 
 [node name="destructible_wall2_collbox1" type="CollisionShape2D" parent="."]
 position = Vector2(-58.5, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=26 format=3 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_ayw5j"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_eb5bd"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dst5nnwv2cyyb" path="res://Scenes/envm/destructible_wall2.tscn" id="15_oon0t"]
 [ext_resource type="PackedScene" uid="uid://bwns7b0dm5jcl" path="res://Scenes/envm/destructible_wall1.tscn" id="16_0506t"]
 [ext_resource type="PackedScene" uid="uid://cdh5v1hnuhpxj" path="res://Scenes/pickups/potions/potion_g_2.tscn" id="17_sjmwv"]
+[ext_resource type="PackedScene" uid="uid://dflmpx03sns4k" path="res://Scenes/pickups/potions/potion_r.tscn" id="18_oahw7"]
+[ext_resource type="PackedScene" uid="uid://dho5eidcs6olf" path="res://Scenes/pickups/potions/potion_r_2.tscn" id="19_rnlxp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
 texture = ExtResource("2_eb5bd")
@@ -218,10 +220,10 @@ sources/0 = SubResource("TileSetAtlasSource_sffuo")
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 texture_repeat = 2
-offset_left = 77.0
-offset_top = 59.0
-offset_right = 1880.0
-offset_bottom = 1147.0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 1811.0
+offset_bottom = 1136.0
 scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("1_ayw5j")
 stretch_mode = 1
@@ -278,6 +280,15 @@ position = Vector2(602, 362)
 [node name="potionG" parent="pickups/potions" instance=ExtResource("10_v3y0w")]
 position = Vector2(398, 202)
 
+[node name="potionG2" parent="pickups/potions" instance=ExtResource("17_sjmwv")]
+position = Vector2(528, 211)
+
+[node name="potionR" parent="pickups/potions" instance=ExtResource("18_oahw7")]
+position = Vector2(645, 210)
+
+[node name="potionR2" parent="pickups/potions" instance=ExtResource("19_rnlxp")]
+position = Vector2(765, 211)
+
 [node name="medkits" type="Node2D" parent="pickups"]
 
 [node name="medkit" parent="pickups/medkits" instance=ExtResource("6_sdmih")]
@@ -314,6 +325,3 @@ zoom = Vector2(2, 2)
 
 [node name="enemy" parent="." instance=ExtResource("3_0w550")]
 position = Vector2(337, 867)
-
-[node name="potionG2" parent="." instance=ExtResource("17_sjmwv")]
-position = Vector2(528, 211)
