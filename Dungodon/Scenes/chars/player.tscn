@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ducgrspg4c2fe"]
+[gd_scene load_steps=29 format=3 uid="uid://ducgrspg4c2fe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_5g4u3"]
 [ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/chars/wpns/player_wepon_sword.tscn" id="2_am8ds"]
@@ -108,6 +108,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hfc10"]
 radius = 16.8421
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_ap8yv"]
 
 [node name="player" type="CharacterBody2D" groups=["player_body"]]
 scale = Vector2(0.95, 0.95)
@@ -234,6 +236,9 @@ texture = ExtResource("10_vx3mx")
 [node name="key_holder_collbox" type="CollisionShape2D" parent="keys/key_holder"]
 position = Vector2(35.7895, 45.2632)
 shape = SubResource("CircleShape2D_hfc10")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="keys/key_holder"]
+stream = SubResource("AudioStreamMP3_ap8yv")
 
 [connection signal="area_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_area_entered"]
 [connection signal="body_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_body_entered"]

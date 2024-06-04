@@ -94,8 +94,8 @@ func holster():
 	if isholster== true and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
 		isuholsteringmove = true
 		setspeed()
-		for n in 150:
-			$player_wepon_sword_holstered_sprite.rotation_degrees += 0.3
+		for n in 90:
+			$player_wepon_sword_holstered_sprite.rotation_degrees += 0.5
 			await get_tree().create_timer(0.000000001).timeout
 		$player_wepon_sword_holstered_sprite.visible = false
 		$player_wepon_sword.visible = true
@@ -106,8 +106,8 @@ func holster():
 		setspeed()
 		$player_wepon_sword_holstered_sprite.visible = true
 		$player_wepon_sword.visible = false
-		for n in 225:
-			$player_wepon_sword_holstered_sprite.rotation_degrees += -0.2
+		for n in 90:
+			$player_wepon_sword_holstered_sprite.rotation_degrees += -0.5
 			await get_tree().create_timer(0.000000001).timeout
 		isholster = true
 		isuholsteringmove = false
@@ -133,8 +133,8 @@ func get_keys():
 	key_check()
 	if (has_got_keys == false and keys_moving == false and isholster == true and isuholsteringmove == false):
 		keys_moving = true
-		for n in 100:
-			$keys.rotation_degrees += -0.4
+		for n in 80:
+			$keys.rotation_degrees += -0.5
 			await get_tree().create_timer(0.000000001).timeout
 		has_got_keys = true
 		keys_moving = false
@@ -144,8 +144,8 @@ func get_keys():
 		$keys/key_holder.monitoring = true
 	elif  (has_got_keys == true and keys_moving == false and isholster == true and isuholsteringmove == false):
 		keys_moving = true
-		for n in 100:
-			$keys.rotation_degrees += 0.4
+		for n in 80:
+			$keys.rotation_degrees += 0.5
 			await get_tree().create_timer(0.000000001).timeout
 		has_got_keys = false
 		keys_moving = false
