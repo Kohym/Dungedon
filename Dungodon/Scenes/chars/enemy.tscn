@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7guy3xdvjg5y"]
+[gd_scene load_steps=10 format=3 uid="uid://b7guy3xdvjg5y"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ncjho"]
 [ext_resource type="Texture2D" uid="uid://mw5dx4gsg43f" path="res://Assets/Chars/circR.png" id="2_apn8b"]
@@ -12,13 +12,21 @@ radius = 49.0408
 [sub_resource type="CircleShape2D" id="CircleShape2D_cg478"]
 radius = 48.7902
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmq3h"]
+radius = 18.9474
+height = 44.2105
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gw5n3"]
+radius = 160.0
+
 [node name="enemy" type="CharacterBody2D" groups=["enemy_body"]]
 scale = Vector2(0.95, 0.95)
 collision_layer = 4
 script = ExtResource("1_ncjho")
 
 [node name="enemy_wepon_sword" parent="." instance=ExtResource("2_fihiu")]
-position = Vector2(52.6316, 0)
+position = Vector2(57.8947, -2.87363e-15)
+rotation = 3.14159
 scale = Vector2(3, 3)
 
 [node name="enemsprite" type="Sprite2D" parent="."]
@@ -65,6 +73,19 @@ collision_mask = 290
 rotation = 1.5708
 scale = Vector2(1.025, 1.025)
 shape = SubResource("CircleShape2D_cg478")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="enem_att_detect" type="Area2D" parent="."]
+
+[node name="enem_att_detect_collbox" type="CollisionShape2D" parent="enem_att_detect"]
+position = Vector2(94.7368, -1.05263)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vmq3h")
+
+[node name="enem_player_detect" type="Area2D" parent="."]
+
+[node name="enem_player_detect_collbox" type="CollisionShape2D" parent="enem_player_detect"]
+shape = SubResource("CircleShape2D_gw5n3")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [connection signal="area_entered" from="enemhurtbox" to="." method="_on_enemhurtbox_area_entered"]

@@ -319,18 +319,6 @@ zoom = Vector2(2, 2)
 [node name="enemy" parent="." instance=ExtResource("3_0w550")]
 position = Vector2(417, 944)
 
-[node name="potionG2" parent="." instance=ExtResource("17_sjmwv")]
-position = Vector2(541, 487)
-
-[node name="potionG3" parent="." instance=ExtResource("17_sjmwv")]
-position = Vector2(544, 596)
-
-[node name="potionG4" parent="." instance=ExtResource("17_sjmwv")]
-position = Vector2(324, 593)
-
 [node name="destructible_wall1" parent="." instance=ExtResource("16_0506t")]
 position = Vector2(1512, 937)
 rotation = 1.5708
-
-[node name="enemy2" parent="." instance=ExtResource("3_0w550")]
-position = Vector2(913, 326)

@@ -3,15 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://dfcee0c730p1m" path="res://Assets/Wpns/swordR.png" id="1_oy1sy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpj16"]
-size = Vector2(17, 6)
+size = Vector2(18.5, 6)
 
 [node name="enemy_wepon_sword" type="Area2D" groups=["enemy_wepon_sword"]]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.8, 0.8)
 collision_layer = 64
 collision_mask = 0
 
 [node name="enemy_wepon_sword_sprite" type="Sprite2D" parent="."]
+position = Vector2(8.75, 0)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_oy1sy")
 
 [node name="enemy_wepon_sword_collbox" type="CollisionShape2D" parent="."]
-position = Vector2(4.5, 0)
+position = Vector2(12.5, 0)
+scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_dpj16")

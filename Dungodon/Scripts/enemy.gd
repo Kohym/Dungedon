@@ -11,6 +11,8 @@ var med_hp
 var new_hp
 var debug_hp = base_hp
 
+@export var detect_radius = 160
+
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * 200
@@ -19,6 +21,7 @@ func _physics_process(delta):
 
 func _ready():
 	$enembar.value = base_hp
+	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
