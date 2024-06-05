@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ncjho"]
 [ext_resource type="Texture2D" uid="uid://mw5dx4gsg43f" path="res://Assets/Chars/circR.png" id="2_apn8b"]
-[ext_resource type="PackedScene" uid="uid://xkt84r0s56au" path="res://Scenes/enemy_wepon_sword.tscn" id="2_fihiu"]
+[ext_resource type="PackedScene" uid="uid://xkt84r0s56au" path="res://Scenes/chars/wpns/enemy_wepon_sword.tscn" id="2_fihiu"]
 [ext_resource type="Texture2D" uid="uid://c837lj0ac6n64" path="res://Assets/Progresbars/progress_back_black.png" id="3_a24ji"]
 [ext_resource type="Texture2D" uid="uid://ivwqwsdlx2uj" path="res://Assets/Progresbars/progres_red.png" id="4_0fke1"]
 
@@ -12,10 +12,14 @@ radius = 49.0408
 [sub_resource type="CircleShape2D" id="CircleShape2D_cg478"]
 radius = 48.7902
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" groups=["enemy_body"]]
 scale = Vector2(0.95, 0.95)
 collision_layer = 4
 script = ExtResource("1_ncjho")
+
+[node name="enemy_wepon_sword" parent="." instance=ExtResource("2_fihiu")]
+position = Vector2(52.6316, 0)
+scale = Vector2(3, 3)
 
 [node name="enemsprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -48,10 +52,6 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="enemy_wepon_sword" parent="." instance=ExtResource("2_fihiu")]
-position = Vector2(90.5263, 0)
-scale = Vector2(3, 3)
-
 [node name="enemcollbox" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_i6r7w")
@@ -59,7 +59,7 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="enemhurtbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 34
+collision_mask = 290
 
 [node name="enemhurtboxcollbox" type="CollisionShape2D" parent="enemhurtbox"]
 rotation = 1.5708

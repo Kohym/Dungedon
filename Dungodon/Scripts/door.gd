@@ -28,7 +28,7 @@ func open():
 	$door_collbox.set_deferred("disabled", false)
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("player_body"):
+	if body.is_in_group("player_body") or body.is_in_group("enemy_body"):
 		if (islocked == "False"):
 			open()
 		if (islocked != "False"):

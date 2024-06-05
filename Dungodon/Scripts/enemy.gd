@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var player = get_node("/root/GameLevel/player")
 
 @export var take_D_dmg = 5
 @export var take_A_sword_dmg = 20
@@ -10,6 +10,12 @@ var old_hp
 var med_hp
 var new_hp
 var debug_hp = base_hp
+
+func _physics_process(delta):
+	var direction = global_position.direction_to(player.global_position)
+	velocity = direction * 200
+	look_at(player.global_position)
+	move_and_slide()
 
 func _ready():
 	$enembar.value = base_hp
@@ -41,3 +47,11 @@ func _on_enemhurtbox_body_entered(body):
 				debug_hp = 0
 				$enemhp.text = str(debug_hp)
 				queue_free()
+	if body.is_in_group("spikes"):
+		base_hp -= 10
+		$enembar.value -= 10
+		$enemhp.text = str(base_hp - 10)
+		if  (debug_hp <= 0):
+			debug_hp = 0
+			$enemhp.text = str(debug_hp)
+			queue_free()

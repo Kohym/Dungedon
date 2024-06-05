@@ -13,6 +13,7 @@ var input: Vector2
 @export var base_hp = 100
 @export var attspeed = 0.1
 @export var medkit_heal = 70
+var speedboost = 0
 
 
 
@@ -89,6 +90,8 @@ func setspeed():
 		SPEED=350
 	elif  (isattac == false and isholster == true and isuholsteringmove == false and ispoison == true and has_got_keys == true):
 		SPEED=180
+	if(speedboost != 0):
+		SPEED += 20 * speedboost
 
 func holster():
 	if isholster== true and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
@@ -232,6 +235,24 @@ func _on_playerhurtbox_area_entered(area):
 	elif area.is_in_group("potionG"):
 		ispoison = false
 		addhp()
+	elif area.is_in_group("potionG2"):
+		speedboost += 1
+		setspeed()
+	elif area.is_in_group("potionR"):
+		ispoison = false
+	elif area.is_in_group("potionR2"):
+		new_hp = debug_hp - debug_hp
+		old_hp = new_hp + debug_hp
+		for n in debug_hp:
+			debug_hp = debug_hp - 1
+			$playerbar.value = debug_hp
+			$playerhp.text = str(debug_hp)
+			await get_tree().create_timer(0.02).timeout
+			if  (debug_hp <= 0):
+				debug_hp = 0
+				$playerhp.text = str(debug_hp)
+				queue_free()
+	
 
 func _on_playerhurtbox_body_entered(body):
 	if body.is_in_group("spikes"):
