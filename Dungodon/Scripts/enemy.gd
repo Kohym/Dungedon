@@ -11,17 +11,35 @@ var med_hp
 var new_hp
 var debug_hp = base_hp
 
+var speed = 250
+
 @export var detect_radius = 160
+var ischasing = false
+var istooclose = false
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * 200
-	look_at(player.global_position)
-	move_and_slide()
+	var speedmulti = debug_hp / 100
+	speed = speed *speedmulti
+	if ischasing == true and istooclose == false:
+		velocity = direction * speed
+		look_at(player.global_position)
+		move_and_slide()
 
 func _ready():
 	$enembar.value = base_hp
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
+
+func attac():
+	$enemy_wepon_sword.add_to_group("enemy_wepon_sword")
+	await get_tree().create_timer(0.1).timeout
+	print($enemy_wepon_sword.get_groups())
+	var timer = 0.0005
+	for n in 120:
+		await get_tree().create_timer(timer).timeout
+		$enemy_wepon_sword.rotation_degrees += 3
+	$enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
+	print($enemy_wepon_sword.get_groups())
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
@@ -58,3 +76,21 @@ func _on_enemhurtbox_body_entered(body):
 			debug_hp = 0
 			$enemhp.text = str(debug_hp)
 			queue_free()
+
+
+func _on_enem_player_detect_body_entered(body):
+	ischasing = true
+
+
+func _on_enem_player_detect_body_exited(body):
+	ischasing = false
+
+
+func _on_enem_att_detect_body_entered(body):
+	if body.is_in_group("player_body"):
+		attac()
+		istooclose = true
+
+func _on_enem_att_detect_body_exited(body):
+	if body.is_in_group("player_body"):
+		istooclose = false

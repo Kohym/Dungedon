@@ -76,6 +76,8 @@ shape = SubResource("CircleShape2D_cg478")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="enem_att_detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="enem_att_detect_collbox" type="CollisionShape2D" parent="enem_att_detect"]
 position = Vector2(94.7368, -1.05263)
@@ -83,6 +85,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vmq3h")
 
 [node name="enem_player_detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="enem_player_detect_collbox" type="CollisionShape2D" parent="enem_player_detect"]
 shape = SubResource("CircleShape2D_gw5n3")
@@ -90,3 +94,7 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [connection signal="area_entered" from="enemhurtbox" to="." method="_on_enemhurtbox_area_entered"]
 [connection signal="body_entered" from="enemhurtbox" to="." method="_on_enemhurtbox_body_entered"]
+[connection signal="body_entered" from="enem_att_detect" to="." method="_on_enem_att_detect_body_entered"]
+[connection signal="body_exited" from="enem_att_detect" to="." method="_on_enem_att_detect_body_exited"]
+[connection signal="body_entered" from="enem_player_detect" to="." method="_on_enem_player_detect_body_entered"]
+[connection signal="body_exited" from="enem_player_detect" to="." method="_on_enem_player_detect_body_exited"]

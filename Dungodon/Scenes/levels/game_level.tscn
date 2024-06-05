@@ -266,7 +266,7 @@ position = Vector2(746, 477)
 position = Vector2(698, 302)
 
 [node name="key_red" parent="pickups/keys" instance=ExtResource("11_3hi0x")]
-position = Vector2(1642, 903)
+position = Vector2(478, 643)
 
 [node name="potions" type="Node2D" parent="pickups"]
 
@@ -317,7 +317,7 @@ rotation = 1.5708
 zoom = Vector2(2, 2)
 
 [node name="enemy" parent="." instance=ExtResource("3_0w550")]
-position = Vector2(417, 944)
+position = Vector2(407, 677)
 
 [node name="destructible_wall1" parent="." instance=ExtResource("16_0506t")]
 position = Vector2(1512, 937)

@@ -164,7 +164,6 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_51do8")
 
 [node name="playerhurtbox" type="Area2D" parent="."]
-unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 13120
 
