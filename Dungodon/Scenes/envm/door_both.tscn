@@ -1,18 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://bix618qsrb7hq"]
+[gd_scene load_steps=16 format=3 uid="uid://bix618qsrb7hq"]
 
 [ext_resource type="Script" path="res://Scripts/door_both.gd" id="1_42lde"]
 [ext_resource type="Texture2D" uid="uid://c536sfcnwfh7n" path="res://Assets/Env/door_both.png" id="2_dem2y"]
+[ext_resource type="Texture2D" uid="uid://dw5o2m13lckv4" path="res://Assets/Env/door_bothB.png" id="2_eysvr"]
+[ext_resource type="Texture2D" uid="uid://cbytm7yj5ahwf" path="res://Assets/Env/door_bothD.png" id="4_5docj"]
+[ext_resource type="Texture2D" uid="uid://cpgmunt4yauga" path="res://Assets/Env/door_bothG.png" id="5_ugaao"]
+[ext_resource type="Texture2D" uid="uid://bjfbiarb4ffup" path="res://Assets/Env/door_bothR.png" id="6_hyurx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u7nq"]
+atlas = ExtResource("2_eysvr")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8ujf"]
 atlas = ExtResource("2_dem2y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq74v"]
+atlas = ExtResource("4_5docj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bunyi"]
+atlas = ExtResource("5_ugaao")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_simq1"]
 atlas = ExtResource("2_dem2y")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uonk"]
+atlas = ExtResource("6_hyurx")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ciu2c"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u7nq")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p8ujf")
@@ -23,10 +51,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_oq74v")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bunyi")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_simq1")
 }],
 "loop": true,
 "name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uonk")
+}],
+"loop": true,
+"name": &"red",
 "speed": 5.0
 }]
 
@@ -64,30 +116,6 @@ collision_mask = 6
 [node name="door_both_open_detect_collbox2" type="CollisionShape2D" parent="door_both_open_detect2"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_xowfc")
-
-[node name="door_both_label1" type="Label" parent="."]
-texture_filter = 1
-offset_left = 16.0
-offset_top = -2.0
-offset_right = 652.0
-offset_bottom = 122.0
-rotation = 3.14159
-scale = Vector2(0.05, 0.05)
-theme_override_font_sizes/font_size = 90
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="door_both_label2" type="Label" parent="."]
-texture_filter = 1
-offset_left = -16.0
-offset_top = 2.0
-offset_right = 624.0
-offset_bottom = 126.0
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 90
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="area_entered" from="door_both_open_detect1" to="." method="_on_door_both_open_detect_1_area_entered"]
 [connection signal="body_entered" from="door_both_open_detect1" to="." method="_on_area_2d_body_entered"]

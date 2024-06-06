@@ -1,19 +1,47 @@
-[gd_scene load_steps=9 format=3 uid="uid://cijal7twssdcc"]
+[gd_scene load_steps=17 format=3 uid="uid://cijal7twssdcc"]
 
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_nxbts"]
+[ext_resource type="Texture2D" uid="uid://ug54wopj0tuj" path="res://Assets/Env/doorB.png" id="2_aaj1v"]
 [ext_resource type="Texture2D" uid="uid://de4xc6y4fu0mq" path="res://Assets/Env/door_bottom.png" id="2_ay0t0"]
 [ext_resource type="Texture2D" uid="uid://cvmyc2qfjvyu1" path="res://Assets/Env/door.png" id="3_ivxu8"]
+[ext_resource type="Texture2D" uid="uid://ba6aqis8g7uhp" path="res://Assets/Env/doorG.png" id="4_vr4qk"]
+[ext_resource type="Texture2D" uid="uid://do4kkodq0vc5d" path="res://Assets/Env/doorD.png" id="4_w16y5"]
+[ext_resource type="Texture2D" uid="uid://c57g0oaldk6dc" path="res://Assets/Env/doorR.png" id="6_rvtuk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0t2l"]
+atlas = ExtResource("2_aaj1v")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60u8j"]
 atlas = ExtResource("2_ay0t0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d7d5"]
+atlas = ExtResource("4_w16y5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rncp"]
+atlas = ExtResource("4_vr4qk")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oi243"]
 atlas = ExtResource("3_ivxu8")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp346"]
+atlas = ExtResource("6_rvtuk")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ciu2c"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0t2l")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_60u8j")
@@ -24,10 +52,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5d7d5")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rncp")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_oi243")
 }],
 "loop": true,
 "name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp346")
+}],
+"loop": true,
+"name": &"red",
 "speed": 5.0
 }]
 
@@ -43,20 +95,8 @@ script = ExtResource("1_nxbts")
 
 [node name="door_sprite" type="AnimatedSprite2D" parent="." groups=["door"]]
 sprite_frames = SubResource("SpriteFrames_ciu2c")
-animation = &"closed"
+animation = &"destroyed"
 autoplay = "closed"
-
-[node name="door_label" type="Label" parent="."]
-texture_filter = 1
-offset_left = -15.0
-offset_top = 14.0
-offset_right = 585.0
-offset_bottom = 123.0
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 70
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="door_collbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)

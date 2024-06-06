@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_a55dn"]
 [ext_resource type="PackedScene" uid="uid://du6cr36cg3ufs" path="res://Scenes/levels/menu_level.tscn" id="2_t6wx6"]
-[ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Scenes/theme.tres" id="3_belm7"]
+[ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="3_belm7"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3

@@ -178,21 +178,22 @@ rotation = -1.5708
 [node name="door_both" parent="." instance=ExtResource("10_ali4s")]
 position = Vector2(228, 384)
 rotation = 1.5708
-islocked = "red"
-iflocked = ""
+islocked = "True"
 
 [node name="medkit" parent="." instance=ExtResource("11_xcse2")]
 position = Vector2(575, 151)
 
 [node name="menu_character" parent="." instance=ExtResource("12_dhr71")]
-position = Vector2(1233, 852)
-rotation = 0.785398
-scale = Vector2(2, 2)
+position = Vector2(1213.51, 852.036)
+rotation = 0.610865
+scale = Vector2(3, 3)
+sword_rotation = 305
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("13_5ey3y")]
-position = Vector2(1469, 1190)
-rotation = -2.00713
-scale = Vector2(2, 2)
+position = Vector2(1751.74, 1156.9)
+rotation = -2.61799
+scale = Vector2(3, 3)
+sword_rotation = 30
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_41dph")
