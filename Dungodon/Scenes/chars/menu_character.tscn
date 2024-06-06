@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://b5lb483utobcr"]
+
+[ext_resource type="Script" path="res://Scripts/menu_character.gd" id="1_3oeag"]
+[ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/chars/wpns/player_wepon_sword.tscn" id="2_d0wxi"]
+[ext_resource type="Texture2D" uid="uid://c837lj0ac6n64" path="res://Assets/Progresbars/progress_back_black.png" id="3_siajy"]
+[ext_resource type="Texture2D" uid="uid://dda32dykvb2dp" path="res://Assets/Progresbars/progres_green.png" id="4_e204l"]
+[ext_resource type="Texture2D" uid="uid://cxshx0mirm8y6" path="res://Assets/Chars/circG.png" id="5_4npnb"]
+[ext_resource type="Texture2D" uid="uid://ialmuyrwg3ph" path="res://Assets/keys/key_holder.png" id="6_1kdi4"]
+[ext_resource type="Texture2D" uid="uid://dup3j7u8r4alq" path="res://Assets/keys/key_blue.png" id="8_jr4qg"]
+[ext_resource type="Texture2D" uid="uid://duhaamj8t4n4g" path="res://Assets/keys/key_red.png" id="10_x7dh6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jon7u"]
+radius = 16.8421
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_di6rj"]
+
+[node name="menu_character" type="CharacterBody2D"]
+script = ExtResource("1_3oeag")
+sword_rotation = 65
+
+[node name="player_wepon_sword" parent="." instance=ExtResource("2_d0wxi")]
+position = Vector2(62.1048, -0.8)
+rotation = 3.14159
+
+[node name="playerbar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -48.0
+offset_top = -48.0
+offset_right = -16.0
+offset_bottom = -16.0
+scale = Vector2(3, 3)
+value = 100.0
+fill_mode = 8
+texture_under = ExtResource("3_siajy")
+texture_progress = ExtResource("4_e204l")
+
+[node name="playersprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("5_4npnb")
+
+[node name="keys" type="Node2D" parent="."]
+
+[node name="key_holder" type="Area2D" parent="keys"]
+collision_layer = 2
+collision_mask = 1024
+
+[node name="key_holder_sprite" type="Sprite2D" parent="keys/key_holder"]
+position = Vector2(28.4211, 38.9474)
+rotation = 0.785398
+texture = ExtResource("6_1kdi4")
+
+[node name="key_blue_sprite" type="Sprite2D" parent="keys/key_holder"]
+position = Vector2(30.5263, 49.4737)
+rotation = -2.12233
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("8_jr4qg")
+
+[node name="key_red_sprite" type="Sprite2D" parent="keys/key_holder"]
+position = Vector2(38.9474, 38.9474)
+rotation = -2.9531
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_x7dh6")
+
+[node name="key_holder_collbox" type="CollisionShape2D" parent="keys/key_holder"]
+position = Vector2(35.7895, 45.2632)
+shape = SubResource("CircleShape2D_jon7u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="keys/key_holder"]
+stream = SubResource("AudioStreamMP3_di6rj")

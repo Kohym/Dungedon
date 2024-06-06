@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://djctowfolotk1"]
+
+[ext_resource type="FontFile" uid="uid://che27qc4jvrhi" path="res://Assets/RUBBBB__.TTF" id="1_3j775"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hi0f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiteu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ouomf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tsc76"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lic4u"]
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0)
+Button/colors/icon_focus_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
+Button/font_sizes/font_size = 17
+Button/fonts/font = ExtResource("1_3j775")
+Button/styles/disabled = SubResource("StyleBoxEmpty_2hi0f")
+Button/styles/focus = SubResource("StyleBoxEmpty_oiteu")
+Button/styles/hover = SubResource("StyleBoxEmpty_ouomf")
+Button/styles/normal = SubResource("StyleBoxEmpty_tsc76")
+Button/styles/pressed = SubResource("StyleBoxEmpty_lic4u")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = ExtResource("1_3j775")

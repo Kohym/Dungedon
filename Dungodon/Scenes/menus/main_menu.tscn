@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjw3ntd5sankc"]
+[gd_scene load_steps=4 format=3 uid="uid://cjw3ntd5sankc"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_a55dn"]
-
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_gpm6d"]
+[ext_resource type="PackedScene" uid="uid://du6cr36cg3ufs" path="res://Scenes/levels/menu_level.tscn" id="2_t6wx6"]
+[ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Scenes/theme.tres" id="3_belm7"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -13,38 +13,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a55dn")
 
+[node name="Node2D" parent="." instance=ExtResource("2_t6wx6")]
+
 [node name="button_container" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -293.0
-offset_top = -147.0
-offset_right = 293.0
-offset_bottom = 147.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 96.0
+offset_top = 576.0
+offset_right = 912.0
+offset_bottom = 1344.0
+theme = ExtResource("3_belm7")
+alignment = 1
 
 [node name="play_button" type="Button" parent="button_container"]
 layout_mode = 2
+theme = ExtResource("3_belm7")
 theme_override_font_sizes/font_size = 100
 text = "Play"
+
+[node name="options_button" type="Button" parent="button_container"]
+layout_mode = 2
+theme = ExtResource("3_belm7")
+theme_override_font_sizes/font_size = 100
+text = "Options"
 
 [node name="exit_button" type="Button" parent="button_container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Exit"
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = SubResource("VideoStreamTheora_gpm6d")
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1433.0
+offset_top = 251.0
+offset_right = 2335.0
+offset_bottom = 405.0
+rotation = 0.174533
+theme = ExtResource("3_belm7")
+theme_override_font_sizes/font_size = 150
+text = "Dungedon"
 
 [connection signal="pressed" from="button_container/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="button_container/options_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="button_container/exit_button" to="." method="_on_exit_button_pressed"]
