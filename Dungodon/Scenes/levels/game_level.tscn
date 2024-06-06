@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=24 format=3 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_ayw5j"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_eb5bd"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bwns7b0dm5jcl" path="res://Scenes/envm/destructible_wall1.tscn" id="16_0506t"]
 [ext_resource type="PackedScene" uid="uid://cdh5v1hnuhpxj" path="res://Scenes/pickups/potions/potion_g_2.tscn" id="17_sjmwv"]
 [ext_resource type="PackedScene" uid="uid://dflmpx03sns4k" path="res://Scenes/pickups/potions/potion_r.tscn" id="18_oahw7"]
-[ext_resource type="PackedScene" uid="uid://dho5eidcs6olf" path="res://Scenes/pickups/potions/potion_r_2.tscn" id="19_rnlxp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
 texture = ExtResource("2_eb5bd")
@@ -279,9 +278,6 @@ position = Vector2(1677, 1022)
 [node name="potionR" parent="pickups/potions" instance=ExtResource("18_oahw7")]
 position = Vector2(645, 210)
 
-[node name="potionR2" parent="pickups/potions" instance=ExtResource("19_rnlxp")]
-position = Vector2(765, 211)
-
 [node name="medkits" type="Node2D" parent="pickups"]
 
 [node name="medkit" parent="pickups/medkits" instance=ExtResource("6_sdmih")]
@@ -317,7 +313,7 @@ rotation = 1.5708
 zoom = Vector2(2, 2)
 
 [node name="enemy" parent="." instance=ExtResource("3_0w550")]
-position = Vector2(407, 677)
+position = Vector2(412, 932)
 
 [node name="destructible_wall1" parent="." instance=ExtResource("16_0506t")]
 position = Vector2(1512, 937)

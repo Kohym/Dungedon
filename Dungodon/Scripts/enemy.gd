@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var player = get_node("/root/GameLevel/player")
+@export var isboss= false
 
 @export var take_D_dmg = 5
 @export var take_A_sword_dmg = 20
@@ -11,11 +12,13 @@ var med_hp
 var new_hp
 var debug_hp = base_hp
 
-var speed = 250
+@export var speed = 240
 
 @export var detect_radius = 160
 var ischasing = false
 var istooclose = false
+var isattac = false
+var willhitwall = false
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -27,19 +30,29 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _ready():
+	if isboss:
+		base_hp = base_hp *1.5
+		$boss_sprite.visible = true
 	$enembar.value = base_hp
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
 
 func attac():
-	$enemy_wepon_sword.add_to_group("enemy_wepon_sword")
-	await get_tree().create_timer(0.1).timeout
-	print($enemy_wepon_sword.get_groups())
-	var timer = 0.0005
-	for n in 120:
-		await get_tree().create_timer(timer).timeout
-		$enemy_wepon_sword.rotation_degrees += 3
-	$enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
-	print($enemy_wepon_sword.get_groups())
+	for i in 5:
+		i += 1
+		if istooclose == false:
+			break
+		if isattac == false and willhitwall == false:
+			isattac = true
+			$enemy_wepon_sword.add_to_group("enemy_wepon_sword")
+			await get_tree().create_timer(0.1).timeout
+			print($enemy_wepon_sword.get_groups())
+			var timer = 0.0005
+			for n in 120:
+				await get_tree().create_timer(timer).timeout
+				$enemy_wepon_sword.rotation_degrees += 3
+			$enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
+			print($enemy_wepon_sword.get_groups())
+			isattac = false
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
@@ -79,17 +92,19 @@ func _on_enemhurtbox_body_entered(body):
 
 
 func _on_enem_player_detect_body_entered(body):
+	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius * 2
 	ischasing = true
 
 
 func _on_enem_player_detect_body_exited(body):
+	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
 	ischasing = false
 
 
 func _on_enem_att_detect_body_entered(body):
 	if body.is_in_group("player_body"):
-		attac()
 		istooclose = true
+		attac()
 
 func _on_enem_att_detect_body_exited(body):
 	if body.is_in_group("player_body"):
