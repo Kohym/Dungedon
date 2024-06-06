@@ -13,31 +13,36 @@ var new_hp
 var debug_hp = base_hp
 
 @export var speed = 240
+var basespeed
 
 @export var detect_radius = 160
 var ischasing = false
 var istooclose = false
 var isattac = false
 var willhitwall = false
+var speedmulti
 
 func _physics_process(delta):
+	print(debug_hp)
 	var direction = global_position.direction_to(player.global_position)
-	var speedmulti = debug_hp / 100
-	speed = speed *speedmulti
 	if ischasing == true and istooclose == false:
 		velocity = direction * speed
 		look_at(player.global_position)
 		move_and_slide()
 
 func _ready():
-	if isboss:
+	basespeed = speed
+	if isboss == true:
 		base_hp = base_hp *1.5
+		debug_hp = base_hp
 		$boss_sprite.visible = true
-	$enembar.value = base_hp
+	$enembar.max_value = base_hp
+	$enemhp.text = str(base_hp)
+	$enembar.value = int(base_hp)
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
 
 func attac():
-	for i in 5:
+	for i in 8:
 		i += 1
 		if istooclose == false:
 			break
@@ -45,14 +50,17 @@ func attac():
 			isattac = true
 			$enemy_wepon_sword.add_to_group("enemy_wepon_sword")
 			await get_tree().create_timer(0.1).timeout
-			print($enemy_wepon_sword.get_groups())
 			var timer = 0.0005
 			for n in 120:
 				await get_tree().create_timer(timer).timeout
 				$enemy_wepon_sword.rotation_degrees += 3
 			$enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
-			print($enemy_wepon_sword.get_groups())
 			isattac = false
+
+func setspeed():
+	if int($enemhp.text) != 100:
+		speedmulti = float(debug_hp) / 100
+		speed = float(basespeed) * speedmulti
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
@@ -67,6 +75,7 @@ func _on_enemhurtbox_area_entered(area):
 				debug_hp = 0
 				$enemhp.text = str(debug_hp)
 				queue_free()
+	setspeed()
 
 func _on_enemhurtbox_body_entered(body):
 	if body.is_in_group("player_body"):
@@ -89,6 +98,7 @@ func _on_enemhurtbox_body_entered(body):
 			debug_hp = 0
 			$enemhp.text = str(debug_hp)
 			queue_free()
+	setspeed()
 
 
 func _on_enem_player_detect_body_entered(body):

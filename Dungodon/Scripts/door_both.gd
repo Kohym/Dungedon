@@ -35,7 +35,7 @@ func open():
 	$door_both_collbox.set_deferred("disabled", false)
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("player_body"):
+	if body.is_in_group("player_body") or body.is_in_group("enemy_body"):
 		if (islocked == "False"):
 			open()
 		if (islocked != "False"):
@@ -44,7 +44,7 @@ func _on_area_2d_body_entered(body):
 			$door_both_label1.text = " "
 
 func _on_door_both_open_detect_2_body_entered(body):
-	if body.is_in_group("player_body"):
+	if body.is_in_group("player_body") or body.is_in_group("enemy_body"):
 		if (islocked == "False"):
 			open()
 		if (islocked != "False"):

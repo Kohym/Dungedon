@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var isalive = true
+
 @export var basespeed = 400
 var SPEED = 400.0
 @export var ACCEL = 20.0
@@ -44,12 +46,12 @@ func get_input():
 
 func _process(delta):
 	$Label.text = str(SPEED)
-	setspeed()
-	look_at(get_global_mouse_position())
-	var playerInput = get_input()
-	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
-	
-	move_and_slide()
+	if isalive == true:
+		setspeed()
+		look_at(get_global_mouse_position())
+		var playerInput = get_input()
+		velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
+		move_and_slide()
 
 func _ready():
 	$player_wepon_sword.monitorable = false
@@ -66,6 +68,10 @@ func  _input(_event):
 		holster()
 	elif  Input.is_action_just_pressed("keys"):
 		get_keys()
+
+func died():
+	isalive = false
+	
 
 func setspeed():
 	if (isattac == true and isholster == false and isuholsteringmove == false and ispoison == false and has_got_keys == false):
@@ -116,14 +122,15 @@ func holster():
 		isuholsteringmove = false
 
 func attack():
-	var timer = attspeed*0.001
-	$player_wepon_sword.monitorable = true
-	for n in 72:
-		await get_tree().create_timer(timer).timeout
-		$player_wepon_sword.rotation_degrees += 5
-	$player_wepon_sword.monitorable = false
-	isattac = false
-	setspeed()
+	if isalive == true:
+		var timer = attspeed*0.001
+		$player_wepon_sword.monitorable = true
+		for n in 72:
+			await get_tree().create_timer(timer).timeout
+			$player_wepon_sword.rotation_degrees += 5
+		$player_wepon_sword.monitorable = false
+		isattac = false
+		setspeed()
 
 func addhp():
 	base_hp = base_hp + 20
@@ -215,7 +222,7 @@ func _on_playerhurtbox_area_entered(area):
 			if  (debug_hp <= 0):
 				debug_hp = 0
 				$playerhp.text = str(debug_hp)
-				queue_free()
+				died()
 	elif area.is_in_group("medkit"):
 		ishealing = true
 		ispoison = false
@@ -251,8 +258,7 @@ func _on_playerhurtbox_area_entered(area):
 			if  (debug_hp <= 0):
 				debug_hp = 0
 				$playerhp.text = str(debug_hp)
-				queue_free()
-	
+				died()
 
 func _on_playerhurtbox_body_entered(body):
 	if body.is_in_group("spikes"):
@@ -267,7 +273,8 @@ func _on_playerhurtbox_body_entered(body):
 			if  (debug_hp <= 0):
 				debug_hp = 0
 				$playerhp.text = str(debug_hp)
-				queue_free()
+				
+				died()
 		attspeed = 0.1
 	elif body.is_in_group("poison"):
 		ispoison = true
@@ -288,8 +295,8 @@ func _on_playerhurtbox_body_entered(body):
 					debug_hp = 0
 					$playerhp.text = str(debug_hp)
 					ispoison = false
-					queue_free()
 					
+					died()
 		attspeed = 0.1
 		ispoison = false
 		setspeed()

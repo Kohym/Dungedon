@@ -24,7 +24,6 @@ radius = 160.0
 scale = Vector2(0.95, 0.95)
 collision_layer = 4
 script = ExtResource("1_ncjho")
-isboss = true
 speed = 270
 
 [node name="enemy_wepon_sword" parent="." instance=ExtResource("2_fihiu")]

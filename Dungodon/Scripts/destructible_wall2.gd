@@ -1,5 +1,9 @@
 extends CharacterBody2D
+@export var isbroken = false
 
+func _ready():
+	if isbroken:
+		$destructible_wall2_sprite.play("broken")
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("playerweponsword"):

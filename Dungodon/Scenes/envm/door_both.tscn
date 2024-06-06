@@ -37,6 +37,7 @@ size = Vector2(32, 4)
 size = Vector2(32, 2)
 
 [node name="door_both" type="CharacterBody2D" groups=["door"]]
+scale = Vector2(3, 3)
 collision_mask = 0
 script = ExtResource("1_42lde")
 

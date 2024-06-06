@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=24 format=3 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_ayw5j"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_eb5bd"]
 [ext_resource type="PackedScene" uid="uid://b7guy3xdvjg5y" path="res://Scenes/chars/enemy.tscn" id="3_0w550"]
+[ext_resource type="Texture2D" uid="uid://l6sng07qs3t1" path="res://Assets/Env/spikes.png" id="3_gqfto"]
 [ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="3_y3l11"]
+[ext_resource type="Texture2D" uid="uid://b4cg4pirs5osq" path="res://Assets/Env/poison.png" id="4_dn15q"]
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="6_sdmih"]
 [ext_resource type="PackedScene" uid="uid://cijal7twssdcc" path="res://Scenes/envm/door.tscn" id="6_wq30g"]
 [ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/envm/door_both.tscn" id="7_1dr7b"]
@@ -14,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://dst5nnwv2cyyb" path="res://Scenes/envm/destructible_wall2.tscn" id="15_oon0t"]
 [ext_resource type="PackedScene" uid="uid://bwns7b0dm5jcl" path="res://Scenes/envm/destructible_wall1.tscn" id="16_0506t"]
 [ext_resource type="PackedScene" uid="uid://cdh5v1hnuhpxj" path="res://Scenes/pickups/potions/potion_g_2.tscn" id="17_sjmwv"]
-[ext_resource type="PackedScene" uid="uid://dho5eidcs6olf" path="res://Scenes/pickups/potions/potion_r_2.tscn" id="18_8hmbd"]
 [ext_resource type="PackedScene" uid="uid://dflmpx03sns4k" path="res://Scenes/pickups/potions/potion_r.tscn" id="18_oahw7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
@@ -124,13 +125,93 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_j137b")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i12l1"]
+texture = ExtResource("3_gqfto")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="TileSet" id="TileSet_cq7a0"]
 physics_layer_0/collision_layer = 256
 physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_i12l1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sffuo"]
+texture = ExtResource("4_dn15q")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_tk8t6"]
 physics_layer_0/collision_layer = 512
 physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_sffuo")
 
 [node name="GameLevel" type="Node2D"]
 
@@ -168,10 +249,6 @@ layer_0/tile_data = PackedInt32Array(786449, 131072, 0, 786450, 65536, 1, 786451
 
 [node name="destructible_wall1" parent="tilemaps" instance=ExtResource("16_0506t")]
 position = Vector2(1080, 456)
-rotation = 1.5708
-
-[node name="destructible_wall3" parent="tilemaps" instance=ExtResource("16_0506t")]
-position = Vector2(1512, 937)
 rotation = 1.5708
 
 [node name="destructible_wall2" parent="tilemaps" instance=ExtResource("15_oon0t")]
@@ -226,7 +303,6 @@ islocked = "False"
 
 [node name="door_both" parent="doors" instance=ExtResource("7_1dr7b")]
 position = Vector2(-502.64, 80.3334)
-scale = Vector2(1, 1)
 islocked = "red"
 
 [node name="player" parent="." instance=ExtResource("3_y3l11")]
@@ -237,8 +313,8 @@ rotation = 1.5708
 zoom = Vector2(2, 2)
 
 [node name="enemy" parent="." instance=ExtResource("3_0w550")]
-position = Vector2(376, 931)
-isboss = true
+position = Vector2(412, 932)
 
-[node name="potionR2" parent="." instance=ExtResource("18_8hmbd")]
-position = Vector2(967, 361)
+[node name="destructible_wall1" parent="." instance=ExtResource("16_0506t")]
+position = Vector2(1512, 937)
+rotation = 1.5708
