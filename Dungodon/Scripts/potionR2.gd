@@ -16,7 +16,6 @@ func _on_body_entered(body):
 		$potionR2_collbox.disabled = true
 		$potionR2_sprite.rotate(rng.randi_range(0,360))
 		var randint = rng.randi_range(1,3)
-		print(randint)
 		if (randint == 1):
 			$potionR2_sprite.play("broken1")
 		elif (randint == 2):

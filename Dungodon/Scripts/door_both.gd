@@ -8,6 +8,8 @@ func _ready():
 		$door_both_collbox.set_deferred("disabled", true)
 	if islocked == "True":
 		$door_both_sprite.play("destroyed")
+	if islocked != "False":
+		$door_both_navlink.enabled = false
 	if islocked == "red":
 		$door_both_sprite.play("red")
 		$door_both_open_detect1.add_to_group("locked_red")
@@ -56,6 +58,7 @@ func _on_door_both_open_detect_1_area_entered(area):
 func _on_door_both_open_detect_2_area_entered(area):
 	if  area.is_in_group("has_"+islocked+"_key") or area.is_in_group("has_universal_key"):
 		islocked = "False"
+		$door_both_navlink.enabled = true
 		$door_both_open_detect1.remove_from_group("locked_red")
 		$door_both_open_detect2.remove_from_group("locked_red")
 		$door_both_open_detect1.remove_from_group("locked_green")

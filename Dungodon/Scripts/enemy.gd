@@ -5,11 +5,14 @@ extends CharacterBody2D
 @export var speed = 300
 @onready var nav_agent := $enemy_navigation as NavigationAgent2D
 
+var dir = 0
+var work =true
+var doknockback = false
 
 @export_group("DMG and HP")
-@export var take_D_dmg = 5
 @export var take_A_sword_dmg = 20
 @export var take_E_spike_dmg = 10
+@export var heal_E_poison_dmg = 15
 
 @export var base_hp = 100
 var old_hp
@@ -27,18 +30,25 @@ var willhitwall = false
 var speedmulti
 
 func _physics_process(delta: float) -> void:
-	var dir = 0
-	if ischasing == true and istooclose == false:
+	dir = 0
+	if ischasing == true and istooclose == false and  doknockback == false and work == true:
 		$enemsprite.rotation = get_angle_to(player1.global_position)
 		$enem_att_detect.rotation = get_angle_to(player1.global_position)
 		dir = to_local(nav_agent.get_next_path_position()).normalized()
-		print(speed)
 		velocity = dir * speed
 		velocity = velocity.normalized() * min(velocity.length(), speed)
 		move_and_slide()
-	elif ischasing == false:
-		pass
-		#velocity = dir *0
+	if doknockback == true:
+		work = false
+		var kn_dir = player1.global_position.direction_to(self.global_position)
+		var knockback = kn_dir * 4
+		velocity = knockback * 70
+		move_and_slide()
+		await get_tree().create_timer(0.3).timeout
+		#global_position += knockback
+		doknockback = false
+		await get_tree().create_timer(0.1).timeout
+		work = true
 
 func _ready():
 	makepath()
@@ -74,18 +84,14 @@ func attac():
 func setspeed():
 	if int($enemhp.text) != 100 and isboss == false:
 		speedmulti = float(debug_hp) / 100
-		#speed = float(basespeed) * speedmulti
+		speed = float(basespeed) * speedmulti
 
-func knockback():
-	var knockbackdir = -velocity
-	velocity = knockbackdir
-	move_and_slide()
-	istooclose = false
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
 		new_hp = debug_hp - take_A_sword_dmg
 		old_hp = new_hp + take_A_sword_dmg
+		doknockback = true
 		for n in take_A_sword_dmg:
 			debug_hp = debug_hp - 1
 			$enemsprite/enembar.value = debug_hp
@@ -98,28 +104,31 @@ func _on_enemhurtbox_area_entered(area):
 	setspeed()
 
 func _on_enemhurtbox_body_entered(body):
-	if body.is_in_group("player_body"):
-		new_hp = debug_hp - take_D_dmg
-		old_hp = new_hp + take_D_dmg
-		istooclose = true
-		knockback()
-		for n in take_D_dmg:
+	if body.is_in_group("spikes"):
+		new_hp = debug_hp - take_E_spike_dmg
+		old_hp = new_hp + take_E_spike_dmg
+		for n in take_E_spike_dmg:
 			debug_hp = debug_hp - 1
 			$enemsprite/enembar.value = debug_hp
 			$enemhp.text = str(debug_hp)
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.02).timeout
 			if  (debug_hp <= 0):
 				debug_hp = 0
 				$enemhp.text = str(debug_hp)
 				queue_free()
-	if body.is_in_group("spikes"):
-		base_hp -= 10
-		$enemsprite/enembar.value -= 10
-		$enemhp.text = str(base_hp - 10)
-		if  (debug_hp <= 0):
-			debug_hp = 0
+	elif  body.is_in_group("poison"):
+		base_hp = base_hp + heal_E_poison_dmg
+		new_hp = debug_hp + heal_E_poison_dmg
+		old_hp = new_hp - heal_E_poison_dmg
+		for n in heal_E_poison_dmg:
+			debug_hp = debug_hp + 1
+			$enemsprite/enembar.value = debug_hp
 			$enemhp.text = str(debug_hp)
-			queue_free()
+			await get_tree().create_timer(0.5).timeout
+			if  (debug_hp >= base_hp):
+				debug_hp = base_hp
+				$enemhp.text = str(debug_hp)
+				break
 	setspeed()
 
 
@@ -129,6 +138,7 @@ func _on_enem_player_detect_body_entered(body):
 
 
 func _on_enem_player_detect_body_exited(body):
+	await get_tree().create_timer(1).timeout
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
 	ischasing = false
 

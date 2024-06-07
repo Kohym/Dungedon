@@ -117,6 +117,10 @@ collision_mask = 6
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_xowfc")
 
+[node name="door_both_navlink" type="NavigationLink2D" parent="."]
+start_position = Vector2(0, -8)
+end_position = Vector2(0, 8)
+
 [connection signal="area_entered" from="door_both_open_detect1" to="." method="_on_door_both_open_detect_1_area_entered"]
 [connection signal="body_entered" from="door_both_open_detect1" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="door_both_open_detect2" to="." method="_on_door_both_open_detect_2_area_entered"]

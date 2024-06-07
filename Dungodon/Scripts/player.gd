@@ -6,6 +6,8 @@ var isalive = true
 var SPEED = 400.0
 @export var ACCEL = 20.0
 
+var knockback_dir = Vector2()
+
 var input: Vector2
 
 @export var take_A_dmg = 20
@@ -71,7 +73,6 @@ func  _input(_event):
 
 func died():
 	isalive = false
-	
 
 func setspeed():
 	if (isattac == true and isholster == false and isuholsteringmove == false and ispoison == false and has_got_keys == false):
