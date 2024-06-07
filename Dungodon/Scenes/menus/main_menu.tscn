@@ -53,5 +53,4 @@ theme_override_font_sizes/font_size = 150
 text = "Dungedon"
 
 [connection signal="pressed" from="button_container/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="button_container/options_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="button_container/exit_button" to="." method="_on_exit_button_pressed"]

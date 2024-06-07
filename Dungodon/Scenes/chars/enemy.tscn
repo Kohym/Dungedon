@@ -23,6 +23,8 @@ radius = 160.0
 [node name="enemy" type="CharacterBody2D" groups=["enemy_body"]]
 scale = Vector2(0.95, 0.95)
 collision_layer = 4
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_ncjho")
 speed = 270
 
@@ -41,8 +43,8 @@ texture_filter = 1
 texture_repeat = 1
 offset_left = -48.0
 offset_top = -48.0
-offset_right = 189.0
-offset_bottom = 189.0
+offset_right = -16.0
+offset_bottom = -16.0
 scale = Vector2(3, 3)
 value = 100.0
 fill_mode = 8
@@ -99,9 +101,17 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_gw5n3")
 debug_color = Color(1, 0, 0, 0.419608)
 
+[node name="enemy_navigation" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="enemy_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="area_entered" from="enemhurtbox" to="." method="_on_enemhurtbox_area_entered"]
 [connection signal="body_entered" from="enemhurtbox" to="." method="_on_enemhurtbox_body_entered"]
 [connection signal="body_entered" from="enem_att_detect" to="." method="_on_enem_att_detect_body_entered"]
 [connection signal="body_exited" from="enem_att_detect" to="." method="_on_enem_att_detect_body_exited"]
 [connection signal="body_entered" from="enem_player_detect" to="." method="_on_enem_player_detect_body_entered"]
 [connection signal="body_exited" from="enem_player_detect" to="." method="_on_enem_player_detect_body_exited"]
+[connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]

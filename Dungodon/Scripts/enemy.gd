@@ -1,5 +1,6 @@
 extends CharacterBody2D
-@onready var player = get_node("/root/GameLevel/player")
+@export var player1: Node2D
+@onready var nav_agent := $enemy_navigation as NavigationAgent2D
 @export var isboss= false
 
 @export var take_D_dmg = 5
@@ -12,7 +13,7 @@ var med_hp
 var new_hp
 var debug_hp = base_hp
 
-@export var speed = 240
+@export var speed = 100
 var basespeed
 
 @export var detect_radius = 160
@@ -23,14 +24,19 @@ var willhitwall = false
 var speedmulti
 
 func _physics_process(delta):
-	print(debug_hp)
-	var direction = global_position.direction_to(player.global_position)
-	if ischasing == true and istooclose == false:
-		velocity = direction * speed
-		look_at(player.global_position)
-		move_and_slide()
+	var dir = to_local(nav_agent.get_next_path_position()).normalized()
+	velocity = dir * speed
+	look_at(player1.global_position)
+	print(player1.global_position)
+	move_and_slide()
+	#if ischasing == true and istooclose == false:
+		#velocity = dir * speed
+		#velocity = velocity * -1
+		#look_at(player1.global_position)
+		#move_and_slide()
 
 func _ready():
+	makepath()
 	basespeed = speed
 	if isboss == true:
 		base_hp = base_hp *1.5
@@ -40,6 +46,9 @@ func _ready():
 	$enemhp.text = str(base_hp)
 	$enembar.value = int(base_hp)
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
+
+func makepath():
+	nav_agent.target_position = player1.global_position
 
 func attac():
 	for i in 8:
@@ -58,7 +67,7 @@ func attac():
 			isattac = false
 
 func setspeed():
-	if int($enemhp.text) != 100:
+	if int($enemhp.text) != 100 and isboss == false:
 		speedmulti = float(debug_hp) / 100
 		speed = float(basespeed) * speedmulti
 
@@ -119,3 +128,7 @@ func _on_enem_att_detect_body_entered(body):
 func _on_enem_att_detect_body_exited(body):
 	if body.is_in_group("player_body"):
 		istooclose = false
+
+
+func _on_enemy_timer_timeout():
+	makepath()
