@@ -15,31 +15,114 @@ script = ExtResource("1_a55dn")
 
 [node name="Node2D" parent="." instance=ExtResource("2_t6wx6")]
 
-[node name="button_container" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 576.0
-offset_right = 912.0
-offset_bottom = 1344.0
+[node name="menus" type="MarginContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.661
+anchor_right = 1.0
+anchor_bottom = 0.661
+offset_left = 97.0
+offset_top = -139.0
+offset_right = -1642.0
+offset_bottom = 633.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_belm7")
+
+[node name="main_menu" type="VBoxContainer" parent="menus"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 alignment = 1
 
-[node name="play_button" type="Button" parent="button_container"]
+[node name="levels_button" type="Button" parent="menus/main_menu"]
 layout_mode = 2
 theme = ExtResource("3_belm7")
-theme_override_font_sizes/font_size = 100
-text = "Play"
+theme_override_font_sizes/font_size = 0
+text = "Levels"
 
-[node name="options_button" type="Button" parent="button_container"]
+[node name="options_button" type="Button" parent="menus/main_menu"]
 layout_mode = 2
 theme = ExtResource("3_belm7")
-theme_override_font_sizes/font_size = 100
 text = "Options"
 
-[node name="exit_button" type="Button" parent="button_container"]
+[node name="exit_button" type="Button" parent="menus/main_menu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
 text = "Exit"
+
+[node name="levels_menu" type="VBoxContainer" parent="menus"]
+visible = false
+layout_mode = 2
+
+[node name="lvl1_button" type="Button" parent="menus/levels_menu"]
+layout_mode = 2
+text = "Level 1"
+
+[node name="lvl2_button" type="Button" parent="menus/levels_menu"]
+layout_mode = 2
+text = "Level 2"
+
+[node name="lvl3_button" type="Button" parent="menus/levels_menu"]
+layout_mode = 2
+text = "Level 3"
+
+[node name="lvl4_button" type="Button" parent="menus/levels_menu"]
+layout_mode = 2
+text = "Level 4"
+
+[node name="lvl5_button" type="Button" parent="menus/levels_menu"]
+layout_mode = 2
+text = "Level 5"
+
+[node name="lvl6_button" type="Button" parent="menus/levels_menu"]
+layout_mode = 2
+text = "Level 6"
+
+[node name="back_button" type="Button" parent="menus/levels_menu"]
+layout_mode = 2
+text = "Back"
+
+[node name="options_menu" type="VBoxContainer" parent="menus"]
+layout_direction = 1
+layout_mode = 2
+
+[node name="volume_label" type="Label" parent="menus/options_menu"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+text = "volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="option_volume" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 397.0
+offset_top = 917.0
+offset_right = 653.0
+offset_bottom = 1017.0
+theme = ExtResource("3_belm7")
+
+[node name="volume+" type="Button" parent="option_volume"]
+layout_mode = 2
+text = "-"
+alignment = 2
+
+[node name="volume" type="Label" parent="option_volume"]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="volume+2" type="Button" parent="."]
+layout_mode = 2
+offset_left = 576.0
+offset_top = 917.0
+offset_right = 576.0
+offset_bottom = 1017.0
+theme = ExtResource("3_belm7")
+text = "+"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -52,5 +135,6 @@ theme = ExtResource("3_belm7")
 theme_override_font_sizes/font_size = 150
 text = "Dungedon"
 
-[connection signal="pressed" from="button_container/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="button_container/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="menus/main_menu/levels_button" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="menus/main_menu/options_button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="menus/main_menu/exit_button" to="." method="_on_exit_button_pressed"]

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://che27qc4jvrhi"
-path="res://.godot/imported/RUBBBB__.TTF-1e7a33371a7b27a4e0c2950a7a5efd8f.fontdata"
+uid="uid://dc22yuyfyg7nn"
+path="res://.godot/imported/dungedot_font.otf-a4cf77a081c6f9841892469b061c9ca4.fontdata"
 
 [deps]
 
-source_file="res://Assets/RUBBBB__.TTF"
-dest_files=["res://.godot/imported/RUBBBB__.TTF-1e7a33371a7b27a4e0c2950a7a5efd8f.fontdata"]
+source_file="res://Assets/dungedot_font.otf"
+dest_files=["res://.godot/imported/dungedot_font.otf-a4cf77a081c6f9841892469b061c9ca4.fontdata"]
 
 [params]
 
