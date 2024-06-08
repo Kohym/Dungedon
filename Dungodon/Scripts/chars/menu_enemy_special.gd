@@ -7,7 +7,7 @@ var rng = RandomNumberGenerator.new()
 @export_range(0,360,1) var sword_rotation: int
 @export_enum("linear", "loop") var islocked: = "linear"
 
-@onready var pathfollow = get_node("/root/Node2D/Path2D/menu_patrol")
+@onready var pathfollow = get_node("$../")
 
 var speed = 100
 

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c652umiweekt6"]
+
+[ext_resource type="Script" path="res://Scripts/envm/scroll.gd" id="1_2v6ic"]
+[ext_resource type="Texture2D" uid="uid://bhtmaefxar43y" path="res://Assets/Env/scroll.png" id="1_ev2cg"]
+
+[node name="scroll" type="Control"]
+layout_mode = 3
+anchor_right = 0.522
+anchor_bottom = 0.526
+offset_right = -1336.32
+offset_bottom = -757.44
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2v6ic")
+
+[node name="scroll_texture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -641.0
+offset_top = -361.0
+offset_right = 640.0
+offset_bottom = 361.0
+texture = ExtResource("1_ev2cg")
+
+[node name="scroll_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -224.0
+offset_right = 630.0
+offset_bottom = -43.0
+theme_override_colors/font_pressed_color = Color(0.520837, 0.00122551, 0.682753, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "X"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="scroll_button" to="." method="_on_scroll_button_pressed"]

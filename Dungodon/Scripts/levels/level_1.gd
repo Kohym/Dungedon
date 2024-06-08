@@ -17,3 +17,11 @@ func pausemenu():
 		$player/Camera2D/pause_ui.show()
 		Engine.time_scale = 0
 		paused = true
+
+func pausemenu2():
+	if paused == true:
+		Engine.time_scale = 1
+		paused= false
+	else:
+		Engine.time_scale = 0
+		paused = true

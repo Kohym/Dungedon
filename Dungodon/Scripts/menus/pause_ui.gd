@@ -1,6 +1,7 @@
 extends Control
 @onready var main = $"../../../"
 @onready var sec = $"../../"
+
 func _on_pause_resume_pressed():
 	main.pausemenu()
 	sec.lockmovement()

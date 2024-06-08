@@ -1,9 +1,11 @@
 extends CharacterBody2D
+#region Vars
 @export var isboss= false
 @export_group("NAV and BOSS")
 @export var player1: Node2D
 @export var speed = 300
 @onready var nav_agent := $enemy_navigation as NavigationAgent2D
+var isdetecting = false
 
 var dir = 0
 var work =true
@@ -28,12 +30,16 @@ var istooclose = false
 var isattac = false
 var willhitwall = false
 var speedmulti
+#endregion
 
+#region movement and pathfinding
 func _physics_process(delta: float) -> void:
 	dir = 0
-	if ischasing == true and istooclose == false and  doknockback == false and work == true:
-		$enemsprite.rotation = get_angle_to(player1.global_position)
-		$enem_att_detect.rotation = get_angle_to(player1.global_position)
+	raycast_detect()
+	if istooclose == false and  doknockback == false and work == true:
+		if ischasing == true or isdetecting == true:
+			$enemsprite.rotation = get_angle_to(player1.global_position)
+			$enem_att_detect.rotation = get_angle_to(player1.global_position)
 		dir = to_local(nav_agent.get_next_path_position()).normalized()
 		velocity = dir * speed
 		velocity = velocity.normalized() * min(velocity.length(), speed)
@@ -51,7 +57,6 @@ func _physics_process(delta: float) -> void:
 		work = true
 
 func _ready():
-	makepath()
 	basespeed = speed
 	if isboss == true:
 		base_hp = base_hp *1.5
@@ -62,9 +67,53 @@ func _ready():
 	$enemsprite/enembar.value = int(base_hp)
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
 
-func makepath():
-	nav_agent.target_position = player1.global_position
+func setspeed():
+	if int($enemhp.text) != 100 and isboss == false:
+		speedmulti = float(debug_hp) / 100
+		speed = float(basespeed) * speedmulti
 
+func makepath():
+	if ischasing == true or isdetecting == true:
+		nav_agent.target_position = player1.global_position
+
+func raycast_detect():
+	var ray1 = $enemsprite/enem_raycast1.get_collider()
+	var ray2 = $enemsprite/enem_raycast2.get_collider()
+	var ray3 =$enemsprite/enem_raycast3.get_collider()
+	var ray4 = $enemsprite/enem_raycast1.get_collider()
+	var ray5 = $enemsprite/enem_raycast2.get_collider()
+	if  ray1 != player1 and ray2!= player1 and ray3!= player1 and ray4!= player1 and ray5!= player1:
+		await get_tree().create_timer(5).timeout
+		isdetecting = false
+	if ray1 == player1 or ray2== player1 or ray3== player1 or ray4== player1 or ray5== player1:
+		isdetecting = true
+		makepath()
+
+func _on_enem_player_detect_body_entered(body):
+	$enemsprite.rotation = get_angle_to(player1.global_position)
+	$enem_att_detect.rotation = get_angle_to(player1.global_position)
+	if isdetecting:
+		ischasing = true
+
+func _on_enem_player_detect_body_exited(body):
+	await get_tree().create_timer(1).timeout
+	ischasing = false
+
+func _on_enem_att_detect_body_entered(body):
+	if body.is_in_group("player_body"):
+		istooclose = true
+		attac()
+
+func _on_enem_att_detect_body_exited(body):
+	if body.is_in_group("player_body"):
+		istooclose = false
+
+func _on_enemy_timer_timeout():
+	if ischasing == true or isdetecting == true:
+		makepath()
+#endregion
+
+#region attack and damage
 func attac():
 	for i in 8:
 		i += 1
@@ -80,12 +129,6 @@ func attac():
 				$enemsprite/enemy_wepon_sword.rotation_degrees += 3
 			$enemsprite/enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
 			isattac = false
-
-func setspeed():
-	if int($enemhp.text) != 100 and isboss == false:
-		speedmulti = float(debug_hp) / 100
-		speed = float(basespeed) * speedmulti
-
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
@@ -130,27 +173,4 @@ func _on_enemhurtbox_body_entered(body):
 				$enemhp.text = str(debug_hp)
 				break
 	setspeed()
-
-
-func _on_enem_player_detect_body_entered(body):
-	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius * 2
-	ischasing = true
-
-
-func _on_enem_player_detect_body_exited(body):
-	await get_tree().create_timer(1).timeout
-	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
-	ischasing = false
-
-func _on_enem_att_detect_body_entered(body):
-	if body.is_in_group("player_body"):
-		istooclose = true
-		attac()
-
-func _on_enem_att_detect_body_exited(body):
-	if body.is_in_group("player_body"):
-		istooclose = false
-
-func _on_enemy_timer_timeout():
-	if ischasing == true:
-		makepath()
+#endregion

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=33 format=3 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_7mpt3"]
 [ext_resource type="Script" path="res://Scripts/levels/level_1.gd" id="1_i6lel"]
@@ -16,10 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://dflmpx03sns4k" path="res://Scenes/pickups/potions/potion_r.tscn" id="13_spefb"]
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="14_yyvgh"]
 [ext_resource type="PackedScene" uid="uid://cijal7twssdcc" path="res://Scenes/envm/door.tscn" id="15_shgyt"]
+[ext_resource type="PackedScene" uid="uid://dsg54335yiwex" path="res://Scenes/envm/scroll_pickup.tscn" id="16_mpg1e"]
 [ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/envm/door_both.tscn" id="16_yb6yb"]
 [ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="17_beoef"]
 [ext_resource type="PackedScene" uid="uid://b7guy3xdvjg5y" path="res://Scenes/chars/enemy.tscn" id="18_t0qua"]
 [ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="19_magrg"]
+[ext_resource type="PackedScene" uid="uid://c652umiweekt6" path="res://Scenes/envm/scroll.tscn" id="21_t3cqv"]
+[ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="23_rnuo6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
 texture = ExtResource("2_mft6d")
@@ -349,6 +352,12 @@ position = Vector2(176, 197)
 [node name="medkit" parent="pickups/medkits" instance=ExtResource("14_yyvgh")]
 position = Vector2(1419, 384)
 
+[node name="scrolls" type="Node2D" parent="pickups"]
+
+[node name="scroll_pickup" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("16_mpg1e")]
+position = Vector2(205, 525)
+whattoopen = NodePath("../../../player/Camera2D/scroll")
+
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
 scale = Vector2(3.03, 3)
@@ -387,3 +396,21 @@ zoom = Vector2(2, 2)
 [node name="pause_ui" parent="player/Camera2D" instance=ExtResource("19_magrg")]
 visible = false
 rotation = -1.5708
+
+[node name="scroll" parent="player/Camera2D" node_paths=PackedStringArray("level", "player", "me") instance=ExtResource("21_t3cqv")]
+visible = false
+offset_right = -5.26321
+offset_bottom = -3.15796
+rotation = -1.5708
+level = NodePath("../../..")
+player = NodePath("../..")
+me = NodePath(".")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scroll"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 129.0
+offset_right = 1284.0
+offset_bottom = 613.0
+theme = ExtResource("23_rnuo6")
+text = "This is test"

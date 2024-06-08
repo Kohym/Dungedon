@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsg54335yiwex"]
+
+[ext_resource type="Script" path="res://Scripts/envm/scroll_pickup.gd" id="1_dplpf"]
+[ext_resource type="Texture2D" uid="uid://br0xn5rryavlk" path="res://Assets/Env/scrollC.png" id="1_i7gfw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqurw"]
+size = Vector2(40, 40)
+
+[node name="scroll_pickup" type="Area2D"]
+scale = Vector2(1.2, 1.2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dplpf")
+
+[node name="scroll_texture" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_i7gfw")
+
+[node name="scroll_collbox" type="CollisionShape2D" parent="."]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_rqurw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

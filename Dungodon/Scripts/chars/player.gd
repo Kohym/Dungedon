@@ -1,25 +1,28 @@
 extends CharacterBody2D
 
+#region vars
+#region exported_vars
 var isalive = true
+@export var base_hp = 100
 
-@export var basespeed = 400
+@export_group("speeds")
 var SPEED = 400.0
 var lockemove = false
 @export var ACCEL = 20.0
+@export var attspeed = 0.1
 
-var knockback_dir = Vector2()
-
-var input: Vector2
-
+@export_group("damage, healing and buffs")
 @export var take_A_dmg = 20
 @export var take_E_spike_dmg = 10
 @export var take_E_poison_dmg = 50
 
-@export var base_hp = 100
-@export var attspeed = 0.1
 @export var medkit_heal = 70
+@export var potionGadd = 20
+@export var potionG2add = 20
+#endregion
+var knockback_dir = Vector2()
+var input: Vector2
 var speedboost = 0
-
 
 var old_hp
 var med_hp
@@ -40,7 +43,9 @@ var has_blue_key = false
 var has_green_key = false
 var has_red_key = false
 var has_universal_key = false
+#endregion
 
+#region movement
 func get_input():
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -52,9 +57,9 @@ func _process(delta):
 		setspeed()
 		if lockemove == false:
 			$playersprite.rotation = get_angle_to(get_global_mouse_position())
-		var playerInput = get_input()
-		velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
-		move_and_slide()
+			var playerInput = get_input()
+			velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
+			move_and_slide()
 
 func _ready():
 	$playersprite/player_wepon_sword.monitorable = false
@@ -62,26 +67,11 @@ func _ready():
 	$playersprite/playerbar.value = base_hp
 	key_check()
 
-func  _input(_event):
-	if Input.is_action_just_pressed("left_click") and isattac == false and isholster == false and willhitwall == false:
-		isattac = true
-		setspeed()
-		attack()
-	elif Input.is_action_just_pressed("sword_unholster"):
-		holster()
-	elif  Input.is_action_just_pressed("keys"):
-		get_keys()
-
-func died():
-	isalive = false
-
 func lockmovement():
-	print(lockemove)
 	if lockemove == true:
 		lockemove = false
 	elif lockemove == false:
 		lockemove = true
-	print(lockemove)
 
 func setspeed():
 	if (isattac == true and isholster == false and isuholsteringmove == false and ispoison == false and has_got_keys == false):
@@ -107,7 +97,19 @@ func setspeed():
 	elif  (isattac == false and isholster == true and isuholsteringmove == false and ispoison == true and has_got_keys == true):
 		SPEED=180
 	if(speedboost != 0):
-		SPEED += 20 * speedboost
+		SPEED += potionG2add * speedboost
+#endregion
+
+#region equip and use
+func  _input(_event):
+	if Input.is_action_just_pressed("left_click") and isattac == false and isholster == false and willhitwall == false:
+		isattac = true
+		setspeed()
+		attack()
+	elif Input.is_action_just_pressed("sword_unholster"):
+		holster()
+	elif  Input.is_action_just_pressed("keys"):
+		get_keys()
 
 func holster():
 	if isholster== true and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
@@ -131,6 +133,14 @@ func holster():
 		isholster = true
 		isuholsteringmove = false
 
+func _on_debug_body_entered(body):
+	if body.is_in_group("brick") or body.is_in_group("door"):
+		willhitwall = true
+
+func _on_debug_body_exited(body):
+	if body.is_in_group("brick") or body.is_in_group("door"):
+		willhitwall = false
+
 func attack():
 	if isalive == true:
 		var timer = attspeed*0.001
@@ -141,13 +151,6 @@ func attack():
 		$playersprite/player_wepon_sword.monitorable = false
 		isattac = false
 		setspeed()
-
-func addhp():
-	base_hp = base_hp + 20
-	$playerhp.text = str(base_hp)
-	$playersprite/playerbar.max_value = base_hp
-	$playersprite/playerbar.value =base_hp
-	debug_hp = base_hp
 
 func get_keys():
 	key_check()
@@ -207,19 +210,9 @@ func key_check():
 			$playersprite/keys/key_pickup_detector.add_to_group("pickup_universal_key")
 			$playersprite/keys/key_holder/key_universal_sprite.visible = false
 			$playersprite/keys/key_holder.remove_from_group("has_universal_key")
+#endregion
 
-func _on_key_pickup_detector_area_entered(area):
-	if  area.is_in_group("key_blue"):
-		has_blue_key = true
-	elif area.is_in_group("key_red"):
-		has_red_key = true
-	elif area.is_in_group("key_green"):
-		has_green_key = true
-	elif area.is_in_group("key_universal"):
-		has_universal_key = true
-	await get_tree().create_timer(0.02).timeout
-	key_check()
-
+#region DMG and pickups
 func _on_playerhurtbox_area_entered(area):
 	if area.is_in_group("enemy_wepon_sword"):
 		new_hp = debug_hp - take_A_dmg
@@ -311,13 +304,17 @@ func _on_playerhurtbox_body_entered(body):
 		ispoison = false
 		setspeed()
 
-func _on_debug_body_entered(body):
-	if body.is_in_group("brick") or body.is_in_group("door"):
-		willhitwall = true
-
-func _on_debug_body_exited(body):
-	if body.is_in_group("brick") or body.is_in_group("door"):
-		willhitwall = false
+func _on_key_pickup_detector_area_entered(area):
+	if  area.is_in_group("key_blue"):
+		has_blue_key = true
+	elif area.is_in_group("key_red"):
+		has_red_key = true
+	elif area.is_in_group("key_green"):
+		has_green_key = true
+	elif area.is_in_group("key_universal"):
+		has_universal_key = true
+	await get_tree().create_timer(0.02).timeout
+	key_check()
 
 func _on_key_holder_area_entered(area):
 	if area.is_in_group("locked_red"):
@@ -344,3 +341,16 @@ func _on_key_holder_area_entered(area):
 			has_universal_key = false
 			await get_tree().create_timer(0.02).timeout
 		key_check()
+#endregion
+
+#region misic
+func addhp():
+	base_hp = base_hp + potionGadd
+	$playerhp.text = str(base_hp)
+	$playersprite/playerbar.max_value = base_hp
+	$playersprite/playerbar.value =base_hp
+	debug_hp = base_hp
+
+func died():
+	isalive = false
+#endregion

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://du6cr36cg3ufs"]
+[gd_scene load_steps=22 format=3 uid="uid://du6cr36cg3ufs"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_qhy15"]
 [ext_resource type="Texture2D" uid="uid://b4cg4pirs5osq" path="res://Assets/Env/poison.png" id="2_3eax5"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="11_xcse2"]
 [ext_resource type="PackedScene" uid="uid://b5lb483utobcr" path="res://Scenes/chars/menu_character.tscn" id="12_dhr71"]
 [ext_resource type="PackedScene" uid="uid://bb22hq7vl80ti" path="res://Scenes/chars/menu_enemy.tscn" id="13_5ey3y"]
-[ext_resource type="Script" path="res://Scripts/chars/menu_character.gd" id="13_exmv6"]
 [ext_resource type="Script" path="res://Scripts/chars/menu_enemy_special.gd" id="15_a6ym4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sffuo"]
@@ -188,8 +187,6 @@ position = Vector2(575, 151)
 position = Vector2(1213.51, 852.036)
 rotation = 0.610865
 scale = Vector2(3, 3)
-script = ExtResource("13_exmv6")
-sword_rotation = 180
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("13_5ey3y")]
 position = Vector2(1751.74, 1156.9)
