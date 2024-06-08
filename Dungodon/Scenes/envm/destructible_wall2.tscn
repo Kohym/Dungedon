@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dst5nnwv2cyyb"]
 
-[ext_resource type="Script" path="res://Scripts/destructible_wall2.gd" id="1_m5tbg"]
+[ext_resource type="Script" path="res://Scripts/envm/destructible_wall2.gd" id="1_o4j4a"]
 [ext_resource type="Texture2D" uid="uid://c3q4tfr0d72c7" path="res://Assets/Env/bricks_crack2.png" id="2_d7pk2"]
 [ext_resource type="Texture2D" uid="uid://bl5afmnc7geso" path="res://Assets/Env/bricks_broken2.png" id="2_r00a3"]
 
@@ -37,7 +37,7 @@ size = Vector2(144, 96)
 
 [node name="destructible_wall2" type="CharacterBody2D"]
 collision_mask = 32
-script = ExtResource("1_m5tbg")
+script = ExtResource("1_o4j4a")
 
 [node name="destructible_wall2_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)

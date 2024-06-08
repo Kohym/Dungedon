@@ -56,7 +56,7 @@ func _ready():
 	if isboss == true:
 		base_hp = base_hp *1.5
 		debug_hp = base_hp
-		$boss_sprite.visible = true
+		$enemsprite/boss_sprite.visible = true
 	$enemsprite/enembar.max_value = base_hp
 	$enemhp.text = str(base_hp)
 	$enemsprite/enembar.value = int(base_hp)

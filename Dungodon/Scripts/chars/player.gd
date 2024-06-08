@@ -4,6 +4,7 @@ var isalive = true
 
 @export var basespeed = 400
 var SPEED = 400.0
+var lockemove = false
 @export var ACCEL = 20.0
 
 var knockback_dir = Vector2()
@@ -18,7 +19,6 @@ var input: Vector2
 @export var attspeed = 0.1
 @export var medkit_heal = 70
 var speedboost = 0
-
 
 
 var old_hp
@@ -50,15 +50,16 @@ func _process(delta):
 	$Label.text = str(SPEED)
 	if isalive == true:
 		setspeed()
-		look_at(get_global_mouse_position())
+		if lockemove == false:
+			$playersprite.rotation = get_angle_to(get_global_mouse_position())
 		var playerInput = get_input()
 		velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
 		move_and_slide()
 
 func _ready():
-	$player_wepon_sword.monitorable = false
-	$player_wepon_sword.monitoring = false
-	$playerbar.value = base_hp
+	$playersprite/player_wepon_sword.monitorable = false
+	$playersprite/player_wepon_sword.monitoring = false
+	$playersprite/playerbar.value = base_hp
 	key_check()
 
 func  _input(_event):
@@ -73,6 +74,14 @@ func  _input(_event):
 
 func died():
 	isalive = false
+
+func lockmovement():
+	print(lockemove)
+	if lockemove == true:
+		lockemove = false
+	elif lockemove == false:
+		lockemove = true
+	print(lockemove)
 
 func setspeed():
 	if (isattac == true and isholster == false and isuholsteringmove == false and ispoison == false and has_got_keys == false):
@@ -105,19 +114,19 @@ func holster():
 		isuholsteringmove = true
 		setspeed()
 		for n in 90:
-			$player_wepon_sword_holstered_sprite.rotation_degrees += 0.5
+			$playersprite/player_wepon_sword_holstered_sprite.rotation_degrees += 0.5
 			await get_tree().create_timer(0.000000001).timeout
-		$player_wepon_sword_holstered_sprite.visible = false
-		$player_wepon_sword.visible = true
+		$playersprite/player_wepon_sword_holstered_sprite.visible = false
+		$playersprite/player_wepon_sword.visible = true
 		isholster = false
 		isuholsteringmove = false
 	elif isholster== false and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
 		isuholsteringmove = true
 		setspeed()
-		$player_wepon_sword_holstered_sprite.visible = true
-		$player_wepon_sword.visible = false
+		$playersprite/player_wepon_sword_holstered_sprite.visible = true
+		$playersprite/player_wepon_sword.visible = false
 		for n in 90:
-			$player_wepon_sword_holstered_sprite.rotation_degrees += -0.5
+			$playersprite/player_wepon_sword_holstered_sprite.rotation_degrees += -0.5
 			await get_tree().create_timer(0.000000001).timeout
 		isholster = true
 		isuholsteringmove = false
@@ -125,19 +134,19 @@ func holster():
 func attack():
 	if isalive == true:
 		var timer = attspeed*0.001
-		$player_wepon_sword.monitorable = true
+		$playersprite/player_wepon_sword.monitorable = true
 		for n in 72:
 			await get_tree().create_timer(timer).timeout
-			$player_wepon_sword.rotation_degrees += 5
-		$player_wepon_sword.monitorable = false
+			$playersprite/player_wepon_sword.rotation_degrees += 5
+		$playersprite/player_wepon_sword.monitorable = false
 		isattac = false
 		setspeed()
 
 func addhp():
 	base_hp = base_hp + 20
 	$playerhp.text = str(base_hp)
-	$playerbar.max_value = base_hp
-	$playerbar.value =base_hp
+	$playersprite/playerbar.max_value = base_hp
+	$playersprite/playerbar.value =base_hp
 	debug_hp = base_hp
 
 func get_keys():
@@ -145,59 +154,59 @@ func get_keys():
 	if (has_got_keys == false and keys_moving == false and isholster == true and isuholsteringmove == false):
 		keys_moving = true
 		for n in 80:
-			$keys.rotation_degrees += -0.5
+			$playersprite/keys.rotation_degrees += -0.5
 			await get_tree().create_timer(0.000000001).timeout
 		has_got_keys = true
 		keys_moving = false
-		$keys/key_pickup_detector.monitorable = true
-		$keys/key_pickup_detector.monitoring = true
-		$keys/key_holder.monitorable = true
-		$keys/key_holder.monitoring = true
+		$playersprite/keys/key_pickup_detector.monitorable = true
+		$playersprite/keys/key_pickup_detector.monitoring = true
+		$playersprite/keys/key_holder.monitorable = true
+		$playersprite/keys/key_holder.monitoring = true
 	elif  (has_got_keys == true and keys_moving == false and isholster == true and isuholsteringmove == false):
 		keys_moving = true
 		for n in 80:
-			$keys.rotation_degrees += 0.5
+			$playersprite/keys.rotation_degrees += 0.5
 			await get_tree().create_timer(0.000000001).timeout
 		has_got_keys = false
 		keys_moving = false
-		$keys/key_holder.monitorable = false
-		$keys/key_holder.monitoring = false
-		$keys/key_pickup_detector.monitorable = false
-		$keys/key_pickup_detector.monitoring = false
+		$playersprite/keys/key_holder.monitorable = false
+		$playersprite/keys/key_holder.monitoring = false
+		$playersprite/keys/key_pickup_detector.monitorable = false
+		$playersprite/keys/key_pickup_detector.monitoring = false
 
 func key_check():
 		if  has_blue_key == true:
-			$keys/key_pickup_detector.remove_from_group("pickup_blue_key")
-			$keys/key_holder/key_blue_sprite.visible = true
-			$keys/key_holder.add_to_group("has_blue_key")
+			$playersprite/keys/key_pickup_detector.remove_from_group("pickup_blue_key")
+			$playersprite/keys/key_holder/key_blue_sprite.visible = true
+			$playersprite/keys/key_holder.add_to_group("has_blue_key")
 		elif has_blue_key == false:
-			$keys/key_pickup_detector.add_to_group("pickup_blue_key")
-			$keys/key_holder/key_blue_sprite.visible = false
-			$keys/key_holder.remove_from_group("has_blue_key")
+			$playersprite/keys/key_pickup_detector.add_to_group("pickup_blue_key")
+			$playersprite/keys/key_holder/key_blue_sprite.visible = false
+			$playersprite/keys/key_holder.remove_from_group("has_blue_key")
 		if  has_red_key == true:
-			$keys/key_pickup_detector.remove_from_group("pickup_red_key")
-			$keys/key_holder/key_red_sprite.visible = true
-			$keys/key_holder.add_to_group("has_red_key")
+			$playersprite/keys/key_pickup_detector.remove_from_group("pickup_red_key")
+			$playersprite/keys/key_holder/key_red_sprite.visible = true
+			$playersprite/keys/key_holder.add_to_group("has_red_key")
 		elif has_red_key == false:
-			$keys/key_pickup_detector.add_to_group("pickup_red_key")
-			$keys/key_holder/key_red_sprite.visible = false
-			$keys/key_holder.remove_from_group("has_red_key")
+			$playersprite/keys/key_pickup_detector.add_to_group("pickup_red_key")
+			$playersprite/keys/key_holder/key_red_sprite.visible = false
+			$playersprite/keys/key_holder.remove_from_group("has_red_key")
 		if  has_green_key == true:
-			$keys/key_pickup_detector.remove_from_group("pickup_green_key")
-			$keys/key_holder/key_green_sprite.visible = true
-			$keys/key_holder.add_to_group("has_green_key")
+			$playersprite/keys/key_pickup_detector.remove_from_group("pickup_green_key")
+			$playersprite/keys/key_holder/key_green_sprite.visible = true
+			$playersprite/keys/key_holder.add_to_group("has_green_key")
 		elif has_green_key == false:
-			$keys/key_pickup_detector.add_to_group("pickup_green_key")
-			$keys/key_holder/key_green_sprite.visible = false
-			$keys/key_holder.remove_from_group("has_green_key")
+			$playersprite/keys/key_pickup_detector.add_to_group("pickup_green_key")
+			$playersprite/keys/key_holder/key_green_sprite.visible = false
+			$playersprite/keys/key_holder.remove_from_group("has_green_key")
 		if  has_universal_key == true:
-			$keys/key_pickup_detector.remove_from_group("pickup_universal_key")
-			$keys/key_holder/key_universal_sprite.visible = true
-			$keys/key_holder.add_to_group("has_universal_key")
+			$playersprite/keys/key_pickup_detector.remove_from_group("pickup_universal_key")
+			$playersprite/keys/key_holder/key_universal_sprite.visible = true
+			$playersprite/keys/key_holder.add_to_group("has_universal_key")
 		elif has_universal_key == false:
-			$keys/key_pickup_detector.add_to_group("pickup_universal_key")
-			$keys/key_holder/key_universal_sprite.visible = false
-			$keys/key_holder.remove_from_group("has_universal_key")
+			$playersprite/keys/key_pickup_detector.add_to_group("pickup_universal_key")
+			$playersprite/keys/key_holder/key_universal_sprite.visible = false
+			$playersprite/keys/key_holder.remove_from_group("has_universal_key")
 
 func _on_key_pickup_detector_area_entered(area):
 	if  area.is_in_group("key_blue"):
@@ -217,7 +226,7 @@ func _on_playerhurtbox_area_entered(area):
 		old_hp = new_hp + take_A_dmg
 		for n in take_A_dmg:
 			debug_hp = debug_hp - 1
-			$playerbar.value = debug_hp
+			$playersprite/playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
 			await get_tree().create_timer(0.02).timeout
 			if  (debug_hp <= 0):
@@ -231,7 +240,7 @@ func _on_playerhurtbox_area_entered(area):
 		old_hp = new_hp - medkit_heal
 		for n in medkit_heal:
 			debug_hp = debug_hp + 1
-			$playerbar.value = debug_hp
+			$playersprite/playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
 			await get_tree().create_timer(0.02).timeout
 			if  (debug_hp >= base_hp):
@@ -253,7 +262,7 @@ func _on_playerhurtbox_area_entered(area):
 		old_hp = new_hp + debug_hp
 		for n in debug_hp:
 			debug_hp = debug_hp - 1
-			$playerbar.value = debug_hp
+			$playersprite/playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
 			await get_tree().create_timer(0.02).timeout
 			if  (debug_hp <= 0):
@@ -268,7 +277,7 @@ func _on_playerhurtbox_body_entered(body):
 		old_hp = new_hp + take_E_spike_dmg
 		for n in take_E_spike_dmg:
 			debug_hp = debug_hp - 1
-			$playerbar.value = debug_hp
+			$playersprite/playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
 			await get_tree().create_timer(0.02).timeout
 			if  (debug_hp <= 0):
@@ -289,7 +298,7 @@ func _on_playerhurtbox_body_entered(body):
 					setspeed()
 					break
 				debug_hp = debug_hp - 1
-				$playerbar.value = debug_hp
+				$playersprite/playerbar.value = debug_hp
 				$playerhp.text = str(debug_hp)
 				await get_tree().create_timer(0.5).timeout
 				if  (debug_hp <= 0):

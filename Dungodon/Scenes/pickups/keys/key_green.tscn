@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bml7we7ddedqv"]
 
-[ext_resource type="Script" path="res://Scripts/key_green.gd" id="1_jgfyr"]
+[ext_resource type="Script" path="res://Scripts/pickups/keys/key_green.gd" id="1_we04h"]
 [ext_resource type="Texture2D" uid="uid://cm3b3u8gybexr" path="res://Assets/keys/keay_green.png" id="2_064y2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36aqm"]
@@ -10,7 +10,7 @@ size = Vector2(20, 10)
 scale = Vector2(1.5, 1.5)
 collision_layer = 16384
 collision_mask = 2
-script = ExtResource("1_jgfyr")
+script = ExtResource("1_we04h")
 
 [node name="key_green_sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_064y2")

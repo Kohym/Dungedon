@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://cijal7twssdcc"]
 
-[ext_resource type="Script" path="res://Scripts/door.gd" id="1_nxbts"]
+[ext_resource type="Script" path="res://Scripts/envm/door.gd" id="1_b47ad"]
 [ext_resource type="Texture2D" uid="uid://ug54wopj0tuj" path="res://Assets/Env/doorB.png" id="2_aaj1v"]
 [ext_resource type="Texture2D" uid="uid://de4xc6y4fu0mq" path="res://Assets/Env/door_bottom.png" id="2_ay0t0"]
 [ext_resource type="Texture2D" uid="uid://cvmyc2qfjvyu1" path="res://Assets/Env/door.png" id="3_ivxu8"]
@@ -91,7 +91,7 @@ size = Vector2(32, 2)
 
 [node name="door" type="CharacterBody2D" groups=["door"]]
 collision_mask = 0
-script = ExtResource("1_nxbts")
+script = ExtResource("1_b47ad")
 
 [node name="door_sprite" type="AnimatedSprite2D" parent="." groups=["door"]]
 sprite_frames = SubResource("SpriteFrames_ciu2c")

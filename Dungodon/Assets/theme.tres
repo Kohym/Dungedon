@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=12 format=3 uid="uid://djctowfolotk1"]
 
-[ext_resource type="FontFile" uid="uid://dc22yuyfyg7nn" path="res://Assets/dungedot_font.otf" id="1_b38nq"]
+[ext_resource type="FontFile" uid="uid://df2hctgg70e5r" path="res://Assets/Dungedon_font.ttf" id="1_tj8qr"]
 [ext_resource type="Texture2D" uid="uid://dm3wilmwsqsy3" path="res://Assets/SolidCol/squareW.png" id="2_kocmd"]
 [ext_resource type="Texture2D" uid="uid://c8pbkuj3x1omd" path="res://Assets/SolidCol/rectW.png" id="3_1kb78"]
 
@@ -24,7 +24,6 @@ bg_color = Color(1, 1, 1, 0.498039)
 thickness = 70
 
 [resource]
-default_font = ExtResource("1_b38nq")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
@@ -38,8 +37,8 @@ Button/colors/icon_hover_color = Color(1, 1, 1, 0)
 Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
 Button/colors/icon_normal_color = Color(1, 1, 1, 0)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
-Button/font_sizes/font_size = 100
-Button/fonts/font = ExtResource("1_b38nq")
+Button/font_sizes/font_size = 115
+Button/fonts/font = ExtResource("1_tj8qr")
 Button/styles/disabled = SubResource("StyleBoxEmpty_2hi0f")
 Button/styles/focus = SubResource("StyleBoxEmpty_oiteu")
 Button/styles/hover = SubResource("StyleBoxEmpty_ouomf")
@@ -52,5 +51,5 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_uvbni")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_4cp1o")
 HSlider/styles/slider = SubResource("StyleBoxLine_q6t8u")
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 100
-Label/fonts/font = ExtResource("1_b38nq")
+Label/font_sizes/font_size = 115
+Label/fonts/font = ExtResource("1_tj8qr")

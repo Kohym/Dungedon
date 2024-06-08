@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://ducgrspg4c2fe"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_5g4u3"]
+[ext_resource type="Script" path="res://Scripts/chars/player.gd" id="1_c7yih"]
 [ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/chars/wpns/player_wepon_sword.tscn" id="2_am8ds"]
 [ext_resource type="Texture2D" uid="uid://b86soapwdv1k3" path="res://Assets/Wpns/i.png" id="2_x266q"]
 [ext_resource type="Texture2D" uid="uid://c837lj0ac6n64" path="res://Assets/Progresbars/progress_back_black.png" id="3_n1t1b"]
@@ -11,9 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dup3j7u8r4alq" path="res://Assets/keys/key_blue.png" id="8_wyhat"]
 [ext_resource type="Texture2D" uid="uid://cm3b3u8gybexr" path="res://Assets/keys/keay_green.png" id="9_i45y0"]
 [ext_resource type="Texture2D" uid="uid://duhaamj8t4n4g" path="res://Assets/keys/key_red.png" id="10_vx3mx"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
-radius = 48.4211
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csofs"]
 size = Vector2(24.2105, 35.7895)
@@ -111,35 +108,14 @@ radius = 16.8421
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_ap8yv"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
+radius = 48.4211
+
 [node name="player" type="CharacterBody2D" groups=["player_body"]]
 scale = Vector2(0.95, 0.95)
 collision_layer = 2
 motion_mode = 1
-script = ExtResource("1_5g4u3")
-
-[node name="player_wepon_sword_holstered_sprite" type="Sprite2D" parent="."]
-position = Vector2(-8.42105, 2.38419e-07)
-rotation = -3.92699
-scale = Vector2(3, 3)
-texture = ExtResource("2_x266q")
-
-[node name="player_wepon_sword" parent="." instance=ExtResource("2_am8ds")]
-visible = false
-position = Vector2(62.1048, -0.8)
-rotation = 3.14159
-
-[node name="playerbar" type="TextureProgressBar" parent="."]
-texture_filter = 1
-texture_repeat = 1
-offset_left = -48.0
-offset_top = -48.0
-offset_right = -16.0
-offset_bottom = -16.0
-scale = Vector2(3, 3)
-value = 100.0
-fill_mode = 8
-texture_under = ExtResource("3_n1t1b")
-texture_progress = ExtResource("4_3axwn")
+script = ExtResource("1_c7yih")
 
 [node name="playerhp" type="Label" parent="."]
 texture_filter = 1
@@ -158,6 +134,95 @@ texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("5_qi0f5")
 
+[node name="player_wepon_sword_holstered_sprite" type="Sprite2D" parent="playersprite"]
+position = Vector2(-2.80702, 7.9473e-08)
+rotation = 2.3562
+texture = ExtResource("2_x266q")
+
+[node name="player_wepon_sword" parent="playersprite" instance=ExtResource("2_am8ds")]
+visible = false
+position = Vector2(20.7016, -0.266667)
+rotation = 3.14159
+scale = Vector2(0.333333, 0.333333)
+
+[node name="playerbar" type="TextureProgressBar" parent="playersprite"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+value = 100.0
+fill_mode = 8
+texture_under = ExtResource("3_n1t1b")
+texture_progress = ExtResource("4_3axwn")
+
+[node name="debug" type="Area2D" parent="playersprite"]
+scale = Vector2(0.333333, 0.333333)
+
+[node name="debug_collbox" type="CollisionShape2D" parent="playersprite/debug"]
+position = Vector2(81.5789, 6.91414e-06)
+shape = SubResource("RectangleShape2D_csofs")
+
+[node name="keys" type="Node2D" parent="playersprite"]
+scale = Vector2(0.333333, 0.333333)
+
+[node name="key_pickup_detector" type="Area2D" parent="playersprite/keys" groups=["pickup_blue_key", "pickup_green_key", "pickup_red_key", "pickup_universal_key"]]
+collision_layer = 2
+collision_mask = 16384
+monitoring = false
+monitorable = false
+
+[node name="key_pickup_collbox" type="CollisionShape2D" parent="playersprite/keys/key_pickup_detector"]
+position = Vector2(35.7895, 45.2632)
+shape = SubResource("CircleShape2D_4dpe1")
+
+[node name="key_holder" type="Area2D" parent="playersprite/keys"]
+collision_layer = 2
+collision_mask = 1024
+
+[node name="key_holder_sprite" type="Sprite2D" parent="playersprite/keys/key_holder"]
+position = Vector2(28.4211, 38.9474)
+rotation = 0.785398
+texture = ExtResource("7_glj47")
+
+[node name="key_universal_sprite" type="AnimatedSprite2D" parent="playersprite/keys/key_holder"]
+position = Vector2(21.0526, 31.5789)
+rotation = 0.781907
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_2brf5")
+autoplay = "default"
+frame_progress = 0.554312
+
+[node name="key_blue_sprite" type="Sprite2D" parent="playersprite/keys/key_holder"]
+position = Vector2(30.5263, 49.4737)
+rotation = -2.12233
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("8_wyhat")
+
+[node name="key_green_sprite" type="Sprite2D" parent="playersprite/keys/key_holder"]
+position = Vector2(35.7895, 45.2632)
+rotation = -2.44347
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("9_i45y0")
+
+[node name="key_red_sprite" type="Sprite2D" parent="playersprite/keys/key_holder"]
+position = Vector2(38.9474, 38.9474)
+rotation = -2.9531
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_vx3mx")
+
+[node name="key_holder_collbox" type="CollisionShape2D" parent="playersprite/keys/key_holder"]
+position = Vector2(35.7895, 45.2632)
+shape = SubResource("CircleShape2D_hfc10")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playersprite/keys/key_holder"]
+stream = SubResource("AudioStreamMP3_ap8yv")
+
+[node name="playersprite2" type="Sprite2D" parent="playersprite"]
+texture_filter = 1
+texture = ExtResource("5_qi0f5")
+
 [node name="playercollbox" type="CollisionShape2D" parent="." groups=["player_body"]]
 position = Vector2(7.62939e-06, 9.53674e-07)
 rotation = 1.5708
@@ -174,74 +239,14 @@ scale = Vector2(1.03, 1.03)
 shape = SubResource("CircleShape2D_51do8")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="debug" type="Area2D" parent="."]
-
-[node name="debug_collbox" type="CollisionShape2D" parent="debug"]
-position = Vector2(81.5789, 6.91414e-06)
-shape = SubResource("RectangleShape2D_csofs")
-
 [node name="Label" type="Label" parent="."]
 offset_top = -86.3158
 offset_right = 40.0
 offset_bottom = -63.3158
 
-[node name="keys" type="Node2D" parent="."]
-
-[node name="key_pickup_detector" type="Area2D" parent="keys" groups=["pickup_blue_key", "pickup_green_key", "pickup_red_key", "pickup_universal_key"]]
-collision_layer = 2
-collision_mask = 16384
-monitoring = false
-monitorable = false
-
-[node name="key_pickup_collbox" type="CollisionShape2D" parent="keys/key_pickup_detector"]
-position = Vector2(35.7895, 45.2632)
-shape = SubResource("CircleShape2D_4dpe1")
-
-[node name="key_holder" type="Area2D" parent="keys"]
-collision_layer = 2
-collision_mask = 1024
-
-[node name="key_holder_sprite" type="Sprite2D" parent="keys/key_holder"]
-position = Vector2(28.4211, 38.9474)
-rotation = 0.785398
-texture = ExtResource("7_glj47")
-
-[node name="key_universal_sprite" type="AnimatedSprite2D" parent="keys/key_holder"]
-position = Vector2(21.0526, 31.5789)
-rotation = 0.781907
-scale = Vector2(1.3, 1.3)
-sprite_frames = SubResource("SpriteFrames_2brf5")
-autoplay = "default"
-frame_progress = 0.554312
-
-[node name="key_blue_sprite" type="Sprite2D" parent="keys/key_holder"]
-position = Vector2(30.5263, 49.4737)
-rotation = -2.12233
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("8_wyhat")
-
-[node name="key_green_sprite" type="Sprite2D" parent="keys/key_holder"]
-position = Vector2(35.7895, 45.2632)
-rotation = -2.44347
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("9_i45y0")
-
-[node name="key_red_sprite" type="Sprite2D" parent="keys/key_holder"]
-position = Vector2(38.9474, 38.9474)
-rotation = -2.9531
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("10_vx3mx")
-
-[node name="key_holder_collbox" type="CollisionShape2D" parent="keys/key_holder"]
-position = Vector2(35.7895, 45.2632)
-shape = SubResource("CircleShape2D_hfc10")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="keys/key_holder"]
-stream = SubResource("AudioStreamMP3_ap8yv")
-
+[connection signal="body_entered" from="playersprite/debug" to="." method="_on_debug_body_entered"]
+[connection signal="body_exited" from="playersprite/debug" to="." method="_on_debug_body_exited"]
+[connection signal="area_entered" from="playersprite/keys/key_pickup_detector" to="." method="_on_key_pickup_detector_area_entered"]
+[connection signal="area_entered" from="playersprite/keys/key_holder" to="." method="_on_key_holder_area_entered"]
 [connection signal="area_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_area_entered"]
 [connection signal="body_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_body_entered"]
-[connection signal="body_entered" from="debug" to="." method="_on_debug_body_entered"]
-[connection signal="body_exited" from="debug" to="." method="_on_debug_body_exited"]
-[connection signal="area_entered" from="keys/key_pickup_detector" to="." method="_on_key_pickup_detector_area_entered"]
-[connection signal="area_entered" from="keys/key_holder" to="." method="_on_key_holder_area_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ukjhs1m48knn"]
 
-[ext_resource type="Script" path="res://Scripts/medkit.gd" id="1_c6tc6"]
+[ext_resource type="Script" path="res://Scripts/pickups/medkit.gd" id="1_co8bf"]
 [ext_resource type="Texture2D" uid="uid://c3kcqcm5xnt3x" path="res://Assets/Env/medkit.png" id="1_xnuf1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62fnf"]
@@ -51,7 +51,7 @@ size = Vector2(16, 16)
 scale = Vector2(3, 3)
 collision_layer = 4096
 collision_mask = 2
-script = ExtResource("1_c6tc6")
+script = ExtResource("1_co8bf")
 
 [node name="medkit_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p35c0")

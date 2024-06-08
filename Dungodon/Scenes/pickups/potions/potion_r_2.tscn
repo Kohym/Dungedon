@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dho5eidcs6olf"]
 
-[ext_resource type="Script" path="res://Scripts/potionR2.gd" id="1_cebiy"]
+[ext_resource type="Script" path="res://Scripts/pickups/potions/potionR2.gd" id="1_mu8b4"]
 [ext_resource type="Texture2D" uid="uid://srgqi3p6ysp4" path="res://Assets/potions/bottle_2_broken1.png" id="2_8niq1"]
 [ext_resource type="Texture2D" uid="uid://bpmwif57bhmx2" path="res://Assets/potions/bottle_2_broken2.png" id="3_d1c8y"]
 [ext_resource type="Texture2D" uid="uid://cmnv884v45p5v" path="res://Assets/potions/bottle_2_broken3.png" id="4_01yiu"]
@@ -80,7 +80,7 @@ size = Vector2(16, 16)
 scale = Vector2(3, 3)
 collision_layer = 8192
 collision_mask = 2
-script = ExtResource("1_cebiy")
+script = ExtResource("1_mu8b4")
 
 [node name="potionR2_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sbt21")

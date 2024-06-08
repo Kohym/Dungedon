@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dk763s3jgcq1b"]
 
-[ext_resource type="Script" path="res://Scripts/key_universal.gd" id="1_ho7pp"]
+[ext_resource type="Script" path="res://Scripts/pickups/keys/key_universal.gd" id="1_ho7pp"]
 [ext_resource type="Texture2D" uid="uid://cydi4yux0tkqo" path="res://Assets/keys/key_universal.png" id="1_klaqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bduyo"]

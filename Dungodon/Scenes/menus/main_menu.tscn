@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjw3ntd5sankc"]
+[gd_scene load_steps=5 format=3 uid="uid://cjw3ntd5sankc"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_a55dn"]
+[ext_resource type="Script" path="res://Scripts/menus/main_menu.gd" id="1_bjayu"]
 [ext_resource type="PackedScene" uid="uid://du6cr36cg3ufs" path="res://Scenes/levels/menu_level.tscn" id="2_t6wx6"]
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="3_belm7"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ocph0"]
+allow_unpress = true
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -11,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a55dn")
+script = ExtResource("1_bjayu")
 
 [node name="Node2D" parent="." instance=ExtResource("2_t6wx6")]
 
@@ -23,15 +26,14 @@ anchor_top = 0.661
 anchor_right = 1.0
 anchor_bottom = 0.661
 offset_left = 97.0
-offset_top = -139.0
+offset_top = -371.84
 offset_right = -1642.0
-offset_bottom = 633.0
+offset_bottom = 402.16
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_belm7")
 
 [node name="main_menu" type="VBoxContainer" parent="menus"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -55,86 +57,145 @@ text = "Exit"
 [node name="levels_menu" type="VBoxContainer" parent="menus"]
 visible = false
 layout_mode = 2
+theme = ExtResource("3_belm7")
 
 [node name="lvl1_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+theme = ExtResource("3_belm7")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 1"
 
 [node name="lvl2_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 2"
 
 [node name="lvl3_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 3"
 
 [node name="lvl4_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 4"
 
 [node name="lvl5_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 5"
 
 [node name="lvl6_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 6"
 
-[node name="back_button" type="Button" parent="menus/levels_menu"]
+[node name="levels_nav_menu" type="HBoxContainer" parent="menus/levels_menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="levels_back_button" type="Button" parent="menus/levels_menu/levels_nav_menu"]
 layout_mode = 2
 text = "Back"
 
+[node name="levels_spliter" type="HSeparator" parent="menus/levels_menu/levels_nav_menu"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="levlels_play_button" type="Button" parent="menus/levels_menu/levels_nav_menu"]
+layout_mode = 2
+text = "Play"
+
 [node name="options_menu" type="VBoxContainer" parent="menus"]
+visible = false
 layout_direction = 1
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="volume_label" type="Label" parent="menus/options_menu"]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
-text = "volume"
+text = "Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="option_volume" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_left = 397.0
-offset_top = 917.0
-offset_right = 653.0
-offset_bottom = 1017.0
+[node name="option_volume" type="HBoxContainer" parent="menus/options_menu"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("3_belm7")
 
-[node name="volume+" type="Button" parent="option_volume"]
+[node name="volume_minus" type="Button" parent="menus/options_menu/option_volume"]
 layout_mode = 2
 text = "-"
 alignment = 2
 
-[node name="volume" type="Label" parent="option_volume"]
+[node name="volume" type="Label" parent="menus/options_menu/option_volume"]
 layout_mode = 2
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="volume+2" type="Button" parent="."]
+[node name="volume_plus" type="Button" parent="menus/options_menu/option_volume"]
 layout_mode = 2
-offset_left = 576.0
-offset_top = 917.0
-offset_right = 576.0
-offset_bottom = 1017.0
 theme = ExtResource("3_belm7")
 text = "+"
 
+[node name="options_nav_menu" type="HBoxContainer" parent="menus/options_menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="options_back_button" type="Button" parent="menus/options_menu/options_nav_menu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Back"
+
+[node name="options_spliter" type="HSeparator" parent="menus/options_menu/options_nav_menu"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="options_save_button" type="Button" parent="menus/options_menu/options_nav_menu"]
+layout_mode = 2
+text = "Save"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1433.0
-offset_top = 251.0
-offset_right = 2335.0
-offset_bottom = 405.0
+offset_left = 1452.0
+offset_top = 236.0
+offset_right = 2328.0
+offset_bottom = 435.0
 rotation = 0.174533
 theme = ExtResource("3_belm7")
-theme_override_font_sizes/font_size = 150
-text = "Dungedon"
+theme_override_font_sizes/font_size = 220
+text = "DUNGEDON"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="menus/main_menu/levels_button" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="menus/main_menu/options_button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="menus/main_menu/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/lvl1_button" to="." method="_on_lvl_1_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/lvl2_button" to="." method="_on_lvl_2_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/lvl3_button" to="." method="_on_lvl_3_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/lvl4_button" to="." method="_on_lvl_4_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/lvl5_button" to="." method="_on_lvl_5_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/lvl6_button" to="." method="_on_lvl_6_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/levels_nav_menu/levels_back_button" to="." method="_on_levels_back_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/levels_nav_menu/levlels_play_button" to="." method="_on_levlels_play_button_pressed"]
+[connection signal="pressed" from="menus/options_menu/option_volume/volume_minus" to="." method="_on_volume_minus_pressed"]
+[connection signal="pressed" from="menus/options_menu/option_volume/volume_plus" to="." method="_on_volume_plus_pressed"]
+[connection signal="pressed" from="menus/options_menu/options_nav_menu/options_back_button" to="." method="_on_options_back_button_pressed"]
+[connection signal="pressed" from="menus/options_menu/options_nav_menu/options_save_button" to="." method="_on_options_save_button_pressed"]

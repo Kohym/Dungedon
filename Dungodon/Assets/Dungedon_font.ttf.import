@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dc22yuyfyg7nn"
-path="res://.godot/imported/dungedot_font.otf-a4cf77a081c6f9841892469b061c9ca4.fontdata"
+uid="uid://df2hctgg70e5r"
+path="res://.godot/imported/Dungedon_font.ttf-748e25b8fe8470b62ee74c2930e61928.fontdata"
 
 [deps]
 
-source_file="res://Assets/dungedot_font.otf"
-dest_files=["res://.godot/imported/dungedot_font.otf-a4cf77a081c6f9841892469b061c9ca4.fontdata"]
+source_file="res://Assets/Dungedon_font.ttf"
+dest_files=["res://.godot/imported/Dungedon_font.ttf-748e25b8fe8470b62ee74c2930e61928.fontdata"]
 
 [params]
 

@@ -1,27 +1,28 @@
-[gd_scene load_steps=29 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=30 format=3 uid="uid://bqx2ecvye7yro"]
 
-[ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_ayw5j"]
-[ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_eb5bd"]
-[ext_resource type="PackedScene" uid="uid://b7guy3xdvjg5y" path="res://Scenes/chars/enemy.tscn" id="3_0w550"]
-[ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="3_leijw"]
-[ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="3_y3l11"]
-[ext_resource type="Texture2D" uid="uid://l6sng07qs3t1" path="res://Assets/Env/spikes.png" id="4_cb1qd"]
-[ext_resource type="Texture2D" uid="uid://b4cg4pirs5osq" path="res://Assets/Env/poison.png" id="5_t7m73"]
-[ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="6_sdmih"]
-[ext_resource type="PackedScene" uid="uid://cijal7twssdcc" path="res://Scenes/envm/door.tscn" id="6_wq30g"]
-[ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/envm/door_both.tscn" id="7_1dr7b"]
-[ext_resource type="PackedScene" uid="uid://bml7we7ddedqv" path="res://Scenes/pickups/keys/key_green.tscn" id="8_wn3ws"]
-[ext_resource type="PackedScene" uid="uid://lseo1rg05bf6" path="res://Scenes/pickups/keys/key_blue.tscn" id="9_1dxc4"]
-[ext_resource type="PackedScene" uid="uid://bcosqe1h4omob" path="res://Scenes/pickups/potions/potion_g.tscn" id="10_v3y0w"]
-[ext_resource type="PackedScene" uid="uid://36r0arb2rmmp" path="res://Scenes/pickups/keys/key_red.tscn" id="11_3hi0x"]
-[ext_resource type="PackedScene" uid="uid://dst5nnwv2cyyb" path="res://Scenes/envm/destructible_wall2.tscn" id="15_oon0t"]
-[ext_resource type="PackedScene" uid="uid://bwns7b0dm5jcl" path="res://Scenes/envm/destructible_wall1.tscn" id="16_0506t"]
-[ext_resource type="PackedScene" uid="uid://cdh5v1hnuhpxj" path="res://Scenes/pickups/potions/potion_g_2.tscn" id="17_sjmwv"]
-[ext_resource type="PackedScene" uid="uid://dho5eidcs6olf" path="res://Scenes/pickups/potions/potion_r_2.tscn" id="18_8hmbd"]
-[ext_resource type="PackedScene" uid="uid://dflmpx03sns4k" path="res://Scenes/pickups/potions/potion_r.tscn" id="18_oahw7"]
+[ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_7mpt3"]
+[ext_resource type="Script" path="res://Scripts/levels/level_1.gd" id="1_i6lel"]
+[ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_mft6d"]
+[ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="3_aqm1e"]
+[ext_resource type="Texture2D" uid="uid://l6sng07qs3t1" path="res://Assets/Env/spikes.png" id="4_xprs4"]
+[ext_resource type="Texture2D" uid="uid://b4cg4pirs5osq" path="res://Assets/Env/poison.png" id="5_m2s04"]
+[ext_resource type="PackedScene" uid="uid://bwns7b0dm5jcl" path="res://Scenes/envm/destructible_wall1.tscn" id="6_4qrmk"]
+[ext_resource type="PackedScene" uid="uid://dst5nnwv2cyyb" path="res://Scenes/envm/destructible_wall2.tscn" id="7_3a40f"]
+[ext_resource type="PackedScene" uid="uid://lseo1rg05bf6" path="res://Scenes/pickups/keys/key_blue.tscn" id="8_inqd3"]
+[ext_resource type="PackedScene" uid="uid://bml7we7ddedqv" path="res://Scenes/pickups/keys/key_green.tscn" id="9_p30w4"]
+[ext_resource type="PackedScene" uid="uid://36r0arb2rmmp" path="res://Scenes/pickups/keys/key_red.tscn" id="10_wy4fm"]
+[ext_resource type="PackedScene" uid="uid://bcosqe1h4omob" path="res://Scenes/pickups/potions/potion_g.tscn" id="11_a126x"]
+[ext_resource type="PackedScene" uid="uid://cdh5v1hnuhpxj" path="res://Scenes/pickups/potions/potion_g_2.tscn" id="12_4f73v"]
+[ext_resource type="PackedScene" uid="uid://dflmpx03sns4k" path="res://Scenes/pickups/potions/potion_r.tscn" id="13_spefb"]
+[ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="14_yyvgh"]
+[ext_resource type="PackedScene" uid="uid://cijal7twssdcc" path="res://Scenes/envm/door.tscn" id="15_shgyt"]
+[ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/envm/door_both.tscn" id="16_yb6yb"]
+[ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="17_beoef"]
+[ext_resource type="PackedScene" uid="uid://b7guy3xdvjg5y" path="res://Scenes/chars/enemy.tscn" id="18_t0qua"]
+[ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="19_magrg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
-texture = ExtResource("2_eb5bd")
+texture = ExtResource("2_mft6d")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -137,7 +138,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p14bc"]
-texture = ExtResource("3_leijw")
+texture = ExtResource("3_aqm1e")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -183,7 +184,7 @@ sources/0 = SubResource("TileSetAtlasSource_j137b")
 sources/2 = SubResource("TileSetAtlasSource_p14bc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hns6x"]
-texture = ExtResource("4_cb1qd")
+texture = ExtResource("4_xprs4")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -227,7 +228,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_hns6x")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bmn72"]
-texture = ExtResource("5_t7m73")
+texture = ExtResource("5_m2s04")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -270,7 +271,8 @@ physics_layer_0/collision_layer = 512
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_bmn72")
 
-[node name="GameLevel" type="Node2D"]
+[node name="level1" type="Node2D"]
+script = ExtResource("1_i6lel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -280,7 +282,7 @@ offset_top = 6.0
 offset_right = 1966.0
 offset_bottom = 1253.0
 scale = Vector2(0.967459, 0.946595)
-texture = ExtResource("1_ayw5j")
+texture = ExtResource("1_7mpt3")
 stretch_mode = 1
 
 [node name="tilemaps" type="Node2D" parent="."]
@@ -304,95 +306,84 @@ tile_set = SubResource("TileSet_tk8t6")
 format = 2
 layer_0/tile_data = PackedInt32Array(786449, 131072, 0, 786450, 65536, 1, 786451, 131072, 2, 786452, 0, 1, 786453, 131072, 0)
 
-[node name="destructible_wall1" parent="tilemaps" instance=ExtResource("16_0506t")]
+[node name="destructible_wall1" parent="tilemaps" instance=ExtResource("6_4qrmk")]
 position = Vector2(1080, 456)
 rotation = 1.5708
 
-[node name="destructible_wall3" parent="tilemaps" instance=ExtResource("16_0506t")]
+[node name="destructible_wall3" parent="tilemaps" instance=ExtResource("6_4qrmk")]
 position = Vector2(1512, 937)
 rotation = 1.5708
 
-[node name="destructible_wall2" parent="tilemaps" instance=ExtResource("15_oon0t")]
+[node name="destructible_wall2" parent="tilemaps" instance=ExtResource("7_3a40f")]
 position = Vector2(408, 96)
 
 [node name="pickups" type="Node2D" parent="."]
 
 [node name="keys" type="Node2D" parent="pickups"]
 
-[node name="key_blue" parent="pickups/keys" instance=ExtResource("9_1dxc4")]
+[node name="key_blue" parent="pickups/keys" instance=ExtResource("8_inqd3")]
 position = Vector2(746, 477)
 
-[node name="key_green" parent="pickups/keys" instance=ExtResource("8_wn3ws")]
+[node name="key_green" parent="pickups/keys" instance=ExtResource("9_p30w4")]
 position = Vector2(698, 302)
 
-[node name="key_red" parent="pickups/keys" instance=ExtResource("11_3hi0x")]
+[node name="key_red" parent="pickups/keys" instance=ExtResource("10_wy4fm")]
 position = Vector2(478, 643)
 
 [node name="potions" type="Node2D" parent="pickups"]
 
-[node name="potionG" parent="pickups/potions" instance=ExtResource("10_v3y0w")]
+[node name="potionG" parent="pickups/potions" instance=ExtResource("11_a126x")]
 position = Vector2(140, 216)
 
-[node name="potionG2" parent="pickups/potions" instance=ExtResource("17_sjmwv")]
+[node name="potionG2" parent="pickups/potions" instance=ExtResource("12_4f73v")]
 position = Vector2(1677, 1022)
 
-[node name="potionR" parent="pickups/potions" instance=ExtResource("18_oahw7")]
+[node name="potionR" parent="pickups/potions" instance=ExtResource("13_spefb")]
 position = Vector2(645, 210)
 
-[node name="potionG3" parent="pickups/potions" instance=ExtResource("10_v3y0w")]
+[node name="potionG3" parent="pickups/potions" instance=ExtResource("11_a126x")]
 position = Vector2(176, 197)
 
 [node name="medkits" type="Node2D" parent="pickups"]
 
-[node name="medkit" parent="pickups/medkits" instance=ExtResource("6_sdmih")]
+[node name="medkit" parent="pickups/medkits" instance=ExtResource("14_yyvgh")]
 position = Vector2(1419, 384)
 
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
 scale = Vector2(3.03, 3)
 
-[node name="door" parent="doors" instance=ExtResource("6_wq30g")]
+[node name="door" parent="doors" instance=ExtResource("15_shgyt")]
 position = Vector2(-199.647, -119.997)
 rotation = -1.5708
 islocked = "False"
 
-[node name="door2" parent="doors" instance=ExtResource("6_wq30g")]
+[node name="door2" parent="doors" instance=ExtResource("15_shgyt")]
 position = Vector2(4.29044, 9.99999)
 islocked = "False"
 
-[node name="door3" parent="doors" instance=ExtResource("6_wq30g")]
+[node name="door3" parent="doors" instance=ExtResource("15_shgyt")]
 position = Vector2(-502.64, -74)
 rotation = 3.14159
 islocked = "False"
 
-[node name="door_both" parent="doors" instance=ExtResource("7_1dr7b")]
+[node name="door_both" parent="doors" instance=ExtResource("16_yb6yb")]
 position = Vector2(-502.64, 80.3334)
 scale = Vector2(1, 1)
 islocked = "red"
 
-[node name="player" parent="." instance=ExtResource("3_y3l11")]
+[node name="enemy" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("18_t0qua")]
+position = Vector2(665, 752)
+player1 = NodePath("../player")
+detect_radius = 200
+
+[node name="player" parent="." instance=ExtResource("17_beoef")]
 position = Vector2(158, 204)
 rotation = 1.5708
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
 
-[node name="enemy" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("3_0w550")]
-position = Vector2(665, 752)
-player1 = NodePath("../player")
-detect_radius = 200
-
-[node name="potionR2" parent="." instance=ExtResource("18_8hmbd")]
-position = Vector2(1611, 929)
-
-[node name="potionG" parent="." instance=ExtResource("10_v3y0w")]
-position = Vector2(200, 225)
-
-[node name="potionG2" parent="." instance=ExtResource("10_v3y0w")]
-position = Vector2(182, 185)
-
-[node name="potionG3" parent="." instance=ExtResource("10_v3y0w")]
-position = Vector2(174, 239)
-
-[node name="potionG4" parent="." instance=ExtResource("10_v3y0w")]
-position = Vector2(167, 220)
+[node name="pause_ui" parent="player/Camera2D" instance=ExtResource("19_magrg")]
+visible = false
+rotation = -1.5708
