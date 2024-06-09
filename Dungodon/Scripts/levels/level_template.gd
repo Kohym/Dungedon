@@ -36,3 +36,7 @@ func victory():
 	Engine.time_scale = 0
 	paused = true
 	$player.lockmovement()
+
+func playerdied():
+	$player/Camera2D/loss_ui.show()
+	pausemenu2()

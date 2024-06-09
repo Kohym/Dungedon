@@ -1,6 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=35 format=3 uid="uid://bqx2ecvye7yro"]
 
-[ext_resource type="Script" path="res://Scripts/levels/level_1.gd" id="1_tydmj"]
+[ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_qi0bq"]
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="2_najqb"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="3_d7l8o"]
 [ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="4_qhgqk"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bml7we7ddedqv" path="res://Scenes/pickups/keys/key_green.tscn" id="10_ywig4"]
 [ext_resource type="PackedScene" uid="uid://36r0arb2rmmp" path="res://Scenes/pickups/keys/key_red.tscn" id="11_j5utx"]
 [ext_resource type="PackedScene" uid="uid://bcosqe1h4omob" path="res://Scenes/pickups/potions/potion_g.tscn" id="12_53cj4"]
+[ext_resource type="PackedScene" uid="uid://dho5eidcs6olf" path="res://Scenes/pickups/potions/potion_r_2.tscn" id="12_h3npp"]
 [ext_resource type="PackedScene" uid="uid://cdh5v1hnuhpxj" path="res://Scenes/pickups/potions/potion_g_2.tscn" id="13_iv5gp"]
 [ext_resource type="PackedScene" uid="uid://dflmpx03sns4k" path="res://Scenes/pickups/potions/potion_r.tscn" id="14_7nngw"]
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="15_qbspl"]
@@ -24,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c652umiweekt6" path="res://Scenes/envm/scroll.tscn" id="22_dj650"]
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="23_phsgn"]
 [ext_resource type="PackedScene" uid="uid://dr4x5345mirve" path="res://Scenes/menus/win_ui.tscn" id="24_vmexg"]
+[ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="25_i1hba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g7kaw"]
 texture = ExtResource("3_d7l8o")
@@ -206,7 +208,7 @@ physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_vu6ht")
 
 [node name="level_dev" type="Node2D"]
-script = ExtResource("1_tydmj")
+script = ExtResource("1_qi0bq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -265,6 +267,9 @@ position = Vector2(698, 302)
 position = Vector2(478, 643)
 
 [node name="potions" type="Node2D" parent="pickups"]
+
+[node name="potionR2" parent="pickups/potions" instance=ExtResource("12_h3npp")]
+position = Vector2(4, 221)
 
 [node name="potionG" parent="pickups/potions" instance=ExtResource("12_53cj4")]
 position = Vector2(140, 216)
@@ -325,14 +330,6 @@ rotation = 1.5708
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
 
-[node name="pause_ui" parent="player/Camera2D" instance=ExtResource("21_yrr4v")]
-visible = false
-rotation = -1.5708
-
-[node name="win_ui" parent="player/Camera2D" instance=ExtResource("24_vmexg")]
-visible = false
-rotation = -1.5708
-
 [node name="scrolls" type="Control" parent="player/Camera2D"]
 layout_mode = 3
 anchors_preset = 0
@@ -356,3 +353,15 @@ offset_right = 1284.0
 offset_bottom = 613.0
 theme = ExtResource("23_phsgn")
 text = "This is test"
+
+[node name="pause_ui" parent="player/Camera2D" instance=ExtResource("21_yrr4v")]
+visible = false
+rotation = -1.5708
+
+[node name="win_ui" parent="player/Camera2D" instance=ExtResource("24_vmexg")]
+visible = false
+rotation = -1.5708
+
+[node name="loss_ui" parent="player/Camera2D" instance=ExtResource("25_i1hba")]
+visible = false
+rotation = -1.5708

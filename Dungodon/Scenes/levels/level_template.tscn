@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2ycyg0a5ptu1"]
+[gd_scene load_steps=22 format=3 uid="uid://c2ycyg0a5ptu1"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_4t8ho"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_aukqo"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c652umiweekt6" path="res://Scenes/envm/scroll.tscn" id="8_d1yt2"]
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="9_p1snw"]
 [ext_resource type="PackedScene" uid="uid://dr4x5345mirve" path="res://Scenes/menus/win_ui.tscn" id="10_or0kl"]
+[ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="12_c7vk1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
 texture = ExtResource("2_ki2sk")
@@ -318,14 +319,6 @@ rotation = 1.5708
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
 
-[node name="pause_ui" parent="player/Camera2D" instance=ExtResource("7_e01a3")]
-visible = false
-rotation = -1.5708
-
-[node name="win_ui" parent="player/Camera2D" instance=ExtResource("10_or0kl")]
-visible = false
-rotation = -1.5708
-
 [node name="scrolls" type="Control" parent="player/Camera2D"]
 layout_mode = 3
 anchors_preset = 0
@@ -349,3 +342,15 @@ offset_right = 1284.0
 offset_bottom = 613.0
 theme = ExtResource("9_p1snw")
 text = "This is test"
+
+[node name="pause_ui" parent="player/Camera2D" instance=ExtResource("7_e01a3")]
+visible = false
+rotation = -1.5708
+
+[node name="win_ui" parent="player/Camera2D" instance=ExtResource("10_or0kl")]
+visible = false
+rotation = -1.5708
+
+[node name="loss_ui" parent="player/Camera2D" instance=ExtResource("12_c7vk1")]
+visible = false
+rotation = -1.5708

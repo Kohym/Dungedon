@@ -53,6 +53,7 @@ func _on_door_both_open_detect_1_area_entered(area):
 		$door_both_open_detect2.remove_from_group("locked_green")
 		$door_both_open_detect1.remove_from_group("locked_blue")
 		$door_both_open_detect2.remove_from_group("locked_blue")
+		$door_both_navlink.enabled = true
 		open()
 
 func _on_door_both_open_detect_2_area_entered(area):
@@ -65,4 +66,5 @@ func _on_door_both_open_detect_2_area_entered(area):
 		$door_both_open_detect2.remove_from_group("locked_green")
 		$door_both_open_detect1.remove_from_group("locked_blue")
 		$door_both_open_detect2.remove_from_group("locked_blue")
+		$door_both_navlink.enabled = true
 		open()

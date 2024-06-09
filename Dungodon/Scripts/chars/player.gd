@@ -112,12 +112,12 @@ func  _input(_event):
 	elif Input.is_action_just_pressed("sword_unholster"):
 		if has_got_keys == true:
 			get_keys()
-			await get_tree().create_timer(0.6).timeout
+			await get_tree().create_timer(0.9).timeout
 		holster()
 	elif  Input.is_action_just_pressed("keys"):
 		if isholster == false:
 			holster()
-			await get_tree().create_timer(0.6).timeout
+			await get_tree().create_timer(0.9).timeout
 		get_keys()
 
 func holster():
@@ -362,5 +362,8 @@ func addhp():
 	debug_hp = base_hp
 
 func died():
+	var level = $"../"
+	level.playerdied()
+	Engine.time_scale = 0
 	isalive = false
 #endregion
