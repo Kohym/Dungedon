@@ -59,6 +59,12 @@ visible = false
 layout_mode = 2
 theme = ExtResource("3_belm7")
 
+[node name="tutorial_button" type="Button" parent="menus/levels_menu"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ocph0")
+text = "TUTORIAL"
+
 [node name="lvl1_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
 theme = ExtResource("3_belm7")
@@ -89,12 +95,6 @@ layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 5"
-
-[node name="lvl6_button" type="Button" parent="menus/levels_menu"]
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_ocph0")
-text = "Level 6"
 
 [node name="levels_nav_menu" type="HBoxContainer" parent="menus/levels_menu"]
 layout_mode = 2
@@ -184,18 +184,30 @@ text = "DUNGEDON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="dev_level" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1741.0
+offset_top = 1108.0
+offset_right = 1793.0
+offset_bottom = 1213.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+text = "x"
+
 [connection signal="pressed" from="menus/main_menu/levels_button" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="menus/main_menu/options_button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="menus/main_menu/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="menus/levels_menu/tutorial_button" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/lvl1_button" to="." method="_on_lvl_1_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/lvl2_button" to="." method="_on_lvl_2_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/lvl3_button" to="." method="_on_lvl_3_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/lvl4_button" to="." method="_on_lvl_4_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/lvl5_button" to="." method="_on_lvl_5_button_pressed"]
-[connection signal="pressed" from="menus/levels_menu/lvl6_button" to="." method="_on_lvl_6_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/levels_nav_menu/levels_back_button" to="." method="_on_levels_back_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/levels_nav_menu/levlels_play_button" to="." method="_on_levlels_play_button_pressed"]
 [connection signal="pressed" from="menus/options_menu/option_volume/volume_minus" to="." method="_on_volume_minus_pressed"]
 [connection signal="pressed" from="menus/options_menu/option_volume/volume_plus" to="." method="_on_volume_plus_pressed"]
 [connection signal="pressed" from="menus/options_menu/options_nav_menu/options_back_button" to="." method="_on_options_back_button_pressed"]
 [connection signal="pressed" from="menus/options_menu/options_nav_menu/options_save_button" to="." method="_on_options_save_button_pressed"]
+[connection signal="pressed" from="dev_level" to="." method="_on_dev_level_pressed"]

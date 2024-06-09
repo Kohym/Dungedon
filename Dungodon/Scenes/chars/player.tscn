@@ -118,6 +118,7 @@ motion_mode = 1
 script = ExtResource("1_c7yih")
 
 [node name="playerhp" type="Label" parent="."]
+visible = false
 texture_filter = 1
 offset_left = -88.4211
 offset_top = -78.9474
@@ -235,11 +236,11 @@ collision_mask = 13120
 [node name="playerhurtboxcollbox" type="CollisionShape2D" parent="playerhurtbox"]
 position = Vector2(-1.66893e-06, 0)
 rotation = 1.5708
-scale = Vector2(1.03, 1.03)
 shape = SubResource("CircleShape2D_51do8")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_top = -86.3158
 offset_right = 40.0
 offset_bottom = -63.3158

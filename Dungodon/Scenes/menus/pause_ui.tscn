@@ -52,10 +52,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 150
 text = "Resume"
 
+[node name="pause_menu" type="Button" parent="pasue_menu/pasue _menu_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Menu"
+
 [node name="pasue_quit" type="Button" parent="pasue_menu/pasue _menu_container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 150
 text = "Quit"
 
 [connection signal="pressed" from="pasue_menu/pasue _menu_container/pause_resume" to="." method="_on_pause_resume_pressed"]
+[connection signal="pressed" from="pasue_menu/pasue _menu_container/pause_menu" to="." method="_on_pause_menu_pressed"]
 [connection signal="pressed" from="pasue_menu/pasue _menu_container/pasue_quit" to="." method="_on_pasue_quit_pressed"]

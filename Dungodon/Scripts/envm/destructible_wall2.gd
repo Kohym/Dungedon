@@ -4,6 +4,10 @@ extends CharacterBody2D
 func _ready():
 	if isbroken:
 		$destructible_wall2_sprite.play("broken")
+		$Area2D.monitorable = false
+		$Area2D.monitoring = false
+		$Area2D/destructible_wall2_collbox.set_deferred("disabled", "false")
+		$destructible_wall2_collbox.set_deferred("disabled", "false")
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("playerweponsword"):

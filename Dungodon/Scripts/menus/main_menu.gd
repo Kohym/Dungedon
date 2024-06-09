@@ -3,6 +3,7 @@ extends Control
 var save_path = "user://settings.save"
 
 func _ready():
+	Engine.time_scale = 1
 	load_data()
 
 #region main_menu
@@ -20,7 +21,9 @@ func _on_exit_button_pressed():
 #endregion
 
 #region levels_menu
-var whatlevel: int
+var whatlevel
+func _on_tutorial_button_pressed():
+	whatlevel = "tutorial"
 func _on_lvl_1_button_pressed():
 	whatlevel = 1
 
@@ -35,9 +38,6 @@ func _on_lvl_4_button_pressed():
 
 func _on_lvl_5_button_pressed():
 	whatlevel = 5
-
-func _on_lvl_6_button_pressed():
-	whatlevel = 6
 
 func _on_levels_back_button_pressed():
 	$menus/levels_menu.visible =false
@@ -86,3 +86,10 @@ func load_data():
 		print("no data")
 #endregion
 #endregion
+
+
+func _on_dev_level_pressed():
+	get_tree().change_scene_to_file("res://Scenes/levels/level_dev.tscn")
+
+
+

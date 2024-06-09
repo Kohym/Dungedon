@@ -4,6 +4,7 @@ extends CharacterBody2D
 #region exported_vars
 var isalive = true
 @export var base_hp = 100
+@export_range(-360, 360, 0.5, ) var look: float
 
 @export_group("speeds")
 var SPEED = 400.0
@@ -19,6 +20,7 @@ var lockemove = false
 @export var medkit_heal = 70
 @export var potionGadd = 20
 @export var potionG2add = 20
+@export var potionR2works = true
 #endregion
 var knockback_dir = Vector2()
 var input: Vector2
@@ -66,6 +68,7 @@ func _ready():
 	$playersprite/player_wepon_sword.monitoring = false
 	$playersprite/playerbar.value = base_hp
 	key_check()
+	$playersprite.rotation = look
 
 func lockmovement():
 	if lockemove == true:
@@ -107,8 +110,14 @@ func  _input(_event):
 		setspeed()
 		attack()
 	elif Input.is_action_just_pressed("sword_unholster"):
+		if has_got_keys == true:
+			get_keys()
+			await get_tree().create_timer(0.6).timeout
 		holster()
 	elif  Input.is_action_just_pressed("keys"):
+		if isholster == false:
+			holster()
+			await get_tree().create_timer(0.6).timeout
 		get_keys()
 
 func holster():
@@ -251,17 +260,18 @@ func _on_playerhurtbox_area_entered(area):
 	elif area.is_in_group("potionR"):
 		ispoison = false
 	elif area.is_in_group("potionR2"):
-		new_hp = debug_hp - debug_hp
-		old_hp = new_hp + debug_hp
-		for n in debug_hp:
-			debug_hp = debug_hp - 1
-			$playersprite/playerbar.value = debug_hp
-			$playerhp.text = str(debug_hp)
-			await get_tree().create_timer(0.02).timeout
-			if  (debug_hp <= 0):
-				debug_hp = 0
+		if potionR2works == true:
+			new_hp = debug_hp - debug_hp
+			old_hp = new_hp + debug_hp
+			for n in debug_hp:
+				debug_hp = debug_hp - 1
+				$playersprite/playerbar.value = debug_hp
 				$playerhp.text = str(debug_hp)
-				died()
+				await get_tree().create_timer(0.02).timeout
+				if  (debug_hp <= 0):
+					debug_hp = 0
+					$playerhp.text = str(debug_hp)
+					died()
 
 func _on_playerhurtbox_body_entered(body):
 	if body.is_in_group("spikes"):

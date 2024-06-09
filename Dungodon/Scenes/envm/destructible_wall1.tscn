@@ -42,7 +42,6 @@ script = ExtResource("1_7620u")
 [node name="destructible_wall1_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_hdiwn")
-animation = &"broken"
 autoplay = "default"
 
 [node name="destructible_wall1_collbox" type="CollisionShape2D" parent="."]

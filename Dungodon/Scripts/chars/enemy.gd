@@ -14,7 +14,7 @@ var no_more_path = false
 
 var dir = 0
 var work =true
-var doknockback = false
+
 
 @export_group("DMG and HP")
 @export var take_A_sword_dmg = 20
@@ -25,7 +25,7 @@ var doknockback = false
 var old_hp
 var med_hp
 var new_hp
-var debug_hp = base_hp
+var debug_hp
 
 var basespeed
 
@@ -41,7 +41,7 @@ var speedmulti
 func _physics_process(delta: float) -> void:
 	dir = 0
 	raycast_detect()
-	if istooclose == false and  doknockback == false and work == true and isdead == false:
+	if istooclose == false and work == true and isdead == false:
 		if ischasing == true or isdetecting == true:
 			$enemsprite.rotation = get_angle_to(player1.global_position)
 			$enem_att_detect.rotation = get_angle_to(player1.global_position)
@@ -52,33 +52,36 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 		elif no_more_path == true:
 			velocity = dir * 0
+
+func knockback():
 	if isboss == false:
-		if doknockback == true:
-			work = false
-			var kn_dir = player1.global_position.direction_to(self.global_position)
-			var knockback = kn_dir * 4
-			velocity = knockback * 70
-			move_and_slide()
-			await get_tree().create_timer(0.3).timeout
-			doknockback = false
-			await get_tree().create_timer(0.1).timeout
-			work = true
+		work = false
+		var kn_dir = player1.global_position.direction_to(self.global_position)
+		var knockback = kn_dir * 5
+		velocity = knockback * 100
+		move_and_slide()
+		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.1).timeout
+		work = true
 
 func _ready():
-	basespeed = speed
 	if isboss == true:
-		base_hp = base_hp *1.5
-		debug_hp = base_hp
 		$enemsprite/boss_sprite.visible = true
+		speed = speed *1.5
+	basespeed = speed
 	$enemsprite/enembar.max_value = base_hp
+	debug_hp = base_hp
 	$enemhp.text = str(base_hp)
-	$enemsprite/enembar.value = int(base_hp)
+	$enemsprite/enembar.max_value = base_hp
+	$enemsprite/enembar.value = base_hp
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
 	$enemsprite.rotation = look
 	$enem_att_detect.rotation = look
+	
+	
 
 func setspeed():
-	if int($enemhp.text) != 100 and isboss == false:
+	if isboss == false:
 		speedmulti = float(debug_hp) / 100
 		speed = float(basespeed) * speedmulti
 
@@ -106,16 +109,20 @@ func raycast_detect():
 			isdetecting = true
 
 func _on_enem_player_detect_body_entered(body):
+	istooclose = false
 	if isdead == false:
 		$enemsprite.rotation = get_angle_to(player1.global_position)
 		$enem_att_detect.rotation = get_angle_to(player1.global_position)
+		istooclose = false
 		if isdetecting:
 			ischasing = true
 			no_more_path = false
+		makepath()
 
 func _on_enem_player_detect_body_exited(body):
 	await get_tree().create_timer(1).timeout
 	ischasing = false
+	istooclose = false
 
 func _on_enem_att_detect_body_entered(body):
 	if body.is_in_group("player_body"):
@@ -153,8 +160,8 @@ func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
 		new_hp = debug_hp - take_A_sword_dmg
 		old_hp = new_hp + take_A_sword_dmg
-		doknockback = true
 		for n in take_A_sword_dmg:
+			knockback()
 			debug_hp = debug_hp - 1
 			$enemsprite/enembar.value = debug_hp
 			$enemhp.text = str(debug_hp)
@@ -197,5 +204,5 @@ func _on_enemhurtbox_body_entered(body):
 func died():
 	isdead = true
 	if isboss == true:
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2).timeout
 		get_parent().victory()

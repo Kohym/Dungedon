@@ -1,7 +1,6 @@
 extends Control
-@export var level: Node2D
-@export var player: CharacterBody2D
-@export var me: Control
+@onready var level= $"../../../../"
+@onready var player = $"../../../"
 var debug = false
 
 func _ready():
@@ -9,11 +8,9 @@ func _ready():
 	debug = true
 
 func _on_scroll_button_pressed():
-	me.visible = false
+	self.visible = false
 
 func _on_visibility_changed():
 	if debug == true:
 		level.pausemenu2()
 		player.lockmovement()
-
-
