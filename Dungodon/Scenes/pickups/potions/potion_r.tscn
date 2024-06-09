@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c8t1rjqqq3ura" path="res://Assets/potions/bottle_1_broken3.png" id="4_penag"]
 [ext_resource type="Texture2D" uid="uid://ccvvb44e6a8sj" path="res://Assets/potions/potionR.png" id="5_bdvum"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw50r"]
-size = Vector2(16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_r62di"]
 atlas = ExtResource("5_bdvum")
 region = Rect2(80, 0, 16, 16)
@@ -83,18 +80,21 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw50r"]
+size = Vector2(16, 16)
+
 [node name="potionR" type="Area2D" groups=["potionR"]]
 scale = Vector2(3, 3)
 collision_layer = 8192
 collision_mask = 2
 script = ExtResource("1_botqh")
 
-[node name="potionR_collbox" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cw50r")
-
 [node name="potionR_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6f2d8")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="potionR_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cw50r")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
