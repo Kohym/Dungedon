@@ -113,11 +113,19 @@ func  _input(_event):
 		if has_got_keys == true:
 			get_keys()
 			await get_tree().create_timer(0.9).timeout
+			if has_got_keys ==true:
+				await get_tree().create_timer(0.5).timeout
+				if has_got_keys ==true:
+					await get_tree().create_timer(0.5).timeout
 		holster()
 	elif  Input.is_action_just_pressed("keys"):
 		if isholster == false:
 			holster()
 			await get_tree().create_timer(0.9).timeout
+			if isholster ==false:
+				await get_tree().create_timer(0.5).timeout
+				if isholster ==false:
+					await get_tree().create_timer(0.5).timeout
 		get_keys()
 
 func holster():
