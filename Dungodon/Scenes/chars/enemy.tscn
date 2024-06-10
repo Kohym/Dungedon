@@ -124,7 +124,6 @@ shape = SubResource("CapsuleShape2D_vmq3h")
 
 [node name="enemy_navigation" type="NavigationAgent2D" parent="."]
 path_desired_distance = 80.8
-debug_enabled = true
 
 [node name="enemy_timer" type="Timer" parent="."]
 wait_time = 0.2

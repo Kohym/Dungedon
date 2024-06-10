@@ -68,12 +68,12 @@ func _ready():
 	if isboss == true:
 		$enemsprite/boss_sprite.visible = true
 		speed = speed *1.5
+		base_hp = base_hp * 1.5
 	basespeed = speed
-	$enemsprite/enembar.max_value = base_hp
 	debug_hp = base_hp
-	$enemhp.text = str(base_hp)
 	$enemsprite/enembar.max_value = base_hp
 	$enemsprite/enembar.value = base_hp
+	$enemhp.text = str(base_hp)
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
 	$enemsprite.rotation = look
 	$enem_att_detect.rotation = look

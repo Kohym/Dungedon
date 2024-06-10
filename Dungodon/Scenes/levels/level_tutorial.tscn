@@ -816,8 +816,11 @@ position = Vector2(-2112, 5005)
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll8")
 
 [node name="scroll_pickup9" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("8_gfhme")]
+visible = false
 position = Vector2(-60, 4004)
 rotation = 1.5708
+monitoring = false
+monitorable = false
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll9")
 
 [node name="scroll_pickup10" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("8_gfhme")]
@@ -869,6 +872,42 @@ text = "Move with:
 WSAD"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="labels"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = -362.0
+offset_right = 901.0
+offset_bottom = -257.0
+theme_override_font_sizes/font_size = 75
+text = "Doors and keys ->"
+
+[node name="Label3" type="Label" parent="labels"]
+offset_left = -230.0
+offset_top = -36.0
+offset_right = 66.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 75
+text = "<- Potions"
+
+[node name="Label4" type="Label" parent="labels"]
+offset_left = 304.0
+offset_top = -1273.0
+offset_right = 1042.0
+offset_bottom = -1132.0
+theme_override_font_sizes/font_size = 75
+text = "Environmental dangers ->
+and opportunities "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="labels"]
+offset_left = -339.0
+offset_top = -1279.0
+offset_right = 157.0
+offset_bottom = -1174.0
+theme_override_font_sizes/font_size = 75
+text = "<- Final chalange"
+
 [node name="enemy" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("23_ixno7")]
 position = Vector2(1281, 3491)
 player1 = NodePath("../player")
@@ -879,13 +918,13 @@ detect_radius = 100
 base_hp = 60
 
 [node name="enemy2" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("23_ixno7")]
-position = Vector2(-2056, 2848)
+position = Vector2(-2115, 2846)
 isboss = true
 player1 = NodePath("../player")
 bricks = NodePath("../tilemaps/bricks")
 speed = 200
 look = 90.0
-base_hp = 80
+base_hp = 50
 
 [node name="player" parent="." instance=ExtResource("6_qak47")]
 position = Vector2(-720, 5664)
