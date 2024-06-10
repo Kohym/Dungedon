@@ -1118,7 +1118,7 @@ offset_top = 103.685
 offset_right = 559.263
 offset_bottom = 140.685
 theme_override_font_sizes/font_size = 40
-text = "This one will granz you swiftnes in
+text = "This one will grant you swiftnes in
 your legs"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1222,7 +1222,7 @@ offset_top = -4.73664
 offset_right = 601.158
 offset_bottom = 234.263
 theme_override_font_sizes/font_size = 40
-text = "These types of walls cen be destroyed and then passed.
+text = "These types of walls can be destroyed and then passed.
 To destroy them equip your sword by pressing 1. Attack by pressing LMB.
 
 Note: 
