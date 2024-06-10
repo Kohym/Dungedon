@@ -133,7 +133,6 @@ vertical_alignment = 1
 [node name="playersprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3, 3)
-texture = ExtResource("5_qi0f5")
 
 [node name="player_wepon_sword_holstered_sprite" type="Sprite2D" parent="playersprite"]
 position = Vector2(-2.80702, 7.9473e-08)
