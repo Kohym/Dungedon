@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://bpa358f1vanny"]
+[gd_scene load_steps=86 format=3 uid="uid://bpa358f1vanny"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_4t8ho"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_aukqo"]
@@ -302,6 +302,10 @@ texture = ExtResource("7_7r1h4")
 
 [sub_resource type="TileSet" id="TileSet_03o0r"]
 sources/0 = SubResource("TileSetAtlasSource_djx3o")
+
+[sub_resource type="Theme" id="Theme_pptkn"]
+
+[sub_resource type="Theme" id="Theme_sxs3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7clva"]
 atlas = ExtResource("28_1akko")
@@ -882,6 +886,7 @@ theme_override_font_sizes/font_size = 75
 text = "Doors and keys ->"
 
 [node name="Label3" type="Label" parent="labels"]
+layout_mode = 0
 offset_left = -230.0
 offset_top = -36.0
 offset_right = 66.0
@@ -890,6 +895,7 @@ theme_override_font_sizes/font_size = 75
 text = "<- Potions"
 
 [node name="Label4" type="Label" parent="labels"]
+layout_mode = 0
 offset_left = 304.0
 offset_top = -1273.0
 offset_right = 1042.0
@@ -901,6 +907,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="labels"]
+layout_mode = 0
 offset_left = -339.0
 offset_top = -1279.0
 offset_right = 157.0
@@ -978,6 +985,7 @@ offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
 rotation = -1.5708
+theme = SubResource("Theme_pptkn")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll2"]
 layout_mode = 1
@@ -986,13 +994,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -479.0
+offset_left = -488.474
 offset_top = -93.5
-offset_right = 479.0
+offset_right = 469.526
 offset_bottom = 93.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("9_p1snw")
+theme = SubResource("Theme_sxs3g")
 text = "Here you can try interacting with the door types you will find in the dungeon."
 
 [node name="scroll3" parent="player/Camera2D/scrolls" instance=ExtResource("8_d1yt2")]
@@ -1011,9 +1019,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -566.808
+offset_left = -592.071
 offset_top = -242.941
-offset_right = 488.192
+offset_right = 462.929
 offset_bottom = 225.059
 grow_horizontal = 2
 grow_vertical = 2
