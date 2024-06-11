@@ -566,10 +566,10 @@ script = ExtResource("1_aukqo")
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 texture_repeat = 2
-offset_left = -4591.0
-offset_top = 346.0
-offset_right = 6169.0
-offset_bottom = 6975.0
+offset_left = -2711.0
+offset_top = 586.0
+offset_right = 8049.0
+offset_bottom = 7215.0
 scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("1_4t8ho")
 stretch_mode = 1
@@ -622,85 +622,84 @@ position = Vector2(-1800, 3576)
 
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
-scale = Vector2(3.03, 3)
 
 [node name="door" parent="doors" instance=ExtResource("8_jd5of")]
-position = Vector2(-117.838, 1608)
+position = Vector2(-556.388, 4885)
 rotation = 1.5708
 islocked = "blue"
 
 [node name="door2" parent="doors" instance=ExtResource("8_jd5of")]
-position = Vector2(-117.502, 1560.01)
+position = Vector2(-556.052, 4837.01)
 rotation = 1.5708
 islocked = "green"
 
 [node name="door3" parent="doors" instance=ExtResource("8_jd5of")]
-position = Vector2(-117.495, 1512)
+position = Vector2(-556.045, 4789)
 rotation = 1.5708
 islocked = "red"
 
 [node name="door4" parent="doors" instance=ExtResource("8_jd5of")]
-position = Vector2(-117.815, 1656)
+position = Vector2(-556.365, 4933)
 rotation = 1.5708
 islocked = "False"
 
 [node name="door5" parent="doors" instance=ExtResource("8_jd5of")]
-position = Vector2(-117.809, 1464)
+position = Vector2(-556.359, 4741)
 rotation = 1.5708
 islocked = "True"
 
 [node name="door_both" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-239.934, 1656)
+position = Vector2(-729, 4968)
 rotation = 1.5708
 islocked = "False"
 
 [node name="door_both2" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-240.049, 1511.84)
+position = Vector2(-678.599, 4788.84)
 rotation = 1.5708
 islocked = "red"
 
 [node name="door_both3" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-240.264, 1463.99)
+position = Vector2(-678.814, 4740.99)
 rotation = 1.5708
 islocked = "True"
 
 [node name="door_both4" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-240.043, 1559.83)
+position = Vector2(-678.593, 4836.83)
 rotation = 1.5708
 islocked = "green"
 
 [node name="door_both5" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-240.049, 1608)
+position = Vector2(-730, 4824)
 rotation = 1.5708
 islocked = "blue"
 
 [node name="door6" parent="doors" instance=ExtResource("8_jd5of")]
-position = Vector2(-106.601, 1686)
+position = Vector2(-545.151, 4963)
 rotation = 3.14159
 islocked = "False"
 
 [node name="door_both6" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-258.746, 1160)
+position = Vector2(-697.296, 4437)
 rotation = 1.5708
 islocked = "False"
 
 [node name="door7" parent="doors" instance=ExtResource("8_jd5of")]
-position = Vector2(-1223.43, 1120.33)
+position = Vector2(-1661.98, 4397.33)
 scale = Vector2(1.49, 1.49)
 islocked = "False"
 openforsec = 5.0
 
 [node name="door8" parent="doors" instance=ExtResource("8_jd5of")]
-position = Vector2(-1421.45, 870)
+position = Vector2(-1860, 4147)
 rotation = -3.14159
 islocked = "False"
 
 [node name="door_both7" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-1389.44, 959.667)
+position = Vector2(-1827.99, 4236.67)
 islocked = "False"
 
 [node name="door_both8" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-1019.8, 1032)
+position = Vector2(-1458.35, 4309)
 rotation = 1.5708
 islocked = "False"
 

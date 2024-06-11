@@ -310,7 +310,6 @@ format = 2
 
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
-scale = Vector2(3.03, 3)
 
 [node name="player" parent="." instance=ExtResource("6_qak47")]
 position = Vector2(158, 204)
