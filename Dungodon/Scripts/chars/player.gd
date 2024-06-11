@@ -146,6 +146,7 @@ func holster():
 			await get_tree().create_timer(0.000000001).timeout
 		isholster = true
 		isuholsteringmove = false
+	setspeed()
 
 func _on_debug_body_entered(body):
 	if body.is_in_group("brick") or body.is_in_group("door"):
