@@ -278,7 +278,7 @@ position = Vector2(140, 216)
 position = Vector2(1677, 1022)
 
 [node name="potionR" parent="pickups/potions" instance=ExtResource("14_7nngw")]
-position = Vector2(645, 210)
+position = Vector2(-154, 218)
 
 [node name="potionG3" parent="pickups/potions" instance=ExtResource("12_53cj4")]
 position = Vector2(176, 197)
@@ -296,24 +296,20 @@ whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll")
 
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
-scale = Vector2(3.03, 3)
 
 [node name="door" parent="doors" instance=ExtResource("17_80ibe")]
-position = Vector2(-199.647, -119.997)
+position = Vector2(-605, -360)
 rotation = -1.5708
-islocked = "False"
 
 [node name="door2" parent="doors" instance=ExtResource("17_80ibe")]
 position = Vector2(4.29044, 9.99999)
-islocked = "False"
 
 [node name="door3" parent="doors" instance=ExtResource("17_80ibe")]
-position = Vector2(-502.64, -74)
+position = Vector2(-1523, -222)
 rotation = 3.14159
-islocked = "False"
 
 [node name="door_both" parent="doors" instance=ExtResource("18_65cis")]
-position = Vector2(-502.64, 80.3334)
+position = Vector2(-1523, 240)
 islocked = "red"
 
 [node name="enemy" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("19_cmquj")]

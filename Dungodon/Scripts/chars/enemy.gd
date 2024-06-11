@@ -61,7 +61,6 @@ func knockback():
 		velocity = knockback * 100
 		move_and_slide()
 		await get_tree().create_timer(0.3).timeout
-		await get_tree().create_timer(0.1).timeout
 		work = true
 
 func _ready():

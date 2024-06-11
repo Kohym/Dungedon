@@ -112,11 +112,8 @@ func  _input(_event):
 	elif Input.is_action_just_pressed("sword_unholster"):
 		if has_got_keys == true:
 			get_keys()
-			await get_tree().create_timer(0.9).timeout
-			if has_got_keys ==true:
-				await get_tree().create_timer(0.5).timeout
-				if has_got_keys ==true:
-					await get_tree().create_timer(0.5).timeout
+			while has_got_keys == true:
+				pass
 		holster()
 	elif  Input.is_action_just_pressed("keys"):
 		if isholster == false:
@@ -271,7 +268,10 @@ func _on_playerhurtbox_area_entered(area):
 		if potionR2works == true:
 			new_hp = debug_hp - debug_hp
 			old_hp = new_hp + debug_hp
+			ispoison = true
 			for n in debug_hp:
+				if ispoison == false:
+					break
 				debug_hp = debug_hp - 1
 				$playersprite/playerbar.value = debug_hp
 				$playerhp.text = str(debug_hp)

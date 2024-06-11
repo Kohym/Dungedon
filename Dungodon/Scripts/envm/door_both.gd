@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export_enum("False", "red", "green", "blue", "True") var islocked: String
+@export_enum("False", "red", "green", "blue", "True") var islocked = "False"
 @export var isopen = false
 @export var openforsec = 2.0
 func _ready():
