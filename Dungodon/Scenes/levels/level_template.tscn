@@ -314,19 +314,19 @@ scale = Vector2(3.03, 3)
 
 [node name="player" parent="." instance=ExtResource("6_qak47")]
 position = Vector2(158, 204)
-rotation = 1.5708
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
 
 [node name="scrolls" type="Control" parent="player/Camera2D"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+rotation = 1.5708
 
 [node name="scroll" parent="player/Camera2D/scrolls" instance=ExtResource("8_d1yt2")]
-visible = false
 layout_mode = 1
 offset_left = -2.63161
 offset_top = -1.57898
@@ -345,12 +345,9 @@ text = "This is test"
 
 [node name="pause_ui" parent="player/Camera2D" instance=ExtResource("7_e01a3")]
 visible = false
-rotation = -1.5708
 
 [node name="win_ui" parent="player/Camera2D" instance=ExtResource("10_or0kl")]
 visible = false
-rotation = -1.5708
 
 [node name="loss_ui" parent="player/Camera2D" instance=ExtResource("12_c7vk1")]
 visible = false
-rotation = -1.5708

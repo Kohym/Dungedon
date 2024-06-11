@@ -924,6 +924,15 @@ rotation = 0.872665
 theme_override_font_sizes/font_size = 75
 text = "--->"
 
+[node name="Label7" type="Label" parent="labels"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = -545.0
+offset_right = 776.0
+offset_bottom = -440.0
+rotation = -1.5708
+text = "->->->->"
+
 [node name="enemy" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("23_ixno7")]
 position = Vector2(1281, 3491)
 player1 = NodePath("../player")
