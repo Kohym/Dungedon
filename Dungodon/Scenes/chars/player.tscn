@@ -148,10 +148,12 @@ scale = Vector2(0.333333, 0.333333)
 [node name="playerbar" type="TextureProgressBar" parent="playersprite"]
 texture_filter = 1
 texture_repeat = 1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = 16.8421
+offset_top = -16.8421
+offset_right = 48.8421
+offset_bottom = 15.1579
+rotation = 1.5708
+scale = Vector2(1.05, 1.05)
 value = 100.0
 fill_mode = 8
 texture_under = ExtResource("3_n1t1b")

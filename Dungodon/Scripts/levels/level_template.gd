@@ -2,22 +2,24 @@ extends Node2D
 
 var paused = false
 var win = false
+var paused_debug
 @onready var pause_ui = $player/Camera2D/pause_ui
 
 func _process(delta):
 	if win == false:
 		if Input.is_action_just_pressed("pause"):
 			pausemenu()
-			$player.lockmovement()
 		
 func pausemenu():
 	if win == false:
-		if paused == true:
+		if paused == true and paused_debug == false:
 			$player/Camera2D/pause_ui.visible = false
+			$player.lockmovement()
 			Engine.time_scale = 1
 			paused= false
-		else:
+		elif paused == false and paused_debug == false:
 			$player/Camera2D/pause_ui.show()
+			$player.lockmovement()
 			Engine.time_scale = 0
 			paused = true
 
@@ -26,8 +28,10 @@ func pausemenu2():
 		if paused == true:
 			Engine.time_scale = 1
 			paused= false
+			paused_debug = false
 		else:
 			Engine.time_scale = 0
+			paused_debug = true
 			paused = true
 
 func victory():
