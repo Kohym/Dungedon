@@ -164,6 +164,10 @@ scale = Vector2(0.333333, 0.333333)
 position = Vector2(81.5789, 6.91414e-06)
 shape = SubResource("RectangleShape2D_csofs")
 
+[node name="playersprite2" type="Sprite2D" parent="playersprite"]
+texture_filter = 1
+texture = ExtResource("5_qi0f5")
+
 [node name="keys" type="Node2D" parent="playersprite"]
 scale = Vector2(0.333333, 0.333333)
 
@@ -218,10 +222,6 @@ shape = SubResource("CircleShape2D_hfc10")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playersprite/keys/key_holder"]
 stream = SubResource("AudioStreamMP3_ap8yv")
-
-[node name="playersprite2" type="Sprite2D" parent="playersprite"]
-texture_filter = 1
-texture = ExtResource("5_qi0f5")
 
 [node name="playercollbox" type="CollisionShape2D" parent="." groups=["player_body"]]
 position = Vector2(7.62939e-06, 9.53674e-07)
