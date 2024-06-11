@@ -112,8 +112,10 @@ func  _input(_event):
 	elif Input.is_action_just_pressed("sword_unholster"):
 		if has_got_keys == true:
 			get_keys()
-			while has_got_keys == true:
-				pass
+			if has_got_keys ==false:
+				await get_tree().create_timer(0.5).timeout
+				if has_got_keys ==false:
+					await get_tree().create_timer(0.5).timeout
 		holster()
 	elif  Input.is_action_just_pressed("keys"):
 		if isholster == false:
