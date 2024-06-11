@@ -380,10 +380,9 @@ islocked = "True"
 
 [node name="enemy2" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("16_j0jlk")]
 position = Vector2(411, 105)
-rotation = 1.5708
-scale = Vector2(0.9025, 0.9025)
 player1 = NodePath("../player")
 bricks = NodePath("../tilemaps/bricks")
+look = 90.0
 
 [node name="enemy" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("16_j0jlk")]
 position = Vector2(-357, 1153)
