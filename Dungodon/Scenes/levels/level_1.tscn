@@ -274,7 +274,7 @@ physics_layer_0/collision_layer = 512
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_bmn72")
 
-[node name="level_template" type="Node2D"]
+[node name="level_template2" type="Node2D"]
 script = ExtResource("1_a4eqy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -341,7 +341,7 @@ position = Vector2(491, 818)
 position = Vector2(-125, 984)
 
 [node name="potionR_2" parent="pickups/potions" instance=ExtResource("12_ws32r")]
-position = Vector2(-125, 984)
+position = Vector2(619, 1060)
 
 [node name="potionG" parent="pickups/potions" instance=ExtResource("13_kyjyi")]
 position = Vector2(405, 1060)
@@ -357,7 +357,7 @@ position = Vector2(262, 163)
 [node name="scrolls" type="Node2D" parent="pickups"]
 
 [node name="scroll_pickup" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("13_1h15r")]
-position = Vector2(-314, 71)
+position = Vector2(-289, 105)
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll")
 
 [node name="doors" type="Node2D" parent="."]
@@ -389,10 +389,12 @@ position = Vector2(-357, 1153)
 isboss = true
 player1 = NodePath("../player")
 bricks = NodePath("../tilemaps/bricks")
+detect_radius = 180
 
 [node name="player" parent="." instance=ExtResource("7_gkynm")]
 position = Vector2(-659, 242)
 base_hp = 200
+potionG2add = 100
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
