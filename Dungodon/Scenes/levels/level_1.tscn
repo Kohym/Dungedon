@@ -278,13 +278,12 @@ sources/0 = SubResource("TileSetAtlasSource_bmn72")
 script = ExtResource("1_a4eqy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 texture_filter = 1
 texture_repeat = 2
-offset_left = -1323.0
-offset_top = -778.0
-offset_right = 2029.0
-offset_bottom = 1406.0
+offset_left = -2423.0
+offset_top = -900.0
+offset_right = 2768.0
+offset_bottom = 2782.0
 scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("2_j8jgs")
 stretch_mode = 1
@@ -394,7 +393,7 @@ detect_radius = 180
 [node name="player" parent="." instance=ExtResource("7_gkynm")]
 position = Vector2(-659, 242)
 base_hp = 200
-potionG2add = 100
+potionG2add = 50
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)

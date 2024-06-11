@@ -25,9 +25,11 @@ func _ready():
 
 func open():
 	$door_sprite.play("open")
+	$door_navlink.bidirectional = true
 	$door_collbox.set_deferred("disabled", true)
 	await get_tree().create_timer(openforsec).timeout
 	$door_sprite.play("closed")
+	$door_navlink.bidirectional = false
 	$door_collbox.set_deferred("disabled", false)
 	
 var isin

@@ -66,7 +66,7 @@ func knockback():
 func _ready():
 	if isboss == true:
 		$enemsprite/boss_sprite.visible = true
-		speed = speed *1.5
+		speed = speed *1.02
 		base_hp = base_hp * 1.5
 	basespeed = speed
 	debug_hp = base_hp
@@ -126,7 +126,8 @@ func _on_enem_player_detect_body_exited(body):
 func _on_enem_att_detect_body_entered(body):
 	if body.is_in_group("player_body"):
 		istooclose = true
-		attac()
+		if isattac == false:
+			attac()
 
 func _on_enem_att_detect_body_exited(body):
 	if body.is_in_group("player_body"):
@@ -150,8 +151,10 @@ func attac():
 				await get_tree().create_timer(0.1).timeout
 				var timer = 0.0005
 				for n in 120:
+					$enemsprite/enemy_wepon_sword.add_to_group("enemy_wepon_sword")
 					await get_tree().create_timer(timer).timeout
 					$enemsprite/enemy_wepon_sword.rotation_degrees += 3
+					$enemsprite/enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
 				$enemsprite/enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
 				isattac = false
 
