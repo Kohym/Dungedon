@@ -2,7 +2,7 @@ extends Node2D
 
 var paused = false
 var win = false
-var paused_debug
+var paused_debug = false
 @onready var pause_ui = $player/Camera2D/pause_ui
 
 func _process(delta):
