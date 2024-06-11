@@ -113,7 +113,7 @@ shape = SubResource("RectangleShape2D_xowfc")
 
 [node name="door_navlink" type="NavigationLink2D" parent="."]
 bidirectional = false
-start_position = Vector2(0, 21)
+start_position = Vector2(0, 33.6667)
 end_position = Vector2(0, -4)
 
 [connection signal="area_entered" from="door_open_detect" to="." method="_on_door_open_detect_area_entered"]
