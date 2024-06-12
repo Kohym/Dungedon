@@ -650,34 +650,35 @@ islocked = "True"
 [node name="door_both" parent="doors" instance=ExtResource("9_udx6n")]
 position = Vector2(-730, 5112)
 rotation = 1.5708
+isopen = true
 
 [node name="door_both2" parent="doors" instance=ExtResource("9_udx6n")]
 position = Vector2(-731, 4680)
 rotation = 1.5708
-islocked = "red"
+islocked = "green"
 
 [node name="door_both3" parent="doors" instance=ExtResource("9_udx6n")]
 position = Vector2(-730, 4536)
 rotation = 1.5708
-islocked = "True"
+islocked = "red"
 
 [node name="door_both4" parent="doors" instance=ExtResource("9_udx6n")]
 position = Vector2(-731, 4824)
 rotation = 1.5708
-islocked = "green"
+islocked = "blue"
 
 [node name="door_both5" parent="doors" instance=ExtResource("9_udx6n")]
 position = Vector2(-730, 4968)
 rotation = 1.5708
-islocked = "blue"
 
 [node name="door6" parent="doors" instance=ExtResource("8_jd5of")]
 position = Vector2(-323, 5094)
 rotation = 3.14159
 
 [node name="door_both6" parent="doors" instance=ExtResource("9_udx6n")]
-position = Vector2(-735, 4388)
+position = Vector2(-735, 4392)
 rotation = 1.5708
+islocked = "True"
 
 [node name="door8" parent="doors" instance=ExtResource("8_jd5of")]
 position = Vector2(-4307, 2610)

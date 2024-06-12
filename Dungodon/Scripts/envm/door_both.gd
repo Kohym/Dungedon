@@ -8,6 +8,10 @@ func _ready():
 		$door_both_collbox.set_deferred("disabled", true)
 	if islocked == "True":
 		$door_both_sprite.play("destroyed")
+		$door_both_open_detect1.monitoring = false
+		$door_both_open_detect2.monitoring = false
+		$door_both_open_detect1.monitorable = false
+		$door_both_open_detect2.monitorable = false
 	if islocked != "False":
 		$door_both_navlink.enabled = false
 	if islocked == "red":
@@ -41,8 +45,6 @@ func _on_door_both_open_detect_2_body_entered(body):
 	if body.is_in_group("player_body") or body.is_in_group("enemy_body"):
 		if (islocked == "False"):
 			open()
-		if (islocked != "False"):
-			await get_tree().create_timer(2).timeout
 
 func _on_door_both_open_detect_1_area_entered(area):
 	if  area.is_in_group("has_"+islocked+"_key") or area.is_in_group("has_universal_key"):

@@ -178,7 +178,6 @@ rotation = -1.5708
 [node name="door_both" parent="." instance=ExtResource("10_ali4s")]
 position = Vector2(227.408, 384.31)
 rotation = 1.5708
-scale = Vector2(3, 3)
 islocked = "True"
 
 [node name="medkit" parent="." instance=ExtResource("11_xcse2")]
@@ -201,8 +200,6 @@ curve = SubResource("Curve2D_41dph")
 [node name="door_both2" parent="Path2D" instance=ExtResource("10_ali4s")]
 position = Vector2(671, 288)
 rotation = 1.5708
-scale = Vector2(3, 3)
-islocked = "False"
 openforsec = 1.5
 
 [node name="menu_patrol" type="PathFollow2D" parent="Path2D"]
