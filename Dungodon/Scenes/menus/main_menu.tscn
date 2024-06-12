@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjw3ntd5sankc"]
+[gd_scene load_steps=6 format=3 uid="uid://cjw3ntd5sankc"]
 
 [ext_resource type="Script" path="res://Scripts/menus/main_menu.gd" id="1_bjayu"]
 [ext_resource type="PackedScene" uid="uid://du6cr36cg3ufs" path="res://Scenes/levels/menu_level.tscn" id="2_t6wx6"]
@@ -6,6 +6,8 @@
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ocph0"]
 allow_unpress = true
+
+[sub_resource type="Theme" id="Theme_fcviv"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -74,24 +76,29 @@ text = "Level 1"
 
 [node name="lvl2_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 2"
 
 [node name="lvl3_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 3"
 
 [node name="lvl4_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 4"
 
 [node name="lvl5_button" type="Button" parent="menus/levels_menu"]
 layout_mode = 2
+theme = SubResource("Theme_fcviv")
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ocph0")
 text = "Level 5"
@@ -183,6 +190,18 @@ rotation = 0.174533
 theme = ExtResource("3_belm7")
 theme_override_font_sizes/font_size = 220
 text = "DUNGEDON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1423.0
+offset_top = 399.0
+offset_right = 2284.0
+offset_bottom = 463.0
+rotation = 0.174533
+theme_override_font_sizes/font_size = 70
+text = "By: Kohout, Navratil"
 horizontal_alignment = 1
 vertical_alignment = 1
 

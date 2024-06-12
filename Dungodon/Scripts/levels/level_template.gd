@@ -1,5 +1,4 @@
 extends Node2D
-
 var paused = false
 var win = false
 var paused_debug = false

@@ -105,7 +105,7 @@ func setspeed():
 
 #region equip and use
 func  _input(_event):
-	if Input.is_action_just_pressed("left_click") and isattac == false and isholster == false and willhitwall == false:
+	if Input.is_action_just_pressed("left_click") and isattac == false and isholster == false and willhitwall == false and lockemove == false:
 		isattac = true
 		setspeed()
 		attack()

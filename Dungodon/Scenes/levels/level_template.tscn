@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://c2ycyg0a5ptu1"]
+[gd_scene load_steps=24 format=3 uid="uid://c2ycyg0a5ptu1"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_4t8ho"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_aukqo"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_ki2sk"]
 [ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="3_c43r4"]
 [ext_resource type="Texture2D" uid="uid://l6sng07qs3t1" path="res://Assets/Env/spikes.png" id="4_0whvg"]
+[ext_resource type="Texture2D" uid="uid://yoiyjvjk3e1i" path="res://Assets/Env/bars.png" id="5_7nr6f"]
 [ext_resource type="Texture2D" uid="uid://b4cg4pirs5osq" path="res://Assets/Env/poison.png" id="5_a8uvj"]
 [ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="6_qak47"]
 [ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="7_e01a3"]
@@ -168,12 +169,27 @@ texture = ExtResource("3_c43r4")
 2:2/0/physics_layer_0/angular_velocity = 0.0
 2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_wqw5h")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th2je"]
+texture = ExtResource("5_7nr6f")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/size_in_atlas = Vector2i(2, 1)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/size_in_atlas = Vector2i(3, 1)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_rd60n"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_j137b")
 sources/2 = SubResource("TileSetAtlasSource_p14bc")
+sources/3 = SubResource("TileSetAtlasSource_th2je")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hns6x"]
 texture = ExtResource("4_0whvg")
