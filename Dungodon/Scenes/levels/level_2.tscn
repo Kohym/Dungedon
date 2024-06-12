@@ -269,7 +269,6 @@ sources/0 = SubResource("TileSetAtlasSource_bmn72")
 [node name="level_2" type="Node2D"]
 position = Vector2(459, 98)
 script = ExtResource("1_p0ur4")
-level_number = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
