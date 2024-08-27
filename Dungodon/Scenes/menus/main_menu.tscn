@@ -211,9 +211,9 @@ offset_left = 1741.0
 offset_top = 1108.0
 offset_right = 1793.0
 offset_bottom = 1213.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "x"
 
 [connection signal="pressed" from="menus/main_menu/levels_button" to="." method="_on_levels_button_pressed"]

@@ -208,3 +208,4 @@ func died():
 	if isboss == true:
 		await get_tree().create_timer(2).timeout
 		get_parent().victory()
+	process_mode = PROCESS_MODE_DISABLED

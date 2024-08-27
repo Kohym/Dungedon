@@ -90,6 +90,3 @@ func load_data():
 
 func _on_dev_level_pressed():
 	get_tree().change_scene_to_file("res://Scenes/levels/level_dev.tscn")
-
-
-
