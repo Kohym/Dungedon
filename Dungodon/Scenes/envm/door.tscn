@@ -95,6 +95,7 @@ collision_mask = 0
 script = ExtResource("1_b47ad")
 
 [node name="door_sprite" type="AnimatedSprite2D" parent="." groups=["door"]]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_ciu2c")
 animation = &"closed"
 autoplay = "closed"

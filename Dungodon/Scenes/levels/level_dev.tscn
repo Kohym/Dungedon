@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=38 format=4 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_qi0bq"]
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="2_najqb"]
@@ -21,11 +21,17 @@
 [ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/envm/door_both.tscn" id="18_65cis"]
 [ext_resource type="PackedScene" uid="uid://b7guy3xdvjg5y" path="res://Scenes/chars/enemy.tscn" id="19_cmquj"]
 [ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="20_qhp5r"]
+[ext_resource type="Shader" path="res://Scenes/levels/level_dev.gdshader" id="20_t4fft"]
 [ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="21_yrr4v"]
 [ext_resource type="PackedScene" uid="uid://c652umiweekt6" path="res://Scenes/envm/scroll.tscn" id="22_dj650"]
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="23_phsgn"]
 [ext_resource type="PackedScene" uid="uid://dr4x5345mirve" path="res://Scenes/menus/win_ui.tscn" id="24_vmexg"]
 [ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="25_i1hba"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjl2i"]
+shader = ExtResource("20_t4fft")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgddw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g7kaw"]
 texture = ExtResource("3_d7l8o")
@@ -136,20 +142,22 @@ physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_vu6ht")
 
 [node name="level_dev" type="Node2D"]
+material = SubResource("ShaderMaterial_jjl2i")
+use_parent_material = true
 script = ExtResource("1_qi0bq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 texture_repeat = 2
-offset_left = -1386.0
-offset_top = 6.0
-offset_right = 1966.0
-offset_bottom = 1253.0
+offset_left = -6040.0
+offset_top = -2744.0
+offset_right = 6579.0
+offset_bottom = 6367.0
 scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("2_najqb")
-stretch_mode = 1
 
 [node name="tilemaps" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_tgddw")
 
 [node name="bricks" type="TileMapLayer" parent="tilemaps" groups=["brick"]]
 use_parent_material = true
@@ -159,26 +167,27 @@ tile_set = SubResource("TileSet_oysxu")
 
 [node name="spikestilemap" type="TileMapLayer" parent="tilemaps" groups=["spikes"]]
 texture_filter = 1
-use_parent_material = true
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAQABIAAQABAAAAAAAQABMAAQABAAIAAAAQABQAAQABAAEAAAAQABUAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_cq7a0")
 
 [node name="poison" type="TileMapLayer" parent="tilemaps" groups=["poison"]]
-use_parent_material = true
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAARAAwAAQAAAAAAAAASAAwAAQABAAIAAAATAAwAAQABAAAAAAAUAAwAAQABAAEAAAAVAAwAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_tk8t6")
 
 [node name="destructible_wall1" parent="tilemaps" instance=ExtResource("7_o8qc0")]
+use_parent_material = true
 position = Vector2(1080, 456)
 rotation = 1.5708
 
 [node name="destructible_wall3" parent="tilemaps" instance=ExtResource("7_o8qc0")]
+use_parent_material = true
 position = Vector2(1512, 937)
 rotation = 1.5708
 
 [node name="destructible_wall2" parent="tilemaps" instance=ExtResource("8_iuikc")]
+use_parent_material = true
 position = Vector2(408, 96)
 
 [node name="pickups" type="Node2D" parent="."]
@@ -226,24 +235,27 @@ whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll")
 position = Vector2(1667, 552)
 
 [node name="door" parent="doors" instance=ExtResource("17_80ibe")]
+use_parent_material = true
 position = Vector2(-605, -360)
 rotation = -1.5708
 
 [node name="door2" parent="doors" instance=ExtResource("17_80ibe")]
+use_parent_material = true
 position = Vector2(12.2904, 30)
 
 [node name="door3" parent="doors" instance=ExtResource("17_80ibe")]
+use_parent_material = true
 position = Vector2(-1523, -222)
 rotation = 3.14159
 
 [node name="door_both" parent="doors" instance=ExtResource("18_65cis")]
+use_parent_material = true
 position = Vector2(-1523, 240)
 islocked = "red"
 
-[node name="enemy" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("19_cmquj")]
+[node name="enemy" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("19_cmquj")]
 position = Vector2(846, 232)
 player1 = NodePath("../player")
-bricks = NodePath("")
 look = 180.0
 detect_radius = 200
 

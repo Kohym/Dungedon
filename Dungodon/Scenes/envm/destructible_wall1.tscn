@@ -40,6 +40,7 @@ collision_mask = 32
 script = ExtResource("1_7620u")
 
 [node name="destructible_wall1_sprite" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_hdiwn")
 autoplay = "default"

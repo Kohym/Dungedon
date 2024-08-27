@@ -48,6 +48,15 @@ func _on_levlels_play_button_pressed():
 #endregion
 
 #region opions_menu
+#region options_darkmode
+var option_darkmode = false
+func _on_darkmode_button_pressed():
+	if option_darkmode == true:
+		option_darkmode = false
+	elif option_darkmode == false:
+		option_darkmode = true
+	$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
+#endregion
 #region options_volume
 var option_volume_value = 5
 func _on_volume_minus_pressed():
@@ -65,7 +74,8 @@ func _on_volume_plus_pressed():
 	elif option_volume_value > 10:
 		option_volume_value = 10
 	$menus/options_menu/option_volume/volume.text = str(option_volume_value)
-
+#endregion
+#region options_general
 func _on_options_back_button_pressed():
 	$menus/options_menu.visible = false
 	$menus/main_menu.visible = true
@@ -76,12 +86,17 @@ func _on_options_save_button_pressed():
 func save():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(option_volume_value)
+	file.store_var(option_darkmode)
+	$Node2D.use_parent_material = option_darkmode
 
 func load_data():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		option_volume_value = file.get_var(option_volume_value)
 		$menus/options_menu/option_volume/volume.text = str(option_volume_value)
+		option_darkmode = file.get_var(option_darkmode)
+		$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
+		$Node2D.use_parent_material = option_darkmode
 	else:
 		print("no data")
 #endregion

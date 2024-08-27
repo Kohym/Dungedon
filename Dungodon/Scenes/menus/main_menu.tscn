@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjw3ntd5sankc"]
+[gd_scene load_steps=8 format=3 uid="uid://cjw3ntd5sankc"]
 
 [ext_resource type="Script" path="res://Scripts/menus/main_menu.gd" id="1_bjayu"]
+[ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_y3eig"]
 [ext_resource type="PackedScene" uid="uid://du6cr36cg3ufs" path="res://Scenes/levels/menu_level.tscn" id="2_t6wx6"]
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="3_belm7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnwl8"]
+shader = ExtResource("1_y3eig")
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ocph0"]
 allow_unpress = true
@@ -10,6 +14,7 @@ allow_unpress = true
 [sub_resource type="Theme" id="Theme_fcviv"]
 
 [node name="main_menu" type="Control"]
+material = SubResource("ShaderMaterial_xnwl8")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,6 +134,23 @@ layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
 
+[node name="darkmode_label" type="Label" parent="menus/options_menu"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+text = "Dark mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="option_darkmode" type="HBoxContainer" parent="menus/options_menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_belm7")
+
+[node name="darkmode_button" type="Button" parent="menus/options_menu/option_darkmode"]
+layout_mode = 2
+text = "false"
+
 [node name="volume_label" type="Label" parent="menus/options_menu"]
 texture_filter = 1
 texture_repeat = 1
@@ -227,6 +249,7 @@ text = "x"
 [connection signal="pressed" from="menus/levels_menu/lvl5_button" to="." method="_on_lvl_5_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/levels_nav_menu/levels_back_button" to="." method="_on_levels_back_button_pressed"]
 [connection signal="pressed" from="menus/levels_menu/levels_nav_menu/levlels_play_button" to="." method="_on_levlels_play_button_pressed"]
+[connection signal="pressed" from="menus/options_menu/option_darkmode/darkmode_button" to="." method="_on_darkmode_button_pressed"]
 [connection signal="pressed" from="menus/options_menu/option_volume/volume_minus" to="." method="_on_volume_minus_pressed"]
 [connection signal="pressed" from="menus/options_menu/option_volume/volume_plus" to="." method="_on_volume_plus_pressed"]
 [connection signal="pressed" from="menus/options_menu/options_nav_menu/options_back_button" to="." method="_on_options_back_button_pressed"]

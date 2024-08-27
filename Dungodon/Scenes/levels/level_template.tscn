@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://c2ycyg0a5ptu1"]
+[gd_scene load_steps=26 format=3 uid="uid://c2ycyg0a5ptu1"]
 
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="1_4t8ho"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_aukqo"]
+[ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_oa7xq"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="2_ki2sk"]
 [ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="3_c43r4"]
 [ext_resource type="Texture2D" uid="uid://l6sng07qs3t1" path="res://Assets/Env/spikes.png" id="4_0whvg"]
@@ -13,6 +14,9 @@
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="9_p1snw"]
 [ext_resource type="PackedScene" uid="uid://dr4x5345mirve" path="res://Scenes/menus/win_ui.tscn" id="10_or0kl"]
 [ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="12_c7vk1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
+shader = ExtResource("1_oa7xq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
 texture = ExtResource("2_ki2sk")
@@ -166,16 +170,17 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_bmn72")
 
 [node name="level_template" type="Node2D"]
+material = SubResource("ShaderMaterial_b0ln5")
 script = ExtResource("1_aukqo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 texture_filter = 1
 texture_repeat = 2
-offset_left = -1386.0
-offset_top = 6.0
-offset_right = 1966.0
-offset_bottom = 1253.0
+offset_left = -9685.0
+offset_top = -8380.0
+offset_right = 10326.0
+offset_bottom = 10473.0
 scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("1_4t8ho")
 stretch_mode = 1
@@ -199,6 +204,10 @@ scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_6aq44")
 
 [node name="destructible_walls" type="Node2D" parent="tilemaps"]
+use_parent_material = true
+
+[node name="doors" type="Node2D" parent="."]
+position = Vector2(1667, 552)
 
 [node name="pickups" type="Node2D" parent="."]
 
@@ -209,9 +218,6 @@ tile_set = SubResource("TileSet_6aq44")
 [node name="medkits" type="Node2D" parent="pickups"]
 
 [node name="scrolls" type="Node2D" parent="pickups"]
-
-[node name="doors" type="Node2D" parent="."]
-position = Vector2(1667, 552)
 
 [node name="player" parent="." instance=ExtResource("6_qak47")]
 position = Vector2(158, 204)
