@@ -209,7 +209,7 @@ position = Vector2(478, 643)
 position = Vector2(4, 221)
 
 [node name="potionG" parent="pickups/potions" instance=ExtResource("12_53cj4")]
-position = Vector2(140, 216)
+position = Vector2(62, 394)
 
 [node name="potionG2" parent="pickups/potions" instance=ExtResource("13_iv5gp")]
 position = Vector2(1677, 1022)
@@ -218,7 +218,7 @@ position = Vector2(1677, 1022)
 position = Vector2(-154, 218)
 
 [node name="potionG3" parent="pickups/potions" instance=ExtResource("12_53cj4")]
-position = Vector2(176, 197)
+position = Vector2(210, 403)
 
 [node name="medkits" type="Node2D" parent="pickups"]
 
@@ -260,8 +260,8 @@ look = 180.0
 detect_radius = 200
 
 [node name="player" parent="." instance=ExtResource("20_qhp5r")]
-position = Vector2(158, 204)
-rotation = 1.5708
+position = Vector2(172, 206)
+potionGadd = 625
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)

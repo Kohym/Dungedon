@@ -253,6 +253,10 @@ func _on_playerhurtbox_area_entered(area):
 			$playersprite/playerbar.value = debug_hp
 			$playerhp.text = str(debug_hp)
 			await get_tree().create_timer(0.02).timeout
+			if debug_hp > 500:
+				debug_hp = 500
+			if base_hp > 500:
+				base_hp = 500
 			if  (debug_hp >= base_hp):
 				debug_hp = base_hp
 				$playerhp.text = str(debug_hp)
@@ -367,10 +371,15 @@ func _on_key_holder_area_entered(area):
 #region misic
 func addhp():
 	base_hp = base_hp + potionGadd
+	debug_hp = base_hp
+	if debug_hp > 500:
+		debug_hp = 500
+	if base_hp > 500:
+		base_hp = 500
 	$playerhp.text = str(base_hp)
 	$playersprite/playerbar.max_value = base_hp
 	$playersprite/playerbar.value =base_hp
-	debug_hp = base_hp
+	
 
 func died():
 	var level = $"../"
