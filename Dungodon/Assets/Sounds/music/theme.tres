@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://djctowfolotk1"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://djctowfolotk1"]
 
 [ext_resource type="FontFile" uid="uid://df2hctgg70e5r" path="res://Assets/Dungedon_font.ttf" id="1_tj8qr"]
-[ext_resource type="Texture2D" uid="uid://bdqssskvnelyi" path="res://Assets/SolidCol/white_square.png" id="2_k6wba"]
+[ext_resource type="Texture2D" uid="uid://dm3wilmwsqsy3" path="res://Assets/SolidCol/squareW.png" id="2_kocmd"]
+[ext_resource type="Texture2D" uid="uid://c8pbkuj3x1omd" path="res://Assets/SolidCol/rectW.png" id="3_1kb78"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hi0f"]
 
@@ -13,14 +14,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lic4u"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm5n6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvbni"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow6qa"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cp1o"]
+bg_color = Color(1, 1, 1, 0.498039)
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_t4fy7"]
-thickness = 30
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_q6t8u"]
+thickness = 70
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -37,13 +38,12 @@ Button/styles/focus = SubResource("StyleBoxEmpty_oiteu")
 Button/styles/hover = SubResource("StyleBoxEmpty_ouomf")
 Button/styles/normal = SubResource("StyleBoxEmpty_tsc76")
 Button/styles/pressed = SubResource("StyleBoxEmpty_lic4u")
-HSlider/icons/grabber = ExtResource("2_k6wba")
-HSlider/icons/grabber_disabled = null
-HSlider/icons/grabber_highlight = ExtResource("2_k6wba")
-HSlider/icons/tick = null
-HSlider/styles/grabber_area = SubResource("StyleBoxFlat_dm5n6")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ow6qa")
-HSlider/styles/slider = SubResource("StyleBoxLine_t4fy7")
+HSlider/icons/grabber = ExtResource("2_kocmd")
+HSlider/icons/grabber_highlight = ExtResource("2_kocmd")
+HSlider/icons/tick = ExtResource("3_1kb78")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_uvbni")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_4cp1o")
+HSlider/styles/slider = SubResource("StyleBoxLine_q6t8u")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 115
 Label/fonts/font = ExtResource("1_tj8qr")

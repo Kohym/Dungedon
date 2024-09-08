@@ -205,6 +205,9 @@ func _on_enemhurtbox_body_entered(body):
 
 func died():
 	isdead = true
+	await get_tree().create_timer(0.2).timeout
+	$enemhp.visible = false
+	$enemsprite/enemy_wepon_sword.visible = false
 	if isboss == true:
 		await get_tree().create_timer(2).timeout
 		get_parent().victory()

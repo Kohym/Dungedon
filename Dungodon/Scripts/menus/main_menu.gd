@@ -1,6 +1,6 @@
 extends Control
 
-var save_path = "user://settings.save"
+var save_path = "user://Dungedon_settings.save"
 
 func _ready():
 	Engine.time_scale = 1
@@ -15,6 +15,9 @@ func _on_options_button_pressed():
 	load_data()
 	$menus/main_menu.visible = false
 	$menus/options_menu.visible = true
+func _on_credits_button_pressed():
+	$menus/main_menu.visible = false
+	$menus/credits_menu.visible = true
 
 func _on_exit_button_pressed():
 	get_tree().quit()
@@ -59,21 +62,9 @@ func _on_darkmode_button_pressed():
 #endregion
 #region options_volume
 var option_volume_value = 5
-func _on_volume_minus_pressed():
-	option_volume_value -= 1
-	if  option_volume_value < 0:
-		option_volume_value = 0
-	elif option_volume_value > 10:
-		option_volume_value = 10
-	$menus/options_menu/option_volume/volume.text = str(option_volume_value)
-
-func _on_volume_plus_pressed():
-	option_volume_value += 1
-	if  option_volume_value < 0:
-		option_volume_value = 0
-	elif option_volume_value > 10:
-		option_volume_value = 10
-	$menus/options_menu/option_volume/volume.text = str(option_volume_value)
+func _on_volume_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(0, linear_to_db($menus/options_menu/option_volume/volume_slider.value))
+	option_volume_value = $menus/options_menu/option_volume/volume_slider.value
 #endregion
 #region options_general
 func _on_options_back_button_pressed():
@@ -88,12 +79,15 @@ func save():
 	file.store_var(option_volume_value)
 	file.store_var(option_darkmode)
 	$Node2D.use_parent_material = option_darkmode
+	$menus/options_menu/saved_label.visible = true
+	await get_tree().create_timer(0.5).timeout
+	$menus/options_menu/saved_label.visible = false
 
 func load_data():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		option_volume_value = file.get_var(option_volume_value)
-		$menus/options_menu/option_volume/volume.text = str(option_volume_value)
+		$menus/options_menu/option_volume/volume_slider.value = option_volume_value
 		option_darkmode = file.get_var(option_darkmode)
 		$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
 		$Node2D.use_parent_material = option_darkmode
@@ -102,6 +96,11 @@ func load_data():
 #endregion
 #endregion
 
+#region credits_menu
+func _on_credits_back_button_pressed():
+	$menus/main_menu.visible = true
+	$menus/credits_menu.visible = false
+#endregion
 
 func _on_dev_level_pressed():
 	get_tree().change_scene_to_file("res://Scenes/levels/level_dev.tscn")
