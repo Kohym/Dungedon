@@ -1,10 +1,15 @@
 extends Control
 
 var save_path = "user://Dungedon_settings.save"
+var game_save_path = "user://Dungedon_game.save"
 
 func _ready():
 	Engine.time_scale = 1
 	load_data()
+	if FileAccess.file_exists(game_save_path) == true:
+		$menus/levels_menu/continue_button.disabled = false
+	else:
+		$menus/levels_menu/continue_button.disabled = true
 
 #region main_menu
 func _on_levels_button_pressed():
@@ -24,30 +29,30 @@ func _on_exit_button_pressed():
 #endregion
 
 #region levels_menu
-var whatlevel
 func _on_tutorial_button_pressed():
-	whatlevel = "tutorial"
-func _on_lvl_1_button_pressed():
-	whatlevel = 1
+	get_tree().change_scene_to_file("res://Scenes/levels/level_tutorial.tscn")
 
-func _on_lvl_2_button_pressed():
-	whatlevel = 2
+func _on_continue_button_pressed():
+	pass # Replace with function body.
 
-func _on_lvl_3_button_pressed():
-	whatlevel = 3
-
-func _on_lvl_4_button_pressed():
-	whatlevel = 4
-
-func _on_lvl_5_button_pressed():
-	whatlevel = 5
+func _on_new_button_pressed():
+	$menus/levels_menu.visible = false
+	$menus/new_menu.visible = true
 
 func _on_levels_back_button_pressed():
 	$menus/levels_menu.visible =false
 	$menus/main_menu.visible = true
+#endregion
 
-func _on_levlels_play_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/levels/level_"+str(whatlevel)+".tscn")
+#region new_menu
+func _on_new_cancel_pressed():
+	$menus/new_menu.visible = false
+	$menus/levels_menu.visible = true
+
+func _on_new_confirm_pressed():
+	DirAccess.remove_absolute(game_save_path)
+	var new_file = FileAccess.open(game_save_path, FileAccess.WRITE)
+
 #endregion
 
 #region opions_menu
