@@ -66,10 +66,16 @@ func _on_darkmode_button_pressed():
 	$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
 #endregion
 #region options_volume
-var option_volume_value = 5
+
+var option_music_volume_value = 0.5
 func _on_volume_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(0, linear_to_db($menus/options_menu/option_volume/volume_slider.value))
-	option_volume_value = $menus/options_menu/option_volume/volume_slider.value
+	AudioServer.set_bus_volume_db(1, linear_to_db($menus/options_menu/music_slider.value))
+	option_music_volume_value = $menus/options_menu/music_slider.value
+
+var option_eff_volume_balue = 0.5
+func _on_eff_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(2, linear_to_db($menus/options_menu/eff_slider.value))
+	option_eff_volume_balue = $menus/options_menu/eff_slider.value
 #endregion
 #region options_general
 func _on_options_back_button_pressed():
@@ -81,7 +87,8 @@ func _on_options_save_button_pressed():
 
 func save():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var(option_volume_value)
+	file.store_var(option_music_volume_value)
+	file.store_var(option_eff_volume_balue)
 	file.store_var(option_darkmode)
 	$Node2D.use_parent_material = option_darkmode
 	$menus/options_menu/saved_label.visible = true
@@ -91,8 +98,10 @@ func save():
 func load_data():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
-		option_volume_value = file.get_var(option_volume_value)
-		$menus/options_menu/option_volume/volume_slider.value = option_volume_value
+		option_music_volume_value = file.get_var(option_music_volume_value)
+		$menus/options_menu/music_slider.value = option_music_volume_value
+		option_eff_volume_balue = file.get_var(option_eff_volume_balue)
+		$menus/options_menu/eff_slider.value = option_eff_volume_balue
 		option_darkmode = file.get_var(option_darkmode)
 		$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
 		$Node2D.use_parent_material = option_darkmode
@@ -100,8 +109,8 @@ func load_data():
 		print("no data")
 #endregion
 #endregion
-
 #region credits_menu
+
 func _on_credits_back_button_pressed():
 	$menus/main_menu.visible = true
 	$menus/credits_menu.visible = false

@@ -165,24 +165,40 @@ theme = ExtResource("3_belm7")
 layout_mode = 2
 text = "false"
 
-[node name="volume_label" type="Label" parent="menus/options_menu"]
+[node name="music_label" type="Label" parent="menus/options_menu"]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
-text = "Volume"
+text = "Music Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="option_volume" type="HBoxContainer" parent="menus/options_menu"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("3_belm7")
-
-[node name="volume_slider" type="HSlider" parent="menus/options_menu/option_volume"]
+[node name="music_slider" type="HSlider" parent="menus/options_menu"]
 clip_contents = true
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 1
+size_flags_stretch_ratio = 13.09
+theme = ExtResource("3_belm7")
+max_value = 1.0
+step = 0.001
+value = 0.5
+ticks_on_borders = true
+
+[node name="eff_label" type="Label" parent="menus/options_menu"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+text = "Effects Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="eff_slider" type="HSlider" parent="menus/options_menu"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 1
 size_flags_stretch_ratio = 13.09
 theme = ExtResource("3_belm7")
@@ -435,7 +451,7 @@ offset_right = 2284.0
 offset_bottom = 463.0
 rotation = 0.174533
 theme_override_font_sizes/font_size = 70
-text = "By: Kohout, Navratil"
+text = "By: Kohout (Kohym) Marek"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -454,6 +470,7 @@ text = "x"
 stream = SubResource("AudioStreamMP3_g7jiq")
 volume_db = -15.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="menus/main_menu/levels_button" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="menus/main_menu/options_button" to="." method="_on_options_button_pressed"]
@@ -466,7 +483,8 @@ autoplay = true
 [connection signal="pressed" from="menus/new_menu/new_nav_menu/new_cancel" to="." method="_on_new_cancel_pressed"]
 [connection signal="pressed" from="menus/new_menu/new_nav_menu/new_confirm" to="." method="_on_new_confirm_pressed"]
 [connection signal="pressed" from="menus/options_menu/option_darkmode/darkmode_button" to="." method="_on_darkmode_button_pressed"]
-[connection signal="value_changed" from="menus/options_menu/option_volume/volume_slider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="menus/options_menu/music_slider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="menus/options_menu/eff_slider" to="." method="_on_eff_slider_value_changed"]
 [connection signal="pressed" from="menus/options_menu/options_nav_menu/options_back_button" to="." method="_on_options_back_button_pressed"]
 [connection signal="pressed" from="menus/options_menu/options_nav_menu/options_save_button" to="." method="_on_options_save_button_pressed"]
 [connection signal="pressed" from="menus/credits_menu/credits_back_button" to="." method="_on_credits_back_button_pressed"]

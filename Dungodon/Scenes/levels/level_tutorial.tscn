@@ -832,8 +832,6 @@ base_hp = 50
 
 [node name="player" parent="." instance=ExtResource("6_qak47")]
 position = Vector2(-720, 5664)
-rotation = 1.5708
-look = 180.0
 take_A_dmg = 5
 potionR2works = false
 
@@ -855,7 +853,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll"]
 layout_mode = 1
@@ -883,7 +880,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 theme = SubResource("Theme_pptkn")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll2"]
@@ -909,7 +905,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll3"]
 layout_mode = 1
@@ -940,7 +935,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll4"]
 layout_mode = 1
@@ -967,7 +961,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll5"]
 layout_mode = 1
@@ -992,7 +985,6 @@ offset_left = -2.63184
 offset_top = -1.57904
 offset_right = -7.89505
 offset_bottom = -4.737
-rotation = -1.5708
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player/Camera2D/scrolls/scroll5-2"]
 position = Vector2(-7.89484, -201.579)
@@ -1018,7 +1010,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll6"]
 layout_mode = 1
@@ -1043,7 +1034,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="Label" type="Label" parent="player/Camera2D/scrolls/scroll7"]
 layout_mode = 0
@@ -1088,7 +1078,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="Label" type="Label" parent="player/Camera2D/scrolls/scroll8"]
 layout_mode = 0
@@ -1134,7 +1123,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll9"]
 layout_mode = 1
@@ -1159,7 +1147,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="Label" type="Label" parent="player/Camera2D/scrolls/scroll10"]
 layout_mode = 0
@@ -1201,7 +1188,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player/Camera2D/scrolls/scroll11"]
 position = Vector2(-0.526367, -44.7368)
@@ -1229,7 +1215,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="Label" type="Label" parent="player/Camera2D/scrolls/scroll12"]
 layout_mode = 0
@@ -1257,7 +1242,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="Label" type="Label" parent="player/Camera2D/scrolls/scroll13"]
 layout_mode = 0
@@ -1284,7 +1268,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="menu_enemy" parent="player/Camera2D/scrolls/scroll14" instance=ExtResource("34_btk4v")]
 position = Vector2(-2.63159, -105.79)
@@ -1314,7 +1297,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll15"]
 layout_mode = 1
@@ -1339,7 +1321,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -7.89482
 offset_bottom = -4.73694
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll16"]
 layout_mode = 1
@@ -1365,11 +1346,9 @@ Good luck deper inside"
 
 [node name="pause_ui" parent="player/Camera2D" instance=ExtResource("7_e01a3")]
 visible = false
-rotation = -1.5708
 
 [node name="win_ui" parent="player/Camera2D" instance=ExtResource("10_or0kl")]
 visible = false
-rotation = -1.5708
 
 [node name="loss_ui" parent="player/Camera2D" instance=ExtResource("37_lmmqn")]
 visible = false
