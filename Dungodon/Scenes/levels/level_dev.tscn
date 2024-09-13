@@ -280,7 +280,6 @@ offset_left = -2.63161
 offset_top = -1.57898
 offset_right = -2.63161
 offset_bottom = -1.57898
-rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll"]
 layout_mode = 0
@@ -296,8 +295,6 @@ visible = false
 
 [node name="win_ui" parent="player/Camera2D" instance=ExtResource("24_vmexg")]
 visible = false
-rotation = -1.5708
 
 [node name="loss_ui" parent="player/Camera2D" instance=ExtResource("25_i1hba")]
 visible = false
-rotation = -1.5708

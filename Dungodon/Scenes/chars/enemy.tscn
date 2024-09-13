@@ -114,7 +114,7 @@ shape = SubResource("CapsuleShape2D_vmq3h")
 path_desired_distance = 80.8
 
 [node name="enemy_timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.5
 autostart = true
 
 [node name="enemhp" type="Label" parent="."]

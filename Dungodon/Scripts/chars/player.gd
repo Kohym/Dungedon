@@ -53,6 +53,13 @@ func get_input():
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	return input.normalized()
 
+func _physics_process(delta):
+	$playerhp.text = str($playersprite/playerbar.value)
+	if  ($playersprite/playerbar.value < 0 or $playersprite/playerbar.value == 0):
+		$playersprite/playerbar.value = 0
+		$playerhp.text = str($playersprite/playerbar.value)
+		died()
+
 func _process(delta):
 	$Label.text = str(SPEED)
 	if isalive == true:
@@ -232,36 +239,21 @@ func key_check():
 #region DMG and pickups
 func _on_playerhurtbox_area_entered(area):
 	if area.is_in_group("enemy_wepon_sword"):
-		new_hp = debug_hp - take_A_dmg
-		old_hp = new_hp + take_A_dmg
-		for n in take_A_dmg:
-			debug_hp = debug_hp - 1
-			$playersprite/playerbar.value = debug_hp
-			$playerhp.text = str(debug_hp)
-			await get_tree().create_timer(0.02).timeout
-			if  (debug_hp <= 0):
-				debug_hp = 0
-				$playerhp.text = str(debug_hp)
-				died()
+		var tween = get_tree().create_tween()
+		tween.tween_property($playersprite/playerbar, "value" , $playersprite/playerbar.value - take_A_dmg, 0.4)
 	elif area.is_in_group("medkit"):
 		ishealing = true
 		ispoison = false
-		new_hp = debug_hp + medkit_heal
-		old_hp = new_hp - medkit_heal
-		for n in medkit_heal:
-			debug_hp = debug_hp + 1
-			$playersprite/playerbar.value = debug_hp
-			$playerhp.text = str(debug_hp)
-			await get_tree().create_timer(0.02).timeout
-			if debug_hp > 500:
-				debug_hp = 500
-			if base_hp > 500:
-				base_hp = 500
-			if  (debug_hp >= base_hp):
-				debug_hp = base_hp
-				$playerhp.text = str(debug_hp)
-				ishealing = false
-				break
+		var tween = get_tree().create_tween()
+		tween.tween_property($playersprite/playerbar, "value" , $playersprite/playerbar.value + medkit_heal, 0.1)
+		if $playersprite/playerbar.value > 500:
+			$playersprite/playerbar.value = 500
+		if base_hp > 500:
+			base_hp = 500
+		if  ($playersprite/playerbar.value >= base_hp):
+			$playersprite/playerbar.value = base_hp
+			$playerhp.text = str($playersprite/playerbar.value)
+			ishealing = false
 		attspeed = 0.1
 	elif area.is_in_group("potionG"):
 		ispoison = false
@@ -277,12 +269,14 @@ func _on_playerhurtbox_area_entered(area):
 			old_hp = new_hp + debug_hp
 			ispoison = true
 			for n in debug_hp:
+				var rng = RandomNumberGenerator.new()
+				var timer = rng.randf_range(0.0001, 0.0005)
 				if ispoison == false:
 					break
 				debug_hp = debug_hp - 1
 				$playersprite/playerbar.value = debug_hp
 				$playerhp.text = str(debug_hp)
-				await get_tree().create_timer(0.02).timeout
+				await get_tree().create_timer(timer).timeout
 				if  (debug_hp <= 0):
 					debug_hp = 0
 					$playerhp.text = str(debug_hp)
@@ -291,18 +285,8 @@ func _on_playerhurtbox_area_entered(area):
 func _on_playerhurtbox_body_entered(body):
 	if body.is_in_group("spikes"):
 		attspeed = 10
-		new_hp = debug_hp - take_E_spike_dmg
-		old_hp = new_hp + take_E_spike_dmg
-		for n in take_E_spike_dmg:
-			debug_hp = debug_hp - 1
-			$playersprite/playerbar.value = debug_hp
-			$playerhp.text = str(debug_hp)
-			await get_tree().create_timer(0.02).timeout
-			if  (debug_hp <= 0):
-				debug_hp = 0
-				$playerhp.text = str(debug_hp)
-				
-				died()
+		var tween = get_tree().create_tween()
+		tween.tween_property($playersprite/playerbar, "value" , $playersprite/playerbar.value - take_E_spike_dmg, 0.2)
 		attspeed = 0.1
 	elif body.is_in_group("poison"):
 		ispoison = true
@@ -310,6 +294,8 @@ func _on_playerhurtbox_body_entered(body):
 		new_hp = debug_hp - take_E_poison_dmg
 		old_hp = new_hp + take_E_poison_dmg
 		for n in take_E_poison_dmg:
+			var rng = RandomNumberGenerator.new()
+			var timer = rng.randf_range(0.1, 0.7)
 			if ishealing == false and ispoison == true:
 				if ishealing == true and ispoison == false:
 					ispoison = false
@@ -318,12 +304,11 @@ func _on_playerhurtbox_body_entered(body):
 				debug_hp = debug_hp - 1
 				$playersprite/playerbar.value = debug_hp
 				$playerhp.text = str(debug_hp)
-				await get_tree().create_timer(0.5).timeout
+				await get_tree().create_timer(timer).timeout
 				if  (debug_hp <= 0):
 					debug_hp = 0
 					$playerhp.text = str(debug_hp)
 					ispoison = false
-					
 					died()
 		attspeed = 0.1
 		ispoison = false
