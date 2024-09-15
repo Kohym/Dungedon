@@ -3,7 +3,7 @@ extends CharacterBody2D
 #region vars
 #region exported_vars
 var isalive = true
-@export var base_hp = 100
+@export var base_hp = 50
 @export_range(-360, 360, 0.5, ) var look: float
 
 @export_group("speeds")
@@ -17,18 +17,17 @@ var lockemove = false
 @export var take_E_spike_dmg = 10
 @export var take_E_poison_dmg = 50
 
-@export var medkit_heal = 70
+@export var medkit_heal = 25
 @export var potionGadd = 20
 @export var potionG2add = 20
 @export var potionR2works = true
 #endregion
+var progress_path="user://Dungedon_game.save"
+
 var knockback_dir = Vector2()
 var input: Vector2
 var speedboost = 0
 
-var old_hp
-var med_hp
-var new_hp
 var debug_hp = base_hp
 
 var isattac = false
@@ -39,6 +38,12 @@ var ishealing = false
 
 var willhitwall = false
 
+var has_eye = false
+var has_armor = false
+var has_bandage = false
+var has_gem = false
+var has_neck = false
+
 var has_got_keys = false
 var keys_moving = false
 var has_blue_key = false
@@ -47,18 +52,56 @@ var has_red_key = false
 var has_universal_key = false
 #endregion
 
+func _ready():
+	$playersprite/player_wepon_sword.monitorable = false
+	$playersprite/player_wepon_sword.monitoring = false
+	$playersprite/playerbar.value = base_hp
+	key_check()
+	$playersprite.rotation = look
+	loaddata()
+
+var max_hp
+var hp
+
+func  loaddata():
+	
+	if FileAccess.file_exists(progress_path):
+		var file = FileAccess.open(progress_path, FileAccess.READ)
+		base_hp = file.get_var(max_hp)
+		debug_hp = base_hp
+		debug_hp =file.get_var(hp)
+		$playersprite/playerbar.value = debug_hp
+		$playerhp.text = debug_hp
+		has_eye = file.get_var(has_eye)
+		has_armor= file.get_var(has_armor)
+		has_bandage = file.get_var(has_bandage)
+		has_gem = file.get_var(has_gem)
+		has_neck = file.get_var(has_neck)
+		if has_eye == true:
+			$Camera2D.zoom = 1.5
+		elif has_armor == true:
+			take_A_dmg = 13
+		elif has_bandage == true:
+			medkit_heal = 40
+		elif has_gem == true:
+			has_gem = true
+		elif has_neck == true:
+			take_E_poison_dmg = 30
+	else:
+		print("no data")
+
+func  save():
+	hp = $playersprite/playerbar.value
+	max_hp = base_hp
+	var file = FileAccess.open(progress_path, FileAccess.WRITE)
+	file.store_var(hp)
+	file.store_var(max_hp)
+
 #region movement
 func get_input():
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	return input.normalized()
-
-func _physics_process(delta):
-	$playerhp.text = str($playersprite/playerbar.value)
-	if  ($playersprite/playerbar.value < 0 or $playersprite/playerbar.value == 0):
-		$playersprite/playerbar.value = 0
-		$playerhp.text = str($playersprite/playerbar.value)
-		died()
 
 func _process(delta):
 	$Label.text = str(SPEED)
@@ -69,13 +112,6 @@ func _process(delta):
 			var playerInput = get_input()
 			velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
 			move_and_slide()
-
-func _ready():
-	$playersprite/player_wepon_sword.monitorable = false
-	$playersprite/player_wepon_sword.monitoring = false
-	$playersprite/playerbar.value = base_hp
-	key_check()
-	$playersprite.rotation = look
 
 func lockmovement():
 	if lockemove == true:
@@ -237,6 +273,20 @@ func key_check():
 #endregion
 
 #region DMG and pickups
+func _physics_process(delta):
+	$playerhp.text = str($playersprite/playerbar.value)
+	debug_hp = $playersprite/playerbar.value
+	if  ($playersprite/playerbar.value < 0 or $playersprite/playerbar.value == 0):
+		$playersprite/playerbar.value = 0
+		$playerhp.text = str($playersprite/playerbar.value)
+		died()
+
+func lifesteal():
+	if has_gem == true:
+		$playersprite/playerbar.value = $playersprite/playerbar.value + 5
+	else:
+		pass
+
 func _on_playerhurtbox_area_entered(area):
 	if area.is_in_group("enemy_wepon_sword"):
 		var tween = get_tree().create_tween()
@@ -265,8 +315,6 @@ func _on_playerhurtbox_area_entered(area):
 		ispoison = false
 	elif area.is_in_group("potionR2"):
 		if potionR2works == true:
-			new_hp = debug_hp - debug_hp
-			old_hp = new_hp + debug_hp
 			ispoison = true
 			for n in debug_hp:
 				var rng = RandomNumberGenerator.new()
@@ -291,8 +339,6 @@ func _on_playerhurtbox_body_entered(body):
 	elif body.is_in_group("poison"):
 		ispoison = true
 		attspeed = 30
-		new_hp = debug_hp - take_E_poison_dmg
-		old_hp = new_hp + take_E_poison_dmg
 		for n in take_E_poison_dmg:
 			var rng = RandomNumberGenerator.new()
 			var timer = rng.randf_range(0.1, 0.7)

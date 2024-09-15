@@ -7,6 +7,7 @@ func _on_body_entered(body):
 		if firs_time_open == false:
 			firs_time_open == true
 			$scroll_texture.play("used")
+			$scroll_collbox.disabled = true
 		debug = false
 		whattoopen.visible = true
 

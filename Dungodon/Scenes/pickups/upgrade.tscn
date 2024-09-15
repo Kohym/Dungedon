@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbqx5u3gj4inp"]
+
+[ext_resource type="Script" path="res://Scripts/pickups/upgrade.gd" id="1_056lm"]
+[ext_resource type="Texture2D" uid="uid://5pafvyjwimk" path="res://Assets/Upgrades/armor_R.png" id="2_36aug"]
+[ext_resource type="Texture2D" uid="uid://cvkjod2rc8ly3" path="res://Assets/Upgrades/bandage_G.png" id="3_a0c0s"]
+[ext_resource type="Texture2D" uid="uid://d1drwjmtn4oip" path="res://Assets/Upgrades/neclace_B.png" id="4_lwy22"]
+[ext_resource type="Texture2D" uid="uid://dstoh4wrmea4i" path="res://Assets/Upgrades/gem_G.png" id="5_qmtq1"]
+[ext_resource type="Texture2D" uid="uid://c6jvqh6mcrpmb" path="res://Assets/Upgrades/neclace_R.png" id="6_widtb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4qmb"]
+atlas = ExtResource("6_widtb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dotp2"]
+atlas = ExtResource("6_widtb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cvxn3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_36aug")
+}],
+"loop": true,
+"name": &"armor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a0c0s")
+}],
+"loop": true,
+"name": &"bandage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lwy22")
+}],
+"loop": true,
+"name": &"eye",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qmtq1")
+}],
+"loop": true,
+"name": &"gem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4qmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dotp2")
+}],
+"loop": true,
+"name": &"neck",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cta43"]
+size = Vector2(16, 16)
+
+[node name="upgrade" type="Area2D"]
+scale = Vector2(3, 3)
+collision_layer = 32768
+collision_mask = 2
+script = ExtResource("1_056lm")
+
+[node name="upgrade_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cvxn3")
+animation = &"armor"
+frame_progress = 0.124533
+
+[node name="upgrade_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cta43")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

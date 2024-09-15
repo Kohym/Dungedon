@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://b43p4au4tluep"]
+
+[ext_resource type="Texture2D" uid="uid://cpa8ajgitbkpu" path="res://Assets/Env/portals/portal_0.png" id="1_8t0bu"]
+[ext_resource type="Script" path="res://Scripts/envm/portal.gd" id="1_g25gw"]
+[ext_resource type="Texture2D" uid="uid://c3l6d2jlk62rq" path="res://Assets/Env/portals/portal_1.png" id="2_wacpq"]
+[ext_resource type="Texture2D" uid="uid://bkoa75cbmyokm" path="res://Assets/Env/portals/portal_2.png" id="3_ay2vf"]
+[ext_resource type="Texture2D" uid="uid://l43lxv0gph1" path="res://Assets/Env/portals/portal_3.png" id="4_7trpk"]
+[ext_resource type="Texture2D" uid="uid://bvqe2ymrqwe8e" path="res://Assets/Env/portals/portal_4.png" id="5_kw5o2"]
+[ext_resource type="Texture2D" uid="uid://bo48x7vcqjkyg" path="res://Assets/Env/portals/portal_5.png" id="6_ug6iy"]
+[ext_resource type="Texture2D" uid="uid://cep0f23nbhof5" path="res://Assets/Env/portals/portal_6.png" id="7_4epyw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mpcm6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wacpq")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ay2vf")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7trpk")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kw5o2")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ug6iy")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4epyw")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_13v71"]
+radius = 15.0
+height = 59.3333
+
+[node name="portal" type="Area2D"]
+use_parent_material = true
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_g25gw")
+
+[node name="poratl_outline" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("1_8t0bu")
+
+[node name="poratl_diff" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mpcm6")
+animation = &"1"
+
+[node name="poratl_hitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_13v71")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

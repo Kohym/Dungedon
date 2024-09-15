@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var isdead = false
 @export_group("NAV")
 @export var player1: Node2D
+@export var return_portal: Area2D
 @export var bricks: TileMap
 @export var speed = 300
 @export_range(-360, 360, 0.5, ) var look: float
@@ -146,6 +147,7 @@ func attac():
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
+		player1.lifesteal()
 		var tween = get_tree().create_tween()
 		tween.tween_property($enemsprite/enembar, "value" , $enemsprite/enembar.value - take_A_sword_dmg, 0.4)
 	setspeed()
@@ -166,5 +168,6 @@ func died():
 	$enemhp.visible = false
 	$enemsprite/enemy_wepon_sword.visible = false
 	if isboss == true:
-		pass
+		player1.save()
+		return_portal.enable()
 	process_mode = PROCESS_MODE_DISABLED

@@ -36,6 +36,7 @@ size = Vector2(21, 48)
 size = Vector2(144, 48)
 
 [node name="destructible_wall1" type="CharacterBody2D"]
+use_parent_material = true
 collision_mask = 32
 script = ExtResource("1_7620u")
 

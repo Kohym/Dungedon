@@ -33,7 +33,7 @@ func _on_tutorial_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/levels/level_tutorial.tscn")
 
 func _on_continue_button_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")
 
 func _on_new_button_pressed():
 	$menus/levels_menu.visible = false
@@ -52,6 +52,24 @@ func _on_new_cancel_pressed():
 func _on_new_confirm_pressed():
 	DirAccess.remove_absolute(game_save_path)
 	var new_file = FileAccess.open(game_save_path, FileAccess.WRITE)
+	var hp = 50
+	var max_hp = 50
+	var beat = 1
+	var has_eye = false
+	var has_armor = false
+	var has_bandage = false
+	var has_gem = false
+	var has_neck = false
+	new_file.store_var(hp)
+	new_file.store_var(max_hp)
+	new_file.store_var(beat)
+	new_file.store_var(has_eye)
+	new_file.store_var(has_armor)
+	new_file.store_var(has_bandage)
+	new_file.store_var(has_gem)
+	new_file.store_var(has_neck)
+	get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")
+	
 
 #endregion
 
@@ -94,6 +112,7 @@ func save():
 	$menus/options_menu/saved_label.visible = true
 	await get_tree().create_timer(0.5).timeout
 	$menus/options_menu/saved_label.visible = false
+	print(option_darkmode)
 
 func load_data():
 	if FileAccess.file_exists(save_path):

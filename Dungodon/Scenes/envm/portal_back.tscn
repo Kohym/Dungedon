@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmptryebkslsh"]
+
+[ext_resource type="Script" path="res://Scripts/envm/portal_back.gd" id="1_trmue"]
+[ext_resource type="Texture2D" uid="uid://l2ka8jiuoj0c" path="res://Assets/Env/portals/portal_back.png" id="2_q45w0"]
+[ext_resource type="Texture2D" uid="uid://42lp2o2824sc" path="res://Assets/Env/portals/portal_back_active.png" id="3_r85f8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uykxt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q45w0")
+}],
+"loop": true,
+"name": &"dis",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r85f8")
+}],
+"loop": true,
+"name": &"en",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ex71"]
+radius = 14.3333
+height = 56.0
+
+[node name="portal_back" type="Area2D"]
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_trmue")
+
+[node name="portal_back_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uykxt")
+animation = &"en"
+
+[node name="portal_back_sprite_collbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0ex71")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=37 format=4 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_qi0bq"]
 [ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="2_najqb"]
@@ -30,8 +30,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jjl2i"]
 shader = ExtResource("20_t4fft")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgddw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g7kaw"]
 texture = ExtResource("3_d7l8o")
@@ -146,8 +144,7 @@ material = SubResource("ShaderMaterial_jjl2i")
 use_parent_material = true
 script = ExtResource("1_qi0bq")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
+[node name="background" type="TextureRect" parent="."]
 texture_filter = 1
 texture_repeat = 2
 offset_left = -6040.0
@@ -158,7 +155,6 @@ scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("2_najqb")
 
 [node name="tilemaps" type="Node2D" parent="."]
-material = SubResource("ShaderMaterial_tgddw")
 
 [node name="bricks" type="TileMapLayer" parent="tilemaps" groups=["brick"]]
 use_parent_material = true
@@ -178,17 +174,14 @@ tile_map_data = PackedByteArray("AAARAAwAAQAAAAAAAAASAAwAAQABAAIAAAATAAwAAQABAAA
 tile_set = SubResource("TileSet_tk8t6")
 
 [node name="destructible_wall1" parent="tilemaps" instance=ExtResource("7_o8qc0")]
-use_parent_material = true
 position = Vector2(1080, 456)
 rotation = 1.5708
 
 [node name="destructible_wall3" parent="tilemaps" instance=ExtResource("7_o8qc0")]
-use_parent_material = true
 position = Vector2(1512, 937)
 rotation = 1.5708
 
 [node name="destructible_wall2" parent="tilemaps" instance=ExtResource("8_iuikc")]
-use_parent_material = true
 position = Vector2(408, 96)
 
 [node name="pickups" type="Node2D" parent="."]
@@ -236,21 +229,17 @@ whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll")
 position = Vector2(1667, 552)
 
 [node name="door" parent="doors" instance=ExtResource("17_80ibe")]
-use_parent_material = true
 position = Vector2(-605, -360)
 rotation = -1.5708
 
 [node name="door2" parent="doors" instance=ExtResource("17_80ibe")]
-use_parent_material = true
 position = Vector2(12.2904, 30)
 
 [node name="door3" parent="doors" instance=ExtResource("17_80ibe")]
-use_parent_material = true
 position = Vector2(-1523, -222)
 rotation = 3.14159
 
 [node name="door_both" parent="doors" instance=ExtResource("18_65cis")]
-use_parent_material = true
 position = Vector2(-1523, 240)
 islocked = "red"
 

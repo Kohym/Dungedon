@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgxv5fu1w8pgb"
-path="res://.godot/imported/level1.png-510503cd6fa7216a6c9bdc0fcde466d8.ctex"
+uid="uid://d1drwjmtn4oip"
+path="res://.godot/imported/neclace_B.png-e2af26928597cef1105012f1e77cb7d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Design/level1.png"
-dest_files=["res://.godot/imported/level1.png-510503cd6fa7216a6c9bdc0fcde466d8.ctex"]
+source_file="res://Assets/Upgrades/neclace_B.png"
+dest_files=["res://.godot/imported/neclace_B.png-e2af26928597cef1105012f1e77cb7d8.ctex"]
 
 [params]
 
