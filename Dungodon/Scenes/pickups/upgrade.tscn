@@ -23,7 +23,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"armor",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -31,7 +31,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"bandage",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -39,7 +39,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"eye",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -47,7 +47,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"gem",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,8 +72,9 @@ script = ExtResource("1_056lm")
 
 [node name="upgrade_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cvxn3")
-animation = &"armor"
-frame_progress = 0.124533
+animation = &"neck"
+autoplay = "neck"
+frame_progress = 0.975248
 
 [node name="upgrade_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cta43")

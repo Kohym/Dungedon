@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/envm/door_both.tscn" id="11_p4u6v"]
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="11_va01m"]
 [ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="12_i3c8x"]
-[ext_resource type="PackedScene" uid="uid://cijal7twssdcc" path="res://Scenes/envm/door.tscn" id="12_xk5p1"]
+[ext_resource type="PackedScene" uid="uid://7sfs613jyxtd" path="res://Scenes/envm/bar_door.tscn" id="12_raw5e"]
 [ext_resource type="PackedScene" uid="uid://dr4x5345mirve" path="res://Scenes/menus/win_ui.tscn" id="13_jkm1i"]
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="13_mh105"]
 [ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="14_1w5j3"]
@@ -279,29 +279,34 @@ position = Vector2(-1475, -286)
 [node name="door_both3" parent="doors" instance=ExtResource("11_p4u6v")]
 position = Vector2(-1475, -671)
 
-[node name="door" parent="doors" instance=ExtResource("12_xk5p1")]
-position = Vector2(-1859, 360)
-rotation = -3.14159
-
-[node name="door2" parent="doors" instance=ExtResource("12_xk5p1")]
-position = Vector2(-1715, 360)
-rotation = -3.14159
-
-[node name="door3" parent="doors" instance=ExtResource("12_xk5p1")]
-position = Vector2(-1571, 360)
-rotation = -3.14159
-
-[node name="door4" parent="doors" instance=ExtResource("12_xk5p1")]
-position = Vector2(-1427, 360)
-rotation = -3.14159
-
-[node name="door5" parent="doors" instance=ExtResource("12_xk5p1")]
-position = Vector2(-1283, 360)
-rotation = -3.14159
-
 [node name="door_both4" parent="doors" instance=ExtResource("11_p4u6v")]
 position = Vector2(-2005, -168)
 rotation = 1.5708
+
+[node name="bar_door" parent="doors" instance=ExtResource("12_raw5e")]
+position = Vector2(-1859, 336)
+what_upgrade = "gem"
+price = 150
+
+[node name="bar_door2" parent="doors" instance=ExtResource("12_raw5e")]
+position = Vector2(-1715, 336)
+what_upgrade = "neck"
+price = 20
+
+[node name="bar_door3" parent="doors" instance=ExtResource("12_raw5e")]
+position = Vector2(-1571, 336)
+what_upgrade = "bandage"
+price = 40
+
+[node name="bar_door4" parent="doors" instance=ExtResource("12_raw5e")]
+position = Vector2(-1427, 336)
+what_upgrade = "eye"
+price = 50
+
+[node name="bar_door5" parent="doors" instance=ExtResource("12_raw5e")]
+position = Vector2(-1283, 336)
+what_upgrade = "armor"
+price = 100
 
 [node name="pickups" type="Node2D" parent="."]
 
@@ -318,27 +323,27 @@ rotation = 1.5708
 [node name="scrolls" type="Node2D" parent="pickups"]
 
 [node name="scroll_pickup" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
-position = Vector2(-168, 845)
+position = Vector2(-168, 840)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll")
 
 [node name="scroll_pickup2" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
-position = Vector2(-23, 844)
+position = Vector2(-23, 838)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll2")
 
 [node name="scroll_pickup3" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
-position = Vector2(119, 841)
+position = Vector2(119, 837)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll3")
 
 [node name="scroll_pickup4" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
-position = Vector2(266, 841)
+position = Vector2(266, 837)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll4")
 
 [node name="scroll_pickup5" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
-position = Vector2(407, 841)
+position = Vector2(407, 837)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll5")
 
@@ -347,27 +352,22 @@ whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll5")
 [node name="upgrade" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
 position = Vector2(-193, 965)
 rotation = 3.14159
-what_upgrade = 3
 
 [node name="upgrade2" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
 position = Vector2(-48, 962)
 rotation = 3.14159
-what_upgrade = 4
 
 [node name="upgrade3" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
 position = Vector2(97, 962)
 rotation = 3.14159
-what_upgrade = 2
 
 [node name="upgrade4" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
 position = Vector2(239, 963)
 rotation = 3.14159
-what_upgrade = 0
 
 [node name="upgrade5" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
 position = Vector2(385, 962)
 rotation = 3.14159
-what_upgrade = 1
 
 [node name="portals" type="Node2D" parent="."]
 
@@ -423,9 +423,9 @@ rotation = -1.5708
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll"]
 layout_mode = 0
 offset_left = -599.0
-offset_top = -206.0
+offset_top = -222.842
 offset_right = 598.0
-offset_bottom = 278.0
+offset_bottom = 261.158
 theme = ExtResource("11_va01m")
 text = "Lifestealer
 

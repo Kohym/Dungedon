@@ -38,11 +38,11 @@ var ishealing = false
 
 var willhitwall = false
 
-var has_eye = false
-var has_armor = false
-var has_bandage = false
-var has_gem = false
-var has_neck = false
+var has_eye: bool = false
+var has_armor: bool = false
+var has_bandage: bool = false
+var has_gem: bool = false
+var has_neck: bool = false
 
 var has_got_keys = false
 var keys_moving = false
@@ -60,8 +60,8 @@ func _ready():
 	$playersprite.rotation = look
 	loaddata()
 
-var max_hp
-var hp
+var max_hp = 0
+var hp = 0
 
 func  loaddata():
 	
@@ -71,14 +71,14 @@ func  loaddata():
 		debug_hp = base_hp
 		debug_hp =file.get_var(hp)
 		$playersprite/playerbar.value = debug_hp
-		$playerhp.text = debug_hp
+		$playerhp.text = str(debug_hp)
 		has_eye = file.get_var(has_eye)
 		has_armor= file.get_var(has_armor)
 		has_bandage = file.get_var(has_bandage)
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
 		if has_eye == true:
-			$Camera2D.zoom = 1.5
+			$Camera2D.zoom = Vector2(1.5,1.5)
 		elif has_armor == true:
 			take_A_dmg = 13
 		elif has_bandage == true:
@@ -280,6 +280,18 @@ func _physics_process(delta):
 		$playersprite/playerbar.value = 0
 		$playerhp.text = str($playersprite/playerbar.value)
 		died()
+
+func check_up():
+	if has_eye == true:
+		$Camera2D.zoom = Vector2(1.5,1.5)
+	elif has_armor == true:
+		take_A_dmg = 13
+	elif has_bandage == true:
+		medkit_heal = 40
+	elif has_gem == true:
+		has_gem = true
+	elif has_neck == true:
+		take_E_poison_dmg = 30
 
 func lifesteal():
 	if has_gem == true:

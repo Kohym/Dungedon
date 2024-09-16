@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://7sfs613jyxtd"]
+
+[ext_resource type="Texture2D" uid="uid://d3qxuggaema1v" path="res://Assets/Env/bar_door.png" id="1_2gyoa"]
+[ext_resource type="Script" path="res://Scripts/envm/bar_door.gd" id="1_3os1n"]
+[ext_resource type="Texture2D" uid="uid://bru42lq8o4l6h" path="res://Assets/Env/bar_door_open.png" id="2_ltbt6"]
+[ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="2_wb3gk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yd70"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2gyoa")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ltbt6")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm1i0"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbby6"]
+size = Vector2(32, 2.33333)
+
+[node name="bar_door" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_mask = 0
+script = ExtResource("1_3os1n")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -15.3333
+offset_top = -10.0
+offset_right = 16.6667
+offset_bottom = 13.0
+theme = ExtResource("2_wb3gk")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "150"
+horizontal_alignment = 1
+
+[node name="bar_door_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4yd70")
+animation = &"closed"
+autoplay = "closed"
+
+[node name="bar_door_collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pm1i0")
+
+[node name="bar_door_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="bar_door_detectbox" type="CollisionShape2D" parent="bar_door_area"]
+position = Vector2(0, -9.16667)
+shape = SubResource("RectangleShape2D_gbby6")
+debug_color = Color(0.915765, 7.75868e-05, 0.711632, 0.42)
+
+[connection signal="body_entered" from="bar_door_area" to="." method="_on_bar_door_area_body_entered"]

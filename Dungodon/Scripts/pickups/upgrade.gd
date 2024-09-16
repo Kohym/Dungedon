@@ -1,5 +1,6 @@
 extends Area2D
-@export_enum("eye", "armor", "bandage", "gem", "neck") var what_upgrade
+@export_enum("eye", "armor", "bandage", "gem", "neck") var what_upgrade :String
+@export var player1: Node2D
 var progress_path="user://Dungedon_game.save"
 
 var has_eye = false
@@ -9,7 +10,7 @@ var has_gem = false
 var has_neck = false
 
 func _ready():
-	$upgrade_sprite.animation = what_upgrade
+	$upgrade_sprite.animation = str(what_upgrade)
 	self.add_to_group(what_upgrade)
 	loaddata()
 
@@ -43,5 +44,24 @@ func hide_or_no():
 		$upgrade_collbox. disabled = true
 
 func _on_body_entered(body):
+	var file = FileAccess.open(progress_path, FileAccess.WRITE)
 	if body.is_in_group == "player_body":
-		queue_free()
+		if what_upgrade == "eye":
+			has_eye= true
+			file.store_var(has_eye)
+		elif what_upgrade == "armor":
+			has_armor = true
+			file.store_var(has_armor)
+		elif what_upgrade == "bandage":
+			has_bandage = true
+			file.store_var(has_bandage)
+		elif what_upgrade == "gem":
+			has_gem = true
+			file.store_var(has_gem)
+		elif what_upgrade == "neck":
+			has_neck= true
+			file.store_var(has_neck)
+		player1.check_up()
+		player1.save()
+		$upgrade_collbox.disabled = true
+		$upgrade_sprite.visible = false
