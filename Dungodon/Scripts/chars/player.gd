@@ -39,11 +39,16 @@ var ishealing = false
 
 var willhitwall = false
 
+var max_hp = 0
+var hp = 0
+
 var has_eye: bool = false
 var has_armor: bool = false
 var has_bandage: bool = false
 var has_gem: bool = false
 var has_neck: bool = false
+
+var lifesteal_en: bool = false
 
 var has_got_keys = false
 var keys_moving = false
@@ -61,11 +66,8 @@ func _ready():
 	$playersprite.rotation = look
 	loaddata()
 
-var max_hp = 0
-var hp = 0
-
+#region save andl load
 func  loaddata():
-	
 	if FileAccess.file_exists(progress_path):
 		var file = FileAccess.open(progress_path, FileAccess.READ)
 		base_hp = file.get_var(max_hp)
@@ -98,6 +100,35 @@ func  save():
 	var file = FileAccess.open(progress_path, FileAccess.WRITE)
 	file.store_var(hp)
 	file.store_var(max_hp)
+#endregion 
+
+#region upgrades
+func check_up():
+	if has_eye == true:
+		$Camera2D.zoom = Vector2(1.5,1.5)
+	if has_armor == true:
+		take_A_dmg = 13
+	if has_bandage == true:
+		medkit_heal = 40
+	if has_gem == true:
+		lifesteal_en = true
+	if has_neck == true:
+		take_E_poison_dmg = 30
+
+func lifesteal():
+	if lifesteal_en == true:
+		$playersprite/playerbar.value = $playersprite/playerbar.value + 5
+	else:
+		pass
+
+#region upgrade cost
+func buy_upgrade(cost:int):
+	debug_hp = debug_hp - int(cost)
+	$playersprite/playerbar.value = $playersprite/playerbar.value -int(cost)
+	$playerhp.text = str(int($playerhp.text)-int(cost))
+#endregion
+#endregion
+
 
 #region movement
 func get_input():
@@ -282,24 +313,6 @@ func _physics_process(delta):
 		$playersprite/playerbar.value = 0
 		$playerhp.text = str($playersprite/playerbar.value)
 		died()
-var lifesteal_en: bool = false
-func check_up():
-	if has_eye == true:
-		$Camera2D.zoom = Vector2(1.5,1.5)
-	if has_armor == true:
-		take_A_dmg = 13
-	if has_bandage == true:
-		medkit_heal = 40
-	if has_gem == true:
-		lifesteal_en = true
-	if has_neck == true:
-		take_E_poison_dmg = 30
-
-func lifesteal():
-	if lifesteal_en == true:
-		$playersprite/playerbar.value = $playersprite/playerbar.value + 5
-	else:
-		pass
 
 func _on_playerhurtbox_area_entered(area):
 	if area.is_in_group("enemy_wepon_sword"):
@@ -423,8 +436,7 @@ func addhp():
 		base_hp = 500
 	$playerhp.text = str(base_hp)
 	$playersprite/playerbar.max_value = base_hp
-	$playersprite/playerbar.value =base_hp
-	
+	$playersprite/playerbar.value =base_hp	
 
 func died():
 	var level = $"../"

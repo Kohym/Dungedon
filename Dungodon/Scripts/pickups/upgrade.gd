@@ -55,40 +55,40 @@ func hide_or_no():
 		$upgrade_collbox. disabled = true
 
 func _on_body_entered(body):
-	if body.is_in_group == "player_body":
+	if body.is_in_group("player_body"):
 		var file = FileAccess.open(progress_path, FileAccess.WRITE)
 		if what_upgrade == "eye":
 			has_eye= true
-			file.store_var(has_eye)
 			player1.check_up()
 			player1.save()
 			$upgrade_collbox.disabled = true
 			$upgrade_sprite.visible = false
 		elif what_upgrade == "armor":
 			has_armor = true
-			file.store_var(has_armor)
 			player1.check_up()
 			player1.save()
 			$upgrade_collbox.disabled = true
 			$upgrade_sprite.visible = false
 		elif what_upgrade == "bandage":
 			has_bandage = true
-			file.store_var(has_bandage)
 			player1.check_up()
 			player1.save()
 			$upgrade_collbox.disabled = true
 			$upgrade_sprite.visible = false
 		elif what_upgrade == "gem":
 			has_gem = true
-			file.store_var(has_gem)
 			player1.check_up()
 			player1.save()
 			$upgrade_collbox.disabled = true
 			$upgrade_sprite.visible = false
 		elif what_upgrade == "neck":
 			has_neck= true
-			file.store_var(has_neck)
 			player1.check_up()
 			player1.save()
 			$upgrade_collbox.disabled = true
 			$upgrade_sprite.visible = false
+		file.store_var(has_eye)
+		file.store_var(has_armor)
+		#file.store_var(has_bandage)
+		file.store_var(has_gem)
+		file.store_var(has_neck)

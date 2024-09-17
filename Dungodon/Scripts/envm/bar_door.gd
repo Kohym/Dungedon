@@ -67,6 +67,9 @@ func open_or_no():
 
 func _on_bar_door_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_body"):
-		player1.debug_hp = int(player1.debug_hp) - int(price)
+		player1.buy_upgrade(price)
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)
+		$bar_door_area.monitorable = false
+		$bar_door_area.monitoring = false
+		$bar_door_area/bar_door_detectbox.set_deferred("disabled", true)
