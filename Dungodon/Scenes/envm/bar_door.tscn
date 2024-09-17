@@ -35,21 +35,21 @@ scale = Vector2(3, 3)
 collision_mask = 0
 script = ExtResource("1_3os1n")
 
+[node name="bar_door_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4yd70")
+animation = &"closed"
+autoplay = "closed"
+
 [node name="Label" type="Label" parent="."]
 offset_left = -15.3333
 offset_top = -10.0
 offset_right = 16.6667
 offset_bottom = 13.0
 theme = ExtResource("2_wb3gk")
-theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_color = Color(0, 1, 0, 0.862745)
 theme_override_font_sizes/font_size = 23
 text = "150"
 horizontal_alignment = 1
-
-[node name="bar_door_sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4yd70")
-animation = &"closed"
-autoplay = "closed"
 
 [node name="bar_door_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pm1i0")

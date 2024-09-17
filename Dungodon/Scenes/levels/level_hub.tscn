@@ -184,10 +184,10 @@ script = ExtResource("2_a03oa")
 [node name="background" type="TextureRect" parent="."]
 texture_filter = 1
 texture_repeat = 2
-offset_left = -9524.0
-offset_top = -8433.0
-offset_right = 10487.0
-offset_bottom = 10420.0
+offset_left = -9204.0
+offset_top = -8199.0
+offset_right = 10807.0
+offset_bottom = 10654.0
 scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("3_5pkus")
 stretch_mode = 1
@@ -298,13 +298,12 @@ player1 = NodePath("../../player")
 [node name="bar_door3" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
 position = Vector2(-1571, 336)
 what_upgrade = "bandage"
-price = 40
+price = 70
 player1 = NodePath("../../player")
 
 [node name="bar_door4" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
 position = Vector2(-1427, 336)
 what_upgrade = "eye"
-price = 50
 player1 = NodePath("../../player")
 
 [node name="bar_door5" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
@@ -386,32 +385,38 @@ player1 = NodePath("../../../player")
 
 [node name="portals" type="Node2D" parent="."]
 
-[node name="portal" parent="portals" instance=ExtResource("22_itsyg")]
+[node name="portal" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
 position = Vector2(-192, -240)
 rotation = -1.5708
+player = NodePath("../../player")
 
-[node name="portal2" parent="portals" instance=ExtResource("22_itsyg")]
+[node name="portal2" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
 position = Vector2(-192, -624)
 rotation = -1.5708
 poratal_num = 2
+player = NodePath("../../player")
 
-[node name="portal3" parent="portals" instance=ExtResource("22_itsyg")]
+[node name="portal3" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
 position = Vector2(0, -768)
 poratal_num = 3
+player = NodePath("../../player")
 
-[node name="portal4" parent="portals" instance=ExtResource("22_itsyg")]
+[node name="portal4" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
 position = Vector2(384, -768)
 poratal_num = 4
+player = NodePath("../../player")
 
-[node name="portal5" parent="portals" instance=ExtResource("22_itsyg")]
+[node name="portal5" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
 position = Vector2(528, -624)
 rotation = 1.5708
 poratal_num = 5
+player = NodePath("../../player")
 
-[node name="portal6" parent="portals" instance=ExtResource("22_itsyg")]
+[node name="portal6" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
 position = Vector2(528, -240)
 rotation = 1.5708
 poratal_num = 6
+player = NodePath("../../player")
 
 [node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("9_as2ru")]
 position = Vector2(192, -431)

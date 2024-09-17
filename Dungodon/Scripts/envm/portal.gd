@@ -1,8 +1,9 @@
 extends Area2D
 
 @export var poratal_num:int = 1
+@export var player: CharacterBody2D
 
-var progress_path="user://Dungedon_game.save"
+var progress_path="user://Dungedon_game.txt"
 
 var beat :int
 var enabled = false
@@ -29,7 +30,6 @@ func loaddata():
 		has_bandage = file.get_var(has_bandage)
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
-		print(beat)
 		if beat == poratal_num or beat>poratal_num:
 			if poratal_num == 1:
 				enabled = true
@@ -57,9 +57,10 @@ func loaddata():
 		else:
 			$poratl_diff.visible = false
 	else:
-		print("no data")
+		print("no data portal")
 
 
 func _on_body_entered(body):
-	if body.is_in_group == "player_body" and enabled ==true:
+	if body.is_in_group("player_body") and enabled ==true:
+		
 		get_tree().change_scene_to_file("res://Scenes/levels/level_"+str(poratal_num)+".tscn")

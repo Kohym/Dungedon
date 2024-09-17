@@ -1,7 +1,11 @@
 extends Area2D
 @export var what_upgrade :String
 @export var player1: Node2D
-var progress_path="user://Dungedon_game.save"
+var progress_path="user://Dungedon_game.txt"
+
+var hp:int = 50
+var max_hp:int = 50
+var beat:int = 0
 
 var has_eye:bool = false
 var has_armor:bool = false
@@ -17,9 +21,9 @@ func _ready():
 func loaddata():
 	if FileAccess.file_exists(progress_path):
 		var file = FileAccess.open(progress_path, FileAccess.READ)
-		var hp = 50
-		var max_hp = 50
-		var beat = 0
+		hp = 50
+		max_hp = 50
+		beat = 0
 		has_eye = false
 		has_armor = false
 		has_bandage = false
@@ -34,7 +38,7 @@ func loaddata():
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
 	else:
-		print("no data")
+		print("no data upgrade")
 	hide_or_no()
 
 func hide_or_no():
@@ -56,39 +60,29 @@ func hide_or_no():
 
 func _on_body_entered(body):
 	if body.is_in_group("player_body"):
-		var file = FileAccess.open(progress_path, FileAccess.WRITE)
+		var file2 = FileAccess.open(progress_path, FileAccess.WRITE)
 		if what_upgrade == "eye":
 			has_eye= true
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
 		elif what_upgrade == "armor":
 			has_armor = true
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
 		elif what_upgrade == "bandage":
 			has_bandage = true
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
 		elif what_upgrade == "gem":
 			has_gem = true
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
 		elif what_upgrade == "neck":
 			has_neck= true
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
-		file.store_var(has_eye)
-		file.store_var(has_armor)
-		#file.store_var(has_bandage)
-		file.store_var(has_gem)
-		file.store_var(has_neck)
+		hp = player1.debug_hp
+		max_hp = player1.base_hp
+		file2.store_var(hp)
+		file2.store_var(max_hp)
+		file2.store_var(beat)
+		file2.store_var(has_eye)
+		file2.store_var(has_armor)
+		file2.store_var(has_bandage)
+		file2.store_var(has_gem)
+		file2.store_var(has_neck)
+		player1.check_up()
+		player1.save()
+		player1.check_up()
+		$upgrade_collbox.disabled = true
+		$upgrade_sprite.visible = false

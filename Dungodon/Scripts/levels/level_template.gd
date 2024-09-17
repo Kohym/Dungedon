@@ -5,7 +5,8 @@ var paused_debug = false
 @onready var pause_ui = $player/Camera2D/pause_ui
 var save_path = "user://Dungedon_settings.save"
 var option_volume_value: int
-var option_darkmode: bool
+var option_eff_volume_balue: int
+var option_darkmode: bool = false
 
 func _ready():
 	loaddata()
@@ -14,7 +15,8 @@ func  loaddata():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		option_volume_value = file.get_var(option_volume_value)
-		option_darkmode = bool(file.get_var(option_darkmode))
+		option_eff_volume_balue = file.get_var(option_eff_volume_balue)
+		option_darkmode = file.get_var(option_darkmode)
 	$tilemaps.use_parent_material = option_darkmode
 	$background.use_parent_material = option_darkmode
 	$doors.use_parent_material = option_darkmode

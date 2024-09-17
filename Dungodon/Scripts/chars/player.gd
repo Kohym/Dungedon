@@ -23,13 +23,13 @@ var lockemove = false
 @export var potionG2add = 20
 @export var potionR2works = true
 #endregion
-var progress_path="user://Dungedon_game.save"
+var progress_path="user://Dungedon_game.txt"
 
 var knockback_dir = Vector2()
 var input: Vector2
 var speedboost = 0
 
-var debug_hp = base_hp
+var debug_hp
 
 var isattac = false
 var isholster = true
@@ -39,8 +39,9 @@ var ishealing = false
 
 var willhitwall = false
 
-var max_hp = 0
-var hp = 0
+var max_hp:int = 0
+var hp: int = 0
+var beat: int =0
 
 var has_eye: bool = false
 var has_armor: bool = false
@@ -61,7 +62,6 @@ var has_universal_key = false
 func _ready():
 	$playersprite/player_wepon_sword.monitorable = false
 	$playersprite/player_wepon_sword.monitoring = false
-	$playersprite/playerbar.value = base_hp
 	key_check()
 	$playersprite.rotation = look
 	loaddata()
@@ -70,42 +70,52 @@ func _ready():
 func  loaddata():
 	if FileAccess.file_exists(progress_path):
 		var file = FileAccess.open(progress_path, FileAccess.READ)
-		base_hp = file.get_var(max_hp)
-		debug_hp = base_hp
 		debug_hp =file.get_var(hp)
-		$playersprite/playerbar.value = debug_hp
-		$playersprite/playerbar.max_value = base_hp
-		$playerhp.text = str(debug_hp)
+		base_hp = file.get_var(max_hp)
+		beat = file.get_var(beat)
 		has_eye = file.get_var(has_eye)
 		has_armor= file.get_var(has_armor)
 		has_bandage = file.get_var(has_bandage)
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
+		$playersprite/playerbar.value = debug_hp
+		$playersprite/playerbar.max_value = base_hp
+		$playerhp.text = str(debug_hp)
 		if has_eye == true:
-			$Camera2D.zoom = Vector2(1.5,1.5)
+			cam.zoom = Vector2(1.5,1.5)
 		if has_armor == true:
 			take_A_dmg = 13
 		if has_bandage == true:
 			medkit_heal = 40
 		if has_gem == true:
-			has_gem = true
+			lifesteal_en = true
 		if has_neck == true:
 			take_E_poison_dmg = 30
+		check_up()
 	else:
-		print("no data")
+		print("no data player")
 
 func  save():
 	hp = $playersprite/playerbar.value
 	max_hp = base_hp
 	var file = FileAccess.open(progress_path, FileAccess.WRITE)
+	hp = $playersprite/playerbar.value
+	hp = debug_hp
+	max_hp = base_hp
 	file.store_var(hp)
 	file.store_var(max_hp)
+	file.store_var(beat)
+	file.store_var(has_eye)
+	file.store_var(has_armor)
+	file.store_var(has_bandage)
+	file.store_var(has_gem)
+	file.store_var(has_neck)
 #endregion 
 
 #region upgrades
 func check_up():
 	if has_eye == true:
-		$Camera2D.zoom = Vector2(1.5,1.5)
+		cam.zoom = Vector2(1.5,1.5)
 	if has_armor == true:
 		take_A_dmg = 13
 	if has_bandage == true:
@@ -114,6 +124,7 @@ func check_up():
 		lifesteal_en = true
 	if has_neck == true:
 		take_E_poison_dmg = 30
+	save()
 
 func lifesteal():
 	if lifesteal_en == true:
@@ -121,12 +132,10 @@ func lifesteal():
 	else:
 		pass
 
-#region upgrade cost
 func buy_upgrade(cost:int):
 	debug_hp = debug_hp - int(cost)
 	$playersprite/playerbar.value = $playersprite/playerbar.value -int(cost)
 	$playerhp.text = str(int($playerhp.text)-int(cost))
-#endregion
 #endregion
 
 

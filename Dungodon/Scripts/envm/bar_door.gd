@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var what_upgrade :String
 @export var price = 10
 @export var player1: Node2D
-var progress_path="user://Dungedon_game.save"
+var progress_path="user://Dungedon_game.txt"
 
 var has_eye:bool = false
 var has_armor:bool = false
@@ -36,7 +36,7 @@ func loaddata():
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
 	else:
-		print("no data")
+		print("no data bar door")
 	open_or_no()
 
 func open_or_no():
@@ -70,6 +70,7 @@ func _on_bar_door_area_body_entered(body: Node2D) -> void:
 		player1.buy_upgrade(price)
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)
+		$Label.visible = false
 		$bar_door_area.monitorable = false
 		$bar_door_area.monitoring = false
 		$bar_door_area/bar_door_detectbox.set_deferred("disabled", true)

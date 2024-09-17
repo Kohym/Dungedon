@@ -1,7 +1,7 @@
 extends Control
 
 var save_path = "user://Dungedon_settings.save"
-var game_save_path = "user://Dungedon_game.save"
+var game_save_path = "user://Dungedon_game.txt"
 var hp:int = 50
 var max_hp:int = 50
 var beat:int = 1
@@ -60,6 +60,9 @@ func _on_new_cancel_pressed():
 func _on_new_confirm_pressed():
 	DirAccess.remove_absolute(game_save_path)
 	var new_file = FileAccess.open(game_save_path, FileAccess.WRITE)
+	hp = 40
+	max_hp = 50
+	beat=1
 	has_eye = false
 	has_armor = false
 	has_bandage = false
@@ -116,7 +119,6 @@ func save():
 	$menus/options_menu/saved_label.visible = true
 	await get_tree().create_timer(0.5).timeout
 	$menus/options_menu/saved_label.visible = false
-	print(option_darkmode)
 
 func load_data():
 	if FileAccess.file_exists(save_path):
@@ -129,7 +131,7 @@ func load_data():
 		$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
 		$Node2D.use_parent_material = option_darkmode
 	else:
-		print("no data")
+		print("no data menu")
 #endregion
 #endregion
 #region credits_menu
