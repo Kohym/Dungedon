@@ -3,6 +3,7 @@ extends CharacterBody2D
 #region vars
 #region exported_vars
 var isalive = true
+@export var cam :Camera2D
 @export var base_hp = 50
 @export_range(-360, 360, 0.5, ) var look: float
 
@@ -71,6 +72,7 @@ func  loaddata():
 		debug_hp = base_hp
 		debug_hp =file.get_var(hp)
 		$playersprite/playerbar.value = debug_hp
+		$playersprite/playerbar.max_value = base_hp
 		$playerhp.text = str(debug_hp)
 		has_eye = file.get_var(has_eye)
 		has_armor= file.get_var(has_armor)

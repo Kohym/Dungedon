@@ -50,6 +50,7 @@ func _on_new_cancel_pressed():
 	$menus/levels_menu.visible = true
 
 func _on_new_confirm_pressed():
+	DirAccess.remove_absolute(game_save_path)
 	var new_file = FileAccess.open(game_save_path, FileAccess.WRITE)
 	var hp = 50
 	var max_hp = 50
@@ -68,7 +69,6 @@ func _on_new_confirm_pressed():
 	new_file.store_var(has_gem)
 	new_file.store_var(has_neck)
 	get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")
-	
 
 #endregion
 

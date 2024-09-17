@@ -184,10 +184,10 @@ script = ExtResource("2_a03oa")
 [node name="background" type="TextureRect" parent="."]
 texture_filter = 1
 texture_repeat = 2
-offset_left = -9527.0
-offset_top = -8422.0
-offset_right = 10484.0
-offset_bottom = 10431.0
+offset_left = -9524.0
+offset_top = -8433.0
+offset_right = 10487.0
+offset_bottom = 10420.0
 scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("3_5pkus")
 stretch_mode = 1
@@ -349,25 +349,35 @@ whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll5")
 
 [node name="upgrades" type="Node2D" parent="pickups"]
 
-[node name="upgrade" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
+[node name="upgrade" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
 position = Vector2(-193, 965)
 rotation = 3.14159
+what_upgrade = "gem"
+player1 = NodePath("../../../player")
 
-[node name="upgrade2" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
+[node name="upgrade2" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
 position = Vector2(-48, 962)
 rotation = 3.14159
+what_upgrade = "neck"
+player1 = NodePath("../../../player")
 
-[node name="upgrade3" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
+[node name="upgrade3" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
 position = Vector2(97, 962)
 rotation = 3.14159
+what_upgrade = "bandage"
+player1 = NodePath("../../../player")
 
-[node name="upgrade4" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
+[node name="upgrade4" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
 position = Vector2(239, 963)
 rotation = 3.14159
+what_upgrade = "eye"
+player1 = NodePath("../../../player")
 
-[node name="upgrade5" parent="pickups/upgrades" instance=ExtResource("15_sycdn")]
+[node name="upgrade5" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
 position = Vector2(385, 962)
 rotation = 3.14159
+what_upgrade = "armor"
+player1 = NodePath("../../../player")
 
 [node name="portals" type="Node2D" parent="."]
 
@@ -398,8 +408,9 @@ position = Vector2(528, -240)
 rotation = 1.5708
 poratal_num = 6
 
-[node name="player" parent="." instance=ExtResource("9_as2ru")]
+[node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("9_as2ru")]
 position = Vector2(192, -431)
+cam = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
@@ -423,9 +434,9 @@ rotation = -1.5708
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll"]
 layout_mode = 0
 offset_left = -599.0
-offset_top = -222.842
-offset_right = 598.0
-offset_bottom = 261.158
+offset_top = -223.0
+offset_right = 456.0
+offset_bottom = 261.0
 theme = ExtResource("11_va01m")
 text = "Lifestealer
 
@@ -495,10 +506,10 @@ rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll4"]
 layout_mode = 0
-offset_left = -588.947
-offset_top = -228.947
-offset_right = 657.053
-offset_bottom = 255.053
+offset_left = -589.0
+offset_top = -229.0
+offset_right = 430.0
+offset_bottom = 255.0
 theme = ExtResource("11_va01m")
 text = "Eye necklace
 
@@ -519,10 +530,10 @@ rotation = -1.5708
 
 [node name="RichTextLabel" type="RichTextLabel" parent="player/Camera2D/scrolls/scroll5"]
 layout_mode = 0
-offset_left = -594.211
-offset_top = -236.316
-offset_right = 651.789
-offset_bottom = 247.684
+offset_left = -594.0
+offset_top = -236.0
+offset_right = 451.0
+offset_bottom = 248.0
 theme = ExtResource("11_va01m")
 text = "Armour
 

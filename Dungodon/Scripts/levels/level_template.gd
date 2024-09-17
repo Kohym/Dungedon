@@ -15,10 +15,6 @@ func  loaddata():
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		option_volume_value = file.get_var(option_volume_value)
 		option_darkmode = bool(file.get_var(option_darkmode))
-		
-	else:
-		print("no data")
-	print(option_darkmode)
 	$tilemaps.use_parent_material = option_darkmode
 	$background.use_parent_material = option_darkmode
 	$doors.use_parent_material = option_darkmode
