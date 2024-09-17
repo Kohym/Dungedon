@@ -81,13 +81,13 @@ func  loaddata():
 		has_neck = file.get_var(has_neck)
 		if has_eye == true:
 			$Camera2D.zoom = Vector2(1.5,1.5)
-		elif has_armor == true:
+		if has_armor == true:
 			take_A_dmg = 13
-		elif has_bandage == true:
+		if has_bandage == true:
 			medkit_heal = 40
-		elif has_gem == true:
+		if has_gem == true:
 			has_gem = true
-		elif has_neck == true:
+		if has_neck == true:
 			take_E_poison_dmg = 30
 	else:
 		print("no data")
@@ -282,21 +282,21 @@ func _physics_process(delta):
 		$playersprite/playerbar.value = 0
 		$playerhp.text = str($playersprite/playerbar.value)
 		died()
-
+var lifesteal_en: bool = false
 func check_up():
 	if has_eye == true:
 		$Camera2D.zoom = Vector2(1.5,1.5)
-	elif has_armor == true:
+	if has_armor == true:
 		take_A_dmg = 13
-	elif has_bandage == true:
+	if has_bandage == true:
 		medkit_heal = 40
-	elif has_gem == true:
-		has_gem = true
-	elif has_neck == true:
+	if has_gem == true:
+		lifesteal_en = true
+	if has_neck == true:
 		take_E_poison_dmg = 30
 
 func lifesteal():
-	if has_gem == true:
+	if lifesteal_en == true:
 		$playersprite/playerbar.value = $playersprite/playerbar.value + 5
 	else:
 		pass

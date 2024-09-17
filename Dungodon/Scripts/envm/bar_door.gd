@@ -19,41 +19,47 @@ func _ready():
 func loaddata():
 	if FileAccess.file_exists(progress_path):
 		var file = FileAccess.open(progress_path, FileAccess.READ)
-		has_eye = bool(file.get_var(has_eye))
-		has_armor= bool(file.get_var(has_armor))
-		has_bandage = bool(file.get_var(has_bandage))
-		has_gem = bool(file.get_var(has_gem))
-		has_neck = bool(file.get_var(has_neck))
+		var hp = 50
+		var max_hp = 50
+		var beat = 0
+		has_eye = false
+		has_armor = false
+		has_bandage = false
+		has_gem = false
+		has_neck = false
+		hp = file.get_var(hp)
+		max_hp = file.get_var(max_hp)
+		beat = file.get_var(beat)
+		has_eye = file.get_var(has_eye)
+		has_armor= file.get_var(has_armor)
+		has_bandage = file.get_var(has_bandage)
+		has_gem = file.get_var(has_gem)
+		has_neck = file.get_var(has_neck)
 	else:
 		print("no data")
-	hide_or_no()
-	print(has_gem)
-	print(has_neck)
-	print(has_bandage)
-	print(has_eye)
-	print(has_armor)
+	open_or_no()
 
-func hide_or_no():
+func open_or_no():
 	if what_upgrade == "eye" and has_eye == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)
 		$bar_door_area.monitoring = false
-	elif what_upgrade == "armor" and has_armor == true:
+	if what_upgrade == "armor" and has_armor == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
 		$bar_door_area.monitoring = false
-	elif what_upgrade == "bandage" and has_bandage == true:
-		$Label.visible = false
-		$bar_door_sprite.play("open")
-		$bar_door_collbox.set_deferred("disabled", true)
-		$bar_door_area.monitoring = false
-	elif what_upgrade == "gem" and has_gem == true:
+	if what_upgrade == "bandage" and has_bandage == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)
 		$bar_door_area.monitoring = false
-	elif what_upgrade == "neck" and has_neck == true:
+	if what_upgrade == "gem" and has_gem == true:
+		$Label.visible = false
+		$bar_door_sprite.play("open")
+		$bar_door_collbox.set_deferred("disabled", true)
+		$bar_door_area.monitoring = false
+	if what_upgrade == "neck" and has_neck == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)

@@ -283,30 +283,35 @@ position = Vector2(-1475, -671)
 position = Vector2(-2005, -168)
 rotation = 1.5708
 
-[node name="bar_door" parent="doors" instance=ExtResource("12_raw5e")]
+[node name="bar_door" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
 position = Vector2(-1859, 336)
 what_upgrade = "gem"
 price = 150
+player1 = NodePath("../../player")
 
-[node name="bar_door2" parent="doors" instance=ExtResource("12_raw5e")]
+[node name="bar_door2" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
 position = Vector2(-1715, 336)
 what_upgrade = "neck"
 price = 20
+player1 = NodePath("../../player")
 
-[node name="bar_door3" parent="doors" instance=ExtResource("12_raw5e")]
+[node name="bar_door3" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
 position = Vector2(-1571, 336)
 what_upgrade = "bandage"
 price = 40
+player1 = NodePath("../../player")
 
-[node name="bar_door4" parent="doors" instance=ExtResource("12_raw5e")]
+[node name="bar_door4" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
 position = Vector2(-1427, 336)
 what_upgrade = "eye"
 price = 50
+player1 = NodePath("../../player")
 
-[node name="bar_door5" parent="doors" instance=ExtResource("12_raw5e")]
+[node name="bar_door5" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
 position = Vector2(-1283, 336)
 what_upgrade = "armor"
 price = 100
+player1 = NodePath("../../player")
 
 [node name="pickups" type="Node2D" parent="."]
 

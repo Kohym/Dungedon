@@ -2,6 +2,14 @@ extends Control
 
 var save_path = "user://Dungedon_settings.save"
 var game_save_path = "user://Dungedon_game.save"
+var hp:int = 50
+var max_hp:int = 50
+var beat:int = 1
+var has_eye:bool = false
+var has_armor:bool = false
+var has_bandage:bool = false
+var has_gem:bool = false
+var has_neck:bool = false
 
 func _ready():
 	Engine.time_scale = 1
@@ -52,19 +60,16 @@ func _on_new_cancel_pressed():
 func _on_new_confirm_pressed():
 	DirAccess.remove_absolute(game_save_path)
 	var new_file = FileAccess.open(game_save_path, FileAccess.WRITE)
-	var hp:int = 50
-	var max_hp:int = 50
-	var beat:int = 0
-	var has_eye:bool = false
-	var has_armor:bool = false
-	var has_bandage:bool = false
-	var has_gem:bool = false
-	var has_neck:bool = false
+	has_eye = false
+	has_armor = false
+	has_bandage = false
+	has_gem = false
+	has_neck = false
 	new_file.store_var(hp)
 	new_file.store_var(max_hp)
 	new_file.store_var(beat)
 	new_file.store_var(has_eye)
-	new_file.store_var(has_armor)
+	new_file.store_var(has_armor,false)
 	new_file.store_var(has_bandage)
 	new_file.store_var(has_gem)
 	new_file.store_var(has_neck)

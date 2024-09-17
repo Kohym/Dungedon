@@ -72,9 +72,8 @@ script = ExtResource("1_056lm")
 
 [node name="upgrade_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cvxn3")
-animation = &"neck"
+animation = &"armor"
 autoplay = "neck"
-frame_progress = 0.975248
 
 [node name="upgrade_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cta43")
