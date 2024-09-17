@@ -24,60 +24,60 @@ func loaddata():
 		has_neck = file.get_var(has_neck)
 	else:
 		print("no data")
-	hide_or_no()
+	#hide_or_no()
 
-func hide_or_no():
-	if what_upgrade == "eye" and has_eye == true:
-		self.visible = false
-		$upgrade_collbox. disabled = true
-	elif what_upgrade == "armor" and has_armor == true:
-		self.visible = false
-		$upgrade_collbox. disabled = true
-	elif what_upgrade == "bandage" and has_bandage == true:
-		self.visible = false
-		$upgrade_collbox. disabled = true
-	elif what_upgrade == "gem" and has_gem == true:
-		self.visible = false
-		$upgrade_collbox. disabled = true
-	elif what_upgrade == "neck" and has_neck == true:
-		self.visible = false
-		$upgrade_collbox. disabled = true
+#func hide_or_no():
+	#if what_upgrade == "eye" and has_eye == true:
+		#self.visible = false
+		#$upgrade_collbox. disabled = true
+	#elif what_upgrade == "armor" and has_armor == true:
+		#self.visible = false
+		#$upgrade_collbox. disabled = true
+	#elif what_upgrade == "bandage" and has_bandage == true:
+		#self.visible = false
+		#$upgrade_collbox. disabled = true
+	#elif what_upgrade == "gem" and has_gem == true:
+		#self.visible = false
+		#$upgrade_collbox. disabled = true
+	#elif what_upgrade == "neck" and has_neck == true:
+		#self.visible = false
+		#$upgrade_collbox. disabled = true
 
-func _on_body_entered(body):
-	if body.is_in_group == "player_body":
-		var file = FileAccess.open(progress_path, FileAccess.WRITE)
-		if what_upgrade == "eye":
-			has_eye= true
-			file.store_var(has_eye)
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
-		elif what_upgrade == "armor":
-			has_armor = true
-			file.store_var(has_armor)
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
-		elif what_upgrade == "bandage":
-			has_bandage = true
-			file.store_var(has_bandage)
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
-		elif what_upgrade == "gem":
-			has_gem = true
-			file.store_var(has_gem)
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
-		elif what_upgrade == "neck":
-			has_neck= true
-			file.store_var(has_neck)
-			player1.check_up()
-			player1.save()
-			$upgrade_collbox.disabled = true
-			$upgrade_sprite.visible = false
+#func _on_body_entered(body):
+	#if body.is_in_group == "player_body":
+		#var file = FileAccess.open(progress_path, FileAccess.WRITE)
+		#if what_upgrade == "eye":
+			#has_eye= true
+			#file.store_var(has_eye)
+			#player1.check_up()
+			#player1.save()
+			#$upgrade_collbox.disabled = true
+			#$upgrade_sprite.visible = false
+		#elif what_upgrade == "armor":
+			#has_armor = true
+			#file.store_var(has_armor)
+			#player1.check_up()
+			#player1.save()
+			#$upgrade_collbox.disabled = true
+			#$upgrade_sprite.visible = false
+		#elif what_upgrade == "bandage":
+			#has_bandage = true
+			#file.store_var(has_bandage)
+			#player1.check_up()
+			#player1.save()
+			#$upgrade_collbox.disabled = true
+			#$upgrade_sprite.visible = false
+		#elif what_upgrade == "gem":
+			#has_gem = true
+			#file.store_var(has_gem)
+			#player1.check_up()
+			#player1.save()
+			#$upgrade_collbox.disabled = true
+			#$upgrade_sprite.visible = false
+		#elif what_upgrade == "neck":
+			#has_neck= true
+			#file.store_var(has_neck)
+			#player1.check_up()
+			#player1.save()
+			#$upgrade_collbox.disabled = true
+			#$upgrade_sprite.visible = false

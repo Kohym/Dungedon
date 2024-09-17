@@ -52,14 +52,14 @@ func _on_new_cancel_pressed():
 func _on_new_confirm_pressed():
 	DirAccess.remove_absolute(game_save_path)
 	var new_file = FileAccess.open(game_save_path, FileAccess.WRITE)
-	var hp = 50
-	var max_hp = 50
-	var beat = 1
-	var has_eye = false
-	var has_armor = false
-	var has_bandage = false
-	var has_gem = false
-	var has_neck = false
+	var hp:int = 50
+	var max_hp:int = 50
+	var beat:int = 0
+	var has_eye:bool = false
+	var has_armor:bool = false
+	var has_bandage:bool = false
+	var has_gem:bool = false
+	var has_neck:bool = false
 	new_file.store_var(hp)
 	new_file.store_var(max_hp)
 	new_file.store_var(beat)

@@ -37,26 +37,30 @@ func hide_or_no():
 	if what_upgrade == "eye" and has_eye == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
-		$bar_door_collbox.disabled = true
+		$bar_door_collbox.set_deferred("disabled", true)
+		$bar_door_area.monitoring = false
 	elif what_upgrade == "armor" and has_armor == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
-		$bar_door_collbox.disabled = true
+		$bar_door_area.monitoring = false
 	elif what_upgrade == "bandage" and has_bandage == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
-		$bar_door_collbox.disabled = true
+		$bar_door_collbox.set_deferred("disabled", true)
+		$bar_door_area.monitoring = false
 	elif what_upgrade == "gem" and has_gem == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
-		$bar_door_collbox.disabled = true
+		$bar_door_collbox.set_deferred("disabled", true)
+		$bar_door_area.monitoring = false
 	elif what_upgrade == "neck" and has_neck == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
-		$bar_door_collbox.disabled = true
+		$bar_door_collbox.set_deferred("disabled", true)
+		$bar_door_area.monitoring = false
 
 func _on_bar_door_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_body"):
 		player1.debug_hp = int(player1.debug_hp) - int(price)
 		$bar_door_sprite.play("open")
-		$bar_door_collbox.disabled = true
+		$bar_door_collbox.set_deferred("disabled", true)
