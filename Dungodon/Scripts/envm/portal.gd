@@ -62,5 +62,5 @@ func loaddata():
 
 func _on_body_entered(body):
 	if body.is_in_group("player_body") and enabled ==true:
-		
+		player.save()
 		get_tree().change_scene_to_file("res://Scenes/levels/level_"+str(poratal_num)+".tscn")

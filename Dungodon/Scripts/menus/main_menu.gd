@@ -72,7 +72,7 @@ func _on_new_confirm_pressed():
 	new_file.store_var(max_hp)
 	new_file.store_var(beat)
 	new_file.store_var(has_eye)
-	new_file.store_var(has_armor,false)
+	new_file.store_var(has_armor)
 	new_file.store_var(has_bandage)
 	new_file.store_var(has_gem)
 	new_file.store_var(has_neck)
