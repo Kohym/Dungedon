@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bix618qsrb7hq" path="res://Scenes/envm/door_both.tscn" id="18_65cis"]
 [ext_resource type="PackedScene" uid="uid://b7guy3xdvjg5y" path="res://Scenes/chars/enemy.tscn" id="19_cmquj"]
 [ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="20_qhp5r"]
-[ext_resource type="Shader" path="res://Scenes/levels/level_dev.gdshader" id="20_t4fft"]
+[ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="20_t4fft"]
 [ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="21_yrr4v"]
 [ext_resource type="PackedScene" uid="uid://c652umiweekt6" path="res://Scenes/envm/scroll.tscn" id="22_dj650"]
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="23_phsgn"]
@@ -203,7 +203,7 @@ position = Vector2(478, 643)
 position = Vector2(4, 221)
 
 [node name="potionG" parent="pickups/potions" instance=ExtResource("12_53cj4")]
-position = Vector2(-23, 437)
+position = Vector2(-204, 638)
 
 [node name="potionG2" parent="pickups/potions" instance=ExtResource("13_iv5gp")]
 position = Vector2(1677, 1022)
@@ -212,12 +212,12 @@ position = Vector2(1677, 1022)
 position = Vector2(-154, 218)
 
 [node name="potionG3" parent="pickups/potions" instance=ExtResource("12_53cj4")]
-position = Vector2(166, 548)
+position = Vector2(665, 657)
 
 [node name="medkits" type="Node2D" parent="pickups"]
 
 [node name="medkit" parent="pickups/medkits" instance=ExtResource("15_qbspl")]
-position = Vector2(1419, 384)
+position = Vector2(187, 460)
 
 [node name="scrolls" type="Node2D" parent="pickups"]
 
@@ -244,13 +244,14 @@ position = Vector2(-1523, 240)
 islocked = "red"
 
 [node name="enemy" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("19_cmquj")]
-position = Vector2(846, 232)
+position = Vector2(247, 1060)
 player1 = NodePath("../player")
 look = 180.0
 detect_radius = 200
 
-[node name="player" parent="." instance=ExtResource("20_qhp5r")]
+[node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("20_qhp5r")]
 position = Vector2(172, 206)
+cam = NodePath("Camera2D")
 potionGadd = 625
 
 [node name="Camera2D" type="Camera2D" parent="player"]

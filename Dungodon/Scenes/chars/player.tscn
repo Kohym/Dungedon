@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ducgrspg4c2fe"]
+[gd_scene load_steps=31 format=3 uid="uid://ducgrspg4c2fe"]
 
 [ext_resource type="Script" path="res://Scripts/chars/player.gd" id="1_c7yih"]
 [ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/chars/wpns/player_wepon_sword.tscn" id="2_am8ds"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dup3j7u8r4alq" path="res://Assets/keys/key_blue.png" id="8_wyhat"]
 [ext_resource type="Texture2D" uid="uid://cm3b3u8gybexr" path="res://Assets/keys/keay_green.png" id="9_i45y0"]
 [ext_resource type="Texture2D" uid="uid://duhaamj8t4n4g" path="res://Assets/keys/key_red.png" id="10_vx3mx"]
+[ext_resource type="AudioStream" uid="uid://cnertt1vp130u" path="res://Sounds/SFX/combat/swing.mp3" id="13_2017l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csofs"]
 size = Vector2(24.2105, 35.7895)
@@ -246,6 +247,11 @@ visible = false
 offset_top = -86.3158
 offset_right = 40.0
 offset_bottom = -63.3158
+
+[node name="swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_2017l")
+volume_db = -15.0
+bus = &"Effect"
 
 [connection signal="body_entered" from="playersprite/debug" to="." method="_on_debug_body_entered"]
 [connection signal="body_exited" from="playersprite/debug" to="." method="_on_debug_body_exited"]

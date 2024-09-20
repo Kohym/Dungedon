@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmptryebkslsh"]
+[gd_scene load_steps=7 format=3 uid="uid://dmptryebkslsh"]
 
 [ext_resource type="Script" path="res://Scripts/envm/portal_back.gd" id="1_trmue"]
 [ext_resource type="Texture2D" uid="uid://l2ka8jiuoj0c" path="res://Assets/Env/portals/portal_back.png" id="2_q45w0"]
 [ext_resource type="Texture2D" uid="uid://42lp2o2824sc" path="res://Assets/Env/portals/portal_back_active.png" id="3_r85f8"]
+[ext_resource type="AudioStream" uid="uid://wgnxkatked5k" path="res://Sounds/SFX/ambient/teleport on.mp3" id="4_u1o0d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uykxt"]
 animations = [{
@@ -40,5 +41,10 @@ animation = &"en"
 [node name="portal_back_sprite_collbox" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0ex71")
+
+[node name="ena" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_u1o0d")
+volume_db = -10.0
+bus = &"Effect"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cijal7twssdcc"]
+[gd_scene load_steps=19 format=3 uid="uid://cijal7twssdcc"]
 
 [ext_resource type="Script" path="res://Scripts/envm/door.gd" id="1_b47ad"]
 [ext_resource type="Texture2D" uid="uid://ug54wopj0tuj" path="res://Assets/Env/doorB.png" id="2_aaj1v"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ba6aqis8g7uhp" path="res://Assets/Env/doorG.png" id="4_vr4qk"]
 [ext_resource type="Texture2D" uid="uid://do4kkodq0vc5d" path="res://Assets/Env/doorD.png" id="4_w16y5"]
 [ext_resource type="Texture2D" uid="uid://c57g0oaldk6dc" path="res://Assets/Env/doorR.png" id="6_rvtuk"]
+[ext_resource type="AudioStream" uid="uid://d323ktibp432m" path="res://Sounds/SFX/ambient/door/open.mp3" id="8_f0jbt"]
+[ext_resource type="AudioStream" uid="uid://dv21ffenfe053" path="res://Sounds/SFX/ambient/door/close.mp3" id="9_of5bs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0t2l"]
 atlas = ExtResource("2_aaj1v")
@@ -116,6 +118,16 @@ shape = SubResource("RectangleShape2D_xowfc")
 bidirectional = false
 start_position = Vector2(0, 33.6667)
 end_position = Vector2(0, -11.3333)
+
+[node name="eff1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f0jbt")
+volume_db = -10.0
+bus = &"Effect"
+
+[node name="eff2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_of5bs")
+volume_db = -10.0
+bus = &"Effect"
 
 [connection signal="area_entered" from="door_open_detect" to="." method="_on_door_open_detect_area_entered"]
 [connection signal="body_entered" from="door_open_detect" to="." method="_on_area_2d_body_entered"]

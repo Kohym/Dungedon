@@ -28,9 +28,11 @@ func _ready():
 		$door_both_open_detect2.add_to_group("locked_blue")
 
 func open():
+	$eff1.play()
 	$door_both_sprite.play("open")
 	$door_both_collbox.set_deferred("disabled", true)
 	await get_tree().create_timer(openforsec).timeout
+	$eff2.play()
 	$door_both_sprite.play("closed")
 	$door_both_collbox.set_deferred("disabled", false)
 

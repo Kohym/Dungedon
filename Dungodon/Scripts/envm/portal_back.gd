@@ -8,6 +8,7 @@ func _ready():
 func enable():
 	$portal_back_sprite.animation = "en"
 	$portal_back_sprite_collbox.disabled = false
+	$ena.play()
 
 func _on_body_entered(body):
 	if body.is_in_group("player_body"):

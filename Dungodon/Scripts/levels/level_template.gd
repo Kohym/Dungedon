@@ -20,6 +20,8 @@ func  loaddata():
 	$tilemaps.use_parent_material = option_darkmode
 	$background.use_parent_material = option_darkmode
 	$doors.use_parent_material = option_darkmode
+	AudioServer.set_bus_volume_db(1, linear_to_db(option_volume_value))
+	AudioServer.set_bus_volume_db(2, linear_to_db(option_eff_volume_balue))
 
 func _process(delta):
 	if win == false:

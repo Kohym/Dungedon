@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ukjhs1m48knn"]
+[gd_scene load_steps=11 format=3 uid="uid://ukjhs1m48knn"]
 
 [ext_resource type="Script" path="res://Scripts/pickups/medkit.gd" id="1_co8bf"]
 [ext_resource type="Texture2D" uid="uid://c3kcqcm5xnt3x" path="res://Assets/Env/medkit.png" id="1_xnuf1"]
+[ext_resource type="Texture2D" uid="uid://daoc3p83ee4f2" path="res://Assets/Env/medkid_used.png" id="3_0av5i"]
+[ext_resource type="AudioStream" uid="uid://b5lcuyrjkyf6r" path="res://Sounds/SFX/ambient/medkit.mp3" id="3_wmodk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62fnf"]
 atlas = ExtResource("1_xnuf1")
@@ -42,6 +44,14 @@ animations = [{
 "loop": true,
 "name": &"2",
 "speed": 0.9
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0av5i")
+}],
+"loop": true,
+"name": &"used",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk54r"]
@@ -55,10 +65,16 @@ script = ExtResource("1_co8bf")
 
 [node name="medkit_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p35c0")
-animation = &"2"
+animation = &"1"
 autoplay = "1"
 
 [node name="medkit_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gk54r")
 
+[node name="heal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wmodk")
+volume_db = -15.0
+bus = &"Effect"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="heal" to="." method="_on_heal_finished"]

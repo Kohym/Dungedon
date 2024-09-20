@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://d0bb0r36cfr36"]
+[gd_scene load_steps=35 format=4 uid="uid://d0bb0r36cfr36"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_rcxnb"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_a03oa"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dsg54335yiwex" path="res://Scenes/pickups/scroll_pickup.tscn" id="15_2p8cp"]
 [ext_resource type="PackedScene" uid="uid://dbqx5u3gj4inp" path="res://Scenes/pickups/upgrade.tscn" id="15_sycdn"]
 [ext_resource type="PackedScene" uid="uid://b43p4au4tluep" path="res://Scenes/envm/portal.tscn" id="22_itsyg"]
+[ext_resource type="AudioStream" uid="uid://bddfsh6ew6ju0" path="res://Sounds/SFX/ambient/teleport_in.wav" id="23_qy6k6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_rcxnb")
@@ -180,6 +181,12 @@ sources/0 = SubResource("TileSetAtlasSource_bmn72")
 [node name="level_template" type="Node2D"]
 material = SubResource("ShaderMaterial_b0ln5")
 script = ExtResource("2_a03oa")
+
+[node name="enter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_qy6k6")
+volume_db = -1.0
+autoplay = true
+bus = &"Effect"
 
 [node name="background" type="TextureRect" parent="."]
 texture_filter = 1

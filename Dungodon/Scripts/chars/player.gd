@@ -247,6 +247,7 @@ func attack():
 	if isalive == true:
 		var timer = attspeed*0.001
 		$playersprite/player_wepon_sword.monitorable = true
+		$swing.play()
 		for n in 72:
 			await get_tree().create_timer(timer).timeout
 			$playersprite/player_wepon_sword.rotation_degrees += 5

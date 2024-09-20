@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dho5eidcs6olf"]
+[gd_scene load_steps=15 format=3 uid="uid://dho5eidcs6olf"]
 
 [ext_resource type="Script" path="res://Scripts/pickups/potions/potionR2.gd" id="1_mu8b4"]
 [ext_resource type="Texture2D" uid="uid://srgqi3p6ysp4" path="res://Assets/potions/bottle_2_broken1.png" id="2_8niq1"]
 [ext_resource type="Texture2D" uid="uid://bpmwif57bhmx2" path="res://Assets/potions/bottle_2_broken2.png" id="3_d1c8y"]
 [ext_resource type="Texture2D" uid="uid://cmnv884v45p5v" path="res://Assets/potions/bottle_2_broken3.png" id="4_01yiu"]
 [ext_resource type="Texture2D" uid="uid://bpva0hjgtv3d6" path="res://Assets/potions/potionR2.png" id="5_0slcc"]
+[ext_resource type="AudioStream" uid="uid://ib60v0n3smqj" path="res://Sounds/SFX/ambient/potion/drink.mp3" id="6_x4uvf"]
+[ext_resource type="AudioStream" uid="uid://bqoyrgybmtejq" path="res://Sounds/SFX/ambient/potion/glass_break.wav" id="7_7w5g1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th2kt"]
 atlas = ExtResource("5_0slcc")
@@ -90,4 +92,15 @@ autoplay = "idle"
 [node name="potionR2_collbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_j3uc8")
 
+[node name="eff1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_x4uvf")
+volume_db = -10.0
+bus = &"Effect"
+
+[node name="eff2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7w5g1")
+volume_db = -10.0
+bus = &"Effect"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="eff1" to="." method="_on_eff_1_finished"]

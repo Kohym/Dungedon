@@ -11,6 +11,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player_body"):
+		$eff1.play()
 		set_deferred("monitoring", false)
 		set_deferred("monitorable", false)
 		$potionR_collbox.disabled = true
@@ -27,3 +28,7 @@ func _on_body_entered(body):
 			$potionR_sprite.flip_h = true
 		elif (randbool ==2):
 			$potionR_sprite.flip_v = true
+
+
+func _on_eff_1_finished():
+	$eff2.play()
