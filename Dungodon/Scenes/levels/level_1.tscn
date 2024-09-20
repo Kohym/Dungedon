@@ -218,7 +218,8 @@ position = Vector2(1667, 552)
 
 [node name="scrolls" type="Node2D" parent="pickups"]
 
-[node name="portal_back" parent="." instance=ExtResource("9_prarf")]
+[node name="portal_back" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("9_prarf")]
+player1 = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("10_0x786")]
 position = Vector2(158, 204)

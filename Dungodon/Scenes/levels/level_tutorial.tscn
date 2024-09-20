@@ -464,12 +464,11 @@ material = SubResource("ShaderMaterial_e7kxx")
 script = ExtResource("1_aukqo")
 
 [node name="background" type="TextureRect" parent="."]
-visible = false
 texture_filter = 1
 texture_repeat = 2
-offset_left = -2715.0
+offset_left = -3505.0
 offset_top = 588.0
-offset_right = 8045.0
+offset_right = 8072.0
 offset_bottom = 7217.0
 scale = Vector2(0.967459, 0.946595)
 texture = ExtResource("1_4t8ho")
@@ -828,8 +827,10 @@ offset_bottom = -440.0
 rotation = -1.5708
 text = "->->->->"
 
-[node name="portal_back" parent="." instance=ExtResource("24_y0ptp")]
+[node name="portal_back" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("24_y0ptp")]
 position = Vector2(-2016, 2256)
+is_tutorial = true
+player1 = NodePath("../player")
 
 [node name="enemy" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("23_ixno7")]
 position = Vector2(1281, 3491)
@@ -840,10 +841,11 @@ look = 90.0
 detect_radius = 100
 base_hp = 60
 
-[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "bricks") instance=ExtResource("23_ixno7")]
+[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("23_ixno7")]
 position = Vector2(-2115, 2846)
 isboss = true
 player1 = NodePath("../player")
+return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 speed = 200
 look = 90.0
@@ -1364,6 +1366,7 @@ This chamber also serves as a testing ground for all you have learned here.
 Good luck deper inside"
 
 [node name="scroll17" parent="player/Camera2D/scrolls" instance=ExtResource("8_d1yt2")]
+visible = false
 layout_mode = 1
 offset_left = -2.63161
 offset_top = -1.57898
@@ -1402,6 +1405,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="player/Camera2D/scrolls/scroll17"]
+layout_mode = 0
 offset_left = -478.421
 offset_top = -1.57895
 offset_right = -35.4211
@@ -1422,6 +1426,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("37_vhu8u")
 
 [node name="TextureRect2" type="TextureRect" parent="player/Camera2D/scrolls/scroll17"]
+layout_mode = 0
 offset_left = 171.053
 offset_top = 75.2634
 offset_right = 235.053

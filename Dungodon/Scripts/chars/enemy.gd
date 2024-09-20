@@ -168,6 +168,5 @@ func died():
 	$enemhp.visible = false
 	$enemsprite/enemy_wepon_sword.visible = false
 	if isboss == true:
-		player1.save()
 		return_portal.enable()
 	process_mode = PROCESS_MODE_DISABLED
