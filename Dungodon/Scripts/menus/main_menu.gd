@@ -101,6 +101,9 @@ var option_eff_volume_balue = 0.5
 func _on_eff_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(2, linear_to_db($menus/options_menu/eff_slider.value))
 	option_eff_volume_balue = $menus/options_menu/eff_slider.value
+
+func _on_eff_slider_drag_ended(value_changed):
+	$swing.play()
 #endregion
 #region options_general
 func _on_options_back_button_pressed():

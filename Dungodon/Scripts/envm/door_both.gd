@@ -2,6 +2,9 @@ extends CharacterBody2D
 @export_enum("False", "red", "green", "blue", "True") var islocked = "False"
 @export var isopen = false
 @export var openforsec = 2.0
+var play1 =false
+var play2= false
+
 func _ready():
 	if (isopen == true):
 		$door_both_sprite.play("open")
@@ -28,13 +31,21 @@ func _ready():
 		$door_both_open_detect2.add_to_group("locked_blue")
 
 func open():
-	$eff1.play()
+	if play1 == false:
+		play1 = true
+		$eff1.play()
 	$door_both_sprite.play("open")
 	$door_both_collbox.set_deferred("disabled", true)
+	$door_both_open_detect1.monitoring = false
+	$door_both_open_detect2.monitoring = false
 	await get_tree().create_timer(openforsec).timeout
-	$eff2.play()
+	if play2 == false:
+		play2 = true
+		$eff2.play()
 	$door_both_sprite.play("closed")
 	$door_both_collbox.set_deferred("disabled", false)
+	$door_both_open_detect1.monitoring = true
+	$door_both_open_detect2.monitoring = true
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player_body") or body.is_in_group("enemy_body"):
@@ -72,3 +83,11 @@ func _on_door_both_open_detect_2_area_entered(area):
 		$door_both_open_detect2.remove_from_group("locked_blue")
 		$door_both_navlink.enabled = true
 		open()
+
+
+func _on_eff_1_finished():
+	play1 = false
+
+
+func _on_eff_2_finished():
+	play2 = false

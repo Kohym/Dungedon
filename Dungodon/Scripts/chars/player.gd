@@ -84,13 +84,13 @@ func  loaddata():
 		if has_eye == true:
 			cam.zoom = Vector2(1.5,1.5)
 		if has_armor == true:
-			take_A_dmg = 13
+			take_A_dmg = take_A_dmg - 7
 		if has_bandage == true:
-			medkit_heal = 40
+			medkit_heal = medkit_heal + 15
 		if has_gem == true:
 			lifesteal_en = true
 		if has_neck == true:
-			take_E_poison_dmg = 30
+			take_E_poison_dmg = take_E_poison_dmg-20
 		check_up()
 	else:
 		print("no data player")
@@ -117,13 +117,13 @@ func check_up():
 	if has_eye == true:
 		cam.zoom = Vector2(1.5,1.5)
 	if has_armor == true:
-		take_A_dmg = 13
+		take_A_dmg = take_A_dmg - 7
 	if has_bandage == true:
-		medkit_heal = 40
+		medkit_heal = medkit_heal + 15
 	if has_gem == true:
 		lifesteal_en = true
 	if has_neck == true:
-		take_E_poison_dmg = 30
+		take_E_poison_dmg = take_E_poison_dmg-20
 	save()
 
 func lifesteal():

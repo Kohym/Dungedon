@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwns7b0dm5jcl"]
+[gd_scene load_steps=10 format=3 uid="uid://bwns7b0dm5jcl"]
 
 [ext_resource type="Script" path="res://Scripts/envm/destructible_wall1.gd" id="1_7620u"]
 [ext_resource type="Texture2D" uid="uid://cpbmf6q35ubks" path="res://Assets/Env/bricks_broken1.png" id="2_ej6gp"]
 [ext_resource type="Texture2D" uid="uid://sxv7d0yjk44x" path="res://Assets/Env/bricks_crack1.png" id="3_ii381"]
+[ext_resource type="AudioStream" uid="uid://k5yxapli2yay" path="res://Sounds/SFX/ambient/wall_destroy.mp3" id="4_es6ah"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hdiwn"]
 animations = [{
@@ -61,5 +62,10 @@ shape = SubResource("RectangleShape2D_r3s17")
 
 [node name="destructible_wall1_collbox" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_jal2o")
+
+[node name="destroy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_es6ah")
+volume_db = -8.0
+bus = &"Effect"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

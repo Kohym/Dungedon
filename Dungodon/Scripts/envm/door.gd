@@ -2,6 +2,9 @@ extends CharacterBody2D
 @export_enum("False", "red", "green", "blue", "True") var islocked = "False"
 @export var isopen = false
 @export var openforsec = 2.0
+var play1 =false
+var play2= false
+
 func _ready():
 	if (isopen == true):
 		$door_sprite.play("open")
@@ -24,12 +27,14 @@ func _ready():
 
 
 func open():
-	$eff1.play()
+	if play1 ==false:
+		$eff1.play()
 	$door_sprite.play("open")
 	$door_navlink.bidirectional = true
 	$door_collbox.set_deferred("disabled", true)
 	await get_tree().create_timer(openforsec).timeout
-	$eff2.play()
+	if play2 ==false:
+		$eff2.play()
 	$door_sprite.play("closed")
 	$door_navlink.bidirectional = false
 	$door_collbox.set_deferred("disabled", false)
@@ -58,5 +63,8 @@ func _on_door_open_detect_area_entered(area):
 			$door_navlink.enabled = true
 			open()
 
+func _on_eff_1_finished():
+	play1 =false
 
-# Replace with function body.
+func _on_eff_2_finished():
+	play2 =false

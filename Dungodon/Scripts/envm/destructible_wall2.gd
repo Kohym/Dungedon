@@ -13,6 +13,7 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("playerweponsword"):
 		await get_tree().create_timer(0.5).timeout
 		if area.is_in_group("playerweponsword"):
+			$destroy.play()
 			$destructible_wall2_sprite.play("broken")
 			$Area2D.monitorable = false
 			$Area2D.monitoring = false

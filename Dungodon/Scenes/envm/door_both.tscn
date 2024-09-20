@@ -124,17 +124,19 @@ shape = SubResource("RectangleShape2D_xowfc")
 start_position = Vector2(0, -8)
 end_position = Vector2(0, 8)
 
-[node name="eff1" type="AudioStreamPlayer" parent="."]
+[node name="eff1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_fja34")
 volume_db = -10.0
 bus = &"Effect"
 
 [node name="eff2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_edox3")
-volume_db = -10.0
+volume_db = -8.0
 bus = &"Effect"
 
 [connection signal="area_entered" from="door_both_open_detect1" to="." method="_on_door_both_open_detect_1_area_entered"]
 [connection signal="body_entered" from="door_both_open_detect1" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="door_both_open_detect2" to="." method="_on_door_both_open_detect_2_area_entered"]
 [connection signal="body_entered" from="door_both_open_detect2" to="." method="_on_door_both_open_detect_2_body_entered"]
+[connection signal="finished" from="eff1" to="." method="_on_eff_1_finished"]
+[connection signal="finished" from="eff2" to="." method="_on_eff_2_finished"]

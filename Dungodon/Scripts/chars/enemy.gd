@@ -147,6 +147,7 @@ func attac():
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
+		$hit.play()
 		player1.lifesteal()
 		var tween = get_tree().create_tween()
 		tween.tween_property($enemsprite/enembar, "value" , $enemsprite/enembar.value - take_A_sword_dmg, 0.4)

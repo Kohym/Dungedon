@@ -73,7 +73,7 @@ shape = SubResource("RectangleShape2D_gk54r")
 
 [node name="heal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_wmodk")
-volume_db = -15.0
+volume_db = -5.0
 bus = &"Effect"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

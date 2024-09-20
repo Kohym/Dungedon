@@ -253,6 +253,9 @@ stream = ExtResource("13_2017l")
 volume_db = -15.0
 bus = &"Effect"
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [connection signal="body_entered" from="playersprite/debug" to="." method="_on_debug_body_entered"]
 [connection signal="body_exited" from="playersprite/debug" to="." method="_on_debug_body_exited"]
 [connection signal="area_entered" from="playersprite/keys/key_pickup_detector" to="." method="_on_key_pickup_detector_area_entered"]
