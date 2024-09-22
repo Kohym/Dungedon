@@ -310,6 +310,7 @@ player1 = NodePath("../../player")
 [node name="bar_door4" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
 position = Vector2(-1427, 336)
 what_upgrade = "eye"
+price = 50
 player1 = NodePath("../../player")
 
 [node name="bar_door5" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]

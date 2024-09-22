@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export_group("NAV")
 @export var player1: Node2D
 @export var return_portal: Area2D
-@export var bricks: TileMap
+@export var bricks: TileMapLayer
 @export var speed = 300
 @export_range(-360, 360, 0.5, ) var look: float
 @export var detect_radius = 160

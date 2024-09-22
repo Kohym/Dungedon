@@ -5,6 +5,7 @@ extends CharacterBody2D
 var isalive = true
 @export var cam :Camera2D
 @export var base_hp = 50
+@export var what_level:int = 0
 @export_range(-360, 360, 0.5, ) var look: float
 
 @export_group("speeds")
@@ -104,7 +105,11 @@ func  save():
 	max_hp = base_hp
 	file.store_var(hp)
 	file.store_var(max_hp)
-	file.store_var(beat)
+	if what_level != 0:
+		beat = what_level +1
+		file.store_var(beat)
+	else:
+		file.store_var(beat) 
 	file.store_var(has_eye)
 	file.store_var(has_armor)
 	file.store_var(has_bandage)

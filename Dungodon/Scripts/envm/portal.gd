@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var poratal_num:int = 1
+@export var poratal_num:int
 @export var player: CharacterBody2D
 
 var progress_path="user://Dungedon_game.txt"
@@ -16,7 +16,6 @@ func loaddata():
 		var file = FileAccess.open(progress_path, FileAccess.READ)
 		var hp = 50
 		var max_hp = 50
-		beat = 0
 		var has_eye = false
 		var has_armor = false
 		var has_bandage = false
@@ -31,29 +30,8 @@ func loaddata():
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
 		if beat == poratal_num or beat>poratal_num:
-			if poratal_num == 1:
 				enabled = true
-				$poratl_diff.play("1")
-		elif beat == poratal_num or beat>poratal_num:
-			if poratal_num == 2:
-				enabled = true
-				$poratl_diff.play("2")
-		elif beat == poratal_num or beat>poratal_num:
-			if poratal_num == 3:
-				enabled = true
-				$poratl_diff.play("3")
-		elif beat == poratal_num or beat>poratal_num:
-			if poratal_num == 4:
-				enabled = true
-				$poratl_diff.play("4")
-		elif beat == poratal_num or beat>poratal_num:
-			if poratal_num == 5:
-				enabled = true
-				$poratl_diff.play("5")
-		elif beat == poratal_num or beat>poratal_num:
-			if poratal_num == 6:
-				enabled = true
-				$poratl_diff.play("6")
+				$poratl_diff.play(str(poratal_num))
 		else:
 			$poratl_diff.visible = false
 	else:
