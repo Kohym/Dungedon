@@ -18,6 +18,12 @@ func _ready():
 		$menus/levels_menu/continue_button.disabled = false
 	else:
 		$menus/levels_menu/continue_button.disabled = true
+	var rng = RandomNumberGenerator.new()
+	var num = rng.randi_range(0,1)
+	if num == 0:
+		$background_music.play()
+	elif num == 1:
+		$background_music2.play()
 
 #region main_menu
 func _on_levels_button_pressed():
@@ -28,6 +34,7 @@ func _on_options_button_pressed():
 	load_data()
 	$menus/main_menu.visible = false
 	$menus/options_menu.visible = true
+	$swing.volume_db = -10
 func _on_credits_button_pressed():
 	$menus/main_menu.visible = false
 	$menus/credits_menu.visible = true

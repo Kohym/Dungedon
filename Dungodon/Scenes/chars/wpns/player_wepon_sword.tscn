@@ -1,9 +1,176 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8vf0dk5kaod7"]
+[gd_scene load_steps=26 format=3 uid="uid://c8vf0dk5kaod7"]
 
 [ext_resource type="Texture2D" uid="uid://dd2f883gw80q" path="res://Assets/Wpns/sword_N.png" id="1_k7pw7"]
+[ext_resource type="Texture2D" uid="uid://byl0qjj2mkaae" path="res://Assets/Wpns/sword_anim/pixil-layer-22.png" id="2_h3to5"]
+[ext_resource type="Texture2D" uid="uid://bu5coqe1k0e8k" path="res://Assets/Wpns/sword_anim/pixil-layer-21.png" id="3_777ho"]
+[ext_resource type="Texture2D" uid="uid://pjvmx2k5mfer" path="res://Assets/Wpns/sword_anim/pixil-layer-20.png" id="4_brnbl"]
+[ext_resource type="Texture2D" uid="uid://ba651888oytjc" path="res://Assets/Wpns/sword_anim/pixil-layer-19.png" id="5_ain2w"]
+[ext_resource type="Texture2D" uid="uid://bymjfu8ma3j66" path="res://Assets/Wpns/sword_anim/pixil-layer-18.png" id="6_uwbi1"]
+[ext_resource type="Texture2D" uid="uid://c4ciebde7sdi7" path="res://Assets/Wpns/sword_anim/pixil-layer-17.png" id="7_cu2q6"]
+[ext_resource type="Texture2D" uid="uid://dkc4mwmpnjc7s" path="res://Assets/Wpns/sword_anim/pixil-layer-16.png" id="8_3bp4l"]
+[ext_resource type="Texture2D" uid="uid://c7sh7pwa2stk8" path="res://Assets/Wpns/sword_anim/pixil-layer-15.png" id="9_cgji6"]
+[ext_resource type="Texture2D" uid="uid://buui2ist33i1c" path="res://Assets/Wpns/sword_anim/pixil-layer-14.png" id="10_n4y8v"]
+[ext_resource type="Texture2D" uid="uid://cm27cpmexgfv" path="res://Assets/Wpns/sword_anim/pixil-layer-13.png" id="11_uk70u"]
+[ext_resource type="Texture2D" uid="uid://do7vgloi4x6y6" path="res://Assets/Wpns/sword_anim/pixil-layer-12.png" id="12_2qlpy"]
+[ext_resource type="Texture2D" uid="uid://c6idk4axlcgnk" path="res://Assets/Wpns/sword_anim/pixil-layer-11.png" id="13_na8y8"]
+[ext_resource type="Texture2D" uid="uid://pmpcprqup80o" path="res://Assets/Wpns/sword_anim/pixil-layer-10.png" id="14_lr1bk"]
+[ext_resource type="Texture2D" uid="uid://bjtmxx6keahks" path="res://Assets/Wpns/sword_anim/pixil-layer-9.png" id="15_e5oas"]
+[ext_resource type="Texture2D" uid="uid://dsj6pj37q24ot" path="res://Assets/Wpns/sword_anim/pixil-layer-7.png" id="16_l86bd"]
+[ext_resource type="Texture2D" uid="uid://cpwytw3qsw6b0" path="res://Assets/Wpns/sword_anim/pixil-layer-6.png" id="17_ne71f"]
+[ext_resource type="Texture2D" uid="uid://cuttq3r5td68k" path="res://Assets/Wpns/sword_anim/pixil-layer-5.png" id="18_p2b1t"]
+[ext_resource type="Texture2D" uid="uid://b0ijgyp4urw7t" path="res://Assets/Wpns/sword_anim/pixil-layer-4.png" id="19_q20bp"]
+[ext_resource type="Texture2D" uid="uid://bjmky18hfpqvc" path="res://Assets/Wpns/sword_anim/pixil-layer-3.png" id="20_cqiny"]
+[ext_resource type="Texture2D" uid="uid://cnypod8b64muc" path="res://Assets/Wpns/sword_anim/pixil-layer-2.png" id="21_tma5g"]
+[ext_resource type="Texture2D" uid="uid://c43xll3ij7s7g" path="res://Assets/Wpns/sword_anim/pixil-layer-1.png" id="22_kutng"]
+[ext_resource type="Texture2D" uid="uid://cecf4crcks0aj" path="res://Assets/Wpns/sword_anim/pixil-layer-0.png" id="23_8gk2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g5x7"]
-size = Vector2(51.3125, 16)
+size = Vector2(51, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nf7o2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_8gk2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_kutng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tma5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_cqiny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_q20bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_p2b1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ne71f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l86bd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_e5oas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lr1bk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_na8y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2qlpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uk70u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n4y8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cgji6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3bp4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cu2q6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uwbi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ain2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_brnbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_777ho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h3to5")
+}],
+"loop": false,
+"name": &"retract",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h3to5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_777ho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_brnbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ain2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uwbi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cu2q6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3bp4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cgji6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n4y8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uk70u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2qlpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_na8y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lr1bk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_e5oas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l86bd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ne71f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_p2b1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_q20bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_cqiny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tma5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_kutng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_8gk2j")
+}],
+"loop": false,
+"name": &"stab",
+"speed": 40.0
+}]
 
 [node name="player_wepon_sword" type="Area2D" groups=["playerweponsword"]]
 collision_layer = 33
@@ -16,5 +183,14 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_k7pw7")
 
 [node name="player_wepon_sword_collbox" type="CollisionShape2D" parent="."]
-position = Vector2(45.3438, -0.5)
+position = Vector2(45.5, -0.5)
 shape = SubResource("RectangleShape2D_1g5x7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_nf7o2")
+animation = &"retract"
+frame = 21
+frame_progress = 1.0

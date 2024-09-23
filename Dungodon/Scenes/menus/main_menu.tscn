@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://cjw3ntd5sankc"]
+[gd_scene load_steps=9 format=4 uid="uid://cjw3ntd5sankc"]
 
 [ext_resource type="Script" path="res://Scripts/menus/main_menu.gd" id="1_bjayu"]
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_y3eig"]
 [ext_resource type="PackedScene" uid="uid://du6cr36cg3ufs" path="res://Scenes/levels/menu_level.tscn" id="2_t6wx6"]
 [ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="3_belm7"]
 [ext_resource type="AudioStream" uid="uid://cnertt1vp130u" path="res://Sounds/SFX/combat/swing.mp3" id="5_yuwhs"]
+[ext_resource type="AudioStream" uid="uid://vg0xau4ghyes" path="res://Sounds/music/track2.mp3" id="6_httig"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xnwl8"]
 shader = ExtResource("1_y3eig")
@@ -470,14 +471,18 @@ text = "x"
 
 [node name="swing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_yuwhs")
-volume_db = -15.0
+volume_db = -80.0
 autoplay = true
 bus = &"Effect"
 
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_g7jiq")
 volume_db = -15.0
-autoplay = true
+bus = &"Music"
+
+[node name="background_music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_httig")
+volume_db = -10.0
 bus = &"Music"
 
 [connection signal="pressed" from="menus/main_menu/levels_button" to="." method="_on_levels_button_pressed"]

@@ -250,7 +250,7 @@ offset_bottom = -63.3158
 
 [node name="swing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_2017l")
-volume_db = -15.0
+volume_db = -10.0
 bus = &"Effect"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
