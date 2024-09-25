@@ -337,7 +337,7 @@ func _on_playerhurtbox_area_entered(area):
 		ishealing = true
 		ispoison = false
 		var tween = get_tree().create_tween()
-		tween.tween_property($playersprite/playerbar, "value" , $playersprite/playerbar.value + medkit_heal, 0.1)
+		tween.tween_property($playersprite/playerbar, "value" , $playersprite/playerbar.value + medkit_heal, 0.73)
 		if $playersprite/playerbar.value > 500:
 			$playersprite/playerbar.value = 500
 		if base_hp > 500:
