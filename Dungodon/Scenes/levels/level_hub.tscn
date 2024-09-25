@@ -395,6 +395,7 @@ player1 = NodePath("../../../player")
 [node name="portal" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
 position = Vector2(-192, -240)
 rotation = -1.5708
+poratal_num = 1
 player = NodePath("../../player")
 
 [node name="portal2" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]

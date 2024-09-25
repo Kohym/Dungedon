@@ -345,6 +345,7 @@ base_hp = 70
 [node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("10_k8ta6")]
 position = Vector2(158, 204)
 cam = NodePath("Camera2D")
+what_level = 2
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
