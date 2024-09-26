@@ -1,26 +1,26 @@
-[gd_scene load_steps=27 format=3 uid="uid://cirko7f1tr6y0"]
+[gd_scene load_steps=27 format=3 uid="uid://bca3m2v1kct2m"]
 
-[ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_fuvit"]
-[ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_e4tk7"]
-[ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="3_0kwdt"]
-[ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="4_s864v"]
-[ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="5_40hpv"]
-[ext_resource type="Texture2D" uid="uid://yoiyjvjk3e1i" path="res://Assets/Env/bars.png" id="6_4jhui"]
-[ext_resource type="Texture2D" uid="uid://l6sng07qs3t1" path="res://Assets/Env/spikes.png" id="7_fxjlo"]
-[ext_resource type="Texture2D" uid="uid://b4cg4pirs5osq" path="res://Assets/Env/poison.png" id="8_phmfr"]
-[ext_resource type="PackedScene" uid="uid://dmptryebkslsh" path="res://Scenes/envm/portal_back.tscn" id="9_q1rvb"]
-[ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="10_2e8dv"]
-[ext_resource type="PackedScene" uid="uid://c652umiweekt6" path="res://Scenes/envm/scroll.tscn" id="11_s4uvs"]
-[ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="12_imtqg"]
-[ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="13_36er1"]
-[ext_resource type="PackedScene" uid="uid://dr4x5345mirve" path="res://Scenes/menus/win_ui.tscn" id="14_2j6bm"]
-[ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="15_pw8b0"]
+[ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_fucx1"]
+[ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_7go5v"]
+[ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="3_drsmy"]
+[ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="4_117kw"]
+[ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="5_jieap"]
+[ext_resource type="Texture2D" uid="uid://yoiyjvjk3e1i" path="res://Assets/Env/bars.png" id="6_bmfty"]
+[ext_resource type="Texture2D" uid="uid://l6sng07qs3t1" path="res://Assets/Env/spikes.png" id="7_73vaw"]
+[ext_resource type="Texture2D" uid="uid://b4cg4pirs5osq" path="res://Assets/Env/poison.png" id="8_crawv"]
+[ext_resource type="PackedScene" uid="uid://dmptryebkslsh" path="res://Scenes/envm/portal_back.tscn" id="9_mfl02"]
+[ext_resource type="PackedScene" uid="uid://ducgrspg4c2fe" path="res://Scenes/chars/player.tscn" id="10_o5fps"]
+[ext_resource type="PackedScene" uid="uid://c652umiweekt6" path="res://Scenes/envm/scroll.tscn" id="11_sb062"]
+[ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="12_sj3e0"]
+[ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="13_oujk1"]
+[ext_resource type="PackedScene" uid="uid://dr4x5345mirve" path="res://Scenes/menus/win_ui.tscn" id="14_gbqff"]
+[ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="15_bgdrh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
-shader = ExtResource("1_fuvit")
+shader = ExtResource("1_fucx1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j137b"]
-texture = ExtResource("4_s864v")
+texture = ExtResource("4_117kw")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -82,7 +82,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p14bc"]
-texture = ExtResource("5_40hpv")
+texture = ExtResource("5_jieap")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_wqw5h")
 1:0/0 = 0
@@ -103,7 +103,7 @@ texture = ExtResource("5_40hpv")
 2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_wqw5h")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th2je"]
-texture = ExtResource("6_4jhui")
+texture = ExtResource("6_bmfty")
 0:0/0 = 0
 0:1/size_in_atlas = Vector2i(2, 1)
 0:1/0 = 0
@@ -119,7 +119,7 @@ sources/2 = SubResource("TileSetAtlasSource_p14bc")
 sources/3 = SubResource("TileSetAtlasSource_th2je")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hns6x"]
-texture = ExtResource("7_fxjlo")
+texture = ExtResource("7_73vaw")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -145,7 +145,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_hns6x")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bmn72"]
-texture = ExtResource("8_phmfr")
+texture = ExtResource("8_crawv")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -172,7 +172,7 @@ sources/0 = SubResource("TileSetAtlasSource_bmn72")
 
 [node name="level_template" type="Node2D"]
 material = SubResource("ShaderMaterial_b0ln5")
-script = ExtResource("2_e4tk7")
+script = ExtResource("2_7go5v")
 
 [node name="background" type="TextureRect" parent="."]
 visible = false
@@ -183,7 +183,7 @@ offset_top = -8380.0
 offset_right = 10326.0
 offset_bottom = 10473.0
 scale = Vector2(0.967459, 0.946595)
-texture = ExtResource("3_0kwdt")
+texture = ExtResource("3_drsmy")
 stretch_mode = 1
 
 [node name="tilemaps" type="Node2D" parent="."]
@@ -218,10 +218,10 @@ position = Vector2(1667, 552)
 
 [node name="scrolls" type="Node2D" parent="pickups"]
 
-[node name="portal_back" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("9_q1rvb")]
+[node name="portal_back" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("9_mfl02")]
 player1 = NodePath("../player")
 
-[node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("10_2e8dv")]
+[node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("10_o5fps")]
 position = Vector2(158, 204)
 cam = NodePath("Camera2D")
 
@@ -236,7 +236,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 rotation = 1.5708
 
-[node name="scroll" parent="player/Camera2D/scrolls" instance=ExtResource("11_s4uvs")]
+[node name="scroll" parent="player/Camera2D/scrolls" instance=ExtResource("11_sb062")]
 layout_mode = 1
 offset_left = -2.63161
 offset_top = -1.57898
@@ -249,14 +249,14 @@ offset_left = 38.0
 offset_top = 129.0
 offset_right = 1284.0
 offset_bottom = 613.0
-theme = ExtResource("12_imtqg")
+theme = ExtResource("12_sj3e0")
 text = "This is test"
 
-[node name="pause_ui" parent="player/Camera2D" instance=ExtResource("13_36er1")]
+[node name="pause_ui" parent="player/Camera2D" instance=ExtResource("13_oujk1")]
 visible = false
 
-[node name="win_ui" parent="player/Camera2D" instance=ExtResource("14_2j6bm")]
+[node name="win_ui" parent="player/Camera2D" instance=ExtResource("14_gbqff")]
 visible = false
 
-[node name="loss_ui" parent="player/Camera2D" instance=ExtResource("15_pw8b0")]
+[node name="loss_ui" parent="player/Camera2D" instance=ExtResource("15_bgdrh")]
 visible = false
