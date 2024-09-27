@@ -7,6 +7,8 @@ var save_path = "user://Dungedon_settings.save"
 var option_volume_value: int
 var option_eff_volume_balue: int
 var option_darkmode: bool = false
+@export var ishub: bool = false
+var progress_path="user://Dungedon_game.txt"
 
 func _ready():
 	loaddata()
@@ -20,13 +22,40 @@ func  loaddata():
 	$tilemaps.use_parent_material = option_darkmode
 	$background.use_parent_material = option_darkmode
 	$doors.use_parent_material = option_darkmode
-	#AudioServer.set_bus_volume_db(1, linear_to_db(option_volume_value))
-	#AudioServer.set_bus_volume_db(2, linear_to_db(option_eff_volume_balue))
+	if FileAccess.file_exists(progress_path):
+		var file = FileAccess.open(progress_path, FileAccess.READ)
+		var hp = 50
+		var max_hp = 50
+		var beat = 1
+		var has_eye = false
+		var has_armor = false
+		var has_bandage = false
+		var has_gem = false
+		var has_neck = false
+		hp = file.get_var(hp)
+		max_hp = file.get_var(max_hp)
+		beat = file.get_var(beat)
+		has_eye = file.get_var(has_eye)
+		has_armor= file.get_var(has_armor)
+		has_bandage = file.get_var(has_bandage)
+		has_gem = file.get_var(has_gem)
+		has_neck = file.get_var(has_neck)
+		if ishub == true:
+			if beat == 6 or beat > 6:
+				if has_armor == true and has_bandage == true and has_eye == true and has_gem == true and  has_neck == true:
+					if max_hp == 500 or max_hp > 500:
+						$win.visible = true
+						$yay.play()
+						$applause.play()
+						$win/confeti.play("default")
+						$win/confeti2.play("default")
+						$win/confeti3.play("default")
 
 func _process(delta):
 	if win == false:
 		if Input.is_action_just_pressed("pause"):
 			pausemenu()
+
 func pausemenu():
 	if win == false:
 		if paused == true and paused_debug == false:

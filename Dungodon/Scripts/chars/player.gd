@@ -221,21 +221,15 @@ func holster():
 	if isholster== true and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
 		isuholsteringmove = true
 		setspeed()
-		for n in 90:
-			$playersprite/player_wepon_sword_holstered_sprite.rotation_degrees += 0.5
-			await get_tree().create_timer(0.000000001).timeout
-		$playersprite/player_wepon_sword_holstered_sprite.visible = false
-		$playersprite/player_wepon_sword.visible = true
+		$unholster.play()
+		$anim.play("unholster")
 		isholster = false
 		isuholsteringmove = false
 	elif isholster== false and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
 		isuholsteringmove = true
 		setspeed()
-		$playersprite/player_wepon_sword_holstered_sprite.visible = true
-		$playersprite/player_wepon_sword.visible = false
-		for n in 90:
-			$playersprite/player_wepon_sword_holstered_sprite.rotation_degrees += -0.5
-			await get_tree().create_timer(0.000000001).timeout
+		$holster.play()
+		$anim.play("holster")
 		isholster = true
 		isuholsteringmove = false
 	setspeed()
@@ -251,12 +245,8 @@ func _on_debug_body_exited(body):
 func attack():
 	if isalive == true:
 		var timer = attspeed*0.001
-		$playersprite/player_wepon_sword.monitorable = true
 		$swing.play()
-		for n in 72:
-			await get_tree().create_timer(timer).timeout
-			$playersprite/player_wepon_sword.rotation_degrees += 5
-		$playersprite/player_wepon_sword.monitorable = false
+		$anim.play("attackk_sword")
 		isattac = false
 		setspeed()
 
@@ -264,26 +254,16 @@ func get_keys():
 	key_check()
 	if (has_got_keys == false and keys_moving == false and isholster == true and isuholsteringmove == false):
 		keys_moving = true
-		for n in 80:
-			$playersprite/keys.rotation_degrees += -0.5
-			await get_tree().create_timer(0.000000001).timeout
+		$key.play()
+		$anim.play("get_key")
 		has_got_keys = true
 		keys_moving = false
-		$playersprite/keys/key_pickup_detector.monitorable = true
-		$playersprite/keys/key_pickup_detector.monitoring = true
-		$playersprite/keys/key_holder.monitorable = true
-		$playersprite/keys/key_holder.monitoring = true
 	elif  (has_got_keys == true and keys_moving == false and isholster == true and isuholsteringmove == false):
 		keys_moving = true
-		for n in 80:
-			$playersprite/keys.rotation_degrees += 0.5
-			await get_tree().create_timer(0.000000001).timeout
+		$key.play()
+		$anim.play("unget_key")
 		has_got_keys = false
 		keys_moving = false
-		$playersprite/keys/key_holder.monitorable = false
-		$playersprite/keys/key_holder.monitoring = false
-		$playersprite/keys/key_pickup_detector.monitorable = false
-		$playersprite/keys/key_pickup_detector.monitoring = false
 
 func key_check():
 		if  has_blue_key == true:

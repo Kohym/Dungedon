@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbyso7yud7tvq"
-path="res://.godot/imported/boss_crown.png-587c4d939b585bce4b5385e374d6b453.ctex"
+uid="uid://bm75q0ndmpb5k"
+path="res://.godot/imported/Confetti.png-988cf14b6a1abbf7082b47a106e66c67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Chars/boss_crown.png"
-dest_files=["res://.godot/imported/boss_crown.png-587c4d939b585bce4b5385e374d6b453.ctex"]
+source_file="res://Assets/Confetti.png"
+dest_files=["res://.godot/imported/Confetti.png-988cf14b6a1abbf7082b47a106e66c67.ctex"]
 
 [params]
 

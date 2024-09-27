@@ -133,16 +133,7 @@ func attac():
 				break
 			if isattac == false and willhitwall == false:
 				isattac = true
-				$enemsprite/enemy_wepon_sword.add_to_group("enemy_wepon_sword")
-				await get_tree().create_timer(0.1).timeout
-				var rng = RandomNumberGenerator.new()
-				var timer = rng.randf_range(0.0001, 0.0005)
-				for n in 90:
-					$enemsprite/enemy_wepon_sword.add_to_group("enemy_wepon_sword")
-					await get_tree().create_timer(timer).timeout
-					$enemsprite/enemy_wepon_sword.rotation_degrees += 4
-					$enemsprite/enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
-				$enemsprite/enemy_wepon_sword.remove_from_group("enemy_wepon_sword")
+				$anim.play("attack")
 				isattac = false
 
 func _on_enemhurtbox_area_entered(area):

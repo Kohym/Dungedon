@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ducgrspg4c2fe"]
+[gd_scene load_steps=41 format=3 uid="uid://ducgrspg4c2fe"]
 
 [ext_resource type="Script" path="res://Scripts/chars/player.gd" id="1_c7yih"]
 [ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/chars/wpns/player_wepon_sword.tscn" id="2_am8ds"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cm3b3u8gybexr" path="res://Assets/keys/keay_green.png" id="9_i45y0"]
 [ext_resource type="Texture2D" uid="uid://duhaamj8t4n4g" path="res://Assets/keys/key_red.png" id="10_vx3mx"]
 [ext_resource type="AudioStream" uid="uid://cnertt1vp130u" path="res://Sounds/SFX/combat/swing.mp3" id="13_2017l"]
+[ext_resource type="AudioStream" uid="uid://ctbn0r60pdnpn" path="res://Sounds/SFX/key_get.mp3" id="14_6p5nc"]
+[ext_resource type="AudioStream" uid="uid://dhjsvemjbw54l" path="res://Sounds/SFX/sheathe.mp3" id="15_7qfnm"]
+[ext_resource type="AudioStream" uid="uid://crxgp6wu5gx8" path="res://Sounds/SFX/unsheathe.mp3" id="16_lylam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csofs"]
 size = Vector2(24.2105, 35.7895)
@@ -113,6 +116,361 @@ radius = 16.8421
 [sub_resource type="CircleShape2D" id="CircleShape2D_51do8"]
 radius = 48.4211
 
+[sub_resource type="Animation" id="Animation_udnlp"]
+resource_name = "attackk_sword"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playersprite/player_wepon_sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.14159, 3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playersprite/player_wepon_sword:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ny2lm"]
+resource_name = "unholster"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playersprite/player_wepon_sword_holstered_sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.3562, 3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playersprite/player_wepon_sword:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playersprite/player_wepon_sword_holstered_sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rcfht"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playersprite/player_wepon_sword_holstered_sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.3562]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playersprite/keys:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playersprite/player_wepon_sword:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("playersprite/player_wepon_sword:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("playersprite/player_wepon_sword_holstered_sprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("playersprite/keys/key_pickup_detector:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("playersprite/keys/key_pickup_detector:monitorable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("playersprite/keys/key_holder:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("playersprite/keys/key_holder:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_27snc"]
+resource_name = "holster"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playersprite/player_wepon_sword_holstered_sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 2.3562]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playersprite/player_wepon_sword:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playersprite/player_wepon_sword_holstered_sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yit7y"]
+resource_name = "get_key"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playersprite/keys:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.698132]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playersprite/keys/key_pickup_detector:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playersprite/keys/key_pickup_detector:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("playersprite/keys/key_holder:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("playersprite/keys/key_holder:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_a17e4"]
+resource_name = "unget_key"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playersprite/keys:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.698132, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playersprite/keys/key_pickup_detector:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playersprite/keys/key_pickup_detector:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("playersprite/keys/key_holder:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("playersprite/keys/key_holder:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m52io"]
+_data = {
+"RESET": SubResource("Animation_rcfht"),
+"attackk_sword": SubResource("Animation_udnlp"),
+"get_key": SubResource("Animation_yit7y"),
+"holster": SubResource("Animation_27snc"),
+"unget_key": SubResource("Animation_a17e4"),
+"unholster": SubResource("Animation_ny2lm")
+}
+
 [node name="player" type="CharacterBody2D" groups=["player_body"]]
 scale = Vector2(0.95, 0.95)
 collision_layer = 2
@@ -131,7 +489,7 @@ texture = ExtResource("2_x266q")
 [node name="player_wepon_sword" parent="playersprite" instance=ExtResource("2_am8ds")]
 visible = false
 position = Vector2(20.7016, -0.266667)
-rotation = 3.14159
+rotation = -3.14159
 scale = Vector2(0.333333, 0.333333)
 
 [node name="playerbar" type="TextureProgressBar" parent="playersprite"]
@@ -176,6 +534,8 @@ shape = SubResource("CircleShape2D_4dpe1")
 [node name="key_holder" type="Area2D" parent="playersprite/keys"]
 collision_layer = 2
 collision_mask = 1024
+monitoring = false
+monitorable = false
 
 [node name="key_holder_sprite" type="Sprite2D" parent="playersprite/keys/key_holder"]
 position = Vector2(28.4211, 38.9474)
@@ -248,13 +608,33 @@ offset_top = -86.3158
 offset_right = 40.0
 offset_bottom = -63.3158
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [node name="swing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_2017l")
 volume_db = -10.0
 bus = &"Effect"
 
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
-current = true
+[node name="key" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_6p5nc")
+volume_db = -3.0
+bus = &"Effect"
+
+[node name="holster" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_7qfnm")
+volume_db = -3.0
+bus = &"Effect"
+
+[node name="unholster" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_lylam")
+volume_db = -3.0
+bus = &"Effect"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m52io")
+}
 
 [connection signal="body_entered" from="playersprite/debug" to="." method="_on_debug_body_entered"]
 [connection signal="body_exited" from="playersprite/debug" to="." method="_on_debug_body_exited"]

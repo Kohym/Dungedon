@@ -244,7 +244,7 @@ position = Vector2(-1523, 240)
 islocked = "red"
 
 [node name="enemy" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("19_cmquj")]
-position = Vector2(247, 1060)
+position = Vector2(531, 702)
 player1 = NodePath("../player")
 look = 180.0
 detect_radius = 200
