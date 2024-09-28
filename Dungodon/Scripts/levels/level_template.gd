@@ -12,6 +12,14 @@ var progress_path="user://Dungedon_game.txt"
 
 func _ready():
 	loaddata()
+	var rng = RandomNumberGenerator.new()
+	var music = rng.randi_range(1,3)
+	if music == 1:
+		$back1.play()
+	elif music ==2:
+		$back2.play()
+	elif  music ==3:
+		$back3.play()
 
 func  loaddata():
 	if FileAccess.file_exists(save_path):

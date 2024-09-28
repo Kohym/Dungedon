@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bcfgntrl8l077"]
+[gd_scene load_steps=41 format=4 uid="uid://bcfgntrl8l077"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_o1pwk"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_2gym4"]
@@ -26,6 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://dho5eidcs6olf" path="res://Scenes/pickups/potions/potion_r_2.tscn" id="17_maklc"]
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="18_0dugw"]
 [ext_resource type="PackedScene" uid="uid://b7guy3xdvjg5y" path="res://Scenes/chars/enemy.tscn" id="20_jdg6w"]
+[ext_resource type="AudioStream" uid="uid://b73lwjx2eehwi" path="res://Sounds/music/Level1.mp3" id="27_xbiae"]
+[ext_resource type="AudioStream" uid="uid://gdk0nt8or14q" path="res://Sounds/music/Level2.mp3" id="28_05q65"]
+[ext_resource type="AudioStream" uid="uid://jfeovalb12cp" path="res://Sounds/music/Level3.mp3" id="29_3jbiq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_o1pwk")
@@ -576,3 +579,18 @@ visible = false
 
 [node name="loss_ui" parent="player/Camera2D" instance=ExtResource("15_2u4ty")]
 visible = false
+
+[node name="back1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_xbiae")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_05q65")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_3jbiq")
+volume_db = -15.0
+bus = &"Music"

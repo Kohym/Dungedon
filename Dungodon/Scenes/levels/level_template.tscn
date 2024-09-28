@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bca3m2v1kct2m"]
+[gd_scene load_steps=30 format=3 uid="uid://bca3m2v1kct2m"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_fucx1"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_7go5v"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://b1q6ao3gypc2w" path="res://Scenes/menus/pause_ui.tscn" id="13_oujk1"]
 [ext_resource type="PackedScene" uid="uid://dr4x5345mirve" path="res://Scenes/menus/win_ui.tscn" id="14_gbqff"]
 [ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="15_bgdrh"]
+[ext_resource type="AudioStream" uid="uid://b73lwjx2eehwi" path="res://Sounds/music/Level1.mp3" id="16_8o5s1"]
+[ext_resource type="AudioStream" uid="uid://gdk0nt8or14q" path="res://Sounds/music/Level2.mp3" id="17_stfjd"]
+[ext_resource type="AudioStream" uid="uid://jfeovalb12cp" path="res://Sounds/music/Level3.mp3" id="18_6u1ja"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_fucx1")
@@ -260,3 +263,18 @@ visible = false
 
 [node name="loss_ui" parent="player/Camera2D" instance=ExtResource("15_bgdrh")]
 visible = false
+
+[node name="back1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_8o5s1")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_stfjd")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_6u1ja")
+volume_db = -15.0
+bus = &"Music"
