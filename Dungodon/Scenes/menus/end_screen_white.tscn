@@ -1,0 +1,338 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2vnr8p4a75sm"]
+
+[ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_i4ubn"]
+[ext_resource type="Theme" uid="uid://djctowfolotk1" path="res://Assets/theme.tres" id="2_ncbdo"]
+[ext_resource type="Script" path="res://Scripts/menus/end_screen.gd" id="3_44d12"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h6exy"]
+shader = ExtResource("1_i4ubn")
+
+[sub_resource type="Animation" id="Animation_e3fqk"]
+resource_name = "menu_anim"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("thanks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("credits:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.13333, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x62tm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("thanks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("credits:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c6w1t"]
+_data = {
+"RESET": SubResource("Animation_x62tm"),
+"menu_anim": SubResource("Animation_e3fqk")
+}
+
+[node name="end_screen_white" type="Control"]
+material = SubResource("ShaderMaterial_h6exy")
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ncbdo")
+script = ExtResource("3_44d12")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="thanks" type="VBoxContainer" parent="."]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -986.5
+offset_top = -68.0
+offset_right = 986.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="thanks label" type="Label" parent="thanks"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 190
+text = "Thank you very much for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credits" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -756.5
+offset_top = -56.5
+offset_right = 756.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="credits_label" type="Label" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "Credits:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credit1" type="HBoxContainer" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="what_label" type="Label" parent="credits/credit1"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Textures:"
+
+[node name="spacer" type="HSeparator" parent="credits/credit1"]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="who_label" type="Label" parent="credits/credit1"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Marek Kohout"
+
+[node name="credit2" type="HBoxContainer" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="what_label" type="Label" parent="credits/credit2"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Coding:"
+
+[node name="spacer" type="HSeparator" parent="credits/credit2"]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="who_label" type="Label" parent="credits/credit2"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Marek Kohout"
+
+[node name="credit4" type="HBoxContainer" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="what_label" type="Label" parent="credits/credit4"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Music:"
+
+[node name="spacer" type="HSeparator" parent="credits/credit4"]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+custom_minimum_size = Vector2(1275, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="who_label" type="Label" parent="credits/credit4"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "mubert.com"
+horizontal_alignment = 2
+
+[node name="credit5" type="HBoxContainer" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="what_label" type="Label" parent="credits/credit5"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "SFX:"
+
+[node name="spacer" type="HSeparator" parent="credits/credit5"]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+custom_minimum_size = Vector2(1340, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="who_label" type="Label" parent="credits/credit5"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "pixabay.com"
+
+[node name="credit6" type="HBoxContainer" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="what_label" type="Label" parent="credits/credit6"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "cheer.mp3"
+
+[node name="spacer" type="HSeparator" parent="credits/credit6"]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+custom_minimum_size = Vector2(950, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="who_label" type="Label" parent="credits/credit6"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 130
+text = "myinstants.com"
+
+[node name="credit7" type="HBoxContainer" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="what_label" type="Label" parent="credits/credit7"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "teleport_in.wav"
+
+[node name="spacer" type="HSeparator" parent="credits/credit7"]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+custom_minimum_size = Vector2(870, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="who_label" type="Label" parent="credits/credit7"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "freesound.org
+DWOBoyle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credit8" type="HBoxContainer" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="what_label" type="Label" parent="credits/credit8"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "glass_break.wav"
+
+[node name="spacer" type="HSeparator" parent="credits/credit8"]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+custom_minimum_size = Vector2(820, 0)
+layout_mode = 2
+
+[node name="who_label" type="Label" parent="credits/credit8"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "freesound.org
+natemarler"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu_button" type="Button" parent="credits"]
+use_parent_material = true
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.764706, 0.764706, 1)
+theme_override_colors/font_hover_color = Color(0.764706, 0.764706, 0.764706, 1)
+theme_override_font_sizes/font_size = 130
+text = "MENU"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c6w1t")
+}
+
+[connection signal="pressed" from="credits/menu_button" to="." method="_on_menu_button_pressed"]

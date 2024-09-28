@@ -49,15 +49,34 @@ func  loaddata():
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
 		if ishub == true:
+			if option_darkmode == false:
+				$win/ColorRect.color = Color(1, 1, 1)
+			elif option_darkmode == true:
+				$win/ColorRect.color = Color(0, 0, 0)
 			if beat == 6 or beat > 6:
 				if has_armor == true and has_bandage == true and has_eye == true and has_gem == true and  has_neck == true:
 					if max_hp == 500 or max_hp > 500:
 						$win.visible = true
+						$win2.visible = true
 						$yay.play()
 						$applause.play()
 						$win/confeti.play("default")
 						$win/confeti2.play("default")
 						$win/confeti3.play("default")
+						$env/chill_label.visible = false
+						$tilemaps/stair.visible = true
+						$win/win_area.monitoring = true
+
+func _on_win_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player_body"):
+		$anim.play("fade out")
+
+func _on_anim_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fade out":
+		if option_darkmode == false:
+			get_tree().change_scene_to_file("res://Scenes/menus/end_screen_white.tscn")
+		elif option_darkmode == true:
+			get_tree().change_scene_to_file("res://Scenes/menus/end_screen_black.tscn")
 
 func _process(delta):
 	if win == false:

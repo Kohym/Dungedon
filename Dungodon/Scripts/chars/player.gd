@@ -93,6 +93,9 @@ func  loaddata():
 		if has_neck == true:
 			take_E_poison_dmg = take_E_poison_dmg-20
 		check_up()
+		if what_level == 0:
+			base_hp = 300
+			debug_hp = 300
 	else:
 		print("no data player")
 

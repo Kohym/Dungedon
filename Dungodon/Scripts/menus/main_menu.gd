@@ -19,11 +19,13 @@ func _ready():
 	else:
 		$menus/levels_menu/continue_button.disabled = true
 	var rng = RandomNumberGenerator.new()
-	var num = rng.randi_range(0,1)
+	var num = rng.randi_range(0,2)
 	if num == 0:
 		$background_music.play()
 	elif num == 1:
 		$background_music2.play()
+	elif num==2:
+		$background_music3.play()
 
 #region main_menu
 func _on_levels_button_pressed():
@@ -35,9 +37,12 @@ func _on_options_button_pressed():
 	$menus/main_menu.visible = false
 	$menus/options_menu.visible = true
 	$swing.volume_db = -10
+
 func _on_credits_button_pressed():
-	$menus/main_menu.visible = false
-	$menus/credits_menu.visible = true
+	if option_darkmode == false:
+		get_tree().change_scene_to_file("res://Scenes/menus/end_screen_white.tscn")
+	elif option_darkmode == true:
+		get_tree().change_scene_to_file("res://Scenes/menus/end_screen_black.tscn")
 
 func _on_exit_button_pressed():
 	get_tree().quit()
@@ -143,12 +148,6 @@ func load_data():
 	else:
 		print("no data menu")
 #endregion
-#endregion
-#region credits_menu
-
-func _on_credits_back_button_pressed():
-	$menus/main_menu.visible = true
-	$menus/credits_menu.visible = false
 #endregion
 
 func _on_dev_level_pressed():
