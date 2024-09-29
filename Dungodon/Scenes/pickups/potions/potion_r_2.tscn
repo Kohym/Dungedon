@@ -94,12 +94,12 @@ shape = SubResource("RectangleShape2D_j3uc8")
 
 [node name="eff1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_x4uvf")
-volume_db = -10.0
+volume_db = -3.0
 bus = &"Effect"
 
 [node name="eff2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_7w5g1")
-volume_db = -10.0
+volume_db = -3.0
 bus = &"Effect"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

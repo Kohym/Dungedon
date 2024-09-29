@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
 
-@export var isactive = false
 @export_range(0,360,1) var sword_rotation: int
 @export_enum("linear", "loop") var islocked: = "linear"
 
@@ -16,8 +15,6 @@ func _ready():
 	pathfollow = get_parent()
 	pathfollow.progress_ratio = randint
 	$enemy_wepon_sword.visible = false
-	if isactive == true:
-		pass
 
 func _physics_process(delta):
 	pathfollow.progress += speed* delta

@@ -1,8 +1,7 @@
-[gd_scene load_steps=41 format=4 uid="uid://bcfgntrl8l077"]
+[gd_scene load_steps=40 format=4 uid="uid://bcfgntrl8l077"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_o1pwk"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_2gym4"]
-[ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="3_sslbi"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="4_7gcuy"]
 [ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="5_ns3cr"]
 [ext_resource type="Texture2D" uid="uid://yoiyjvjk3e1i" path="res://Assets/Env/bars.png" id="6_ah6v7"]
@@ -188,17 +187,20 @@ sources/0 = SubResource("TileSetAtlasSource_bmn72")
 material = SubResource("ShaderMaterial_b0ln5")
 script = ExtResource("2_2gym4")
 
-[node name="background" type="TextureRect" parent="."]
+[node name="background" type="ColorRect" parent="."]
 visible = false
-texture_filter = 1
-texture_repeat = 2
-offset_left = -9685.0
-offset_top = -8380.0
-offset_right = 10326.0
-offset_bottom = 10473.0
-scale = Vector2(0.967459, 0.946595)
-texture = ExtResource("3_sslbi")
-stretch_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -6999.01
+offset_top = -3186.69
+offset_right = -4462.01
+offset_bottom = -1749.69
+grow_horizontal = 0
+scale = Vector2(500, 500)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.764706, 0.764706, 0.764706, 1)
 
 [node name="tilemaps" type="Node2D" parent="."]
 
@@ -270,6 +272,10 @@ islocked = "blue"
 [node name="door_both9" parent="doors" instance=ExtResource("10_4ounf")]
 position = Vector2(-1523, -576)
 islocked = "green"
+
+[node name="door_both10" parent="doors" instance=ExtResource("10_4ounf")]
+position = Vector2(-1859, -96)
+islocked = "red"
 
 [node name="pickups" type="Node2D" parent="."]
 
@@ -484,7 +490,7 @@ look = -280.0
 base_hp = 70
 
 [node name="enemy7" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
-position = Vector2(-412, 373)
+position = Vector2(-428, 384)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
@@ -525,7 +531,7 @@ look = 180.0
 base_hp = 70
 
 [node name="enemy11" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
-position = Vector2(427, 460)
+position = Vector2(448, 502)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=37 format=4 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=36 format=4 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_qi0bq"]
-[ext_resource type="Texture2D" uid="uid://xyd7ahhgspya" path="res://Assets/SolidCol/gray.png" id="2_najqb"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="3_d7l8o"]
 [ext_resource type="Texture2D" uid="uid://dtutuxuo4vmfc" path="res://Assets/Env/floor.png" id="4_qhgqk"]
 [ext_resource type="Texture2D" uid="uid://l6sng07qs3t1" path="res://Assets/Env/spikes.png" id="5_p6g4w"]
@@ -144,15 +143,19 @@ material = SubResource("ShaderMaterial_jjl2i")
 use_parent_material = true
 script = ExtResource("1_qi0bq")
 
-[node name="background" type="TextureRect" parent="."]
-texture_filter = 1
-texture_repeat = 2
-offset_left = -6040.0
-offset_top = -2744.0
-offset_right = 6579.0
-offset_bottom = 6367.0
-scale = Vector2(0.967459, 0.946595)
-texture = ExtResource("2_najqb")
+[node name="background" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -6999.01
+offset_top = -3186.69
+offset_right = -4462.01
+offset_bottom = -1749.69
+grow_horizontal = 0
+scale = Vector2(500, 500)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.764706, 0.764706, 0.764706, 1)
 
 [node name="tilemaps" type="Node2D" parent="."]
 

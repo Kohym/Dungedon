@@ -14,12 +14,18 @@ func _ready():
 	loaddata()
 	var rng = RandomNumberGenerator.new()
 	var music = rng.randi_range(1,3)
+	var music2 = rng.randi_range(1,2)
 	if music == 1:
 		$back1.play()
 	elif music ==2:
 		$back2.play()
 	elif  music ==3:
 		$back3.play()
+	if ishub == true:
+		if music2 == 1:
+			$HubTrack1.play()
+		elif  music2 == 2:
+			$HubTrack2.play()
 
 func  loaddata():
 	if FileAccess.file_exists(save_path):
@@ -56,6 +62,8 @@ func  loaddata():
 			if beat == 6 or beat > 6:
 				if has_armor == true and has_bandage == true and has_eye == true and has_gem == true and  has_neck == true:
 					if max_hp == 500 or max_hp > 500:
+						$HubTrack1.stop()
+						$HubTrack2.stop()
 						$win.visible = true
 						$win2.visible = true
 						$yay.play()
