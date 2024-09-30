@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://hf2woaepvt8t"]
+[gd_scene load_steps=38 format=4 uid="uid://c77n06hclfh0f"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_nihj3"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_e5o8v"]

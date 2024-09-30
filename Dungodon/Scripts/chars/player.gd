@@ -226,16 +226,11 @@ func holster():
 		setspeed()
 		$unholster.play()
 		$anim.play("unholster")
-		isholster = false
-		isuholsteringmove = false
 	elif isholster== false and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
 		isuholsteringmove = true
 		setspeed()
 		$holster.play()
 		$anim.play("holster")
-		isholster = true
-		isuholsteringmove = false
-	setspeed()
 
 func _on_debug_body_entered(body):
 	if body.is_in_group("brick") or body.is_in_group("door"):
@@ -247,11 +242,13 @@ func _on_debug_body_exited(body):
 
 func attack():
 	if isalive == true:
-		var timer = attspeed*0.001
+		var rng = RandomNumberGenerator.new()
+		var cislo = rng.randi_range(1,2)
 		$swing.play()
-		$anim.play("attackk_sword")
-		isattac = false
-		setspeed()
+		if cislo == 1:
+			$anim.play("attackk_sword")
+		elif  cislo == 2:
+			$anim.play("attackk_sword_2")
 
 func get_keys():
 	key_check()
@@ -259,15 +256,27 @@ func get_keys():
 		keys_moving = true
 		$key.play()
 		$anim.play("get_key")
-		has_got_keys = true
-		keys_moving = false
 	elif  (has_got_keys == true and keys_moving == false and isholster == true and isuholsteringmove == false):
 		keys_moving = true
 		$key.play()
 		$anim.play("unget_key")
+
+func _on_anim_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "attackk_sword" or anim_name =="attackk_sword_2":
+		isattac = false
+	elif  anim_name == "get_key":
+		has_got_keys = true
+		keys_moving = false
+	elif anim_name == "unget_key":
 		has_got_keys = false
 		keys_moving = false
-
+	elif  anim_name == "holster":
+		isholster = true
+		isuholsteringmove = false
+	elif anim_name =="unholster":
+		isholster = false
+		isuholsteringmove = false
+	setspeed()
 func key_check():
 		if  has_blue_key == true:
 			$playersprite/keys/key_pickup_detector.remove_from_group("pickup_blue_key")

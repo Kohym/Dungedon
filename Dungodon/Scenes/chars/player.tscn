@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ducgrspg4c2fe"]
+[gd_scene load_steps=42 format=3 uid="uid://ducgrspg4c2fe"]
 
 [ext_resource type="Script" path="res://Scripts/chars/player.gd" id="1_c7yih"]
 [ext_resource type="PackedScene" uid="uid://c8vf0dk5kaod7" path="res://Scenes/chars/wpns/player_wepon_sword.tscn" id="2_am8ds"]
@@ -461,10 +461,39 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_63n84"]
+resource_name = "attackk_sword_2"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playersprite/player_wepon_sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, -3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playersprite/player_wepon_sword:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m52io"]
 _data = {
 "RESET": SubResource("Animation_rcfht"),
 "attackk_sword": SubResource("Animation_udnlp"),
+"attackk_sword_2": SubResource("Animation_63n84"),
 "get_key": SubResource("Animation_yit7y"),
 "holster": SubResource("Animation_27snc"),
 "unget_key": SubResource("Animation_a17e4"),
@@ -642,3 +671,4 @@ libraries = {
 [connection signal="area_entered" from="playersprite/keys/key_holder" to="." method="_on_key_holder_area_entered"]
 [connection signal="area_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_area_entered"]
 [connection signal="body_entered" from="playerhurtbox" to="." method="_on_playerhurtbox_body_entered"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
