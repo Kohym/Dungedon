@@ -187,7 +187,7 @@ material = SubResource("ShaderMaterial_b0ln5")
 script = ExtResource("2_kyfid")
 
 [node name="background" type="ColorRect" parent="."]
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -9313.0
@@ -360,6 +360,7 @@ position = Vector2(-535, 117)
 cam = NodePath("Camera2D")
 what_level = 1
 take_A_dmg = 10
+potionGadd = 10
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
