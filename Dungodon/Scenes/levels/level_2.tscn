@@ -309,6 +309,9 @@ rotation = 2.35619
 position = Vector2(20, 2510)
 rotation = 3.14159
 
+[node name="medkit2" parent="pickups/medkits" instance=ExtResource("12_o7u02")]
+position = Vector2(523, -370)
+
 [node name="scrolls" type="Node2D" parent="pickups"]
 
 [node name="portal_back" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("9_prarf")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://c77n06hclfh0f"]
+[gd_scene load_steps=38 format=4 uid="uid://hf2woaepvt8t"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_nihj3"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_e5o8v"]
@@ -276,6 +276,9 @@ position = Vector2(165, -156)
 [node name="medkit" parent="pickups/medkits" instance=ExtResource("15_qe0uh")]
 position = Vector2(-691, -147)
 rotation = -1.5708
+
+[node name="medkit2" parent="pickups/medkits" instance=ExtResource("15_qe0uh")]
+position = Vector2(143, -778)
 
 [node name="scrolls" type="Node2D" parent="pickups"]
 

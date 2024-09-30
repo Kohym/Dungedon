@@ -275,20 +275,18 @@ rotation = 3.14159
 [node name="potionG5" parent="pickups/potions" instance=ExtResource("15_q0ycw")]
 position = Vector2(1482, -770)
 
-[node name="potionG6" parent="pickups/potions" instance=ExtResource("15_q0ycw")]
-position = Vector2(-1804, -51)
-rotation = -1.5708
-
 [node name="medkits" type="Node2D" parent="pickups"]
 
 [node name="medkit" parent="pickups/medkits" instance=ExtResource("17_22qx3")]
-position = Vector2(1233, 1099)
+position = Vector2(-1787, 215)
 
 [node name="medkit2" parent="pickups/medkits" instance=ExtResource("17_22qx3")]
-position = Vector2(1249, 1681)
+position = Vector2(2446, 491)
+rotation = 3.14159
 
 [node name="medkit3" parent="pickups/medkits" instance=ExtResource("17_22qx3")]
-position = Vector2(181, 1685)
+position = Vector2(617, 1379)
+rotation = -1.5708
 
 [node name="scrolls" type="Node2D" parent="pickups"]
 

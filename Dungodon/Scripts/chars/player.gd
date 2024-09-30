@@ -435,15 +435,10 @@ func _on_key_holder_area_entered(area):
 
 #region misic
 func addhp():
+	ispoison = false
 	base_hp = base_hp + potionGadd
-	debug_hp = base_hp
-	if debug_hp > 500:
-		debug_hp = 500
 	if base_hp > 500:
 		base_hp = 500
-	$playerhp.text = str(base_hp)
-	$playersprite/playerbar.max_value = base_hp
-	$playersprite/playerbar.value =base_hp	
 
 func died():
 	var level = $"../"
