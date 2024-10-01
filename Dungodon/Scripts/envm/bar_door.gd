@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var what_upgrade :String
 @export var price = 10
 @export var player1: Node2D
+@export var scroll:Area2D
 var progress_path="user://Dungedon_game.txt"
 
 var has_eye:bool = false
@@ -45,25 +46,30 @@ func open_or_no():
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)
 		$bar_door_area.monitoring = false
+		scroll.visible = false
 	if what_upgrade == "armor" and has_armor == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
 		$bar_door_area.monitoring = false
+		scroll.visible = false
 	if what_upgrade == "bandage" and has_bandage == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)
 		$bar_door_area.monitoring = false
+		scroll.visible = false
 	if what_upgrade == "gem" and has_gem == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)
 		$bar_door_area.monitoring = false
+		scroll.visible = false
 	if what_upgrade == "neck" and has_neck == true:
 		$Label.visible = false
 		$bar_door_sprite.play("open")
 		$bar_door_collbox.set_deferred("disabled", true)
 		$bar_door_area.monitoring = false
+		scroll.visible = false
 
 func _on_bar_door_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_body"):

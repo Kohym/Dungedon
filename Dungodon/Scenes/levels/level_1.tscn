@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cirko7f1tr6y0"]
+[gd_scene load_steps=39 format=4 uid="uid://cirko7f1tr6y0"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_fuvit"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_e4tk7"]
@@ -179,6 +179,138 @@ physics_layer_0/collision_layer = 512
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_bmn72")
 
+[sub_resource type="Animation" id="Animation_iufbc"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("black:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("back1:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("back2:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("back3:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_rtyqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("black:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("back1:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("back2:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("back3:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hibve"]
+_data = {
+"RESET": SubResource("Animation_rtyqn"),
+"fade_out": SubResource("Animation_iufbc")
+}
+
 [node name="level_template" type="Node2D"]
 material = SubResource("ShaderMaterial_b0ln5")
 script = ExtResource("2_e4tk7")
@@ -255,10 +387,11 @@ position = Vector2(-403, -20)
 
 [node name="scrolls" type="Node2D" parent="pickups"]
 
-[node name="portal_back" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("9_q1rvb")]
+[node name="portal_back" parent="." node_paths=PackedStringArray("player1", "anim") instance=ExtResource("9_q1rvb")]
 position = Vector2(576, 432)
 rotation = 1.5708
 player1 = NodePath("../player")
+anim = NodePath("../anim")
 
 [node name="enemy" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("16_nwonw")]
 position = Vector2(533, 34)
@@ -276,8 +409,9 @@ bricks = NodePath("../tilemaps/bricks")
 look = -113.0
 base_hp = 20
 
-[node name="enemy3" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("16_nwonw")]
+[node name="boss" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("16_nwonw")]
 position = Vector2(-312, 526)
+isboss = true
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
@@ -287,6 +421,7 @@ base_hp = 30
 [node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("10_2e8dv")]
 position = Vector2(458, 437)
 cam = NodePath("Camera2D")
+what_level = 1
 take_A_dmg = 10
 potionGadd = 5
 
@@ -340,3 +475,19 @@ bus = &"Music"
 stream = ExtResource("25_q7mqe")
 volume_db = -15.0
 bus = &"Music"
+
+[node name="black" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -6019.0
+offset_top = -3818.0
+offset_right = 6151.0
+offset_bottom = 3563.0
+color = Color(0, 0, 0, 1)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hibve")
+}
+
+[connection signal="animation_finished" from="anim" to="portal_back" method="_on_anim_animation_finished"]

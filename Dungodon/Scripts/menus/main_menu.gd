@@ -39,10 +39,7 @@ func _on_options_button_pressed():
 	$swing.volume_db = -10
 
 func _on_credits_button_pressed():
-	if option_darkmode == false:
-		get_tree().change_scene_to_file("res://Scenes/menus/end_screen_white.tscn")
-	elif option_darkmode == true:
-		get_tree().change_scene_to_file("res://Scenes/menus/end_screen_black.tscn")
+	$anim.play("fade_out")
 
 func _on_exit_button_pressed():
 	get_tree().quit()
@@ -50,10 +47,10 @@ func _on_exit_button_pressed():
 
 #region levels_menu
 func _on_tutorial_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/levels/level_tutorial.tscn")
+	$anim.play("fade_out_2")
 
 func _on_continue_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")
+	$anim.play("fade_out_3")
 
 func _on_new_button_pressed():
 	$menus/levels_menu.visible = false
@@ -88,7 +85,7 @@ func _on_new_confirm_pressed():
 	new_file.store_var(has_bandage)
 	new_file.store_var(has_gem)
 	new_file.store_var(has_neck)
-	get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")
+	$anim.play("fade_out_3")
 
 #endregion
 
@@ -163,3 +160,15 @@ func load_data():
 
 func _on_dev_level_pressed():
 	get_tree().change_scene_to_file("res://Scenes/levels/level_dev.tscn")
+
+
+func _on_anim_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		if option_darkmode == false:
+			get_tree().change_scene_to_file("res://Scenes/menus/end_screen_white.tscn")
+		elif option_darkmode == true:
+			get_tree().change_scene_to_file("res://Scenes/menus/end_screen_black.tscn")
+	elif anim_name == "fade_out_2":
+		get_tree().change_scene_to_file("res://Scenes/levels/level_tutorial.tscn")
+	elif anim_name == "fade_out_3":
+		get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")

@@ -8,6 +8,7 @@ var option_volume_value: int
 var option_eff_volume_balue: int
 var option_darkmode: bool = false
 @export var ishub: bool = false
+@export var istutorial:bool = false
 var progress_path="user://Dungedon_game.txt"
 
 func _ready():
@@ -15,18 +16,13 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	var music = rng.randi_range(1,3)
 	var music2 = rng.randi_range(1,2)
-	if ishub == false:
+	if ishub == false and istutorial == false:
 		if music == 1:
 			$back1.play()
 		elif music ==2:
 			$back2.play()
 		elif  music ==3:
 			$back3.play()
-	if ishub == true:
-		if music2 == 1:
-			$HubTrack1.play()
-		elif  music2 == 2:
-			$HubTrack2.play()
 
 func  loaddata():
 	if FileAccess.file_exists(save_path):
@@ -58,7 +54,7 @@ func  loaddata():
 		has_bandage = file.get_var(has_bandage)
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
-		if ishub == true:
+		if ishub == true and istutorial == false:
 			if option_darkmode == false:
 				$win/ColorRect.color = Color(1, 1, 1)
 			elif option_darkmode == true:
@@ -127,5 +123,9 @@ func victory():
 	$player.lockmovement()
 
 func playerdied():
+	if ishub == false:
+		$back1.stop()
+		$back2.stop()
+		$back3.stop()
 	$player/Camera2D/loss_ui.show()
 	pausemenu2()

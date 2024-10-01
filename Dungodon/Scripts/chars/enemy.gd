@@ -127,14 +127,18 @@ func _on_enemy_timer_timeout():
 #region attack and damage
 func attac():
 	if isdead == false:
+		var rng = RandomNumberGenerator.new()
+		var num = rng.randi_range(0,1)
 		for i in 8:
 			i += 1
 			if istooclose == false:
 				break
 			if isattac == false and willhitwall == false:
 				isattac = true
-				$anim.play("attack")
-				isattac = false
+				if num == 0:
+					$anim.play("attack")
+				if num == 1:
+					$anim.play("attack2")
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
@@ -155,10 +159,16 @@ func _on_enemhurtbox_body_entered(body):
 #endregion
 
 func died():
+	if isboss == true:
+		return_portal.enable()
 	isdead = true
 	await get_tree().create_timer(0.2).timeout
 	$enemhp.visible = false
 	$enemsprite/enemy_wepon_sword.visible = false
-	if isboss == true:
-		return_portal.enable()
+	
 	process_mode = PROCESS_MODE_DISABLED
+
+
+func _on_anim_animation_finished(anim_name):
+	if anim_name == "attac" or anim_name == "attac2":
+		isattac = false

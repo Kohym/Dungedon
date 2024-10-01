@@ -134,7 +134,6 @@ func check_up():
 		lifesteal_en = true
 	if has_neck == true:
 		take_E_poison_dmg = take_E_poison_dmg-20
-	save()
 
 func lifesteal():
 	if lifesteal_en == true:

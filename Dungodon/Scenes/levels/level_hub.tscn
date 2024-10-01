@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://d0bb0r36cfr36"]
+[gd_scene load_steps=109 format=4 uid="uid://d0bb0r36cfr36"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_rcxnb"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_a03oa"]
@@ -26,8 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://bm75q0ndmpb5k" path="res://Assets/Confetti.png" id="24_jx57r"]
 [ext_resource type="AudioStream" uid="uid://bqf6h5ulyigwd" path="res://Sounds/SFX/cheer.mp3" id="25_qjaq3"]
 [ext_resource type="AudioStream" uid="uid://lpsp3mai56rp" path="res://Sounds/SFX/applause.mp3" id="26_hpblj"]
-[ext_resource type="AudioStream" uid="uid://clvajp0iihkcc" path="res://Sounds/music/hub_track1.mp3" id="27_5o36o"]
-[ext_resource type="AudioStream" uid="uid://djxa8ydsaitlo" path="res://Sounds/music/hub_track2.mp3" id="28_ousfs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_rcxnb")
@@ -819,35 +817,40 @@ position = Vector2(-1475, -671)
 position = Vector2(-2003, -168)
 rotation = 1.5708
 
-[node name="bar_door" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
+[node name="bar_door" parent="doors" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("12_raw5e")]
 position = Vector2(-1859, 336)
 what_upgrade = "gem"
 price = 150
 player1 = NodePath("../../player")
+scroll = NodePath("../../pickups/scrolls/scroll_pickup")
 
-[node name="bar_door2" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
+[node name="bar_door2" parent="doors" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("12_raw5e")]
 position = Vector2(-1715, 336)
 what_upgrade = "neck"
 price = 20
 player1 = NodePath("../../player")
+scroll = NodePath("../../pickups/scrolls/scroll_pickup2")
 
-[node name="bar_door3" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
+[node name="bar_door3" parent="doors" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("12_raw5e")]
 position = Vector2(-1571, 336)
 what_upgrade = "bandage"
 price = 70
 player1 = NodePath("../../player")
+scroll = NodePath("../../pickups/scrolls/scroll_pickup3")
 
-[node name="bar_door4" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
+[node name="bar_door4" parent="doors" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("12_raw5e")]
 position = Vector2(-1427, 336)
 what_upgrade = "eye"
 price = 50
 player1 = NodePath("../../player")
+scroll = NodePath("../../pickups/scrolls/scroll_pickup4")
 
-[node name="bar_door5" parent="doors" node_paths=PackedStringArray("player1") instance=ExtResource("12_raw5e")]
+[node name="bar_door5" parent="doors" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("12_raw5e")]
 position = Vector2(-1283, 336)
 what_upgrade = "armor"
 price = 100
 player1 = NodePath("../../player")
+scroll = NodePath("../../pickups/scrolls/scroll_pickup5")
 
 [node name="pickups" type="Node2D" parent="."]
 
@@ -1172,16 +1175,6 @@ bus = &"Effect"
 stream = ExtResource("26_hpblj")
 volume_db = -3.0
 bus = &"Effect"
-
-[node name="HubTrack1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("27_5o36o")
-volume_db = -10.0
-bus = &"Music"
-
-[node name="HubTrack2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("28_ousfs")
-volume_db = -10.0
-bus = &"Music"
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
