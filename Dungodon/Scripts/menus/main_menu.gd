@@ -134,6 +134,10 @@ func save():
 	AudioServer.set_bus_volume_db(1, linear_to_db(option_music_volume_value))
 	AudioServer.set_bus_volume_db(2, linear_to_db(option_eff_volume_balue))
 	$menu_background.use_parent_material = bool(option_darkmode)
+	if option_darkmode == true:
+		$menu_background/background.color=Color(0.235, 0.235, 0.235)
+	elif option_darkmode == false:
+		$menu_background/background.color = Color(0.765, 0.765, 0.765)
 	$menus/options_menu/saved_label.visible = true
 	await get_tree().create_timer(0.5).timeout
 	$menus/options_menu/saved_label.visible = false
@@ -148,6 +152,10 @@ func load_data():
 		option_darkmode = file.get_var(option_darkmode)
 		$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
 		$menu_background.use_parent_material = option_darkmode
+		if option_darkmode == true:
+			$menu_background/background.color=Color(0.235, 0.235, 0.235)
+		elif option_darkmode == false:
+			$menu_background/background.color = Color(0.765, 0.765, 0.765)
 	else:
 		print("no data menu")
 #endregion

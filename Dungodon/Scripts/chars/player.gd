@@ -32,6 +32,8 @@ var speedboost = 0
 
 var debug_hp
 
+@onready var dev_max_hp = base_hp
+
 var isattac = false
 var isholster = true
 var isuholsteringmove = false
@@ -94,8 +96,8 @@ func  loaddata():
 			take_E_poison_dmg = take_E_poison_dmg-20
 		check_up()
 		if what_level == 0:
-			base_hp = 300
-			debug_hp = 300
+			base_hp = dev_max_hp
+			debug_hp = dev_max_hp
 	else:
 		print("no data player")
 
@@ -108,7 +110,7 @@ func  save():
 	max_hp = base_hp
 	file.store_var(hp)
 	file.store_var(max_hp)
-	if what_level != 0:
+	if what_level > 0:
 		beat = what_level +1
 		file.store_var(beat)
 	else:

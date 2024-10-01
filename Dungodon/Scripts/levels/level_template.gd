@@ -15,12 +15,13 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	var music = rng.randi_range(1,3)
 	var music2 = rng.randi_range(1,2)
-	if music == 1:
-		$back1.play()
-	elif music ==2:
-		$back2.play()
-	elif  music ==3:
-		$back3.play()
+	if ishub == false:
+		if music == 1:
+			$back1.play()
+		elif music ==2:
+			$back2.play()
+		elif  music ==3:
+			$back3.play()
 	if ishub == true:
 		if music2 == 1:
 			$HubTrack1.play()
@@ -34,8 +35,11 @@ func  loaddata():
 		option_eff_volume_balue = file.get_var(option_eff_volume_balue)
 		option_darkmode = file.get_var(option_darkmode)
 	$tilemaps.use_parent_material = option_darkmode
-	$background.use_parent_material = option_darkmode
 	$doors.use_parent_material = option_darkmode
+	if option_darkmode == true:
+		$background.color=Color(0.235, 0.235, 0.235)
+	elif option_darkmode == false:
+		$background.color = Color(0.765, 0.765, 0.765)
 	if FileAccess.file_exists(progress_path):
 		var file = FileAccess.open(progress_path, FileAccess.READ)
 		var hp = 50

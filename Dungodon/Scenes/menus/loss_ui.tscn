@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_p2y7u")
 
 [node name="background" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.823529)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
