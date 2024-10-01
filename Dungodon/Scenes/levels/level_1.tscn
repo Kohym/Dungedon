@@ -184,7 +184,7 @@ material = SubResource("ShaderMaterial_b0ln5")
 script = ExtResource("2_e4tk7")
 
 [node name="background" type="ColorRect" parent="."]
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -6999.01

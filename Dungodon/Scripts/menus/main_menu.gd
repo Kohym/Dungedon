@@ -101,6 +101,7 @@ func _on_darkmode_button_pressed():
 	elif option_darkmode == false:
 		option_darkmode = true
 	$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
+	print(option_darkmode)
 #endregion
 #region options_volume
 
@@ -126,11 +127,13 @@ func _on_options_save_button_pressed():
 	save()
 
 func save():
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var(option_music_volume_value)
-	file.store_var(option_eff_volume_balue)
-	file.store_var(option_darkmode)
-	$Node2D.use_parent_material = option_darkmode
+	var file_opt = FileAccess.open(save_path, FileAccess.WRITE)
+	file_opt.store_var(option_music_volume_value)
+	file_opt.store_var(option_eff_volume_balue)
+	file_opt.store_var(option_darkmode)
+	AudioServer.set_bus_volume_db(1, linear_to_db(option_music_volume_value))
+	AudioServer.set_bus_volume_db(2, linear_to_db(option_eff_volume_balue))
+	$menu_background.use_parent_material = bool(option_darkmode)
 	$menus/options_menu/saved_label.visible = true
 	await get_tree().create_timer(0.5).timeout
 	$menus/options_menu/saved_label.visible = false
@@ -144,7 +147,7 @@ func load_data():
 		$menus/options_menu/eff_slider.value = option_eff_volume_balue
 		option_darkmode = file.get_var(option_darkmode)
 		$menus/options_menu/option_darkmode/darkmode_button.text = str(option_darkmode)
-		$Node2D.use_parent_material = option_darkmode
+		$menu_background.use_parent_material = option_darkmode
 	else:
 		print("no data menu")
 #endregion
