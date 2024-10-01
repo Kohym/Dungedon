@@ -249,6 +249,14 @@ rotation = 3.14159
 position = Vector2(-1523, 240)
 islocked = "red"
 
+[node name="enemy2" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("19_cmquj")]
+position = Vector2(1069, 847)
+scale = Vector2(0.9025, 0.9025)
+isboss = true
+player1 = NodePath("../player")
+look = 180.0
+detect_radius = 200
+
 [node name="enemy" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("19_cmquj")]
 position = Vector2(296, 436)
 isboss = true
