@@ -63,14 +63,19 @@ func _on_body_entered(body):
 		var file2 = FileAccess.open(progress_path, FileAccess.WRITE)
 		if what_upgrade == "eye":
 			has_eye= true
+			player1.check_up("eye")
 		elif what_upgrade == "armor":
 			has_armor = true
+			player1.check_up("armor")
 		elif what_upgrade == "bandage":
 			has_bandage = true
+			player1.check_up("bandage")
 		elif what_upgrade == "gem":
 			has_gem = true
+			player1.check_up("gem")
 		elif what_upgrade == "neck":
 			has_neck= true
+			player1.check_up("neck")
 		hp = player1.debug_hp
 		max_hp = player1.base_hp
 		file2.store_var(hp)
@@ -81,8 +86,5 @@ func _on_body_entered(body):
 		file2.store_var(has_bandage)
 		file2.store_var(has_gem)
 		file2.store_var(has_neck)
-		player1.check_up()
-		player1.save()
-		player1.check_up()
 		$upgrade_collbox.disabled = true
 		$upgrade_sprite.visible = false

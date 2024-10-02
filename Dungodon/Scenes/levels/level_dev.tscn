@@ -258,8 +258,7 @@ look = 180.0
 detect_radius = 200
 
 [node name="enemy" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("19_cmquj")]
-position = Vector2(296, 436)
-isboss = true
+position = Vector2(352, 591)
 player1 = NodePath("../player")
 look = 180.0
 detect_radius = 200

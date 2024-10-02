@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsg54335yiwex"]
+[gd_scene load_steps=15 format=3 uid="uid://dsg54335yiwex"]
 
 [ext_resource type="Script" path="res://Scripts/envm/scroll_pickup.gd" id="1_dplpf"]
 [ext_resource type="Texture2D" uid="uid://br0xn5rryavlk" path="res://Assets/Env/scrollC.png" id="1_i7gfw"]
@@ -19,6 +19,22 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r5s7a"]
 atlas = ExtResource("1_i7gfw")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nndyv"]
+atlas = ExtResource("1_i7gfw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccdox"]
+atlas = ExtResource("1_i7gfw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uxnl"]
+atlas = ExtResource("1_i7gfw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwa0l"]
+atlas = ExtResource("1_i7gfw")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xlyy"]
 atlas = ExtResource("3_grnbh")
@@ -45,6 +61,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nndyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccdox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uxnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwa0l")
+}],
+"loop": true,
+"name": &"idle2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4xlyy")
 }],
 "loop": true,
@@ -64,9 +97,8 @@ script = ExtResource("1_dplpf")
 [node name="scroll_texture" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_5g8fy")
-animation = &"idle"
+animation = &"idle2"
 autoplay = "idle"
-frame_progress = 0.673721
 
 [node name="scroll_collbox" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)

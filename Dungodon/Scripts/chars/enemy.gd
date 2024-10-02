@@ -170,5 +170,5 @@ func died():
 
 
 func _on_anim_animation_finished(anim_name):
-	if anim_name == "attac" or anim_name == "attac2":
+	if anim_name == "attack" or anim_name == "attack2":
 		isattac = false

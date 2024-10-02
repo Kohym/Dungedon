@@ -37,13 +37,12 @@ func loaddata():
 	else:
 			$poratl_diff.visible = false
 
-
 func _on_body_entered(body):
 	if body.is_in_group("player_body") and enabled ==true:
 		if poratal_num == 1:
 			anim.play("fade out_1")
 		elif poratal_num == 2:
-			anim.play("fade out_2")wa
+			anim.play("fade out_2")
 		elif poratal_num == 3:
 			anim.play("fade out_3")
 		elif poratal_num == 4:

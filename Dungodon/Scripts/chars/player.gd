@@ -94,10 +94,6 @@ func  loaddata():
 			lifesteal_en = true
 		if has_neck == true:
 			take_E_poison_dmg = take_E_poison_dmg-20
-		check_up()
-		if what_level == 0:
-			base_hp = dev_max_hp
-			debug_hp = dev_max_hp
 	else:
 		print("no data player")
 
@@ -124,17 +120,22 @@ func  save():
 #endregion 
 
 #region upgrades
-func check_up():
-	if has_eye == true:
+func check_up(upgrade:String):
+	if upgrade == "eye":
 		cam.zoom = Vector2(1.5,1.5)
-	if has_armor == true:
+		has_eye = true
+	if upgrade == "armor":
 		take_A_dmg = take_A_dmg - 7
-	if has_bandage == true:
+		has_armor = true
+	if upgrade == "bandage":
 		medkit_heal = medkit_heal + 15
-	if has_gem == true:
+		has_bandage = true
+	if upgrade == "gem":
 		lifesteal_en = true
-	if has_neck == true:
+		has_gem = true
+	if upgrade == "neck":
 		take_E_poison_dmg = take_E_poison_dmg-20
+		has_neck = true
 
 func lifesteal():
 	if lifesteal_en == true:
@@ -439,6 +440,7 @@ func _on_key_holder_area_entered(area):
 func addhp():
 	ispoison = false
 	base_hp = base_hp + potionGadd
+	$playersprite/playerbar.max_value = base_hp
 	if base_hp > 500:
 		base_hp = 500
 

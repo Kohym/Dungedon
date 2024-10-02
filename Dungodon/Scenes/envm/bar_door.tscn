@@ -41,14 +41,15 @@ animation = &"closed"
 autoplay = "closed"
 
 [node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.980392)
 offset_left = -15.3333
-offset_top = -10.0
+offset_top = -9.66667
 offset_right = 16.6667
-offset_bottom = 13.0
+offset_bottom = 13.3333
 theme = ExtResource("2_wb3gk")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/font_size = 23
-text = "150"
+theme_override_font_sizes/font_size = 22
+text = "25"
 horizontal_alignment = 1
 
 [node name="bar_door_collbox" type="CollisionShape2D" parent="."]
