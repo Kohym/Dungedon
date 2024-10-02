@@ -17,11 +17,11 @@ func _on_body_entered(body):
 		if is_tutorial == true:
 			anim.play("fade_out2")
 		elif is_tutorial == false:
+			player1.save()
 			anim.play("fade_out")
 
 func _on_anim_animation_finished(anim_name):
 	if anim_name == "fade_out":
-		player1.save()
 		get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")
 	elif anim_name == "fade_out2":
 		get_tree().change_scene_to_file("res://Scenes/menus/main_menu.tscn")

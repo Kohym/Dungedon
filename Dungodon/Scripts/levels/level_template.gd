@@ -55,10 +55,7 @@ func  loaddata():
 		has_gem = file.get_var(has_gem)
 		has_neck = file.get_var(has_neck)
 		if ishub == true and istutorial == false:
-			if option_darkmode == false:
-				$win/ColorRect.color = Color(1, 1, 1)
-			elif option_darkmode == true:
-				$win/ColorRect.color = Color(0, 0, 0)
+			$ColorRect.color = Color(0, 0, 0)
 			if beat == 6 or beat > 6:
 				if has_armor == true and has_bandage == true and has_eye == true and has_gem == true and  has_neck == true:
 					if max_hp == 500 or max_hp > 500:
@@ -85,6 +82,8 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
 			get_tree().change_scene_to_file("res://Scenes/menus/end_screen_white.tscn")
 		elif option_darkmode == true:
 			get_tree().change_scene_to_file("res://Scenes/menus/end_screen_black.tscn")
+	if anim_name == "fade_out":
+		get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")
 
 func _process(delta):
 	if win == false:

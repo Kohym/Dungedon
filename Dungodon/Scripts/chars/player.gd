@@ -19,7 +19,7 @@ var lockemove = false
 @export var take_E_spike_dmg = 10
 @export var take_E_poison_dmg = 50
 
-@export var medkit_heal = 25
+@export var medkit_heal = 35
 @export var potionGadd = 20
 @export var potionG2add = 20
 @export var potionR2works = true
@@ -120,6 +120,7 @@ func  save():
 	file.store_var(has_bandage)
 	file.store_var(has_gem)
 	file.store_var(has_neck)
+	print(beat)
 #endregion 
 
 #region upgrades

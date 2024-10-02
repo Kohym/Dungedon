@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=4 uid="uid://d0bb0r36cfr36"]
+[gd_scene load_steps=116 format=4 uid="uid://d0bb0r36cfr36"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_rcxnb"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_a03oa"]
@@ -660,7 +660,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("win/ColorRect:modulate")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -669,6 +669,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_s74om"]
 resource_name = "fade out"
@@ -676,7 +688,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("win/ColorRect:modulate")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -685,11 +697,219 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bj4oo"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_11417"]
+resource_name = "fade out_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_o2ilu"]
+resource_name = "fade out_3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sbjko"]
+resource_name = "fade out_4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tghnm"]
+resource_name = "fade out_5"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_d0tev"]
+resource_name = "fade out_6"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xaeke"]
+resource_name = "fade out_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4htg1"]
 _data = {
 "RESET": SubResource("Animation_o7uch"),
-"fade out": SubResource("Animation_s74om")
+"fade out": SubResource("Animation_s74om"),
+"fade out_1": SubResource("Animation_xaeke"),
+"fade out_2": SubResource("Animation_11417"),
+"fade out_3": SubResource("Animation_o2ilu"),
+"fade out_4": SubResource("Animation_sbjko"),
+"fade out_5": SubResource("Animation_tghnm"),
+"fade out_6": SubResource("Animation_d0tev"),
+"fade_in": SubResource("Animation_bj4oo")
 }
 
 [node name="level_template" type="Node2D"]
@@ -925,39 +1145,45 @@ player1 = NodePath("../../../player")
 
 [node name="portals" type="Node2D" parent="."]
 
-[node name="portal" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
+[node name="portal" parent="portals" node_paths=PackedStringArray("player", "anim") instance=ExtResource("22_itsyg")]
 position = Vector2(-192, -240)
 rotation = -1.5708
 poratal_num = 1
 player = NodePath("../../player")
+anim = NodePath("../../anim")
 
-[node name="portal2" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
+[node name="portal2" parent="portals" node_paths=PackedStringArray("player", "anim") instance=ExtResource("22_itsyg")]
 position = Vector2(-192, -624)
 rotation = -1.5708
 poratal_num = 2
 player = NodePath("../../player")
+anim = NodePath("../../anim")
 
-[node name="portal3" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
+[node name="portal3" parent="portals" node_paths=PackedStringArray("player", "anim") instance=ExtResource("22_itsyg")]
 position = Vector2(0, -768)
 poratal_num = 3
 player = NodePath("../../player")
+anim = NodePath("../../anim")
 
-[node name="portal4" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
+[node name="portal4" parent="portals" node_paths=PackedStringArray("player", "anim") instance=ExtResource("22_itsyg")]
 position = Vector2(384, -768)
 poratal_num = 4
 player = NodePath("../../player")
+anim = NodePath("../../anim")
 
-[node name="portal5" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
+[node name="portal5" parent="portals" node_paths=PackedStringArray("player", "anim") instance=ExtResource("22_itsyg")]
 position = Vector2(528, -624)
 rotation = 1.5708
 poratal_num = 5
 player = NodePath("../../player")
+anim = NodePath("../../anim")
 
-[node name="portal6" parent="portals" node_paths=PackedStringArray("player") instance=ExtResource("22_itsyg")]
+[node name="portal6" parent="portals" node_paths=PackedStringArray("player", "anim") instance=ExtResource("22_itsyg")]
 position = Vector2(528, -240)
 rotation = 1.5708
 poratal_num = 6
 player = NodePath("../../player")
+anim = NodePath("../../anim")
 
 [node name="win2" type="Node2D" parent="."]
 visible = false
@@ -1156,12 +1382,12 @@ position = Vector2(-504, 654)
 shape = SubResource("RectangleShape2D_i6c7w")
 debug_color = Color(1, 1, 0, 0.419608)
 
-[node name="ColorRect" type="ColorRect" parent="win"]
+[node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = -5831.0
-offset_top = -4548.0
-offset_right = 8589.0
-offset_bottom = 4799.0
+offset_left = -5975.0
+offset_top = -4818.0
+offset_right = 8445.0
+offset_bottom = 4529.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
@@ -1180,6 +1406,8 @@ bus = &"Effect"
 libraries = {
 "": SubResource("AnimationLibrary_4htg1")
 }
+autoplay = "fade_in"
 
 [connection signal="body_entered" from="win/win_area" to="." method="_on_win_area_body_entered"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="animation_finished" from="anim" to="portals/portal" method="_on_anim_animation_finished"]
