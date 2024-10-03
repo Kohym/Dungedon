@@ -87,6 +87,7 @@ func  loaddata():
 func _on_win_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_body"):
 		$anim.play("fade out")
+		$Open.play()
 
 func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade out":

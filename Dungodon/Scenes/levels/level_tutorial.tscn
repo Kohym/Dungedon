@@ -786,10 +786,10 @@ whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll17")
 [node name="labels" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -1064.0
-offset_top = 5312.0
-offset_right = -328.0
-offset_bottom = 5909.0
+offset_left = -1101.0
+offset_top = 5275.0
+offset_right = -365.0
+offset_bottom = 5872.0
 theme = ExtResource("9_p1snw")
 
 [node name="Label" type="Label" parent="labels"]

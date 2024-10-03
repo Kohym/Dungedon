@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Dungodon"
+config/name="Dungedon"
 run/main_scene="res://Scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://Assets/icon.png"
+config/icon="res://Assets/Dungedon logo.png"
 
 [display]
 

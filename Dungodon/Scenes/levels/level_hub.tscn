@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=4 uid="uid://d0bb0r36cfr36"]
+[gd_scene load_steps=125 format=4 uid="uid://d0bb0r36cfr36"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_rcxnb"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_a03oa"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://5pafvyjwimk" path="res://Assets/Upgrades/armor_R.png" id="25_3ysby"]
 [ext_resource type="AudioStream" uid="uid://bqf6h5ulyigwd" path="res://Sounds/SFX/cheer.mp3" id="25_qjaq3"]
 [ext_resource type="AudioStream" uid="uid://lpsp3mai56rp" path="res://Sounds/SFX/applause.mp3" id="26_hpblj"]
+[ext_resource type="AudioStream" uid="uid://d323ktibp432m" path="res://Sounds/SFX/ambient/door/open.mp3" id="33_dyw35"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_rcxnb")
@@ -169,15 +170,15 @@ texture = ExtResource("13_cvarf")
 [sub_resource type="TileSet" id="TileSet_caiah"]
 sources/0 = SubResource("TileSetAtlasSource_cbtim")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jwpt8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxach"]
 atlas = ExtResource("19_hd7xu")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xw6u5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jwpt8")
+"texture": SubResource("AtlasTexture_qxach")
 }],
 "loop": true,
 "name": &"default",
@@ -667,7 +668,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_s74om"]
@@ -946,9 +947,9 @@ texture = ExtResource("5_1h8ar")
 
 [node name="chill_label" type="Label" parent="env"]
 offset_left = -641.0
-offset_top = 332.0
+offset_top = 331.0
 offset_right = -403.0
-offset_bottom = 445.0
+offset_bottom = 444.0
 theme = ExtResource("11_va01m")
 theme_override_font_sizes/font_size = 60
 text = "Designated
@@ -1000,9 +1001,11 @@ scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_6aq44")
 
 [node name="stair" type="TileMapLayer" parent="tilemaps"]
+visible = false
 use_parent_material = true
+position = Vector2(12, 0)
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AADy/wcAAAAAAAIAAGDz/wcAAAAAAAEAAGD0/wgAAAAAAAEAAGD1/wgAAAAAAAAAAGD1/wcAAAAAAAIAAGD0/wcAAAAAAAEAAGDz/wgAAAAAAAEAAGDy/wgAAAAAAAIAAGA=")
+tile_map_data = PackedByteArray("AAD0/wgAAAAAAAEAAGD1/wgAAAAAAAAAAGD1/wcAAAAAAAIAAGDz/wgAAAAAAAEAAGDy/wgAAAAAAAIAAGD0/wcAAAAAAAEAAGDy/wcAAAAAAAIAAGDz/wcAAAAAAAEAAGA=")
 tile_set = SubResource("TileSet_caiah")
 
 [node name="destructible_walls" type="Node2D" parent="tilemaps"]
@@ -1188,6 +1191,7 @@ player = NodePath("../../player")
 anim = NodePath("../../anim")
 
 [node name="win2" type="Node2D" parent="."]
+visible = false
 position = Vector2(-144, -272)
 
 [node name="win_label" type="Label" parent="win2"]
@@ -1209,6 +1213,9 @@ theme = ExtResource("11_va01m")
 text = "<- Exit"
 
 [node name="door" type="AnimatedSprite2D" parent="win2"]
+position = Vector2(-558, 656)
+rotation = -1.5708
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_xw6u5")
 autoplay = "default"
 
@@ -1452,6 +1459,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("25_3ysby")
 
 [node name="Label3" type="Label" parent="player/Camera2D/scrolls/scroll6"]
+layout_mode = 0
 offset_left = -605.0
 offset_top = 172.0
 offset_right = 605.0
@@ -1502,6 +1510,7 @@ shape = SubResource("RectangleShape2D_i6c7w")
 debug_color = Color(1, 1, 0, 0.419608)
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -5975.0
 offset_top = -4818.0
@@ -1519,6 +1528,11 @@ bus = &"Effect"
 [node name="applause" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_hpblj")
 volume_db = -3.0
+bus = &"Effect"
+
+[node name="Open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_dyw35")
+volume_db = -2.0
 bus = &"Effect"
 
 [node name="anim" type="AnimationPlayer" parent="."]

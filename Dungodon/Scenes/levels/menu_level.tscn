@@ -170,8 +170,9 @@ openforsec = 1.5
 position = Vector2(2391.26, 545.184)
 rotation = -1.58427
 
-[node name="menu_enemy" parent="Path2D/menu_patrol" groups=["enemy_body"] instance=ExtResource("13_5ey3y")]
+[node name="menu_enemy" parent="Path2D/menu_patrol" node_paths=PackedStringArray("pathfollow") groups=["enemy_body"] instance=ExtResource("13_5ey3y")]
 position = Vector2(0.682533, -1.23861)
 collision_mask = 1
 script = ExtResource("15_a6ym4")
 islocked = "linear"
+pathfollow = NodePath("..")

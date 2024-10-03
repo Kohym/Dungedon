@@ -21,7 +21,7 @@ func _on_body_entered(body):
 			$scroll_texture.play("used")
 		debug = false
 		whattoopen.visible = true
-		if open_only_once == false:
+		if open_only_once == true:
 			self.monitoring = false
 			$scroll_collbox.set_deferred("disabled", true)
 
