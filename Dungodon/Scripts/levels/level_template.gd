@@ -56,6 +56,18 @@ func  loaddata():
 		has_neck = file.get_var(has_neck)
 		if ishub == true and istutorial == false:
 			$ColorRect.color = Color(0, 0, 0)
+			$player/Camera2D/scrolls/scroll6/hp_lab.text = str(max_hp) + "/500" 
+			$player/Camera2D/scrolls/scroll6/level_lab.text = str(beat) +"/6"
+			if has_armor == true:
+				$player/Camera2D/scrolls/scroll6/up_armor.modulate = 255
+			if has_bandage == true:
+				$player/Camera2D/scrolls/scroll6/up_ban.modulate = 255
+			if has_eye == true:
+				$player/Camera2D/scrolls/scroll6/up_eye.modulate = 255
+			if has_gem == true:
+				$player/Camera2D/scrolls/scroll6/up_gem.modulate = 255
+			if has_neck == true:
+				$player/Camera2D/scrolls/scroll6/up_neck.modulate = 255
 			if beat == 6 or beat > 6:
 				if has_armor == true and has_bandage == true and has_eye == true and has_gem == true and  has_neck == true:
 					if max_hp == 500 or max_hp > 500:

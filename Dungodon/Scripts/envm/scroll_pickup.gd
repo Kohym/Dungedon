@@ -2,6 +2,7 @@ extends Area2D
 @export var whattoopen: Control
 var debug = true
 var firs_time_open = false
+@export var open_only_once:bool = true
 
 func  _ready():
 	var rng = RandomNumberGenerator.new()
@@ -20,8 +21,9 @@ func _on_body_entered(body):
 			$scroll_texture.play("used")
 		debug = false
 		whattoopen.visible = true
-		self.monitoring = false
-		$scroll_collbox.set_deferred("disabled", true)
+		if open_only_once == false:
+			self.monitoring = false
+			$scroll_collbox.set_deferred("disabled", true)
 
 
 func _on_body_exited(body):

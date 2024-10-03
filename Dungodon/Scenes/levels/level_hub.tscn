@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://d0bb0r36cfr36"]
+[gd_scene load_steps=124 format=4 uid="uid://d0bb0r36cfr36"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_rcxnb"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_a03oa"]
@@ -21,9 +21,15 @@
 [ext_resource type="PackedScene" uid="uid://c2vk8vnmykm4l" path="res://Scenes/menus/loss_ui.tscn" id="14_1w5j3"]
 [ext_resource type="PackedScene" uid="uid://dsg54335yiwex" path="res://Scenes/pickups/scroll_pickup.tscn" id="15_2p8cp"]
 [ext_resource type="PackedScene" uid="uid://dbqx5u3gj4inp" path="res://Scenes/pickups/upgrade.tscn" id="15_sycdn"]
+[ext_resource type="Texture2D" uid="uid://cvmyc2qfjvyu1" path="res://Assets/Env/door.png" id="19_hd7xu"]
+[ext_resource type="Texture2D" uid="uid://dstoh4wrmea4i" path="res://Assets/Upgrades/gem_G.png" id="21_clm38"]
 [ext_resource type="PackedScene" uid="uid://b43p4au4tluep" path="res://Scenes/envm/portal.tscn" id="22_itsyg"]
+[ext_resource type="Texture2D" uid="uid://5f8vl26oscy1" path="res://Assets/Upgrades/neclace_R_single.png" id="22_xvy44"]
 [ext_resource type="AudioStream" uid="uid://bddfsh6ew6ju0" path="res://Sounds/SFX/ambient/teleport_in.wav" id="23_qy6k6"]
+[ext_resource type="Texture2D" uid="uid://cvkjod2rc8ly3" path="res://Assets/Upgrades/bandage_G.png" id="23_x4mq0"]
 [ext_resource type="Texture2D" uid="uid://bm75q0ndmpb5k" path="res://Assets/Confetti.png" id="24_jx57r"]
+[ext_resource type="Texture2D" uid="uid://d1drwjmtn4oip" path="res://Assets/Upgrades/neclace_B.png" id="24_wmfqg"]
+[ext_resource type="Texture2D" uid="uid://5pafvyjwimk" path="res://Assets/Upgrades/armor_R.png" id="25_3ysby"]
 [ext_resource type="AudioStream" uid="uid://bqf6h5ulyigwd" path="res://Sounds/SFX/cheer.mp3" id="25_qjaq3"]
 [ext_resource type="AudioStream" uid="uid://lpsp3mai56rp" path="res://Sounds/SFX/applause.mp3" id="26_hpblj"]
 
@@ -162,6 +168,21 @@ texture = ExtResource("13_cvarf")
 
 [sub_resource type="TileSet" id="TileSet_caiah"]
 sources/0 = SubResource("TileSetAtlasSource_cbtim")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwpt8"]
+atlas = ExtResource("19_hd7xu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xw6u5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwpt8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_isv37"]
 atlas = ExtResource("24_jx57r")
@@ -925,9 +946,9 @@ texture = ExtResource("5_1h8ar")
 
 [node name="chill_label" type="Label" parent="env"]
 offset_left = -641.0
-offset_top = 325.0
+offset_top = 332.0
 offset_right = -403.0
-offset_bottom = 438.0
+offset_bottom = 445.0
 theme = ExtResource("11_va01m")
 theme_override_font_sizes/font_size = 60
 text = "Designated
@@ -979,10 +1000,9 @@ scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_6aq44")
 
 [node name="stair" type="TileMapLayer" parent="tilemaps"]
-visible = false
 use_parent_material = true
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AADy/wcAAAAAAAIAAGDz/wcAAAAAAAEAAGD0/wgAAAAAAAEAAGD1/wgAAAAAAAAAAGD2/wgAAAAAAAIAAGD2/wcAAAAAAAIAAGD1/wcAAAAAAAIAAGD0/wcAAAAAAAEAAGDz/wgAAAAAAAEAAGDy/wgAAAAAAAIAAGA=")
+tile_map_data = PackedByteArray("AADy/wcAAAAAAAIAAGDz/wcAAAAAAAEAAGD0/wgAAAAAAAEAAGD1/wgAAAAAAAAAAGD1/wcAAAAAAAIAAGD0/wcAAAAAAAEAAGDz/wgAAAAAAAEAAGDy/wgAAAAAAAIAAGA=")
 tile_set = SubResource("TileSet_caiah")
 
 [node name="destructible_walls" type="Node2D" parent="tilemaps"]
@@ -1057,58 +1077,73 @@ rotation = 1.5708
 position = Vector2(-168, 840)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll")
+open_only_once = false
 
 [node name="scroll_pickup2" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
 position = Vector2(-23, 838)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll2")
+open_only_once = false
 
 [node name="scroll_pickup3" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
 position = Vector2(119, 837)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll3")
+open_only_once = false
 
 [node name="scroll_pickup4" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
 position = Vector2(266, 837)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll4")
+open_only_once = false
 
 [node name="scroll_pickup5" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
 position = Vector2(407, 837)
 rotation = 3.14159
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll5")
+open_only_once = false
+
+[node name="scroll_pickup6" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("15_2p8cp")]
+position = Vector2(-557, 463)
+whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll6")
+open_only_once = false
 
 [node name="upgrades" type="Node2D" parent="pickups"]
 
-[node name="upgrade" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
+[node name="upgrade" parent="pickups/upgrades" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("15_sycdn")]
 position = Vector2(-193, 965)
 rotation = 3.14159
 what_upgrade = "gem"
 player1 = NodePath("../../../player")
+scroll = NodePath("../../scrolls/scroll_pickup")
 
-[node name="upgrade2" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
+[node name="upgrade2" parent="pickups/upgrades" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("15_sycdn")]
 position = Vector2(-48, 962)
 rotation = 3.14159
 what_upgrade = "neck"
 player1 = NodePath("../../../player")
+scroll = NodePath("../../scrolls/scroll_pickup2")
 
-[node name="upgrade3" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
+[node name="upgrade3" parent="pickups/upgrades" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("15_sycdn")]
 position = Vector2(97, 962)
 rotation = 3.14159
 what_upgrade = "bandage"
 player1 = NodePath("../../../player")
+scroll = NodePath("../../scrolls/scroll_pickup3")
 
-[node name="upgrade4" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
+[node name="upgrade4" parent="pickups/upgrades" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("15_sycdn")]
 position = Vector2(239, 963)
 rotation = 3.14159
 what_upgrade = "eye"
 player1 = NodePath("../../../player")
+scroll = NodePath("../../scrolls/scroll_pickup4")
 
-[node name="upgrade5" parent="pickups/upgrades" node_paths=PackedStringArray("player1") instance=ExtResource("15_sycdn")]
+[node name="upgrade5" parent="pickups/upgrades" node_paths=PackedStringArray("player1", "scroll") instance=ExtResource("15_sycdn")]
 position = Vector2(385, 962)
 rotation = 3.14159
 what_upgrade = "armor"
 player1 = NodePath("../../../player")
+scroll = NodePath("../../scrolls/scroll_pickup5")
 
 [node name="portals" type="Node2D" parent="."]
 
@@ -1153,7 +1188,6 @@ player = NodePath("../../player")
 anim = NodePath("../../anim")
 
 [node name="win2" type="Node2D" parent="."]
-visible = false
 position = Vector2(-144, -272)
 
 [node name="win_label" type="Label" parent="win2"]
@@ -1173,6 +1207,10 @@ offset_right = 211.0
 offset_bottom = 713.0
 theme = ExtResource("11_va01m")
 text = "<- Exit"
+
+[node name="door" type="AnimatedSprite2D" parent="win2"]
+sprite_frames = SubResource("SpriteFrames_xw6u5")
+autoplay = "default"
 
 [node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("9_as2ru")]
 position = Vector2(192, -431)
@@ -1308,6 +1346,120 @@ This item will protect you from enemy strikes.
 Blocks 7 points of damage per hit.
 
 Cost: 100 hp"
+
+[node name="scroll6" parent="player/Camera2D/scrolls" instance=ExtResource("10_wgv57")]
+visible = false
+layout_mode = 1
+offset_left = -2.63161
+offset_top = -1.57898
+offset_right = -7.89482
+offset_bottom = -4.73694
+rotation = -1.5708
+
+[node name="Label" type="Label" parent="player/Camera2D/scrolls/scroll6"]
+layout_mode = 0
+offset_left = -597.0
+offset_top = -233.0
+offset_right = 454.0
+offset_bottom = -128.0
+text = "Game completion"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="player/Camera2D/scrolls/scroll6"]
+layout_mode = 0
+offset_left = -532.105
+offset_top = -121.579
+offset_right = -88.1053
+offset_bottom = 184.421
+theme_override_font_sizes/font_size = 110
+text = "Upgrades:
+Max HP:
+Beat Level:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hp_lab" type="Label" parent="player/Camera2D/scrolls/scroll6"]
+layout_mode = 0
+offset_left = -42.6316
+offset_top = -17.3684
+offset_right = 324.368
+offset_bottom = 87.6316
+theme_override_font_sizes/font_size = 110
+text = "500/500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_lab" type="Label" parent="player/Camera2D/scrolls/scroll6"]
+layout_mode = 0
+offset_left = 60.5263
+offset_top = 84.7369
+offset_right = 217.526
+offset_bottom = 189.737
+theme_override_font_sizes/font_size = 110
+text = "6/6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="up_gem" type="TextureRect" parent="player/Camera2D/scrolls/scroll6"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 0
+offset_left = -34.2106
+offset_top = -100.526
+offset_right = 5.78943
+offset_bottom = -60.5263
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("21_clm38")
+
+[node name="up_neck" type="TextureRect" parent="player/Camera2D/scrolls/scroll6"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 0
+offset_left = 41.5789
+offset_top = -99.4737
+offset_right = 81.5789
+offset_bottom = -59.4737
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("22_xvy44")
+
+[node name="up_ban" type="TextureRect" parent="player/Camera2D/scrolls/scroll6"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 0
+offset_left = 118.421
+offset_top = -99.4737
+offset_right = 158.421
+offset_bottom = -59.4737
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("23_x4mq0")
+
+[node name="up_eye" type="TextureRect" parent="player/Camera2D/scrolls/scroll6"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 0
+offset_left = 195.263
+offset_top = -96.3158
+offset_right = 235.263
+offset_bottom = -56.3158
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("24_wmfqg")
+
+[node name="up_armor" type="TextureRect" parent="player/Camera2D/scrolls/scroll6"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 0
+offset_left = 266.842
+offset_top = -97.3684
+offset_right = 306.842
+offset_bottom = -57.3684
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("25_3ysby")
+
+[node name="Label3" type="Label" parent="player/Camera2D/scrolls/scroll6"]
+offset_left = -605.0
+offset_top = 172.0
+offset_right = 605.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 40
+text = "(Only updates AFTERre-entering the hub)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="pause_ui" parent="player/Camera2D" instance=ExtResource("12_i3c8x")]
 visible = false

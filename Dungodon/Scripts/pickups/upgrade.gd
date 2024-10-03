@@ -1,6 +1,7 @@
 extends Area2D
 @export var what_upgrade :String
 @export var player1: Node2D
+@export var scroll:Area2D
 var progress_path="user://Dungedon_game.txt"
 
 var hp:int = 50
@@ -88,3 +89,4 @@ func _on_body_entered(body):
 		file2.store_var(has_neck)
 		$upgrade_collbox.disabled = true
 		$upgrade_sprite.visible = false
+		scroll.visible = false
