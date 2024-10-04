@@ -156,7 +156,6 @@ scale = Vector2(3, 3)
 position = Vector2(1751.74, 1156.9)
 rotation = -2.61799
 scale = Vector2(3, 3)
-sword_rotation = 30
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_41dph")
@@ -174,5 +173,6 @@ rotation = -1.58427
 position = Vector2(0.682533, -1.23861)
 collision_mask = 1
 script = ExtResource("15_a6ym4")
+sword_rotation = 0
 islocked = "linear"
 pathfollow = NodePath("..")
