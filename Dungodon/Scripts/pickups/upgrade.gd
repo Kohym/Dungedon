@@ -90,3 +90,5 @@ func _on_body_entered(body):
 		$upgrade_collbox.disabled = true
 		$upgrade_sprite.visible = false
 		scroll.visible = false
+		scroll.monitoring = false
+		scroll.monitorable = false

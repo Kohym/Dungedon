@@ -520,13 +520,11 @@ tile_set = SubResource("TileSet_rd60n")
 
 [node name="spike" type="TileMapLayer" parent="tilemaps" groups=["spikes"]]
 texture_filter = 1
-use_parent_material = true
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAJAEgAAAABAAAAAFAKAEgAAAAAAAIAAFALAEgAAAACAAAAAFDN/z8AAAACAAEAAADN/0AAAAAAAAAAAADh/0YAAAAAAAAAAADV/0UAAAACAAEAAFDg/zsAAAABAAEAAFA=")
 tile_set = SubResource("TileSet_pun11")
 
 [node name="poison" type="TileMapLayer" parent="tilemaps" groups=["poison"]]
-use_parent_material = true
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAOAEgAAAAAAAAAAAAPAEgAAAACAAAAAAAQAEgAAAAAAAEAAADd/z8AAAABAAIAAGDd/0AAAAAAAAAAAGDd/0EAAAABAAEAAGDd/0IAAAAAAAAAAGA=")
 tile_set = SubResource("TileSet_6aq44")
@@ -1464,10 +1462,10 @@ texture = ExtResource("37_vhu8u")
 
 [node name="TextureRect2" type="TextureRect" parent="player/Camera2D/scrolls/scroll17"]
 layout_mode = 0
-offset_left = 171.053
-offset_top = 75.2634
-offset_right = 235.053
-offset_bottom = 107.263
+offset_left = 193.158
+offset_top = 69.9995
+offset_right = 257.158
+offset_bottom = 102.0
 scale = Vector2(5, 5)
 texture = ExtResource("38_7mmsy")
 
