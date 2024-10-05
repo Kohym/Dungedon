@@ -564,7 +564,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-rotation = 1.5708
 
 [node name="scroll" parent="player/Camera2D/scrolls" instance=ExtResource("11_0gamf")]
 layout_mode = 1

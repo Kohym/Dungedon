@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var return_portal: Area2D
 @export var bricks: TileMapLayer
 @export var speed = 300
-@export_range(-360, 360, 0.5, ) var look: float
+@export_range(-360, 360,0.5 ) var look: float
 @export var detect_radius = 160
 @onready var nav_agent := $enemy_navigation as NavigationAgent2D
 var isdetecting = false
@@ -67,8 +67,8 @@ func _ready():
 	$enemsprite/enembar.value = base_hp
 	$enemhp.text = str(base_hp)
 	$enem_player_detect/enem_player_detect_collbox.shape.radius = detect_radius
-	$enemsprite.rotation = look
-	$enem_att_detect.rotation = look
+	$enemsprite.rotation_degrees = look
+	$enem_att_detect.rotation_degrees = look
 
 func setspeed():
 	if isboss == false:
