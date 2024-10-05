@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://btxq5m71isxqb"]
+[gd_scene load_steps=49 format=4 uid="uid://btxq5m71isxqb"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_mfcgb"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_wyvwr"]
@@ -29,6 +29,9 @@
 [ext_resource type="AudioStream" uid="uid://jfeovalb12cp" path="res://Sounds/music/Level3.mp3" id="17_rucf6"]
 [ext_resource type="PackedScene" uid="uid://ukjhs1m48knn" path="res://Scenes/pickups/medkit.tscn" id="18_8gxas"]
 [ext_resource type="PackedScene" uid="uid://b7guy3xdvjg5y" path="res://Scenes/chars/enemy.tscn" id="20_womkl"]
+[ext_resource type="AudioStream" uid="uid://bbptheqqtejg6" path="res://Sounds/music/Level4.mp3" id="30_vqyw8"]
+[ext_resource type="AudioStream" uid="uid://cf0kyjcgpp4eu" path="res://Sounds/music/Level5.mp3" id="31_6dd6m"]
+[ext_resource type="AudioStream" uid="uid://b2qergqw1sel2" path="res://Sounds/music/Level6.mp3" id="32_d501v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_mfcgb")
@@ -400,6 +403,8 @@ use_parent_material = true
 [node name="destructible_wall1" parent="tilemaps/destructible_walls" instance=ExtResource("8_8mav7")]
 position = Vector2(24, -1320)
 
+[node name="blood" type="Node2D" parent="."]
+
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
 
@@ -563,7 +568,7 @@ position = Vector2(0, 48)
 player1 = NodePath("../player")
 anim = NodePath("../anim")
 
-[node name="boss" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="boss" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(46, -1750)
 isboss = true
 player1 = NodePath("../player")
@@ -572,40 +577,45 @@ bricks = NodePath("../tilemaps/bricks")
 speed = 190
 look = 90.0
 base_hp = 200
+blood_node = NodePath("../blood")
 
-[node name="enemy" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(536, -1744)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = -115.0
 base_hp = 80
+blood_node = NodePath("../blood")
 
-[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-896, -1459)
 scale = Vector2(0.9025, 0.9025)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 base_hp = 80
+blood_node = NodePath("../blood")
 
-[node name="enemy3" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy3" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(811, -1467)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 base_hp = 80
+blood_node = NodePath("../blood")
 
-[node name="enemy4" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy4" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-584, -1750)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 25.0
 base_hp = 80
+blood_node = NodePath("../blood")
 
-[node name="enemy5" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy5" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-464, -1090)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -613,8 +623,9 @@ bricks = NodePath("../tilemaps/bricks")
 look = -90.0
 take_A_sword_dmg = 30
 base_hp = 60
+blood_node = NodePath("../blood")
 
-[node name="enemy6" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy6" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(529, -1055)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -622,16 +633,18 @@ bricks = NodePath("../tilemaps/bricks")
 look = -90.0
 take_A_sword_dmg = 30
 base_hp = 60
+blood_node = NodePath("../blood")
 
-[node name="enemy7" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy7" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-96, -785)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 take_A_sword_dmg = 40
 base_hp = 60
+blood_node = NodePath("../blood")
 
-[node name="enemy8" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy8" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(183, -791)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -639,8 +652,9 @@ bricks = NodePath("../tilemaps/bricks")
 look = -90.0
 take_A_sword_dmg = 40
 base_hp = 60
+blood_node = NodePath("../blood")
 
-[node name="enemy9" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy9" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-112, -611)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -648,24 +662,27 @@ bricks = NodePath("../tilemaps/bricks")
 look = 90.0
 take_A_sword_dmg = 40
 base_hp = 60
+blood_node = NodePath("../blood")
 
-[node name="enemy10" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy10" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(207, -615)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 90.0
 take_A_sword_dmg = 40
+blood_node = NodePath("../blood")
 
-[node name="enemy11" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy11" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-143, 1549)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy12" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy12" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(90, 1551)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -673,16 +690,18 @@ bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy13" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy13" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-283, 1255)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy14" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy14" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(229, 1255)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -690,16 +709,18 @@ bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy15" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy15" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-332, 1091)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy16" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy16" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(46, 1638)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -707,16 +728,18 @@ bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy17" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy17" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-412, 972)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy18" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy18" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(322, 976)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -724,16 +747,18 @@ bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy19" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy19" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-97, 1636)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy20" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy20" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(252, 1086)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -741,16 +766,18 @@ bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy21" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy21" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(-236, 1374)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
-[node name="enemy22" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_womkl")]
+[node name="enemy22" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_womkl")]
 position = Vector2(178, 1368)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
@@ -758,6 +785,7 @@ bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 take_A_sword_dmg = 25
 base_hp = 25
+blood_node = NodePath("../blood")
 
 [node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("9_t2dka")]
 position = Vector2(0, 208)
@@ -813,6 +841,21 @@ bus = &"Music"
 [node name="back3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_rucf6")
 volume_db = -80.0
+bus = &"Music"
+
+[node name="back4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_vqyw8")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_6dd6m")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_d501v")
+volume_db = -15.0
 bus = &"Music"
 
 [node name="black" type="ColorRect" parent="."]

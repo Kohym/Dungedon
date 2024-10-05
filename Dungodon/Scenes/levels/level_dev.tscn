@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://bqx2ecvye7yro"]
+[gd_scene load_steps=42 format=4 uid="uid://bqx2ecvye7yro"]
 
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="1_qi0bq"]
 [ext_resource type="Texture2D" uid="uid://cq4vfgqvc5hu5" path="res://Assets/Env/bricks.png" id="3_d7l8o"]
@@ -29,6 +29,9 @@
 [ext_resource type="AudioStream" uid="uid://b73lwjx2eehwi" path="res://Sounds/music/Level1.mp3" id="27_75pkx"]
 [ext_resource type="AudioStream" uid="uid://gdk0nt8or14q" path="res://Sounds/music/Level2.mp3" id="28_n4hgr"]
 [ext_resource type="AudioStream" uid="uid://jfeovalb12cp" path="res://Sounds/music/Level3.mp3" id="29_45ejk"]
+[ext_resource type="AudioStream" uid="uid://bbptheqqtejg6" path="res://Sounds/music/Level4.mp3" id="30_m8387"]
+[ext_resource type="AudioStream" uid="uid://cf0kyjcgpp4eu" path="res://Sounds/music/Level5.mp3" id="31_0y7jt"]
+[ext_resource type="AudioStream" uid="uid://b2qergqw1sel2" path="res://Sounds/music/Level6.mp3" id="32_v5q6j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jjl2i"]
 shader = ExtResource("20_t4fft")
@@ -230,7 +233,7 @@ position = Vector2(187, 460)
 [node name="scrolls" type="Node2D" parent="pickups"]
 
 [node name="scroll_pickup" parent="pickups/scrolls" node_paths=PackedStringArray("whattoopen") instance=ExtResource("16_afpol")]
-position = Vector2(407, 174)
+position = Vector2(71, 445)
 whattoopen = NodePath("../../../player/Camera2D/scrolls/scroll")
 
 [node name="doors" type="Node2D" parent="."]
@@ -262,7 +265,7 @@ detect_radius = 200
 blood_node = NodePath("../blood")
 
 [node name="enemy" parent="." node_paths=PackedStringArray("player1", "bricks", "blood_node") instance=ExtResource("19_cmquj")]
-position = Vector2(352, 591)
+position = Vector2(1300, 943)
 player1 = NodePath("../player")
 bricks = NodePath("../tilemaps/bricks")
 look = 180.0
@@ -324,4 +327,19 @@ bus = &"Music"
 [node name="back3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("29_45ejk")
 volume_db = -80.0
+bus = &"Music"
+
+[node name="back4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_m8387")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_0y7jt")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_v5q6j")
+volume_db = -15.0
 bus = &"Music"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bca3m2v1kct2m"]
+[gd_scene load_steps=35 format=3 uid="uid://bca3m2v1kct2m"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_fucx1"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_7go5v"]
@@ -17,6 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://b73lwjx2eehwi" path="res://Sounds/music/Level1.mp3" id="16_8o5s1"]
 [ext_resource type="AudioStream" uid="uid://gdk0nt8or14q" path="res://Sounds/music/Level2.mp3" id="17_stfjd"]
 [ext_resource type="AudioStream" uid="uid://jfeovalb12cp" path="res://Sounds/music/Level3.mp3" id="18_6u1ja"]
+[ext_resource type="AudioStream" uid="uid://bbptheqqtejg6" path="res://Sounds/music/Level4.mp3" id="18_rsn2w"]
+[ext_resource type="AudioStream" uid="uid://cf0kyjcgpp4eu" path="res://Sounds/music/Level5.mp3" id="19_xwxrn"]
+[ext_resource type="AudioStream" uid="uid://b2qergqw1sel2" path="res://Sounds/music/Level6.mp3" id="20_862a1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_fucx1")
@@ -315,6 +318,8 @@ tile_set = SubResource("TileSet_6aq44")
 [node name="destructible_walls" type="Node2D" parent="tilemaps"]
 use_parent_material = true
 
+[node name="blood" type="Node2D" parent="."]
+
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
 
@@ -384,6 +389,21 @@ bus = &"Music"
 
 [node name="back3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_6u1ja")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_rsn2w")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_xwxrn")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_862a1")
 volume_db = -15.0
 bus = &"Music"
 

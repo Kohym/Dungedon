@@ -14,8 +14,7 @@ var progress_path="user://Dungedon_game.txt"
 func _ready():
 	loaddata()
 	var rng = RandomNumberGenerator.new()
-	var music = rng.randi_range(1,3)
-	var music2 = rng.randi_range(1,2)
+	var music = rng.randi_range(1,6)
 	if ishub == false and istutorial == false:
 		if music == 1:
 			$back1.play()
@@ -23,6 +22,13 @@ func _ready():
 			$back2.play()
 		elif  music ==3:
 			$back3.play()
+		elif music ==4:
+			$back4.play()
+		elif  music ==5:
+			$back5.play()
+		elif music ==6:
+			$back6.play()
+
 
 func  loaddata():
 	if FileAccess.file_exists(save_path):
@@ -98,7 +104,7 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
 		get_tree().change_scene_to_file("res://Scenes/levels/level_hub.tscn")
 
-func _process(delta):
+func _process(_delta):
 	if win == false:
 		if Input.is_action_just_pressed("pause"):
 			pausemenu()

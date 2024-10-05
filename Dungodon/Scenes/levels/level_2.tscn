@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://d01kj8d74vmy8"]
+[gd_scene load_steps=46 format=4 uid="uid://d01kj8d74vmy8"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_ffyk4"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_kyfid"]
@@ -27,6 +27,9 @@
 [ext_resource type="AudioStream" uid="uid://b73lwjx2eehwi" path="res://Sounds/music/Level1.mp3" id="26_ad2vv"]
 [ext_resource type="AudioStream" uid="uid://gdk0nt8or14q" path="res://Sounds/music/Level2.mp3" id="27_hiddv"]
 [ext_resource type="AudioStream" uid="uid://jfeovalb12cp" path="res://Sounds/music/Level3.mp3" id="28_bxwiw"]
+[ext_resource type="AudioStream" uid="uid://bbptheqqtejg6" path="res://Sounds/music/Level4.mp3" id="28_nhg1a"]
+[ext_resource type="AudioStream" uid="uid://cf0kyjcgpp4eu" path="res://Sounds/music/Level5.mp3" id="29_c3lbn"]
+[ext_resource type="AudioStream" uid="uid://b2qergqw1sel2" path="res://Sounds/music/Level6.mp3" id="30_5jluf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_ffyk4")
@@ -398,6 +401,8 @@ use_parent_material = true
 position = Vector2(-217, 303)
 rotation = 1.5708
 
+[node name="blood" type="Node2D" parent="."]
+
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
 
@@ -498,14 +503,15 @@ position = Vector2(767, -367)
 player1 = NodePath("../player")
 anim = NodePath("../anim")
 
-[node name="enemy" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("14_v6761")]
+[node name="enemy" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("14_v6761")]
 position = Vector2(-362, 1837)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 base_hp = 30
+blood_node = NodePath("../blood")
 
-[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("14_v6761")]
+[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("14_v6761")]
 position = Vector2(181, 1847)
 scale = Vector2(0.9025, 0.9025)
 player1 = NodePath("../player")
@@ -513,22 +519,25 @@ return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = -110.0
 base_hp = 50
+blood_node = NodePath("../blood")
 
-[node name="enemy3" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("14_v6761")]
+[node name="enemy3" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("14_v6761")]
 position = Vector2(-433, 486)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 base_hp = 30
+blood_node = NodePath("../blood")
 
-[node name="enemy4" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("14_v6761")]
+[node name="enemy4" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("14_v6761")]
 position = Vector2(-339, -242)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 base_hp = 50
+blood_node = NodePath("../blood")
 
-[node name="boss" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("14_v6761")]
+[node name="boss" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("14_v6761")]
 position = Vector2(514, -24.9999)
 scale = Vector2(0.9025, 0.9025)
 isboss = true
@@ -537,6 +546,7 @@ return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 90.0
 base_hp = 60
+blood_node = NodePath("../blood")
 
 [node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("10_0x786")]
 position = Vector2(-535, 117)
@@ -594,6 +604,21 @@ bus = &"Music"
 [node name="back3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_bxwiw")
 volume_db = -80.0
+bus = &"Music"
+
+[node name="back4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_nhg1a")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_c3lbn")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_5jluf")
+volume_db = -15.0
 bus = &"Music"
 
 [node name="black" type="ColorRect" parent="."]

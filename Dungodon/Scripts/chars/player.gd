@@ -320,7 +320,7 @@ func key_check():
 #endregion
 
 #region DMG and pickups
-func _physics_process(delta):
+func _physics_process(_delta):
 	$playerhp.text = str($playersprite/playerbar.value)
 	debug_hp = $playersprite/playerbar.value
 	if  ($playersprite/playerbar.value < 0 or $playersprite/playerbar.value == 0):

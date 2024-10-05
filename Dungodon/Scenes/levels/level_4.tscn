@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bcfgntrl8l077"]
+[gd_scene load_steps=47 format=4 uid="uid://bcfgntrl8l077"]
 
 [ext_resource type="Shader" path="res://Assets/darkmod.gdshader" id="1_o1pwk"]
 [ext_resource type="Script" path="res://Scripts/levels/level_template.gd" id="2_2gym4"]
@@ -28,6 +28,9 @@
 [ext_resource type="AudioStream" uid="uid://b73lwjx2eehwi" path="res://Sounds/music/Level1.mp3" id="27_xbiae"]
 [ext_resource type="AudioStream" uid="uid://gdk0nt8or14q" path="res://Sounds/music/Level2.mp3" id="28_05q65"]
 [ext_resource type="AudioStream" uid="uid://jfeovalb12cp" path="res://Sounds/music/Level3.mp3" id="29_3jbiq"]
+[ext_resource type="AudioStream" uid="uid://bbptheqqtejg6" path="res://Sounds/music/Level4.mp3" id="29_fj33o"]
+[ext_resource type="AudioStream" uid="uid://cf0kyjcgpp4eu" path="res://Sounds/music/Level5.mp3" id="30_7hs7p"]
+[ext_resource type="AudioStream" uid="uid://b2qergqw1sel2" path="res://Sounds/music/Level6.mp3" id="31_1u1mu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ln5"]
 shader = ExtResource("1_o1pwk")
@@ -393,6 +396,8 @@ tile_set = SubResource("TileSet_6aq44")
 [node name="destructible_walls" type="Node2D" parent="tilemaps"]
 use_parent_material = true
 
+[node name="blood" type="Node2D" parent="."]
+
 [node name="doors" type="Node2D" parent="."]
 position = Vector2(1667, 552)
 
@@ -619,47 +624,52 @@ rotation = 1.5708
 player1 = NodePath("../player")
 anim = NodePath("../anim")
 
-[node name="enemy" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(916, -690)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 115.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(1159, 0)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy3" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy3" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(1204, -634)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 90.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy4" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy4" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(601, -310)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 45.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy5" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy5" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(-226, -689)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy6" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy6" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(202, -316)
 isdead = true
 player1 = NodePath("../player")
@@ -667,32 +677,36 @@ return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = -280.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy7" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy7" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(-428, 384)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = -90.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy8" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy8" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(-2, 702)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 114.5
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy9" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy9" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(-873, 678)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 115.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="boss" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="boss" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(-429, 1151)
 isboss = true
 player1 = NodePath("../player")
@@ -700,29 +714,33 @@ return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = -46.5
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy10" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy10" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(1348, 287)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy11" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy11" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(448, 502)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 base_hp = 70
+blood_node = NodePath("../blood")
 
-[node name="enemy12" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks") instance=ExtResource("20_jdg6w")]
+[node name="enemy12" parent="." node_paths=PackedStringArray("player1", "return_portal", "bricks", "blood_node") instance=ExtResource("20_jdg6w")]
 position = Vector2(671, 653)
 player1 = NodePath("../player")
 return_portal = NodePath("../portal_back")
 bricks = NodePath("../tilemaps/bricks")
 look = -90.0
 base_hp = 70
+blood_node = NodePath("../blood")
 
 [node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("10_6n6wo")]
 position = Vector2(158, 204)
@@ -778,6 +796,21 @@ bus = &"Music"
 [node name="back3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("29_3jbiq")
 volume_db = -80.0
+bus = &"Music"
+
+[node name="back4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_fj33o")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_7hs7p")
+volume_db = -15.0
+bus = &"Music"
+
+[node name="back6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_1u1mu")
+volume_db = -15.0
 bus = &"Music"
 
 [node name="black" type="ColorRect" parent="."]

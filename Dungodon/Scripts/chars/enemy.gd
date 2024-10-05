@@ -36,7 +36,7 @@ var blood = load("res://Scenes/chars/blood_r.tscn")
 #endregion
 
 #region movement and pathfinding
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	dir = 0
 	raycast_detect()
 	attac()
@@ -98,7 +98,7 @@ func raycast_detect():
 		else:
 			isdetecting = true
 
-func _on_enem_player_detect_body_entered(body):
+func _on_enem_player_detect_body_entered(_body):
 	istooclose = false
 	if isdead == false:
 		$enemsprite.rotation = get_angle_to(player1.global_position)
@@ -109,7 +109,7 @@ func _on_enem_player_detect_body_entered(body):
 			no_more_path = false
 		makepath()
 
-func _on_enem_player_detect_body_exited(body):
+func _on_enem_player_detect_body_exited(_body):
 	await get_tree().create_timer(1).timeout
 	ischasing = false
 	istooclose = false

@@ -17,12 +17,13 @@ func  _ready():
 func _on_body_entered(body):
 	if body.is_in_group("player_body") and debug == true:
 		if firs_time_open == false:
-			firs_time_open == true
+			firs_time_open = true
 			$scroll_texture.play("used")
+		$scroll.play()
 		debug = false
 		whattoopen.visible = true
 		if open_only_once == true:
-			self.monitoring = false
+			self.set_deferred("monitoring", false)
 			$scroll_collbox.set_deferred("disabled", true)
 
 
