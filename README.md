@@ -1,13 +1,22 @@
 # DungeonCrowler
-2D game in Unity
+A 2D pixel art game in Godot
 
+Originaly made as a school project that evolved into my graduation project.
 
-skupina Navrátil + Kohout = ♥️
+## Credits:
+### Tetures, coding and scripting:
+Marek Kohout
 
-role:
-  Navrátil: Návrhář, Vývojář;
-  Kohout: Vývojář, Návrhář
+### Music:
+[Mubert.com](https://mubert.com/)
 
-návrh hry: 
-  
-![Bez názvu](https://github.com/VelkejKluk/DungeonCrowler/assets/100674135/b0c35149-aaec-45b2-a92c-f0c8959f9229)
+### Most SFX:
+[pixabay.com](https://pixabay.com/)
+
+### Specific SFX: 
+[teleport_in.wav](https://freesound.org/people/DWOBoyle/sounds/474179/)
+
+[cheer.mp3](https://www.myinstants.com)
+
+[glass_break.wav](https://freesound.org/people/natemarler/sounds/338691/?)
+
