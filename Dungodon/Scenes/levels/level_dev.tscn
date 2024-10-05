@@ -190,6 +190,8 @@ rotation = 1.5708
 [node name="destructible_wall2" parent="tilemaps" instance=ExtResource("8_iuikc")]
 position = Vector2(408, 96)
 
+[node name="blood" type="Node2D" parent="."]
+
 [node name="pickups" type="Node2D" parent="."]
 
 [node name="keys" type="Node2D" parent="pickups"]
@@ -249,24 +251,30 @@ rotation = 3.14159
 position = Vector2(-1523, 240)
 islocked = "red"
 
-[node name="enemy2" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("19_cmquj")]
+[node name="enemy2" parent="." node_paths=PackedStringArray("player1", "bricks", "blood_node") instance=ExtResource("19_cmquj")]
 position = Vector2(1069, 847)
 scale = Vector2(0.9025, 0.9025)
 isboss = true
 player1 = NodePath("../player")
+bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 detect_radius = 200
+blood_node = NodePath("../blood")
 
-[node name="enemy" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("19_cmquj")]
+[node name="enemy" parent="." node_paths=PackedStringArray("player1", "bricks", "blood_node") instance=ExtResource("19_cmquj")]
 position = Vector2(352, 591)
 player1 = NodePath("../player")
+bricks = NodePath("../tilemaps/bricks")
 look = 180.0
 detect_radius = 200
+blood_node = NodePath("../blood")
 
-[node name="player" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("20_qhp5r")]
+[node name="player" parent="." node_paths=PackedStringArray("cam", "blood_node") instance=ExtResource("20_qhp5r")]
 position = Vector2(172, 206)
 cam = NodePath("Camera2D")
+take_A_dmg = 0
 potionGadd = 625
+blood_node = NodePath("../blood")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
@@ -305,15 +313,15 @@ visible = false
 
 [node name="back1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_75pkx")
-volume_db = -15.0
+volume_db = -80.0
 bus = &"Music"
 
 [node name="back2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_n4hgr")
-volume_db = -15.0
+volume_db = -80.0
 bus = &"Music"
 
 [node name="back3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("29_45ejk")
-volume_db = -15.0
+volume_db = -80.0
 bus = &"Music"

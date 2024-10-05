@@ -23,6 +23,8 @@ var lockemove = false
 @export var potionGadd = 20
 @export var potionG2add = 20
 @export var potionR2works = true
+
+@export var blood_node:Node2D
 #endregion
 var progress_path="user://Dungedon_game.txt"
 
@@ -60,6 +62,8 @@ var has_blue_key = false
 var has_green_key = false
 var has_red_key = false
 var has_universal_key = false
+
+var blood = load("res://Scenes/chars/blood_g.tscn")
 #endregion
 
 func _ready():

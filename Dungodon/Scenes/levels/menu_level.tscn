@@ -148,8 +148,8 @@ islocked = "True"
 position = Vector2(575, 151)
 
 [node name="menu_character" parent="." instance=ExtResource("12_dhr71")]
-position = Vector2(1213.51, 852.036)
-rotation = 0.610865
+position = Vector2(1239.32, 918.57)
+rotation = 0.525344
 scale = Vector2(3, 3)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("13_5ey3y")]

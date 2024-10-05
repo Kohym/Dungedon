@@ -30,6 +30,9 @@ var istooclose = false
 var isattac = false
 var willhitwall = false
 var speedmulti
+
+var blood = load("res://Scenes/chars/blood_r.tscn")
+@export var blood_node :Node2D
 #endregion
 
 #region movement and pathfinding
@@ -142,6 +145,10 @@ func attac():
 
 func _on_enemhurtbox_area_entered(area):
 	if area.is_in_group("playerweponsword"):
+		var blood_instance = blood.instantiate() 
+		blood_node.add_child(blood_instance)
+		blood_instance.global_position = global_position
+		blood_instance.rotation = global_position.angle_to_point(player1.global_position)
 		$hit.play()
 		player1.lifesteal()
 		var tween = get_tree().create_tween()
