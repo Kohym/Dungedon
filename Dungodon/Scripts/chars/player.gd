@@ -228,12 +228,12 @@ func  _input(_event):
 		get_keys()
 
 func holster():
-	if isholster== true and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
+	if isholster== true and isuholsteringmove == false and has_got_keys == false and keys_moving == false and isattac == false:
 		isuholsteringmove = true
 		setspeed()
 		$unholster.play()
 		$anim.play("unholster")
-	elif isholster== false and isuholsteringmove == false and has_got_keys == false and keys_moving == false:
+	elif isholster== false and isuholsteringmove == false and has_got_keys == false and keys_moving == false and isattac == false:
 		isuholsteringmove = true
 		setspeed()
 		$holster.play()
