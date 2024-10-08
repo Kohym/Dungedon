@@ -259,11 +259,11 @@ func attack():
 
 func get_keys():
 	key_check()
-	if (has_got_keys == false and keys_moving == false and isholster == true and isuholsteringmove == false):
+	if (has_got_keys == false and keys_moving == false and isholster == true and isuholsteringmove == false and isattac == false):
 		keys_moving = true
 		$key.play()
 		$anim.play("get_key")
-	elif  (has_got_keys == true and keys_moving == false and isholster == true and isuholsteringmove == false):
+	elif  (has_got_keys == true and keys_moving == false and isholster == true and isuholsteringmove == false and isattac == false):
 		keys_moving = true
 		$key.play()
 		$anim.play("unget_key")
