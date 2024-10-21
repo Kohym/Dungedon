@@ -841,10 +841,10 @@ theme = ExtResource("9_p1snw")
 
 [node name="Label" type="Label" parent="labels"]
 layout_mode = 0
-offset_left = 212.0
-offset_top = 137.0
-offset_right = 496.0
-offset_bottom = 268.0
+offset_left = 241.0
+offset_top = 151.0
+offset_right = 525.0
+offset_bottom = 282.0
 theme_override_font_sizes/font_size = 70
 text = "Move with: 
 WASD"
