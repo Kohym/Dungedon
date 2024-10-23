@@ -26,7 +26,7 @@ var lockemove = false
 
 @export var blood_node:Node2D
 #endregion
-var progress_path="user://Dungedon_game.txt"
+var progress_path="user://Dungedon_game.save"
 
 var knockback_dir = Vector2()
 var input: Vector2

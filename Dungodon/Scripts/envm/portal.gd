@@ -3,7 +3,7 @@ extends Area2D
 @export var poratal_num:int
 @export var player: CharacterBody2D
 @export var anim:AnimationPlayer
-var progress_path="user://Dungedon_game.txt"
+var progress_path="user://Dungedon_game.save"
 
 var beat :int
 var enabled = false

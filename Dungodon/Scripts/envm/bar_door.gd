@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var price = 10
 @export var player1: Node2D
 @export var scroll:Area2D
-var progress_path="user://Dungedon_game.txt"
+var progress_path="user://Dungedon_game.save"
 
 var has_eye:bool = false
 var has_armor:bool = false

@@ -1,7 +1,7 @@
 extends Control
 
 var save_path = "user://Dungedon_settings.save"
-var game_save_path = "user://Dungedon_game.txt"
+var game_save_path = "user://Dungedon_game.save"
 var hp:int = 50
 var max_hp:int = 50
 var beat:int = 1

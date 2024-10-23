@@ -9,7 +9,7 @@ var option_eff_volume_balue: int
 var option_darkmode: bool = false
 @export var ishub: bool = false
 @export var istutorial:bool = false
-var progress_path="user://Dungedon_game.txt"
+var progress_path="user://Dungedon_game.save"
 
 func _ready():
 	loaddata()
