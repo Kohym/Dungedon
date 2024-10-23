@@ -36,8 +36,8 @@ func open():
 		$eff1.play()
 	$door_both_sprite.play("open")
 	$door_both_collbox.set_deferred("disabled", true)
-	$door_both_open_detect1.monitoring = false
-	$door_both_open_detect2.monitoring = false
+	$door_both_open_detect1.set_deferred("monitoring", false)
+	$door_both_open_detect2.set_deferred("monitoring", false)
 	await get_tree().create_timer(openforsec).timeout
 	if play2 == false:
 		play2 = true

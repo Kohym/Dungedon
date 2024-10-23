@@ -24,7 +24,6 @@ var lockemove = false
 @export var potionG2add = 20
 @export var potionR2works = true
 
-@export var blood_node:Node2D
 #endregion
 var progress_path="user://Dungedon_game.save"
 
@@ -63,7 +62,6 @@ var has_green_key = false
 var has_red_key = false
 var has_universal_key = false
 
-var blood = load("res://Scenes/chars/blood_g.tscn")
 #endregion
 
 func _ready():
@@ -329,10 +327,7 @@ func _physics_process(_delta):
 		died()
 
 func _on_playerhurtbox_area_entered(area):
-	if area.is_in_group("enemy_wepon_sword"):
-		var tween = get_tree().create_tween()
-		tween.tween_property($playersprite/playerbar, "value" , $playersprite/playerbar.value - take_A_dmg, 0.4)
-	elif area.is_in_group("medkit"):
+	if area.is_in_group("medkit"):
 		ishealing = true
 		ispoison = false
 		var tween = get_tree().create_tween()
@@ -346,6 +341,9 @@ func _on_playerhurtbox_area_entered(area):
 			$playerhp.text = str($playersprite/playerbar.value)
 			ishealing = false
 		attspeed = 0.1
+	elif area.is_in_group("enemy_wepon_sword"):
+		var tween = get_tree().create_tween()
+		tween.tween_property($playersprite/playerbar, "value" , $playersprite/playerbar.value - take_A_dmg, 0.4)
 	elif area.is_in_group("potionG"):
 		ispoison = false
 		addhp()
