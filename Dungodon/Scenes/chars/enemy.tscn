@@ -228,7 +228,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="enem_player_detect_collbox" type="CollisionShape2D" parent="enem_player_detect"]
-visible = false
 shape = SubResource("CircleShape2D_gw5n3")
 debug_color = Color(1, 0, 0, 0.419608)
 

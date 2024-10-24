@@ -115,6 +115,7 @@ position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_xowfc")
 
 [node name="door_navlink" type="NavigationLink2D" parent="."]
+modulate = Color(1, 1, 0, 1)
 bidirectional = false
 start_position = Vector2(0, 33.6667)
 end_position = Vector2(0, -11.3333)
