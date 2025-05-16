@@ -1,7 +1,7 @@
 # DungeonCrowler
-A 2D pixel art game in Godot
+2D, pixel art, Dungeon crawler game in Godot
 
-Originaly made as a school project that evolved into my graduation project.
+Originaly made as a school project that evolved into my high school graduation project.
 
 ## Credits:
 ### Tetures, coding and scripting:
