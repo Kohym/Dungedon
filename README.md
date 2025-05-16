@@ -3,6 +3,16 @@
 
 Originaly made as a school project that evolved into my high school graduation project.
 
+## Features
+* Simple combat and movement system
+* Tutorial
+* Basic enemy AI
+* 6 levels of increasing difficulty
+* Upgrade and progression system
+* Light and dark mode
+* Simple but handmade graphics
+* And much more!
+
 ## Credits:
 ### Tetures, coding and scripting:
 Marek Kohout
